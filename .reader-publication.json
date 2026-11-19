@@ -1,13 +1,13 @@
 {
   "repository": "yuanmanxue/mem-research-reader-pages",
-  "source_commit": "0d84f5928d20b8ff123273274486ba34e7680db0",
+  "source_commit": "e2dad4ca8252c843a71d65b4764d6c9901c5a95a",
   "files": {
     ".gitattributes": "a04c1ecee5f831666e805f64d7ab9b1f22cbb8550d7ca83bdad379e5f9a7439c",
     ".github/workflows/pages.yml": "d59ad02bde270342c2e3b03f7e7090649e527ba6062248c06a28ac8a34dd053c",
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "404.html": "24efb5a8866b55908e6b6e555463d70b0056aa8a3b6f9b51678d10a1c7a85660",
     "README.md": "48c080e8718dc2c6449e6195b6ea7edf1525781ae95b6fe2fd6eb17b8cf5adad",
-    "assets/app.js": "70f2433a31016942a171f4ca339b8dcc9d6ff6393009df9f361a7438551d5f5c",
+    "assets/app.js": "1efbd536d28767674d0e7d1a9118f7f9d3fb0840a4cce833701fb1d430372762",
     "assets/controls.js": "790cc8f4f65f4e3a54b355dddaa62931d71df31a1151c7fcd1f6615f75c7a49a",
     "assets/embedded.css": "b07986ff5e603be95c2f4857e2783b5f3a2db8c08de080cfdad5cae0c70134a0",
     "assets/pdf-preview.js": "235a8b1cf1af81b87e47671c7f43448f482b6b405b51c33e352001ab5ce978af",

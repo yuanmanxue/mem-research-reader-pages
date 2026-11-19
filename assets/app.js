@@ -54,8 +54,8 @@
   function updateNav() {
     const count = category => state.catalog.items.filter(x=>matchesCategory(x,category)).length;
     const scroll=$('sidebar-scroll').scrollTop;
-    $('category-nav').innerHTML=`<a href="/" class="nav-item" data-category="all">${icon('grid')}<span>全部资料</span><small>${count('all')}</small></a>`+
-      state.catalog.categories.map(x=>`<a href="/?category=${x.id}" class="nav-item${x.parent?' nav-subitem':''}" data-category="${x.id}">${icon(categoryIcons[x.id]||'folder')}<span>${esc(x.label)}</span><small>${count(x.id)}</small></a>`).join('');
+    $('category-nav').innerHTML=`<a href="${ReaderStatic.basePath}" class="nav-item" data-category="all">${icon('grid')}<span>全部资料</span><small>${count('all')}</small></a>`+
+      state.catalog.categories.map(x=>`<a href="${ReaderStatic.basePath}?category=${x.id}" class="nav-item${x.parent?' nav-subitem':''}" data-category="${x.id}">${icon(categoryIcons[x.id]||'folder')}<span>${esc(x.label)}</span><small>${count(x.id)}</small></a>`).join('');
     document.querySelectorAll('[data-category]').forEach(b=>{const active=b.dataset.category===state.category&&!state.special;b.classList.toggle('active',active);if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
     $('sidebar-scroll').scrollTop=scroll;
     $('favorites').classList.toggle('active',state.special==='favorites');$('recent').classList.toggle('active',state.special==='recent');
