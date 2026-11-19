@@ -1,0 +1,1218 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="color-scheme" content="light dark"/><title>大语言模型如何重塑软件开发中的人员、过程、产品与社会：一项针对早期采用者的定性探索｜全文中文精译</title><style>
+:root{color-scheme:light;--bg:#f5f6f4;--paper:#fff;--ink:#202c2e;--soft:#55676a;--muted:#718082;--accent:#285749;--line:#dce5df;--thead:#edf3f0;--sidebar:#f9faf9;--quote:#f3f7f5;--fs:17px}
+html{scroll-behavior:smooth}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Source Han Sans SC',sans-serif;font-size:var(--fs);line-height:1.94;letter-spacing:.01em}
+header{position:sticky;z-index:9;top:0;background:color-mix(in srgb,var(--paper) 92%,transparent);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.topbar{max-width:1480px;margin:auto;padding:10px 28px;display:flex;gap:18px;align-items:center;justify-content:space-between}.brand{color:var(--accent);font-weight:750;white-space:nowrap;font-size:14px;letter-spacing:.025em}.toolgroup{display:flex;align-items:center;gap:7px}.toolgroup button,.toolgroup select{font:inherit;font-size:13px;border:1px solid var(--line);color:var(--ink);background:var(--paper);border-radius:8px;padding:5px 10px;cursor:pointer}.toolgroup button:hover{border-color:var(--accent)}.layout{max-width:1480px;display:grid;grid-template-columns:265px minmax(0,920px);gap:36px;margin:20px auto;padding:0 22px}.toc{height:calc(100vh - 96px);position:sticky;top:79px;overflow-y:auto;border:1px solid var(--line);border-radius:15px;background:var(--sidebar);padding:20px 14px 24px}.toc .toc-header{font-size:12px;color:var(--muted);font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin:2px 8px 15px}.toc a{display:flex;justify-content:space-between;gap:8px;text-decoration:none;padding:6px 10px;border-radius:9px;line-height:1.55;color:var(--soft);font-size:13px}.toc a:hover,.toc a.active{background:var(--thead);color:var(--accent)}.toc a small{opacity:.66;min-width:18px;text-align:right;font-size:11px}.reading{min-width:0;background:var(--paper);box-shadow:0 8px 48px rgba(24,48,36,.045);border:1px solid var(--line);border-radius:16px;padding:44px clamp(22px,4vw,74px) 86px}.reading h1{font-size:clamp(27px,3.2vw,39px);line-height:1.42;letter-spacing:-.02em;color:var(--ink);margin:18px 0 24px;font-weight:800}.reading h2{font-size:15px;letter-spacing:.02em;color:var(--accent);padding:8px 13px;margin:58px 0 22px;border-radius:6px;background:var(--thead);display:table;font-weight:700}.reading h2:first-of-type{margin-top:0}.reading h3{font-size:23px;line-height:1.45;letter-spacing:-.01em;margin:40px 0 17px;color:var(--ink)}.reading h4{font-size:19px;line-height:1.48;margin:34px 0 14px;color:var(--accent)}.reading h5{font-size:17px;line-height:1.48;margin:30px 0 12px;color:var(--ink)}.reading p{margin:0 0 16px;text-align:justify;hyphens:auto;overflow-wrap:anywhere}.reading p strong{font-weight:700}.reading li{margin-bottom:10px;padding-left:1px}.reading ul,.reading ol{padding-left:1.6em;margin:11px 0 20px}.reading img.source-figure{display:block;width:100%;max-width:695px;margin:16px auto 22px;border:1px solid var(--line);border-radius:8px}.reading table{width:100%;border-collapse:collapse;font-size:.85em;line-height:1.66;margin:18px 0 27px;border-top:2px solid var(--accent);word-break:normal}.reading th,.reading td{border-bottom:1px solid var(--line);padding:11px 10px;text-align:left;vertical-align:top}.reading thead th{background:var(--thead);font-weight:700;color:var(--accent)}.reading tr:nth-child(even) td{background:color-mix(in srgb,var(--thead) 35%,transparent)}.reading a{color:var(--accent)}.reading blockquote{background:var(--quote);padding:12px 24px;border-left:3px solid var(--accent);margin:18px 0}.reading a[id^="pdf-p"]{display:block;scroll-margin-top:90px}.reading ul:has(>li>strong){padding-left:1.6em}.reading ul:has(>li:first-child:last-child){margin-bottom:20px}.reading li{overflow-wrap:anywhere}.reading hr{border:0;border-top:1px solid var(--line);margin:30px 0}.footer{max-width:1480px;margin:25px auto 45px;text-align:center;font-size:12px;color:var(--muted)}
+body.dark{color-scheme:dark;--bg:#17201d;--paper:#202a25;--ink:#e8eee8;--soft:#c4d3c9;--muted:#98afa1;--accent:#a4d7b8;--line:#3b4b40;--thead:#2a3b30;--sidebar:#202b25;--quote:#25392e}body.dark .reading{box-shadow:none}
+@media(max-width:1000px){.layout{grid-template-columns:200px minmax(0,1fr);gap:18px;padding:0 12px}.reading{padding:28px 24px 50px}.toc a{font-size:12px}}
+@media(max-width:750px){.layout{display:block;padding:0 7px;margin:7px auto}.toc{display:none}.reading{border-radius:9px;padding:24px 18px 55px}.topbar{padding:8px 12px}.brand{max-width:46vw;overflow:hidden;text-overflow:ellipsis}.toolgroup button,.toolgroup select{padding:4px 6px}.reading table{display:block;overflow-x:auto;max-width:100%;white-space:normal;font-size:.78em}.reading th,.reading td{min-width:100px}}
+@media print{header,.toc,.footer{display:none}.layout{display:block;padding:0;margin:0}.reading{border:0;box-shadow:none;padding:0 5mm}.reading h2{page-break-before:always;break-before:page}.reading img{max-width:100%}body{background:#fff;color:#000}}
+</style></head>
+<body><header><div class="topbar"><span class="brand">TABARSI ET AL. · 53 页论文中文全译</span><div class="toolgroup"><label for="pageJump" style="font-size:12px">原文页</label><select id="pageJump" aria-label="跳转 PDF 物理页码"><option value="pdf-p1">1 / 53</option><option value="pdf-p2">2 / 53</option><option value="pdf-p3">3 / 53</option><option value="pdf-p4">4 / 53</option><option value="pdf-p5">5 / 53</option><option value="pdf-p6">6 / 53</option><option value="pdf-p7">7 / 53</option><option value="pdf-p8">8 / 53</option><option value="pdf-p9">9 / 53</option><option value="pdf-p10">10 / 53</option><option value="pdf-p11">11 / 53</option><option value="pdf-p12">12 / 53</option><option value="pdf-p13">13 / 53</option><option value="pdf-p14">14 / 53</option><option value="pdf-p15">15 / 53</option><option value="pdf-p16">16 / 53</option><option value="pdf-p17">17 / 53</option><option value="pdf-p18">18 / 53</option><option value="pdf-p19">19 / 53</option><option value="pdf-p20">20 / 53</option><option value="pdf-p21">21 / 53</option><option value="pdf-p22">22 / 53</option><option value="pdf-p23">23 / 53</option><option value="pdf-p24">24 / 53</option><option value="pdf-p25">25 / 53</option><option value="pdf-p26">26 / 53</option><option value="pdf-p27">27 / 53</option><option value="pdf-p28">28 / 53</option><option value="pdf-p29">29 / 53</option><option value="pdf-p30">30 / 53</option><option value="pdf-p31">31 / 53</option><option value="pdf-p32">32 / 53</option><option value="pdf-p33">33 / 53</option><option value="pdf-p34">34 / 53</option><option value="pdf-p35">35 / 53</option><option value="pdf-p36">36 / 53</option><option value="pdf-p37">37 / 53</option><option value="pdf-p38">38 / 53</option><option value="pdf-p39">39 / 53</option><option value="pdf-p40">40 / 53</option><option value="pdf-p41">41 / 53</option><option value="pdf-p42">42 / 53</option><option value="pdf-p43">43 / 53</option><option value="pdf-p44">44 / 53</option><option value="pdf-p45">45 / 53</option><option value="pdf-p46">46 / 53</option><option value="pdf-p47">47 / 53</option><option value="pdf-p48">48 / 53</option><option value="pdf-p49">49 / 53</option><option value="pdf-p50">50 / 53</option><option value="pdf-p51">51 / 53</option><option value="pdf-p52">52 / 53</option><option value="pdf-p53">53 / 53</option></select><button id="fontDown" title="减小字号">A−</button><button id="fontUp" title="增大字号">A＋</button><button id="nightMode" title="切换深色模式">☾</button></div></div></header>
+<div class="layout"><nav class="toc" aria-label="论文章节目录"><div class="toc-header">章节导航 · 原文页码</div><a href="#pdf-p1">摘要<small>1</small></a>
+<a href="#pdf-p2">1　引言<small>2</small></a>
+<a href="#pdf-p4">2　相关工作<small>4</small></a>
+<a href="#pdf-p4">2.1　分析框架<small>4</small></a>
+<a href="#pdf-p6">2.2　人员<small>6</small></a>
+<a href="#pdf-p8">2.3　过程与产品<small>8</small></a>
+<a href="#pdf-p10">2.4　社会<small>10</small></a>
+<a href="#pdf-p11">3　研究方法<small>11</small></a>
+<a href="#pdf-p11">3.1　认识论立场<small>11</small></a>
+<a href="#pdf-p12">3.2　参与者<small>12</small></a>
+<a href="#pdf-p12">3.3　访谈问题<small>12</small></a>
+<a href="#pdf-p13">3.4　访谈程序<small>13</small></a>
+<a href="#pdf-p15">3.5　数据分析<small>15</small></a>
+<a href="#pdf-p17">4　研究结果<small>17</small></a>
+<a href="#pdf-p18">4.1　RQ1：人员<small>18</small></a>
+<a href="#pdf-p24">4.2　RQ2：过程<small>24</small></a>
+<a href="#pdf-p30">4.3　RQ3：产品<small>30</small></a>
+<a href="#pdf-p32">4.4　RQ4：社会<small>32</small></a>
+<a href="#pdf-p35">5　讨论<small>35</small></a>
+<a href="#pdf-p35">5.1　社会技术转型<small>35</small></a>
+<a href="#pdf-p36">5.2　早期模式及其验证<small>36</small></a>
+<a href="#pdf-p44">5.3　LLM 的持续演进<small>44</small></a>
+<a href="#pdf-p45">6　可信性<small>45</small></a>
+<a href="#pdf-p48">7　结论<small>48</small></a>
+<a href="#pdf-p49">研究声明<small>49</small></a>
+<a href="#pdf-p49">参考文献<small>49</small></a>
+<a href="#pdf-p53">作者与机构<small>53</small></a></nav><main class="reading" id="paper"><!-- 翻译底本：用户上传的 Springer 正式排版 PDF；物理页数 53；中文全文阅读版。-->
+
+<p><a id="pdf-p1"></a></p>
+<h2>PDF 物理第 1 页（共 53 页）</h2>
+<h1>大语言模型如何重塑软件开发中的人员、过程、产品与社会：一项针对早期采用者的定性探索</h1>
+<p><strong>原文题名：</strong> LLMs’ reshaping of people, processes, products, and society in software development: a qualitative exploration with early adopters</p>
+<p><strong>作者：</strong> Benyamin Tabarsi¹、Heidi Reichert¹、Sam Gilson¹、Ally Limke¹、Sandeep Kuttal¹、Tiffany Barnes¹</p>
+<p><strong>刊物：</strong> <em>Empirical Software Engineering</em>（《实证软件工程》），<strong>2027 年，第 32 卷，文章编号 21</strong>。DOI：10.1007/s10664-026-10917-0。</p>
+<p><strong>收稿日期：</strong> 2025 年 11 月 17 日；<strong>录用日期：</strong> 2026 年 6 月 23 日。© 作者，2026 年。</p>
+<h3>摘要</h3>
+<p>大语言模型（Large Language Models，LLMs）正在迅速重塑软件开发，但其对整个软件开发生命周期的影响尚未得到充分探究。现有研究往往聚焦于代码生成或测试等孤立活动，对于 LLM 如何影响开发者、开发过程、软件产品及更广泛的软件生态系统，仍有诸多问题悬而未决。为弥补这一空白，我们对 16 名早期采用 LLM 的软件行业专业人员进行了半结构化访谈。这些受访者于 2023 年初至年中将基于 LLM 的工具融入日常工作。我们将访谈视为早期实证证据，并将受访者的叙述与近期关于软件工程中 LLM 应用的研究进行比较，考察早期出现的哪些模式得以延续，哪些发生了变化。通过主题分析（thematic analysis），我们将研究发现归纳为人员、过程、产品和社会四个维度。开发者报告称，通过减少琐碎任务、简化信息搜索和加快调试，他们的生产力显著提高；但他们也描述了一种“生产力—质量悖论”：开发者经常丢弃生成的代码，并将工作重心由编写代码转向批判性地评估和集成代码。LLM 的使用高度依赖开发阶段：在实现和调试环节得到广泛采用，却对需求获取和协作工作影响有限。受访者发展了有效使用 LLM 的新能力，包括提示词工程策略、多层次验证以及注重安全的集成方式，以保护专有数据。他们还预期招聘要求、团队实践及计算机教育将发生变化，同时强调人类判断与软件工程基础技能仍然不可或缺。我们的发现与大规模研究的证据相吻合，可为希望负责任地将 LLM 融入专业软件实践的开发者、组织、教育者和工具设计者提供可操作的启示。</p>
+<p><strong>关键词：</strong> ChatGPT；Gemini；大语言模型；访谈研究；软件工程。</p>
+<p><strong>作者说明：</strong> Benyamin Tabarsi 与 Heidi Reichert 对本文贡献相同。</p>
+<p><strong>责任编辑：</strong> Lucia Passaro、Humberto Torres Marques-Neto、Marco Tulio Valente。</p>
+<p><strong>专题说明：</strong> 本文属于“2025-SE-LLMs”专题特刊。作者的扩展信息见文章最后一页。</p>
+<p><a id="pdf-p2"></a></p>
+<h2>PDF 物理第 2 页（共 53 页）</h2>
+<h3>1 引言</h3>
+<p>大语言模型（LLMs）是在大规模文本与代码语料库上训练的生成式系统，能够针对自然语言提示生成类似人类的回答（OpenAI et al. 2024；Toner 2023）。OpenAI ChatGPT¹、Anthropic Claude² 和 Google Gemini³ 等公开可用的 LLM，已经迅速重塑多个领域的工作流程（Hoff et al. 2023；Mok and Zinkula 2023；Verma and De Vynck 2023）。</p>
+<p>在软件开发领域，以海量代码仓库进行训练的 LLM，例如 OpenAI Codex（2021），使开发者能够通过自然语言提示生成、重构和调试代码。这些工具简化了以往需要人工完成的任务，并提升了软件工程中的开发者生产力、协作和创新能力（Chen and Alias 2024；Rane et al. 2023）。</p>
+<p>LLM 在软件开发中的迅速普及，引发了关于如何将其融入专业实践的持续讨论。Stack Overflow 的年度开发者调查显示，2023 年至 2024 年，正在使用 AI 工具的开发者比例由 44% 上升至 62%（Stack Overflow 2023 Developer Survey 2023；Stack Overflow 2024 Developer Survey 2024）；企业部署报告也显示出显著的生产力收益（Gao and GitHub Customer Research 2024）。然而，这些收益出现的同时，代码质量与安全漏洞方面的担忧也随之产生（Pearce et al. 2025；Sajadi et al. 2025）。</p>
+<p>软件工程领域有关 LLM 的实证研究仍然分布不均。现有研究主要考察代码生成（Chen et al. 2021）、测试（Yang et al. 2024）或需求工程（Hemmat et al. 2025）等单项活动。其他研究通过文献综述（Hou et al. 2024）、案例研究（Belzner et al. 2023）、论坛实证分析（Chen et al. 2024），以及通用 LLM 工具与基于 LLM 的智能体比较（Jin et al. 2024）来考察 LLM 在软件工程中的使用情况。针对专业开发者的正式定性访谈仍然有限；即便已有此类研究，通常也聚焦于安全性（Klemmer et al. 2024）、可信性（Rabani et al. 2023）或新工具的用户研究评价（Pinto et al. 2024）等狭窄议题，而非追踪 LLM 如何在整个软件开发生命周期中影响人员、过程、产品，以及组织和社会层面的问题。此外，这些实证证据中有相当一部分收集于 LLM 应用的第一波浪潮；要评估其在当下是否仍具有相关性，就必须明确地将早期叙述与近期研究联系起来。</p>
+<p>为弥补这一空白，我们访谈了 16 名软件行业的早期采用者。这些专业人员在相关技术广泛可用后不久，便主动学习 LLM，并于 2022 年 11 月至 2023 年 4 月期间开始积极将基于 LLM 的 AI 工具融入日常工作。这些受访者于 2023 年年中接受访谈，他们提供了关于新兴模式的重要见解；此后开展的大规模研究也报告了这些模式（Cui et al. 2025；Gao and GitHub Customer Research 2024；Stack Overflow 2024 Developer Survey 2024）。因此，这些早期采用者的叙述对于理解 LLM 在专业软件开发中的集成方式如何演进，具有独特价值。本研究的另一目标，是将这些早期采用者的叙述与迅速增长的软件工程 LLM 研究文献进行比较。</p>
+<p><strong>脚注：</strong> ¹ <a href="https://openai.com/chatgpt">https://openai.com/chatgpt</a>　² <a href="https://claude.ai/">https://claude.ai/</a>　³ <a href="https://gemini.google.com/">https://gemini.google.com/</a></p>
+<p><a id="pdf-p3"></a></p>
+<h2>PDF 物理第 3 页（共 53 页）</h2>
+<p>我们将在讨论部分再次开展这一比较，以说明早期模式如何在后续研究中得到延续、发生演变，或受到挑战。分析围绕覆盖软件开发生命周期及其更广泛背景的四个维度展开：<strong>人员（People）</strong>，考察 LLM 如何影响开发者个人与团队；<strong>过程（Process）</strong>，分析软件工程工作流程的变化；<strong>产品（Product）</strong>，评价 LLM 对软件质量和创新的贡献；<strong>社会（Society）</strong>，探究更广泛的社会经济及伦理影响。通过这一框架，我们得以描述 LLM 如何从个人任务执行到组织转型，持续重塑软件工程实践，并为开发者、组织、教育者和工具设计者负责任地将 LLM 融入专业软件实践提供可操作的启示。</p>
+<ul>
+<li><strong>人员——RQ1：LLM 如何影响开发者？</strong> 我们考察 LLM 如何改变日常开发工作，重点关注感知到的收益、风险及技能变化。研究受访者报告称，通过将琐碎任务交由 LLM 处理、简化搜索和利用样板代码，他们的生产力明显提高。他们还认为，LLM 能通过个性化教学和代码解释促进学习，并通过增强信心和独立性支持个人成长。不过，开发者也指出了显著挑战，包括幻觉和不完整的回答、对新颖问题的知识储备有限、逻辑推理能力不足，以及可能妨碍初级开发者学习的担忧。这些发现表明，需要在生产力提升与质量保证、教育方面的顾虑之间取得平衡。</li>
+<li><strong>过程——RQ2：LLM 如何影响软件开发过程？</strong> 我们将受访者的叙述映射到从需求到维护的完整软件开发生命周期（Software Development Life Cycle，SDLC）。研究发现，LLM 对需求获取影响极小，却越来越多地用于设计构思与问题分解。在实现阶段，开发者采用复杂的提示词工程策略：调整提示词的具体程度、使用后续提问，并通过泛化提示词谨慎管理安全风险。代码评价涉及阅读代码、检查输出和手工测试等系统性验证；开发者在集成前修改代码，并经常丢弃生成内容。他们还利用 LLM 生成单元测试与开展调试，但发现上下文窗口限制了其能力，在复杂测试及代码审查方面可靠性较低。这些发现说明，LLM 集成高度依赖 SDLC 阶段，要求开发者针对不同阶段形成专门策略。</li>
+<li><strong>产品——RQ3：LLM 的使用如何影响所创建的软件产品？</strong> 我们研究开发者如何看待 LLM 对其所创建的代码及软件产品的影响，重点关注准确性、可读性、复杂度和安全性。受访者普遍认为，对于常见的小型任务，LLM 生成的代码整洁且易读，但他们也担忧过度设计、信息过时及潜在漏洞。尽管多数受访者认为，对他们的非生产环境使用场景而言，LLM 代码足够安全，许多人仍对向 LLM 发送机密数据表示担忧，并指出在生产环境使用生成代码之前必须仔细审查。这些发现揭示了质量悖论：LLM 能针对特定情境生成可接受的代码，却仍需要开发者进行大量监督，才能确保数据安全并达到生产就绪要求。</li>
+</ul>
+<p><a id="pdf-p4"></a></p>
+<h2>PDF 物理第 4 页（共 53 页）</h2>
+<ul>
+<li><strong>社会——RQ4：LLM 可能如何影响软件行业及教育？</strong> 我们探究开发者对 LLM 影响软件行业及教育培训的看法。研究发现，开发者正在重新界定 LLM 在组织中的角色，将其比作结对程序员或初级开发者；部分开发者认为，尽管行业会发生转型，整体就业市场仍将保持稳定。同行广泛采用 LLM 的同时，也存在对初级岗位以及建立组织使用准则必要性的担忧。在教育方面，许多受访者主张将 LLM 作为学习工具纳入教学，并强调教授提示词工程的重要性；另有一些人强调基础概念依然重要，同时需要调整作业和教学方法。这些观点描绘出一个正在转型的职业领域：它既要思考如何利用 LLM 的能力，又要保留核心专业胜任力并应对公平性问题。</li>
+</ul>
+<p><strong>本文的贡献如下：</strong></p>
+<ul>
+<li>我们定性分析了开发者在整个软件开发生命周期中使用基于 LLM 的工具的体验，将他们报告的影响从需求阶段映射至维护阶段，识别出不同阶段的采用模式及所面临的挑战。</li>
+<li>我们刻画了开发者将这些工具融入工作流程时采用的策略，包括提示词工程技术、代码验证实践和上下文管理方法，可为工具设计与组织使用准则提供依据。</li>
+<li>我们将 2023 年对早期采用者的访谈作为早期实证证据，并在讨论部分与近期软件工程领域有关 LLM 的实证和概念性研究进行比较，明确哪些早期模式在当前文献中保持稳定，哪些已经发生演变。</li>
+<li>我们提供有关 LLM 采用过程中的人为因素及广泛后果的实证见解，包括对开发者信心、学习、工作角色和教育实践的影响。这些见解补充了技术评价研究，对于在软件工程中负责任地使用 LLM 至关重要。</li>
+</ul>
+<h3>2 相关工作</h3>
+<p>LLM 迅速融入软件工程实践，要求我们批判性地审视其多方面影响。我们将分析组织为人员、过程、产品和社会四个维度。本节首先介绍这一四维框架的理论基础，然后回顾各维度的文献。鉴于主题存在重叠，我们将过程和产品两个子部分的文献合并在同一节中讨论。</p>
+<h4>2.1 分析框架</h4>
+<p>研究软件开发中新技术的采用情况，需要一种能够兼顾个人实践者、其工作流程、所产生成果以及更广泛组织和社会背景的分析视角。我们采用人员、过程、产品和社会四维框架。本节追溯选择该框架的理论渊源，并说明它与先前模型的关系及在其基础上的拓展。</p>
+<p><a id="pdf-p5"></a></p>
+<h2>PDF 物理第 5 页（共 53 页）</h2>
+<h5>2.1.1 社会技术系统理论</h5>
+<p>社会技术系统（Sociotechnical Systems，STS）理论源于 Trist 和 Bamforth（1951）的研究，认为组织系统的绩效取决于其社会子系统与技术子系统的联合优化（Trist 1981）。其核心主张是，不能脱离使用技术的人员、他们遵循的过程以及所处的组织和环境背景，孤立地分析技术（Baxter and Sommerville 2011）。Baxter 和 Sommerville（2011）将这一观点应用于系统工程，认为将社会与技术方面视为复杂整体中相互依赖的组成部分，有助于更好地理解系统设计与绩效。Sommerville 的软件工程教材（Sommerville 2016）专门讨论了社会技术系统，指出软件处于一个更广泛的系统之中，该系统还包含硬件、人员、组织、政策和规程。这一视角与专业软件开发中 LLM 的采用直接相关，因为新工具会同时影响开发者的认知、团队工作流程、产出物质量和组织规范。我们的框架将 STS 视角操作化，界定四个可以据以调查这些影响的具体维度。</p>
+<h5>2.1.2 软件工程中的多维模型</h5>
+<p>采用多维框架分析软件工程现象由来已久。Leavitt 钻石模型（Leavitt 1965）将组织建模为四个相互依赖的组成部分：任务、人员、结构和技术。该模型的核心主张是，任一组成部分发生变化，其他部分都会产生相应的适应性变化。这一原则直接促使我们采用多个相互关联的维度，而非单因素分析。在软件工程领域，Pressman 和 Maxim（2014）指出软件项目管理的四个关键维度：人员（实践者和利益相关方）、产品（拟开发的软件）、过程（框架活动与工程任务）和项目（规划、进度安排与风险管理工作）。我们的框架保留了 Pressman 模型中的人员、过程和产品，但以“社会”替换“项目”。这一替换反映了本研究的范围：Pressman 的“项目”维度关注进度与资源等内部管理事项，而 LLM 的影响还延伸至劳动力市场、教育体系、伦理规范和组织治理。这些现象需要一个“项目”维度所不具备的独立分析类别。Demir（2017）提出的软件项目管理 3PR 框架包括人员、过程、产品和风险，其形成基于文献综述，并通过从业者调查得到验证。该框架明确区分产品和过程，支持了我们保留这一区分的决定，因为与产品有关的问题（例如 Demir 研究中的质量工程和配置管理）值得独立于形成产品的工作流程进行分析。人员—过程—技术（People, Process, Technology，PPT）框架（Schneier 2013）可追溯至 Leavitt 钻石模型（Leavitt 1965），广泛应用于软件工程管理。它也与 Kim 等人认为 DevOps 成功和开发者生产力不仅取决于自动化，还取决于文化规范、技术实践与架构的观点相符（Kim et al. 2016）。虽然 PPT 能够捕捉人员、程序性因素及技术因素之间的相互作用，却缺少分析技术采用所产生的更广泛社会和组织后果的维度。我们的框架通过加入“社会”维度拓展了这一传统，涵盖从研究数据中显现出的就业市场、计算机教育、组织政策和伦理考量等影响。</p>
+<p><a id="pdf-p6"></a></p>
+<h2>PDF 物理第 6 页（共 53 页）</h2>
+<h5>2.1.3 整体性生产力框架</h5>
+<p>近期关于开发者生产力的研究，为多维分析提供了进一步支持。SPACE 框架（Forsgren et al. 2021）由微软研究院、GitHub 和维多利亚大学的研究人员开发，从五个维度衡量开发者生产力：满意度与福祉（Satisfaction and well-being）、绩效（Performance）、活动（Activity）、沟通与协作（Communication and collaboration），以及效率与心流（Efficiency and flow）。Forsgren 等人指出，生产力不能被简化为单一维度，而必须通过一组彼此可能存在张力的指标才能描绘全貌。SPACE 旨在衡量生产力，而非分析技术采用，但其重视多维探究的立场支持了我们的分析方法。关于专业环境中 AI 采用的研究也使用过多维框架。Nahar 等人（2022）发现，构建支持机器学习的系统，需要同时关注沟通、文档、工程和过程。Alsheibani 等人（2018）提出基于“技术—组织—环境”视角的 AI 采用模型，将这三个方面的准备程度纳入其中，表明有必要捕捉技术本身之外的情境因素。我们增加“社会”维度也是出于类似目的。</p>
+<h5>2.1.4 小结与依据</h5>
+<p>我们的四个维度形成于上述理论传统与数据归纳所得主题的汇合之处。在对 16 次访谈进行主题分析时，编码聚集为四类：（1）对开发者个人及其技能、学习和福祉的影响（人员）；（2）跨 SDLC 的软件开发工作流程变化（过程）；（3）对软件产出物的质量、复杂度及安全性等特征的影响（产品）；（4）对软件行业、计算机教育和组织治理的更广泛影响（社会）。表 1 汇总了我们的框架与既有模型之间的关系。“人员”维度对应 STS 理论中的社会子系统，以及 Pressman、PPT 和 Leavitt 模型中的人员要素。“过程”对应这些框架中的任务与工作流程要素。“产品”涉及 Pressman 所称的拟开发软件，以及 STS 理论所认为的社会技术交互所产生的技术产出物。“社会”则超出任何单一既有模型的覆盖范围，反映 LLM 对劳动、教育、伦理和组织政策的影响广度。从数据归纳得到的主题与既有理论类别之间的一致性，增强了我们对框架有效性的信心。</p>
+<h4>2.2 人员</h4>
+<h5>2.2.1 开发者的认知与福祉</h5>
+<p>除了广泛的系统性映射研究之外，越来越多的定性研究开始从开发者自身的视角进行考察。若干针对早期采用情形的访谈研究，一致报告了感知生产力提高与工具可靠性担忧之间的张力。</p>
+<p><a id="pdf-p7"></a></p>
+<h2>PDF 物理第 7 页（共 53 页）</h2>
+<p><strong>表 1　本文的“人员—过程—产品—社会”（PPPS）框架与既有多维模型的映射。</strong> † 表示部分或间接对应；详见正文讨论。</p>
+<table>
+<thead>
+<tr>
+  <th>模型</th>
+  <th>人员</th>
+  <th>过程</th>
+  <th>产品</th>
+  <th>其他</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Leavitt 钻石模型（Leavitt 1965）</td>
+  <td>人员</td>
+  <td>任务†</td>
+  <td>技术†</td>
+  <td>结构†</td>
+</tr>
+<tr>
+  <td>Pressman 的“4P”模型（Pressman and Maxim 2014）</td>
+  <td>人员</td>
+  <td>过程</td>
+  <td>产品</td>
+  <td>项目†</td>
+</tr>
+<tr>
+  <td>PPT（Kim et al. 2016）</td>
+  <td>人员</td>
+  <td>过程</td>
+  <td>技术†</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td>3PR 框架（Demir 2017）</td>
+  <td>人员</td>
+  <td>过程</td>
+  <td>产品</td>
+  <td>风险†</td>
+</tr>
+<tr>
+  <td>SPACE（Forsgren et al. 2021）</td>
+  <td>满意度†</td>
+  <td>活动、效率†</td>
+  <td>绩效†</td>
+  <td>沟通†</td>
+</tr>
+<tr>
+  <td>STS 理论（Baxter and Sommerville 2011）</td>
+  <td>社会子系统†</td>
+  <td>工作过程†</td>
+  <td>技术子系统†</td>
+  <td>组织环境†</td>
+</tr>
+<tr>
+  <td>本研究框架</td>
+  <td>人员</td>
+  <td>过程</td>
+  <td>产品</td>
+  <td>社会</td>
+</tr>
+</tbody>
+</table>
+<p>例如，Klemmer 等人发现，尽管开发者将 AI 助手用于安全关键任务，他们仍不信任工具的输出，认为必须进行重复核查（Klemmer et al. 2024）。Rabani 等人的研究也发现类似情况：开发者强调 LLM 的不准确性以及随之而来的人工调试需要（Rabani et al. 2023）。同样，Mendes 等人确定了准确性不佳、可能分散注意力等主要挑战，这些问题削弱了加快开发所带来的收益（Mendes et al. 2024）。这些研究反映了开发者的主观认知；与此同时，其他研究开始量化技术采用对开发者福祉的影响。Feng 等人采用混合研究方法，对生成式人工智能（Generative AI，GenAI）采用与开发者职业倦怠之间的关系进行建模，发现除非有积极态度和组织资源的支持，否则 GenAI 的采用可能提高工作要求并加剧职业倦怠（Feng et al. 2025）。</p>
+<h5>2.2.2 初级开发者与资深开发者</h5>
+<p>开发者经验进一步丰富了 LLM 采用中“人员”维度的内涵，因为它显著影响这些工具的效用和风险。已有一系列研究聚焦新手开发者，对他们而言，LLM 呈现出明显的双重作用。Kazemitabaar 等人的研究表明，新手虽然重视 LLM 提供的学习支持，却也面临过度依赖的问题，并且在使用 AI 生成代码后，难以准确评估自身的编程能力（Kazemitabaar et al. 2024）。相比之下，资深开发者倾向于使用 LLM 辅助任务，让其生成样板代码或初始实现，再依靠自己的专业知识审查和完善输出（France 2024）。近期研究还开始探究，为何即使在同一团队环境中，一些开发者会频繁使用 LLM，而另一些却不会。</p>
+<p><a id="pdf-p8"></a></p>
+<h2>PDF 物理第 8 页（共 53 页）</h2>
+<p>Miller 等人对 27 个团队的 54 名开发者进行了配对访谈，依据角色、编程语言和资历匹配一名高频用户与一名低频用户。他们发现，使用频率的差异，与其说取决于经验水平本身，不如说更多取决于开发者如何看待工具（将其视为协作者还是某项功能）、是否愿意尝试，以及在提示失败后能否坚持探索（Miller et al. 2025）。</p>
+<h4>2.3 过程与产品</h4>
+<h5>2.3.1 软件开发生命周期中 LLM 的实证评价</h5>
+<p>从开发者的主观认知转向实证绩效，另一条研究路线集中评价 LLM 完成特定软件工程任务的表现，其中生产力和代码生成是主要关注点。例如，Peng 等人开展了对照实验，观察到 AI 辅助组完成任务更快，说明 AI 对开发者生产力具有显著的积极影响（Peng et al. 2023）。然而，较新的证据让这一认识变得更复杂，表明生产力问题远比早期研究所暗示的更加微妙。Becker 等人通过随机对照试验，让 16 名经验丰富的开源开发者在各自成熟的代码仓库中处理 246 个问题，发现允许使用 AI 工具反而使任务完成时间增加了 19%，尽管参与者事后估计自己的速度提高了 20%（Becker et al. 2025）。感知生产力与实测生产力之间的这种差距，促使研究者重新审视文献中长期存在的一项假设，即自我报告的收益能够可靠地表明实际加速效果。与此同时，Afroz 等人依据 SPACE 框架调查了 415 名软件从业者，发现采用 GenAI 后总体生产力变化有限，并揭示了一种生产力悖论：开发者编写代码的速度更快，却不一定产出更好的软件，也不一定获得更强的工作满足感（Afroz et al. 2025）。这些发现并未推翻早期关于 LLM 能加快某些编程任务的证据，但表明整体生产力收益高度依赖任务类型、开发者经验、对代码库的熟悉程度，以及所衡量的生产力维度。</p>
+<p>除一般生产力外，越来越多的研究开始实证评价 LLM 在核心“过程”和“产品”活动中的能力，尤其是代码改进与质量保证。例如，Guo 等人研究了 ChatGPT 根据代码审查意见自动改进代码的潜力，发现其表现优于最先进的基线方法（Guo et al. 2024）。类似地，Wadhwa 等人提出 CORE 工具，利用基于 LLM 的“提议器—排序器”架构成功解决静态代码分析警告，展示了改进代码质量的实际应用（Wadhwa et al. 2024）。不过，人工监督在这些过程中仍然关键。AlOmar 等人发现，当模型缺乏足够的代码库上下文时，ChatGPT 的重构建议可能引入编译器错误、测试失败或非预期的逻辑变化；Siddiq 等人则发现，ChatGPT 生成的代码经常存在质量和安全问题，通常需要在集成前进行大量修改。综合来看，这些发现强调在“过程”维度中必须仔细地对 AI 生成代码进行人工验证（AlOmar et al. 2024；Siddiq et al. 2024）。</p>
+<p><a id="pdf-p9"></a></p>
+<h2>PDF 物理第 9 页（共 53 页）</h2>
+<h5>2.3.2 测试与调试</h5>
+<p>这类实证研究的一个重要分支，是将 LLM 应用于软件测试和调试，即直接决定“产品”质量的核心“过程”。Zhang 等人开展了一项全面的系统性文献综述，指出测试生成占基于 LLM 的单元测试研究的大多数，但识别真实世界中的软件缺陷仍是一项重大挑战（Zhang et al. 2025a）。Tanaka 等人探索了使用 LLM 生成基于性质（Property-Based）和基于示例（Example-Based）的测试，证明混合测试方法能够以较为可观的成功率发现 LLM 生成代码中的边界情形缺陷（Tanaka et al. 2025）。最近，研究更加关注高度具体且具有挑战性的测试问题。Fatima 等人提出 FlakyFix，成功利用代码模型预测不稳定测试（flaky test）所需的修复类别，并使用 LLM 修复测试代码，展示了一种利用模型能力的引导式修复过程（Fatima et al. 2024）。这些研究表明，LLM 在增强质量保证工作流程方面具有较大潜力，但相关技术的可靠性和可扩展性仍是正在研究的问题。</p>
+<h5>2.3.3 安全风险及缓解措施</h5>
+<p>LLM 对软件“产品”的影响显著延伸至安全领域，并呈现重要的双重作用。一方面，LLM 被作为“过程”的组成部分用于改善安全性，例如采用旨在发现复杂场景中漏洞的先进模糊测试方法（Sun et al. 2024）。另一方面，既有研究表明，LLM 可能无意中引入严重漏洞（Islam et al. 2024）。这一风险推动了针对缓解措施的研究，并催生了 SafeGenBench 等框架，旨在检测和评估 LLM 生成代码固有的安全相关风险（Li et al. 2025）。</p>
+<h5>2.3.4 代码质量与创新</h5>
+<p>将 LLM 融入开发“过程”，会对软件“产品”产生直接但复杂的影响。代码质量是主要关注点之一。虽然 LLM 可以提高代码产出数量，但正如前文讨论的，大量研究对这些输出的质量与安全性提出担忧（Li et al. 2025；Islam et al. 2024）。不过，除单纯的代码生成外，研究者还将 LLM 定位为促进创新和改进“产品”的工具。例如，研究正在探索利用 LLM 生成初步 UI/UX 设计，甚至为产品早期文档提供视觉支持，从而扩展“产品”的内涵（Chen et al. 2025）。这表明，对“产品”的影响具有两个方面：对代码产出物而言，是高产量、高风险的影响；对设计及非代码产出物而言，则是潜力较大但仍处于萌芽阶段的影响。</p>
+<p><a id="pdf-p10"></a></p>
+<h2>PDF 物理第 10 页（共 53 页）</h2>
+<h4>2.4 社会</h4>
+<h5>2.4.1 法律与伦理影响</h5>
+<p>除“人员”“过程”“产品”等技术维度外，LLM 的采用还带来了深刻的“社会”影响，尤其涉及法律与伦理框架。LLM 训练数据来源的不明确性，已引发法律学者围绕版权、数据隐私及知识产权归属展开重要争论。这些担忧并非仅停留在理论层面，而是直接影响软件开发。Gabison 和 Xian 考察了智能体式 AI 系统及其输出所涉及的实际法律责任挑战（Gabison and Xian 2025）。此外，LiCoEval 等实证研究表明，LLM 的输出可能受到现有开源许可证约束，为采用这些工具的组织带来复杂且尚未解决的合规问题（Xu et al. 2025）。</p>
+<h5>2.4.2 对计算机教育的影响</h5>
+<p>研究者正在积极考察 LLM 融入教学环境后对学生学习和技能发展的影响。例如，Tanay 等人观察到，利用 LLM 完成软件工程项目的高年级计算机专业学生，认为任务完成和信息检索的效率有所提高（Tanay et al. 2024）。Essel 等人的研究同样发现，ChatGPT 等工具能够提高本科生的批判性、反思性与创造性思维能力（Essel et al. 2024）。这批新出现的证据引发了关于课程调整的讨论。例如，Ozkaya 提出，课程必须演变，使学生学会如何与 AI 有效协作，同时为其维护和现代化改造既有软件系统做好准备（Ozkaya 2023）。Jeuring 等人进一步发现，计算思维（Computational Thinking，CT）技能与学生有效地同 ChatGPT 协同开发的能力高度相关，这再次强化了继续教授基础 CT 技能的必要性（Jeuring et al. 2023）。</p>
+<h5>2.4.3 从业者对教育影响的认知：文献空白</h5>
+<p>尽管这些研究从学术视角提供了关于 LLM 如何辅助学生学习的宝贵初步见解，但也揭示了明确的文献空白：迄今为止，针对专业开发者如何看待 LLM 在重塑计算机教育中的作用，研究仍然有限。为了讨论如何使教育实践适应 AI 驱动的新型专业环境，活跃的一线行业从业者的观点是不可缺少、却仍然缺失的组成部分。我们的研究通过直接接触开发者，记录他们的经历与观点，帮助填补这一空白，考察 LLM 将如何影响计算机技能的未来教学与学习。</p>
+<h5>2.4.4 认知与风险</h5>
+<p>LLM 采用的“社会”维度，呈现出显著的“双刃剑”叙事，即人们会权衡感知到的收益与重大风险。这种二重性体现在公众与开发者的讨论中。一方面，LLM 被视为降低编程入门门槛的工具；另一方面，正是这种易用性成为社会风险的来源。</p>
+<p><a id="pdf-p11"></a></p>
+<h2>PDF 物理第 11 页（共 53 页）</h2>
+<p>Google 和 Microsoft 等公司的多个威胁评估团队报告称，LLM 与 AI 工具越来越多地被用于恶意目的，例如生成恶意软件、开展漏洞研究和支持命令与控制操作（Google Threat Intelligence Group 2025；Microsoft Threat Intelligence 2025）。这种张力形成了复杂的“社会”图景：技术既被视为创新的催化剂，也可能成为造成重大伤害的途径。</p>
+<h5>2.4.5 就业市场与岗位替代焦虑</h5>
+<p>LLM 广泛采用所引发的一个主要社会主题，是围绕软件工程就业市场未来的深切焦虑。大众媒体以及一定程度上的学术文献，放大了 LLM 可能导致大规模岗位替代、技能退化或开发者专业知识贬值的担忧（Ferino et al. 2025）。自动化导致职业过时的叙事，是研究中常见的主题。不过，Klemmer 等人和 Mendes 等人关注开发者认知的研究提示，更真实的情况较为复杂：开发者通常将这些工具看作增强人类能力的手段，而不是替代者；工具改变了对人类专业知识的需求，而非消除这种需求（Klemmer et al. 2024；Mendes et al. 2024）。这一观点将“社会”影响重新理解为开发者角色的演进，而非消亡。</p>
+<p>总体而言，现有研究对 LLM 如何影响软件工程提供了丰富但零散的见解。既有研究通常聚焦特定角色（学生、新手、测试人员或个别开发者）、特定活动（代码生成、测试或安全），或单一影响维度。仍然缺少追踪专业早期采用者在整个软件开发生命周期中经历的定性研究，以及将这些经历置于贯穿人员、过程、产品和社会的更广泛社会技术框架中的研究。本研究通过深入考察专业软件开发中 LLM 的早期采用，并将这些叙述与后续实证及概念性研究比较，以说明早期模式如何持续存在或发生变化，从而弥补上述空白。</p>
+<h3>3 研究方法</h3>
+<h4>3.1 认识论立场</h4>
+<p>本研究采取建构主义／解释主义（constructivist/interpretivist）的认识论立场。这一立场认为，知识是在社会互动中建构的，意义产生于研究者与参与者之间的互动，而不是作为客观事实被直接发现（Lincoln and Guba 1985；Creswell and Creswell 2017）。与这一立场一致，我们不声称已经发现关于软件专业人员如何使用 LLM 的普遍真理，而是尝试对早期采用者在技术发展的一个特定且重要时期中的经历，建构丰富的解释性叙述。这一定位贯穿并指导了我们的方法选择。具体而言，它促使我们将主题分析作为一种解释性方法（Braun and Clarke 2006），并决定优先采用研究者之间的协商一致性验证，而非评分者间信度指标，因为后者在哲学基础上与解释性研究并不契合（Braun and Clarke 2006）。</p>
+<p><a id="pdf-p12"></a></p>
+<h2>PDF 物理第 12 页（共 53 页）</h2>
+<p>因此，我们将本研究设计为一项定性调查（qualitative survey），与软件工程研究既定的实证标准一致（Ralph et al. 2021）。当研究目标是广泛刻画某一群体的经历和观点，而不是形成理论或研究一个有明确边界的案例时，定性调查是一种适当的方法（Ralph et al. 2021）。</p>
+<h4>3.2 参与者与人口统计特征</h4>
+<p>我们从美国东南部地区的技术交流聚会群体，以及研究者的私人联系人和 LinkedIn 招募了 16 名参与者。研究还使用了滚雪球抽样，即请参与者邀请其人际网络中的人员加入研究（Sadler et al. 2010）。我们承认，这种招募方式属于便利抽样，存在内在的自我选择偏差：自愿讨论自身 LLM 使用情况的参与者，相比广泛的开发者群体，更可能是热情较高或经验较丰富的用户。</p>
+<p>本研究的目标群体是专业软件工程师和开发者。纳入标准要求参与者：（1）全职受雇担任专业软件工程师或开发者；（2）在 2022 年 11 月至 2023 年 4 月期间开始使用 ChatGPT 或类似的基于 LLM 的工具，因此符合早期采用者的界定；（3）在访谈时，已在专业工作中积极使用这些工具完成编程任务至少两个月。最初的参与者招募吸引了一些研究生。尽管其中许多人拥有以往的开发经验，或在大学担任过开发岗位，我们认为该群体不能完全满足研究问题的需要。因此，我们修改了招募材料，专门面向全职开发者。全部 16 名参与者的人口统计信息见表 3。</p>
+<p>我们的招募依据目的性抽样策略（purposive sampling）（Patton 2014），针对符合上述与研究问题直接相关的特定纳入标准的参与者。这与解释主义定性研究一致，后者重视洞见的深度，而不是统计代表性（Lincoln and Guba 1985）。有关本样本编码饱和的证据见第 3.5.1 节。</p>
+<h4>3.3 访谈问题的制定</h4>
+<p>我们围绕软件工程中的四个关键主题设计访谈提纲：人员、过程、产品和社会。这些主题来源于软件工程中 LLM 研究的既有成果，以及强调人员、过程、产品和社会背景是关键维度的软件开发社会技术视角。基于这一基础框架，我们制定了旨在获取各主题相关见解的访谈问题，并通过迭代方式完善问题，确保其清晰、相关，并与研究问题保持一致。</p>
+<p>为完善访谈方法并使之更贴近实际，我们开展了数次试点访谈。其中一次针对经常使用 ChatGPT 编程的专业开发者，另外三次针对自我认定为开发者、在工作中使用 ChatGPT 的学生，尽管这些学生并非全职专业从业者。</p>
+<p><a id="pdf-p13"></a></p>
+<h2>PDF 物理第 13 页（共 53 页）</h2>
+<p>试点访谈用于检验问题是否适当、确定每次访谈所需时间，以及评价整体结构。由于学生访谈与研究目标的契合度存在疑问，这些访谈被排除在分析之外；专业开发者的访谈因提供了丰富的数据而被纳入。</p>
+<p>试点访谈结束后，我们审查了数据与反馈。根据获得的见解，我们完善问题、改写表述以提高清晰度、检查语法准确性，并确保不同专业背景的参与者都能较容易地理解措辞。例如，我们原本询问参与者如何对生成代码进行测试，希望了解他们如何评价生成代码是否正确；但参与者将其理解为询问如何生成测试。于是，我们将生成代码的评价（即代码是否完成开发者所要求的工作）与测试生成拆分成两个独立的问题。另外，试点访谈耗时超过预期，因此我们缩短了访谈时长，以便参与者高效回答，同时不牺牲回答的深度。访谈使用的最终问题版本见表 2。</p>
+<h4>3.4 研究程序</h4>
+<h5>3.4.1 访谈</h5>
+<p>我们通过电子邮件邀请有意参与研究的人员，并要求他们填写知情同意书。参与者通过 Google Calendar 链接自行预约研究时段，每次约 70 分钟。所有访谈均于 2023 年 3 月 1 日至 7 月 7 日之间进行。所有参与者都同意录音，但并非所有人都同意录屏或录像。由于研究关注的是参与者的经历和观点，而不是细致观察他们与工具的交互，因此音频记录已足以支持分析。</p>
+<p>本研究采用半结构化访谈（semi-structured interviews），既预先设定一组核心问题，又允许根据谈话情况灵活追问（Miles and Gilbert 2005）。每次访谈开始时，先向参与者介绍研究目的（约 10 分钟），随后进行半结构化访谈（约 60 分钟）。两名研究者同时在场：一人主持访谈，另一人记录笔记；两人都会根据参与者的回答提出澄清性或后续问题。</p>
+<p>访谈中，我们请参与者讨论日常工作中如何使用 LLM、如何评价 LLM 生成的代码，以及如何将其集成到现有代码库。我们还探讨他们对 LLM 可能如何影响软件行业技能要求和就业形势的看法，并具体追问有效使用 LLM 所需的技能。此外，参与者被要求描述自己参与过的真实项目。虽然访谈问题明确使用了 ChatGPT 这一名称，我们在访谈过程中仍说明，受访者也应结合自身使用类似 LLM 聊天机器人及其他基于 LLM 的工具的经历作答。</p>
+<p><a id="pdf-p14"></a></p>
+<h2>PDF 物理第 14 页（共 53 页）</h2>
+<p><strong>表 2　向参与者提出的访谈问题清单（完整翻译；依照原表顺序）</strong></p>
+<table>
+<thead>
+<tr>
+  <th>访谈问题（按原表顺序）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>你如何在日常工作中使用 ChatGPT？</td>
+</tr>
+<tr>
+  <td>你平均多久使用一次？一天多次？每天？每周？每月？</td>
+</tr>
+<tr>
+  <td>能否谈一次你使用 ChatGPT 帮助编写程序的经历？</td>
+</tr>
+<tr>
+  <td>有没有一次使用效果不佳的经历？</td>
+</tr>
+<tr>
+  <td>你有没有对自己能够利用 ChatGPT 与代码完成的事情感到惊讶的时候？</td>
+</tr>
+<tr>
+  <td>ChatGPT 如何改变了你的软件工程过程？</td>
+</tr>
+<tr>
+  <td>它是否改变了你获取需求的方式？如何改变？</td>
+</tr>
+<tr>
+  <td>它是否改变了你将任务拆分为 ChatGPT 可以解决的部分的方式？如何改变？</td>
+</tr>
+<tr>
+  <td>它是否改变了你编写代码的方式？如何改变？</td>
+</tr>
+<tr>
+  <td>它是否改变了你的测试过程？如何改变？</td>
+</tr>
+<tr>
+  <td>它是否改变了你的代码审查过程？如何改变？</td>
+</tr>
+<tr>
+  <td>你通常如何评价 ChatGPT 生成的代码？</td>
+</tr>
+<tr>
+  <td>你如何开展测试？</td>
+</tr>
+<tr>
+  <td>你如何判断代码是否实现了你的要求？你会阅读代码吗？</td>
+</tr>
+<tr>
+  <td>你如何检查代码的质量、效率和复杂度？安全性方面呢？</td>
+</tr>
+<tr>
+  <td>你在多大程度上信任 ChatGPT 提供的代码？</td>
+</tr>
+<tr>
+  <td>这与评价人类编写的代码有何不同？</td>
+</tr>
+<tr>
+  <td>如果会集成，你如何将 ChatGPT 的代码结果集成到自己的代码库？</td>
+</tr>
+<tr>
+  <td>在把 ChatGPT 的输出集成到自己的代码之前，你会采取哪些步骤？或者，你如何调整／修改 ChatGPT 的代码，使之变得有用？</td>
+</tr>
+<tr>
+  <td>对于 ChatGPT 提供的代码，你多经常丢弃、使用或复用？</td>
+</tr>
+<tr>
+  <td>你认为 ChatGPT 给出的代码总体上有多安全？</td>
+</tr>
+<tr>
+  <td>ChatGPT 将如何影响软件行业的技能和岗位？</td>
+</tr>
+<tr>
+  <td>你认为计算机科学学位项目应如何调整，才能为这种转变做好准备？</td>
+</tr>
+<tr>
+  <td>一个人需要具备哪些技能，才能像你一样使用 ChatGPT？</td>
+</tr>
+<tr>
+  <td>例如，你会如何向 ChatGPT 提出问题？</td>
+</tr>
+<tr>
+  <td>你如何组织查询内容，以获取预期答案？</td>
+</tr>
+<tr>
+  <td>你的问题应该多宽泛或多具体？</td>
+</tr>
+<tr>
+  <td>你会向 ChatGPT 提供多少上下文？</td>
+</tr>
+<tr>
+  <td>后续提问如何影响回答的准确性？</td>
+</tr>
+<tr>
+  <td>需要多少次查询／重新表述？</td>
+</tr>
+<tr>
+  <td>对于开发者应如何使用 ChatGPT，你本人或公司是否有正式或非正式的使用准则？</td>
+</tr>
+</tbody>
+</table>
+<h5>3.4.2 人口统计调查</h5>
+<p>访谈完成后，参与者被要求在 Qualtrics 平台上填写一份简短问卷，以收集人口统计信息。具体而言，问卷询问公司规模，以及参与者的性别、族裔和种族。收集这些数据，是为了探索不同群体在 LLM 使用方面可能存在的差异。</p>
+<p><a id="pdf-p15"></a></p>
+<h2>PDF 物理第 15 页（共 53 页）</h2>
+<p>根据访谈中提供的背景信息，我们还估计了每位参与者的职业阶段。自称为应届毕业生或转行者的参与者被划为职业早期，其余被划为职业中期／资深阶段。结果见表 3。参与者中，43.75% 为白人，43.75% 为亚裔，12.5% 为黑人。75% 为男性，12.5% 为女性，12.5% 为非二元性别者。75% 的参与者至少拥有三年的开发经验，仅有四人的经验较为有限，其中两人表示自己在过去一年内才开始职业生涯。</p>
+<h4>3.5 分析</h4>
+<p>所有访谈均被录音并自动转录。研究人员随后对照录音检查并修正转录稿。</p>
+<p>我们遵循 Braun 和 Clarke（2006）描述的六阶段过程开展主题分析，并以建构主义／解释主义认识论立场为指导。Silva 等人（2022）关于技术采用的类似定性研究，也为我们的方法提供了参考。</p>
+<p>在熟悉数据阶段，研究团队阅读转录稿，以建立对数据的认识。在初始编码生成阶段，我们采用开放式、原话编码（open, in-vivo coding）（Saldaña 2021），首先分析三份被认为主题丰富且与研究问题高度相关的转录稿（P1、P3 和 P16）。这三份材料构成初始编码本（codebook）的主要基础，编码本中对每个编码都作了描述。主持访谈的两名研究者和一名未参与访谈的研究者（从而提供不受潜在访谈偏差影响的独立视角），分别独立编码其余 13 份转录稿。按照 Braun 和 Clarke 的迭代方法（2006），编码本在整个过程中始终允许修订；随着后续访谈材料出现新的编码，我们将其不断加入，而不把初始编码本视为固定不变。独立编码结束后，研究者通过讨论来协调编码结果。</p>
+<p><strong>表 3　参与者 P1—P16 的人口统计资料。</strong> 公司规模为员工人数；并列出性别、是否为跨性别者、种族／族裔、开发经验阶段及使用的 LLM 工具。</p>
+<table>
+<thead>
+<tr>
+  <th>编号</th>
+  <th>公司规模（人数）</th>
+  <th>性别</th>
+  <th>跨性别</th>
+  <th>种族／族裔</th>
+  <th>经验阶段</th>
+  <th>使用的 LLM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>P1</td>
+  <td>小型（10–19）</td>
+  <td>非二元性别</td>
+  <td>否</td>
+  <td>西班牙裔、白人</td>
+  <td>中期／资深</td>
+  <td>GPT</td>
+</tr>
+<tr>
+  <td>P2</td>
+  <td>中型（50–249）</td>
+  <td>男性</td>
+  <td>否</td>
+  <td>亚裔</td>
+  <td>早期</td>
+  <td>GPT</td>
+</tr>
+<tr>
+  <td>P3</td>
+  <td>大型企业（250+）</td>
+  <td>男性</td>
+  <td>否</td>
+  <td>西班牙裔、亚裔</td>
+  <td>中期／资深</td>
+  <td>GPT</td>
+</tr>
+<tr>
+  <td>P4</td>
+  <td>微型（5–9）</td>
+  <td>男性</td>
+  <td>否</td>
+  <td>西班牙裔、白人</td>
+  <td>中期／资深</td>
+  <td>GPT</td>
+</tr>
+<tr>
+  <td>P5</td>
+  <td>大型企业（250+）</td>
+  <td>男性</td>
+  <td>否</td>
+  <td>白人</td>
+  <td>中期／资深</td>
+  <td>GPT</td>
+</tr>
+<tr>
+  <td>P6</td>
+  <td>微型（1–4）</td>
+  <td>男性</td>
+  <td>否</td>
+  <td>黑人／非裔美国人</td>
+  <td>中期／资深</td>
+  <td>Copilot</td>
+</tr>
+<tr>
+  <td>P7</td>
+  <td>大型企业（250+）</td>
+  <td>男性</td>
+  <td>否</td>
+  <td>亚裔</td>
+  <td>中期／资深</td>
+  <td>GPT</td>
+</tr>
+<tr>
+  <td>P8</td>
+  <td>中型（50–249）</td>
+  <td>男性</td>
+  <td>否</td>
+  <td>亚裔</td>
+  <td>中期／资深</td>
+  <td>GPT</td>
+</tr>
+<tr>
+  <td>P9</td>
+  <td>大型企业（250+）</td>
+  <td>男性</td>
+  <td>是</td>
+  <td>白人</td>
+  <td>中期／资深</td>
+  <td>GPT</td>
+</tr>
+<tr>
+  <td>P10</td>
+  <td>小型（20–49）</td>
+  <td>男性</td>
+  <td>否</td>
+  <td>亚裔</td>
+  <td>中期／资深</td>
+  <td>GPT</td>
+</tr>
+<tr>
+  <td>P11</td>
+  <td>微型（1–4）</td>
+  <td>男性</td>
+  <td>否</td>
+  <td>亚裔</td>
+  <td>中期／资深</td>
+  <td>GPT</td>
+</tr>
+<tr>
+  <td>P12</td>
+  <td>大型企业（250+）</td>
+  <td>非二元性别</td>
+  <td>是</td>
+  <td>白人</td>
+  <td>中期／资深</td>
+  <td>Bard</td>
+</tr>
+<tr>
+  <td>P13</td>
+  <td>大型企业（250+）</td>
+  <td>女性</td>
+  <td>否</td>
+  <td>亚裔</td>
+  <td>早期</td>
+  <td>GPT</td>
+</tr>
+<tr>
+  <td>P14</td>
+  <td>微型（5–9）</td>
+  <td>男性</td>
+  <td>否</td>
+  <td>白人</td>
+  <td>早期</td>
+  <td>GPT</td>
+</tr>
+<tr>
+  <td>P15</td>
+  <td>中型（50–249）</td>
+  <td>男性</td>
+  <td>否</td>
+  <td>白人</td>
+  <td>中期／资深</td>
+  <td>GPT、Copilot</td>
+</tr>
+<tr>
+  <td>P16</td>
+  <td>大型企业（250+）</td>
+  <td>女性</td>
+  <td>否</td>
+  <td>黑人／非裔美国人</td>
+  <td>早期</td>
+  <td>GPT</td>
+</tr>
+</tbody>
+</table>
+<p><a id="pdf-p16"></a></p>
+<h2>PDF 物理第 16 页（共 53 页）</h2>
+<p>最终编码本中的所有标签都必须获得三名编码者中至少两人的同意；出现分歧时，通过讨论直至达成共识。我们将通过讨论达成一致的验证作为保证编码一致性的主要机制。对解释性主题分析而言，这种做法是适当的，因为编码体现的是研究者判断，而不是客观分类（Braun and Clarke 2006）。因此，这种协作方法既保证了编码一致性，又保留了分析中涌现性和归纳性的特征，并使我们能够结合多种视角解释参与者的经历。</p>
+<p>在第二轮编码中，我们采用 Saldaña（2021）描述的聚焦编码（focused coding）方法，由三名研究者（其中两人参与过编码，一人为外部人员）将编码分组为候选主题，并以人员、过程、产品和社会四个研究维度组织。这一框架在第 2.1 节作了论证，并在完成编码后被用作组织结构。候选主题通过分析备忘录讨论确定，再与完整数据集对照审查，经讨论完善，划分为中层主题和底层主题，作为书面分析的基础。整个过程历时约两周，期间开展了多次密集编码。分析过程中，研究者不断通过讨论和共享结果草稿来完善编码与主题。</p>
+<p>最终编码共得到 361 个编码，其中剔除分析中被判定与主题无关的编码后，313 个被保留为与研究问题相关；这些编码被归入 138 个底层主题，其中 135 个与研究问题相关而被保留。对于每个主题，我们还统计了被标记的引文数量，并在结果中呈现。由于编码是在分析过程中前瞻性地逐步增加，而没有追溯应用到先前的转录稿，因此每个主题的参与者人数应视为保守的下界。</p>
+<p>参与者引文以 PX 标识，其中 X 代表参与者的访谈次序。</p>
+<h5>3.5.1 编码饱和</h5>
+<p>饱和可以在多个层次上理解，包括理论饱和、主题饱和与编码饱和（Saldaña 2021；Guest et al. 2006）。考虑到本研究的解释主义方法和主题分析方法，我们认为采用编码饱和最为适当，具体是指数据中不再出现新编码的时点。</p>
+<p>我们通过追踪每个编码在分析中首次出现的顺序，实证评价编码饱和情况。最先分析的三次访谈构成主要的编码生成基础，产生了全部 313 个编码中的 108 个（34%）。随后新编码的产生逐步减少：分析进行到一半时，已识别全部编码中的 75%；在 16 次访谈中的前 12 次分析完毕后，已有 91% 的编码出现。最后四次访谈仅贡献了 9% 的新编码。新编码生成量的逐步下降与编码饱和相一致（Saldaña 2021），意味着增加访谈不太可能产生大量实质性新主题。</p>
+<h5>3.5.2 研究者立场</h5>
+<p>研究团队由六名成员组成，专长涵盖人机交互、软件工程和计算机教育；其中两名为教师，四名为研究生。</p>
+<p><a id="pdf-p17"></a></p>
+<h2>PDF 物理第 17 页（共 53 页）</h2>
+<p>两名研究生担任访谈者和编码者，第三名研究生也担任编码者。两名研究生和一名教师负责将编码归纳为主题。一名此前在行业工作过、未参与编码或分组过程的研究助理，从外部视角就结果结构和呈现方式提出意见。作为研究专业软件实践的学术研究者，我们认识到，在解释从业者经历时可能存在学科偏差。我们的视角主要受研究和教育环境塑造，这可能影响我们如何组织和解读日常开发工作的发现。</p>
+<p>为保证分析的严谨性，我们采用了多项策略缓解研究者偏差。首先，编码过程中加入一名未主持访谈的研究者，以提供外部视角。其次，我们详细保留编码决定和主题发展的审计轨迹。第三，我们以参与者的直接引文作为解释依据，并量化主题出现情况。最后，我们始终反思自身作为研究专业实践的学术研究者的立场，仔细区分参与者的观点与研究者的解释。</p>
+<p>此外，研究团队中的若干成员在数据收集期间本身也是基于 LLM 的工具的早期采用者。虽然这有助于理解研究背景，但也可能使我们透过自身经历解读参与者的体验，从而带来确认偏差风险。</p>
+<h3>4 研究结果</h3>
+<p><a id="pdf-p18"></a></p>
+<h2>PDF 物理第 18 页（共 53 页）</h2>
+<p><strong>图示：聚焦编码主题图（Focused-coding theme map）。</strong> 原图使用双环呈现 Saldaña 所述“编码—理论”层级：内环是研究维度（RQ），外环是中层主题（类别）；各类别之下的底层主题（聚焦编码）在配套的编码本表中逐一列出。保留原图，并在下方提供所有图内标签的中文对照。</p>
+<p><img class="source-figure" alt="原文第18页：四维分析框架及聚焦编码主题图（英文原图），中文逐项对照见后表" src="data:image/webp;base64,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" /></p>
+<table>
+<thead>
+<tr>
+  <th>内环维度</th>
+  <th>外环主题标签的完整中文对照</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>RQ1 人员（People）</td>
+  <td>生产力（Productivity）；学习（Learning）；个人成长（Personal Growth）；非技术任务（Non-Tech. Tasks）；信任（Trust）</td>
+</tr>
+<tr>
+  <td>RQ2 过程（Process）</td>
+  <td>需求与规划（Req. &amp; Planning）；设计与构思（Design &amp; Ideation）；实现：提示（Implement: Prompting）；实现：评价（Implement: Evaluation）；实现：集成（Implement: Integration）；测试与代码审查（Test &amp; Code Review）；调试（Debugging）；重构（Refactoring）；文档（Documentation）</td>
+</tr>
+<tr>
+  <td>RQ3 产品（Product）</td>
+  <td>代码质量（Code Quality）；可读性（Readability）；复杂度与效率（Complexity &amp; Efficiency）；小型任务（Small Tasks）；大型／困难任务（Large/Difficult Tasks）；代码编写（Code Writing）；文本优于代码（Text &gt; Code）；无影响（No Impact）；安全性（Security）</td>
+</tr>
+<tr>
+  <td>RQ4 社会（Society）</td>
+  <td>行业：岗位（Industry: Jobs）；行业：使用准则（Industry: Guidelines）；行业：伦理（Industry: Ethics）；教育（Education）；对 LLM 的认知（Perceptions of LLMs）</td>
+</tr>
+</tbody>
+</table>
+<p>本节呈现我们对 16 名早期采用 LLM 的软件专业人员的访谈进行主题分析所得的发现。研究结果按照四个研究问题组织，全面涉及 LLM 集成的社会技术维度：LLM 如何影响开发者（RQ1）、影响开发过程（RQ2）、影响软件产品（RQ3），以及塑造更广泛的行业与教育环境（RQ4）。针对每个研究问题，我们同时呈现参与者识别出的收益与挑战，并通过每个主题出现于多少次访谈来表示主题的普遍程度。所有发现都以参与者经历为依据，并辅以具有代表性的直接引文。</p>
+<h4>4.1 RQ1：LLM 如何影响开发者？</h4>
+<p>关于 LLM 如何影响开发者日常任务，归纳出的关键主题见表 4，具体如下。</p>
+<p><a id="pdf-p19"></a></p>
+<h2>PDF 物理第 19 页（共 53 页）</h2>
+<p><strong>表 4　聚焦编码（第二轮编码）形成的编码本。</strong> 每个底层主题对应一组聚焦编码；中层主题为类别；维度对应四个研究问题。配套图示呈现维度与类别的结构关系。</p>
+<table>
+<thead>
+<tr>
+  <th>维度</th>
+  <th>中层主题</th>
+  <th>底层主题（聚焦编码）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>RQ1 人员</td>
+  <td>生产力</td>
+  <td>减少琐碎任务；减少搜索外部资源的时间；提供样板代码／骨架／模板；用户界面不佳；代码翻译；混淆编程语言；失败引发负面情绪；加快学习；帮助搭建环境；生成详细回答；对软件工程过程无影响；帮助摆脱卡顿；改善记忆／回忆；给出相互矛盾的答案；回答生成缓慢；难以分析非结构化数据。</td>
+</tr>
+<tr>
+  <td>RQ1 人员</td>
+  <td>学习</td>
+  <td>学习新技术／软件／信息；提供解释和示例；幻觉与不完整回答；无法创造新知识／抽象想法／逻辑能力不足；知识／数据集有限；知识／数据集覆盖范围广；可能妨碍学习；提供有害信息。</td>
+</tr>
+<tr>
+  <td>RQ1 人员</td>
+  <td>个人成长</td>
+  <td>不如人类；与人类相当；提供安心感／信心；优于人类；改善信息获取／保留；抵触 LLM；提高工作满意度。</td>
+</tr>
+<tr>
+  <td>RQ1 人员</td>
+  <td>非技术任务</td>
+  <td>征求建议；总结文本；用于个人事务；内部沟通；难以总结／解释文本。</td>
+</tr>
+<tr>
+  <td>RQ1 人员</td>
+  <td>信任</td>
+  <td>一定程度信任；不信任；高度信任。</td>
+</tr>
+<tr>
+  <td>RQ2 过程</td>
+  <td>需求与规划</td>
+  <td>对需求无影响；发现遗漏的组成部分；规划；原型设计；细化／改进需求；生成用户故事／用户画像；难以处理非功能需求；难以进行多准则决策。</td>
+</tr>
+<tr>
+  <td>RQ2 过程</td>
+  <td>设计与构思</td>
+  <td>组合／分解；构思；固执；不固执。</td>
+</tr>
+<tr>
+  <td>RQ2 过程</td>
+  <td>实现：提示</td>
+  <td>迭代提示；模糊／具体／宽泛的查询；需要提示词工程技能；提供提示词／示例代码／文本／格式指引；在提示词中避免或包含某些信息；增加或移除上下文；忽略旧上下文／开启新对话；难以整合输入上下文；难以处理功能需求；提供个性化回答；利用会话串组织主题；需要理解 LLM；为查询加标签以便引用；没有固定的提示方法；难以逐步缩小范围；作出无帮助的假设。</td>
+</tr>
+<tr>
+  <td>RQ2 过程</td>
+  <td>实现：评价</td>
+  <td>检查输出；脑中检查；检查生成代码的复杂度；要求解释；通过网络搜索／外部资源核查；对相同查询给出不同答案。</td>
+</tr>
+<tr>
+  <td>RQ2 过程</td>
+  <td>实现：集成</td>
+  <td>丢弃代码；集成前修改代码；复制粘贴；重写代码；集成前加入专有信息。</td>
+</tr>
+<tr>
+  <td>RQ2 过程</td>
+  <td>测试与代码审查</td>
+  <td>代码审查；对测试无影响；生成新测试用例；影响测试；外部测试用例／测试框架；通过控制台日志／IDE 报错进行检查；手工测试；测试边界情形；单步调试器；无法生成所有测试。</td>
+</tr>
+<tr>
+  <td>RQ2 过程</td>
+  <td>调试</td>
+  <td>调试。</td>
+</tr>
+<tr>
+  <td>RQ2 过程</td>
+  <td>重构</td>
+  <td>重构。</td>
+</tr>
+<tr>
+  <td>RQ2 过程</td>
+  <td>文档</td>
+  <td>创建文档；改进文档。</td>
+</tr>
+<tr>
+  <td>RQ3 产品</td>
+  <td>代码质量</td>
+  <td>代码不准确；代码准确；代码需要核查；文本生成优于代码生成。</td>
+</tr>
+<tr>
+  <td>RQ3 产品</td>
+  <td>可读性</td>
+  <td>代码可读性好；用 LLM 改善代码可读性；代码可读性差。</td>
+</tr>
+<tr>
+  <td>RQ3 产品</td>
+  <td>复杂度与效率</td>
+  <td>不关心代码复杂度；代码复杂度／效率良好；用 LLM 检查代码复杂度；代码复杂度／效率较差。</td>
+</tr>
+<tr>
+  <td>RQ3 产品</td>
+  <td>小型任务</td>
+  <td>特定使用领域；小型任务；以前完成过的任务。</td>
+</tr>
+</tbody>
+</table>
+<p><a id="pdf-p20"></a></p>
+<h2>PDF 物理第 20 页（共 53 页）</h2>
+<p><strong>表 4（续）</strong></p>
+<table>
+<thead>
+<tr>
+  <th>维度</th>
+  <th>中层主题</th>
+  <th>底层主题（聚焦编码）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>RQ3 产品</td>
+  <td>大型／困难任务</td>
+  <td>难以处理复杂任务；难以处理大型任务。</td>
+</tr>
+<tr>
+  <td>RQ3 产品</td>
+  <td>代码编写</td>
+  <td>编写代码所需的投入／精确性降低。</td>
+</tr>
+<tr>
+  <td>RQ3 产品</td>
+  <td>文本优于代码</td>
+  <td>比起实际代码，更重视代码解释。</td>
+</tr>
+<tr>
+  <td>RQ3 产品</td>
+  <td>无影响</td>
+  <td>对代码编写没有影响。</td>
+</tr>
+<tr>
+  <td>RQ3 产品</td>
+  <td>安全性</td>
+  <td>LLM 安全性适用；对 LLM 安全性的担忧；解决安全担忧的策略。</td>
+</tr>
+<tr>
+  <td>RQ4 社会</td>
+  <td>行业：岗位</td>
+  <td>岗位将变化／转型；对岗位无影响；降低初级岗位入门门槛；减少初级岗位数量；可能改变开发者求职面试的开展方式。</td>
+</tr>
+<tr>
+  <td>RQ4 社会</td>
+  <td>行业：使用准则</td>
+  <td>使用准则的必要性；使用自己的 LLM（内部版本）。</td>
+</tr>
+<tr>
+  <td>RQ4 社会</td>
+  <td>行业：伦理</td>
+  <td>开发者对所使用的代码负有责任；将在工作中每日使用；未来数据的使用可能需要许可证；对代码来源的担忧；不会在工作中每日使用。</td>
+</tr>
+<tr>
+  <td>RQ4 社会</td>
+  <td>教育</td>
+  <td>计算机科学课程应纳入 LLM；作为私人导师／学习工具；计算机科学课程不应优先考虑 LLM；鼓励抄袭；对抄袭无影响；短期有阵痛、长期有收益。</td>
+</tr>
+<tr>
+  <td>RQ4 社会</td>
+  <td>对 LLM 的认知</td>
+  <td>对 LLM 的类比；公众对 LLM 的误解。</td>
+</tr>
+</tbody>
+</table>
+<h5>4.1.1 提升开发者生产力</h5>
+<ul>
+<li><strong>减少琐碎任务：</strong> 与 LLM 简化琐碎任务的有效性有关的编码出现在 14 次访谈中，这与此前描述开发者使用 ChatGPT 自动化繁琐任务的研究一致（Hörnemalm 2023）。P14 给出了一个很有代表性的例子：“我非常喜欢这一点：那些重复、无聊的任务，比如找一个逗号；我不必再做这些事，而可以更加专注于真正构建东西。”13 名参与者强调 LLM 能加快软件工程过程并节约时间，9 名参与者强调它能提高效率、使开发者更具生产力。例如，P15 说明 ChatGPT 如何帮助编写函数，让他能够专注于更高层次的任务：“[假设]我想做一件简单的事情……我现在不再自己编写那些函数了。我总是让 ChatGPT 来做，因为我知道它给出的东西会接近我自己会写的内容，但实际上我不必亲自动手。所以对我来说，它有点像一个结对程序员，这样我就能把精力放在那些需要更加理解基础设施的高层次工作上。”</li>
+<li><strong>简化搜索体验：</strong> 10 名参与者强调，LLM 能减少寻找解决方案所需的时间，从而提高生产力。例如，P14 谈到 LLM 如何改变他的搜索方式：“现在，我可能已经有三个星期没上过 Google 了……我不需要逐个点击 Google 的链接来寻找解决方案……[ChatGPT]会给我一个总结版，可能综合了三四个不同来源。”</li>
+<li><strong>提供样板代码与模板：</strong> 10 名参与者表示曾使用 LLM 创建通用或标准化代码及模板。P4 将这一能力称为“我从 [ChatGPT] 得到的最好用的功能之一”。P12 说：“你可以把 [Bard 的回答]当成一个想法，就像初稿一样，然后在此基础上迭代；这是我在编码方面使用它的体验。”</li>
+</ul>
+<p><a id="pdf-p21"></a></p>
+<h2>PDF 物理第 21 页（共 53 页）</h2>
+<ul>
+<li><strong>其他生产力收益：</strong> 有三次访谈提及代码翻译。两名参与者指出 ChatGPT 降低了学习曲线的陡峭程度、加快了学习。两名参与者提到用 LLM 协助环境配置和安装。一名参与者强调 ChatGPT 可以补充不完整或过时的教程和文档；另有一人指出，它有助于回忆语法和实现细节。</li>
+</ul>
+<p><strong>挑战</strong></p>
+<ul>
+<li><strong>混淆编程语言：</strong> 三名参与者提到，LLM 有时未以预期的编程语言回答，导致开发者需要花时间将代码转换成目标语言。</li>
+<li><strong>其他挑战：</strong> 一名参与者发现 ChatGPT 的回答有时与之前的回答相互矛盾。一名参与者指出 GPT-4 回答生成缓慢，影响用户体验。另有一名参与者讨论了非结构化数据分析面临的困难。</li>
+</ul>
+<h5>4.1.2 促进开发者学习</h5>
+<ul>
+<li><strong>个性化教育与技能提升：</strong> 通过 LLM 学习新技术、软件和信息是一个突出主题，出现在 14 次访谈中。LLM 的一项重要优势是能够提供个性化、交互式的学习。例如，P7 强调行业中持续学习新事物的需要：“我们仍然需要阅读许多资料，比如文档，或……某些新技术。所以 ChatGPT 是一个很好的资源……可以学习我以前从未听说过的东西。比如，如果遇到一个问题，[而]我不确定该用什么工具，我可能就会向 ChatGPT 提一个开放性问题。”</li>
+<li><strong>解释代码：</strong> 11 次访谈提到 LLM 提供解释和示例的能力。P13 表示，由于 ChatGPT 能够更有效率地解释代码，因此它比其他工具更有用：“[我]通常第一步是打开 ChatGPT，把一段代码给它……再问它一些具体问题，因为我认为这样能让你在理解问题和推进工作方面领先很多。”</li>
+<li><strong>广泛的知识覆盖与多样化的数据集：</strong> 四次访谈认为，LLM 丰富的知识与多样化的数据集能增进开发者的知识和理解。P15 对 ChatGPT 的知识广度尤为兴奋：“[我]什么事情都会去问 ChatGPT，包括营养建议。它的知识范围比我广得多，很可能也超过我的营养师——营养师在大学读了几年，修了几门关于食物的课程。想象一下，把他们的书全部拿来，你就可以直接向书提问；你不必再依赖他们对书中知识的解释。”</li>
+<li><strong>展示最佳编程实践：</strong> 两名参与者强调，通过观察生成的代码并采纳 LLM 的建议，他们学会了如何更加高效、优雅地编写代码。</li>
+</ul>
+<p><a id="pdf-p22"></a></p>
+<h2>PDF 物理第 22 页（共 53 页）</h2>
+<p><strong>挑战</strong></p>
+<ul>
+<li><strong>幻觉和不完整的回答：</strong> 这一挑战出现在六次访谈中。例如，P1 回忆 ChatGPT 捏造回答的情况：“有些事情让人吃惊，而且是不好的那种，比如它会编造论文。它会幻觉出论文名称和作者。”另一名参与者 P11 指出 ChatGPT 无法提供回答的来源，并强调人类专业知识的重要性：“[人们的]知识可能更新……ChatGPT 真的不会引用自己的信息。我觉得 Bard 可能开始引用一些东西了。引文非常有帮助。”</li>
+<li><strong>知识及数据集的局限：</strong> 五名参与者认为 LLM 的知识及数据集存在局限。例如，P9 回忆道：“确实有过这样的情况：我可能花了超过一个小时，不断请 ChatGPT 帮我写 JavaScript 代码。但结果是，不管我多么努力地重新提示，哪怕用上从吴恩达博士深度学习与 AI 课程中学到的提示词工程技巧，即使试遍所有方法，它仍然在原地打转。”</li>
+<li><strong>难以处理新颖想法与逻辑性提示：</strong> 四次访谈强调，LLM 在针对新颖想法生成代码、处理需要复杂逻辑推理的提示时存在局限。P16 分享了她向 ChatGPT 提供一家大型科技公司面试时遇到的编程题，却得到糟糕答案的经历：“它依据自己知道的内容，以及看起来正确的内容来回答。所以我遇到的这些题目，可能不是 ChatGPT 能公开获取的。可能正因为它以前没见过这些题，所以它在尝试回答时就乱套了。”</li>
+<li><strong>妨碍开发者学习：</strong> 四次访谈对 LLM 可能不利于学习表示担忧，特别是对初级开发者而言；主要原因是用户可能无法判断 ChatGPT 答案是否正确。P12 说：“你真正学会的唯一方式，是自己写出答案、自己一步一步得到答案。只能这样，因为你必须在脑中建立起通往答案的那些联系。你不能依靠 ChatGPT 或 Bard 脑中的联系，来达到计算机编程应有的能力水平。”</li>
+<li><strong>防护措施失效及有害影响：</strong> 两次访谈报告了 LLM 为防止传播有害信息而设置的防护措施被绕过的事件。</li>
+</ul>
+<h5>4.1.3 支持开发者个人成长</h5>
+<ul>
+<li><strong>增强安心感、信心和独立性：</strong> 这一主题出现在六次访谈中。职业经历较短的 P2 分享了他将自己的答案与 ChatGPT 的答案比较、以获得印证的经历：“它确实让[软件工程]过程变容易了。最好的部分是，我能在很多事情上得到一种确定感：如果我这样做，可以问一下它；如果 ChatGPT 给出的答案差不多……那说明我没有犯什么严重的错误。”</li>
+<li><strong>改善信息获取：</strong> 三次访谈对 LLM 降低信息获取难度持积极看法，受访者相信 ChatGPT 将推动全球信息获取的普及化。</li>
+</ul>
+<p><a id="pdf-p23"></a></p>
+<h2>PDF 物理第 23 页（共 53 页）</h2>
+<ul>
+<li><strong>提高工作满意度：</strong> 一名参与者强调，ChatGPT 帮助他完成原本感到吃力的任务，使其得以专注于真正关心的事情，从而提高了工作满意度。</li>
+</ul>
+<p><strong>挑战</strong></p>
+<ul>
+<li><strong>无法替代人的决策：</strong> 六名参与者指出，LLM 无法取代人与人之间的互动和人类决策。例如，P12 强调软件工程不仅是编写代码：“不管 [LLM] 能做什么，到最后，它都无法替代……软件工程师工作的难点，并不特别在于写代码……我认为软件工程师工作的难点，至少就我做的工作而言，是团队之间、同事之间的沟通，是那些来来回回的电子邮件和聊天记录。”</li>
+<li><strong>依赖性担忧：</strong> 两名参与者表示，为避免过度依赖，他们更愿意先独立尝试解决问题，再向 LLM 求助。</li>
+<li><strong>实现速度慢于人类：</strong> 一次访谈指出，在 ChatGPT 无法理解需求或给出准确解决方案的情形下，人类与 LLM 生成代码所需的时间存在差异。</li>
+</ul>
+<h5>4.1.4 协助开发者完成非技术任务</h5>
+<ul>
+<li><strong>咨询与决策：</strong> 11 名参与者讨论了利用 LLM 征求建议或获得方向指引。例如，P8 谈到 ChatGPT 在解决团队争论方面的作用：“[在]技术团队里，总会围绕如何选择方案发生争论。方案 A 和 B 都正确，但哪个更好？这样一来，我们就有了一位裁判，有人能告诉我们哪种做法更好。”</li>
+<li><strong>总结文本和文档：</strong> 九名参与者提及使用 LLM 总结文章、论文和文档等不同类型的文本数据。P7 说明了它在处理文档时的用处：“我看文档时，不是从头到尾读完整篇，因为我可能不需要所有内容，只需要其中一些信息。我可以问 ChatGPT：‘嘿，把这个链接通读一下，给我做个总结。’”</li>
+<li><strong>支持内部沟通：</strong> 五次访谈提及利用 LLM 撰写文档、协助制作演示文稿及向团队成员解释复杂任务，以促进内部沟通。P12 认为，写邮件是一种理想的使用场景：“我用它写正式的工作邮件。我会先写两句话，然后说：‘嘿，Bard，你能把它写得漂亮一些吗？’它就会回给我一封两段式的专业邮件，用语得体、语气很好。这是一个很好的起点。”</li>
+</ul>
+<p><strong>挑战</strong></p>
+<ul>
+<li><strong>总结与解释能力有限：</strong> 两名参与者对 LLM 的总结与解释能力表示不满；其中一人指出，ChatGPT 往往并未真正阅读提供的材料就进行泛泛概括。</li>
+</ul>
+<p><a id="pdf-p24"></a></p>
+<h2>PDF 物理第 24 页（共 53 页）</h2>
+<h5>4.1.5 信任</h5>
+<p>开发者对 LLM 的信任程度差异很大。一名参与者 P9 表现出特别高的信任，将他对 ChatGPT 的信心评为 10 分中的“可能 8.5 分”。其他大多数参与者的看法则更有条件限制。很多人信任 LLM 能完成简单或常规任务，但不信任它处理复杂任务的能力。P3 说：“涉及真正细致、棘手的工程任务时，我不信任它。在这些使用场景中，它并不总能给出最好的生产级代码。”还有一些人总体上保持怀疑态度，下一节第 4.2.3 部分将进一步讨论。</p>
+<h4>4.2 RQ2：LLM 如何影响软件开发过程？</h4>
+<p>为回答 RQ2，我们大体上依据软件开发生命周期（Amazon Web Services n.d.）及敏捷开发方法（Fowler et al. 2001）组织研究发现。我们识别了五个关键阶段的影响：（1）需求与规划，LLM 的采用程度很低；（2）设计与构思，LLM 促进问题分解；（3）实现，开发者采用复杂的提示词工程策略；（4）测试与代码审查，LLM 在单元测试方面显示潜力，但存在局限；（5）调试、重构与文档，LLM 缩短了调试时间。以下按照开发生命周期的这一顺序展开。</p>
+<h5>4.2.1 需求与规划</h5>
+<p>我们采用一种常见的需求定义，将需求界定为系统或系统组成部分为了满足某项规格说明而必须具备的软件能力（Leffingwell and Widrig 2000）。类似地，我们将规划定义为收集利益相关方的需求、安排进度及估计／分配资源的过程（Amazon Web Services n.d.）。</p>
+<ul>
+<li><strong>发现遗漏的组成部分：</strong> 两名参与者利用 LLM 发现遗漏内容。P15 说：“我大致知道它应该是什么样子……然后我把想法输入 ChatGPT，问它：‘这里有什么容易忽略的坑？我遗漏了什么？或者我应该提出什么问题，才能把自己还没想清楚的地方补全？’所以 [ChatGPT] 有点像我的顾问，就好像它是一个比我更资深的开发者，或者比我更有经验的经理之类的角色，能够给我一些反馈。”</li>
+<li><strong>制作原型与细化需求：</strong> 两名参与者认为 LLM 擅长制作原型，另外两人认为它有助于细化需求，尤其适用于独立承包开发者。P9 分享了 ChatGPT 如何帮助他研究，并缩短与利益相关方交流时的需求探索时间：“比如接到一个新的外包项目，我要确定项目范围，帮助客户细化技术需求；尤其是碰到我不熟悉的领域……我可以一边与他们沟通获取需求，一边在旁边开着 ChatGPT 窗口。”</li>
+</ul>
+<p><strong>挑战</strong></p>
+<ul>
+<li><strong>无法替代人的参与：</strong> 12 名参与者表示，LLM 并未改变他们获取需求的方式。</li>
+</ul>
+<p><a id="pdf-p25"></a></p>
+<h2>PDF 物理第 25 页（共 53 页）</h2>
+<p>参与者指出，需求和计划来自与客户需求直接打交道的主管或上级，而这些内容不是 LLM 能够生成的。P2 说：“[需求获取]没有变化，因为我做的大部分工作是和客户那边的开发者、产品经理一起进行的。所以，我们需要和他们交流，才能明确必须规定的需求……而且，我们的项目非常针对具体客户，我不能简单上网看看他们可能期望什么。”</p>
+<ul>
+<li><strong>需求细化能力有限：</strong> 一名参与者表示 ChatGPT 无法帮助生成细致的需求，指出它的回答“很符合常识”，却没有涉及易用性及细粒度细节。另一名参与者指出，它难以处理多准则决策。</li>
+</ul>
+<h5>4.2.2 设计与构思</h5>
+<p>我们将设计视为需求获取之后寻找解决方案、形成更加详细技术计划的过程（Amazon Web Services n.d.），而构思是设计中的重要组成部分。分解同样属于设计过程；Chattopadhyay 等人指出，开发者会采用特定策略将任务分解为较小的单元（Chattopadhyay et al. 2019）。</p>
+<ul>
+<li><strong>促进问题分解：</strong> 八名参与者承认 LLM 鼓励或迫使他们把问题分解为更小、更易管理的组成部分，原因是 LLM 在任一时点所能接收的信息量有限。P4 分享道，对他而言，ChatGPT“可能会迫使我把[问题]拆开……我想，这可能是一种有益的外部推动，让我把它拆成子任务和子需求……如果我无法向 ChatGPT 解释清楚，或许就说明我自己还没有理解这个问题”。</li>
+<li><strong>用于构思：</strong> 六名参与者表示，会利用 LLM 丰富的知识基础和生成能力开展构思。P12 说：“对我而言，构思阶段可能是 [Bard] 表现最好的地方，因为你不能信任它给出的内容一定准确，或恰好是你想要的；但你可以相信它会给你生成一些很酷的内容、代码创意和写作想法。”</li>
+</ul>
+<p><strong>挑战</strong></p>
+<ul>
+<li><strong>不适合分解任务：</strong> 七名参与者表示，LLM 并未影响他们分解问题，因为他们认为这一活动天然依赖个人推理。例如，P13 说：“我不认为[它影响了任务分解]。我喜欢先自己做规划，然后再去找 ChatGPT，获得关于如何真正实现代码的更细致规划。”</li>
+<li><strong>回答固执：</strong> 六名参与者指出 LLM 表现得固执，因而限制了它在设计中的效用。P11 谈到 ChatGPT 难以根据新输入调整：“[ChatGPT] 不太擅长改变它自己。”</li>
+</ul>
+<p><a id="pdf-p26"></a></p>
+<h2>PDF 物理第 26 页（共 53 页）</h2>
+<h5>4.2.3 实现</h5>
+<p>使用 LLM 的实现过程与代码复用类似。因此，我们采用 Rosson 和 Carroll 的分类（Rosson and Carroll 1996），将这一过程分为三个阶段：（1）<strong>寻找上下文（Finding Context）</strong>，涉及提示词工程及查找相关回答的过程；（2）<strong>评价上下文（Evaluating Context）</strong>，侧重评价生成回答的准确性和可用性；（3）<strong>集成（Integration）</strong>，即将生成的文本纳入个人代码或现有代码库。需要指出，以下项目符号的标题均从开发者／提示词提供者的视角表述，而非从 LLM 的视角或能力出发。</p>
+<p><strong>（1）寻找上下文</strong></p>
+<ul>
+<li><strong>通过调整提示词具体程度影响答案：</strong> 15 次访谈提到，开发者对宽泛提示、具体提示，以及通过调整查询的具体程度来影响 LLM 输出，有不同偏好。当希望获得多样化答案或避免预先假定时，他们倾向于提出宽泛问题。P15 分享说，最初他使用具体提示，后来发现宽泛提示效果更好：“[它]实际上开始给我更好的结果，因为它知道一些我不知道的事情……当我给出更宽泛的[提示]时，它就能够自行进行某种推断，找到它认为自己正在解决的问题。”寻求特定答案时，尤其是在软件工程中，开发者则偏好具体提示。P2 说：“我认为问题应当非常具体……如果你进入其他[非软件]领域，没有唯一正确答案，就可以提出宽泛的问题。但对于软件开发，我认为必须非常具体。”四名参与者承认，选择提示词具体程度没有一种唯一正确的策略，并强调适应和试验的重要性。</li>
+<li><strong>通过后续查询提高准确性和清晰度：</strong> 15 名参与者分享了不断迭代提示，直至得到预期回答的策略。七名参与者认为后续查询能够提高准确性，两名认为它们能够提高清晰度。P16 说：“后续问题实际上可能比[最初的问题]更重要，或至少同样重要。不过，我更多的答案来自后续提问。”</li>
+<li><strong>独特的提示策略：</strong> 14 名参与者承认，提示词工程对于从 LLM 获取准确、相关的回答至关重要。P9 说，只要“[只要]提示词精心设计，并且问题足够常见、能够找到解决方案”，他就能够得到好的答案。参与者乐于尝试不同的提示策略，灵感来自在线资源及以往与 LLM 的互动。</li>
+<li><strong>为安全而泛化提示词及代码：</strong> 13 名参与者与 LLM 交互时使用泛化提示，或使用特定于用例而非特定于项目的信息。P2 说：“因为我不能把所有信息都输入 ChatGPT，那些信息非常针对客户，属于保密信息……我只是给它一些类似的使用场景。”</li>
+<li><strong>提供示例和上下文：</strong> 九名参与者使用 ChatGPT 的少样本提示（few-shot prompting），另有九名强调在与 LLM 互动时提供上下文的重要性。</li>
+</ul>
+<p><a id="pdf-p27"></a></p>
+<h2>PDF 物理第 27 页（共 53 页）</h2>
+<p>P1 观察到：“上下文越多越好。”两名参与者讨论了 ChatGPT 保留上下文的能力如何使之区别于传统搜索引擎。</p>
+<ul>
+<li><strong>开启新对话以获取新答案：</strong> 九名参与者表示，当对先前互动获得的答案不满意时，倾向于开启新的对话。P15 详细描述道：“[我]会让它持续细化我想做的事情。有时到某个阶段，它就有点[不再]有效。可能越往聊天后面走，上下文就越有点偏了。因此我会把之前得到的内容和我的问题拿出来，重新开始一次聊天。”</li>
+</ul>
+<p>这些策略揭示了早期采用者相当成熟的提示词工程实践，表明有效使用 LLM 需要有意识地试验、迭代完善以及审慎管理上下文。值得注意的是，参与者并未收敛到一种单一的“最佳实践”，而是发展了灵活、依赖情境的方法，以在具体与开放、安全与信息充分、持续尝试与适时重新开始之间取得平衡。</p>
+<p><strong>挑战</strong></p>
+<ul>
+<li><strong>整合上下文与调整的困难：</strong> 五名参与者观察到，LLM 在整合上下文以及修改调整方面存在困难。P1 描述过一次 ChatGPT 难以仅修改输出中某个小部件的情况：“它不会只改那一段代码，而是把所有代码都改了。”参与者还担忧，LLM 在多轮提示或互动后是否能够保留原始上下文。</li>
+<li><strong>上下文窗口限制：</strong> 五名参与者强调 LLM 上下文窗口的局限。他们遇到过生成代码时空间不够，或多次提示后丢失上下文的情况。P11 说：“因为它一边写代码一边说了太多话，结果没有空间写真正的代码。你可以叫它继续，但它不一定能正确地继续。”</li>
+<li><strong>后续查询的必要性及提供上下文的困难：</strong> 两名参与者表示，由于 LLM 首次回答并不总是正确，他们经常依赖后续提问。一名参与者指出，提供足够的上下文存在困难，尤其是自己也不确定该给出哪些具体示例时。</li>
+</ul>
+<p><strong>（2）评价上下文</strong></p>
+<ul>
+<li><strong>通过阅读代码进行验证：</strong> 10 名参与者表示，阅读代码是主要的审查方法。P9 指出，对于简单代码，阅读本身可能就是充分的检查：“作为一名专业开发者，验证[这段]代码能否正常运行、能否很好地集成到现有代码库中，仍然是我的工作。因此，如果它足够简单，我可以在脑中快速检查一下，[也就是]逐行阅读。”</li>
+<li><strong>通过输出进行验证：</strong> 与测试类似，10 名参与者表示，他们会在通读代码后检查其输出，从而验证代码。P8 说：“如果输出与我的预期相矛盾，我就丢弃它。”</li>
+</ul>
+<p><a id="pdf-p28"></a></p>
+<h2>PDF 物理第 28 页（共 53 页）</h2>
+<ul>
+<li><strong>通过手工测试进行验证：</strong> 七名参与者还采用手工测试，例如验证代码模板与解决方案，以及利用开发者工具或 REPL（交互式读取—求值—输出循环）工具，在集成前测试代码功能。查看控制台日志、验证预期的函数返回值、监测 IDE 警告或错误，都是参与者的常见做法。P11 将这一流程与自己平时的代码集成流程比较：“首先，我会验证，确保它说得通。然后在集成进自己的代码之前，我可能先在一个隔离的例子里试试。我可能会使用 Chrome 开发者工具或 Node.js REPL，或写一个独立测试之类的东西，只是为了保证这些代码在隔离环境中能够正常工作。不管代码来自哪里，我都会做同样的事。”</li>
+<li><strong>通过外部测试和来源进行验证：</strong> 四名参与者使用外部测试框架和工具评价生成代码，例如 P8 会先让代码通过单元测试。两名参与者从互联网等外部来源寻求验证，包括查阅文档和搜索 Stack Overflow 等平台；P13 表示会进行基本的“网络搜索”。</li>
+<li><strong>其他验证方法：</strong> 两名参与者要求 LLM 解释自己生成的代码，作为评价过程的一部分。两名从事前端开发的开发者表示，会对代码质量进行视觉评价。一名参与者分享了他如何借助 SOLID 原则、整洁代码理念和官方文档评估可读性。一名参与者指出，ChatGPT 有能力在用户没有明确指导的情况下识别并纠正错误。</li>
+</ul>
+<p><strong>挑战</strong></p>
+<ul>
+<li><strong>怀疑态度增强：</strong> 由于生成代码的出现，五名参与者在评价代码质量时变得更怀疑、更警惕。P1 说：“从某种意义上讲，是的，它改变了测试。我现在会多一些怀疑。”</li>
+<li><strong>评价的必要性：</strong> 七名参与者强调，必须彻底检查生成代码的准确性和相关性。P6 说：“要对得到的东西保持警惕……不要放弃检查回答。”两名参与者表示，与人类编写的代码相比，他们会更加留意审查生成代码。</li>
+<li><strong>缺乏自我评价与情境清晰度：</strong> 一名参与者认为 ChatGPT 缺乏自我评价能力是一项局限。另一人强调理解代码需要上下文信息，并指出人类在提供代码为何以及如何被创建的背景方面具有优势。</li>
+</ul>
+<p><strong>（3）集成</strong></p>
+<p>这里我们从两个方面考察集成：一是开发者将生成代码纳入工作时所采用的实践；二是开发者实际上在多大程度上使用了生成代码。</p>
+<ul>
+<li><strong>集成前修改：</strong> 15 名参与者报告称，他们会先修改生成代码，再将其集成到项目中。P13 说：“当我得到整体实现思路后，会在一些地方细化，然后再发回给 ChatGPT……‘给我生成一些相应的样板代码。’我认为它在提供样板代码方面做得非常好。但之后我仍然需要做大量细化，以解决其中某些错误。”</li>
+<li><strong>复制粘贴代码：</strong> 12 名参与者表示，他们会直接把生成的代码复制粘贴到开发环境中。</li>
+</ul>
+<p><a id="pdf-p29"></a></p>
+<h2>PDF 物理第 29 页（共 53 页）</h2>
+<p>P7 说：“可能[没有]太[多]步骤。就是提出问题，如果答案在我看来不错，我就直接复制粘贴。”</p>
+<ul>
+<li><strong>重写代码：</strong> 三名参与者提到，他们更愿意手工重写生成的代码，以加深理解并减少潜在错误。</li>
+<li><strong>使用与丢弃生成代码：</strong> 六名参与者很少丢弃生成代码，两名大约丢弃一半，而八名会丢弃所生成代码中的大部分。很少丢弃代码的人指出，只要提示词设计得好，LLM 就能生成可用代码。P2 说：“我从未不得不把 ChatGPT 生成的代码全部丢掉。大多数情况下，只要提示词正确，它就能给出很好的设计。”八名参与者表示，会丢掉大量（超过 50%）生成代码；另有两人表示，会丢掉约一半。那些使用 LLM 进行构思、咨询或学习的人，更经常丢弃代码。P4 说：“它擅长帮我从零走到初步有东西的阶段，但我会在此基础上做很多次迭代。我会丢弃很多代码。”</li>
+</ul>
+<p><strong>挑战</strong></p>
+<ul>
+<li><strong>复制粘贴的阻碍：</strong> 一名参与者对复制粘贴过程感到沮丧，因为需要在应用程序之间切换，或依赖第三方插件。</li>
+</ul>
+<h5>4.2.4 测试与代码审查</h5>
+<ul>
+<li><strong>生成单元测试：</strong> 七名参与者曾使用 LLM 生成测试，尤其是单元测试，因为这类测试相对基础且形式化程度较高。一名参与者指出，使用 ChatGPT 生成测试，促使他在自己的编程实践中增加测试。</li>
+<li><strong>模拟代码审查：</strong> 两名独立承包开发者或小团队成员因为缺少能够审查代码的同事，使用 LLM 进行代码审查；另有一名参与者使用 ChatGPT 审查自己的部分代码。</li>
+</ul>
+<p><strong>挑战</strong></p>
+<ul>
+<li><strong>不适用于代码审查：</strong> 八名参与者表示，他们没有使用 ChatGPT 审查代码，或者它对代码审查过程影响极小。P15 持保留态度：“我不把它用于代码审查，主要是因为我必须亲自理解代码在做什么……对我来说，更好的方式是知道它试图执行的每一步，因为我需要知道……这些步骤将如何影响系统的其他部分。”</li>
+<li><strong>难以处理复杂测试：</strong> 两名参与者指出，由于安全因素或缺少必要上下文，LLM 难以生成规模较大或覆盖整个系统的测试。</li>
+</ul>
+<p><a id="pdf-p30"></a></p>
+<h2>PDF 物理第 30 页（共 53 页）</h2>
+<h5>4.2.5 调试、重构与文档</h5>
+<ul>
+<li><strong>改进调试：</strong> 10 名参与者提到曾使用 LLM 调试自己的代码。参与者强调，LLM 能快速提供解决办法或指引正确方向，从而显著缩短调试时间。P5 说：“[ChatGPT] 能大幅缩短整个调试过程。如果它没有直接给你答案……至少会帮我找到一些正确方向，让我能够继续研究，或者再向它提出更多问题。”</li>
+<li><strong>减少语法类错误：</strong> 两名参与者强调，LLM 有助于解决缺少标点符号或大括号等与语法相关的错误。</li>
+<li><strong>开展重构：</strong> 两名参与者表示使用 LLM 重构代码，旨在保持功能不变的前提下提高可维护性和可理解性。此外，一名参与者使用 LLM 精简代码，特别是把代码块转换为更简洁的版本。</li>
+</ul>
+<p><strong>挑战</strong></p>
+<ul>
+<li><strong>调试困难：</strong> 一名参与者分享了使用 ChatGPT 调试网上找到的代码时的不佳体验。他指出，自己不熟悉那段代码，因此无法正确评价 ChatGPT 的输出；ChatGPT 又将 Python 语法与其他语言混淆，进一步引起挫折感。</li>
+</ul>
+<h4>4.3 RQ3：使用 LLM 如何影响所创建的软件产品？</h4>
+<p>在理解 LLM 如何影响产出物（即代码和软件产品）方面，主要呈现出以下主题。</p>
+<h5>4.3.1 生成代码的质量与复杂度</h5>
+<ul>
+<li><strong>生成整洁、可读的代码：</strong> 六名参与者表示，他们认为 LLM 生成的代码整洁、可读且有条理。他们将其可读性比作 Stack Overflow 的标准回答或编程语言的官方文档。五名参与者（如 P4）赞赏其语法容易理解：“[ChatGPT] 总体上挺擅长避免生成难读或过于复杂的[代码]。而且直接让它提高代码可读性，通常对小段代码有效。我在这方面效果很好。”</li>
+<li><strong>生成复杂度合理的代码：</strong> 五名参与者认为，生成代码对于他们正在处理的任务，其复杂度达到尚可至良好的水平。特别是对于常见任务或众所周知的问题，参与者普遍认为生成代码的复杂度令人满意。P11 表示，ChatGPT 在较常见任务中的代码复杂度表现良好，但在新颖任务中不尽如人意：“时不时我会给它一些编程挑战题或面试类型的问题……我觉得它在这类题目上的表现更好，因为其他人已经发布过类似问题……但如果我给它的是自己实际工作经历中比较独特的数据结构问题，它就做得没那么好了。”</li>
+</ul>
+<p><a id="pdf-p31"></a></p>
+<h2>PDF 物理第 31 页（共 53 页）</h2>
+<ul>
+<li><strong>开展复杂度分析：</strong> 四名参与者将 LLM 作为检查代码片段时间复杂度和空间复杂度、解释不同方法优点的工具。对刚进入计算机领域的参与者而言，这也是学习机会。例如，初入该领域的 P16 描述了她使用 ChatGPT 学习复杂度的经历：“现在我学到一个阶段，已经理解什么是复杂度了。但有时如果我还不清楚，就会问：‘哦，这个问题的时间复杂度和空间复杂度是多少？解释一下为什么，并从复杂度角度说明这种方法与那种方法相比有什么好处。’这就像一个让我可以放心提问的空间。”</li>
+</ul>
+<p><strong>挑战</strong></p>
+<ul>
+<li><strong>信息不够新：</strong> 两名参与者指出，ChatGPT 生成的代码有时缺乏最新信息，尤其是在处理快速演进的技术或 API 时。</li>
+<li><strong>过度设计与复杂代码：</strong> 五名参与者担忧 LLM 过度设计解决方案，给简单问题增加不必要的复杂性和低效。P8 抱怨道：“我对 ChatGPT 输出的一个不满，就是过度设计……有些时候，我会觉得，比如我对它说：‘好，写一个简单的方法，呃，计算两个数相乘。’……有时它会把这样的事情过度设计。”对于较新颖或独特的挑战，一些参与者还观察到 ChatGPT 难以生成复杂度最优的代码。</li>
+</ul>
+<h5>4.3.2 最适合的使用场景</h5>
+<ul>
+<li><strong>擅长小型任务：</strong> 九名参与者认为 LLM 在处理小型任务方面表现出优势，尤其是涉及常规或标准流程的任务。他们发现，LLM 在可被分解到较细粒度的任务中最为有效，例如编写小段代码或实现基本功能。P4 谈到 ChatGPT 时说：“我基本把它的使用场景限定在函数级代码改进、一些小片段上，帮我从零开始做出初步的东西”；这一看法与他在迭代过程中经常丢弃代码的做法有关。</li>
+</ul>
+<p><strong>挑战</strong></p>
+<ul>
+<li><strong>生成文本优于生成代码：</strong> 两名参与者观察到，LLM 似乎在生成文本内容方面优于生成代码，可能与训练数据的组成有关。</li>
+</ul>
+<p><a id="pdf-p32"></a></p>
+<h2>PDF 物理第 32 页（共 53 页）</h2>
+<h5>4.3.3 安全性</h5>
+<ul>
+<li><strong>提供足够的安全性：</strong> 13 名参与者认为，对自身用途而言，LLM 生成的代码足够安全，主要因为他们没有将其用于生产环境或关键应用。还有人提到，LLM 的代码与任何公开可用的代码一样安全。七名参与者指出，这种判断与自己的具体使用场景有关。例如，P2 说：“我从来不需要用它处理任何涉及安全的方面。”此外，P14 使用 VPN，而 P4 和 P15 认为阅读生成的代码能进一步防范安全问题。</li>
+</ul>
+<p><strong>挑战</strong></p>
+<ul>
+<li><strong>向 LLM 发送数据的担忧：</strong> 八名参与者表示，他们明确避免在提示词中提供可识别身份、机密或其他专有信息。P3 对缺乏“信任与安全控制”表示担忧。一些参与者担心自己的数据可能被 OpenAI 等公司使用。P12 表示：“如果与 Bard 或 ChatGPT 的这些互动被记录下来，并在未来用作训练数据，那么这些模型有可能开始输出生产代码，甚至我们自己的内部代码。这是我们想要避免的。”值得注意的是，自 2023 年 4 月起，ChatGPT 已提供阻止用户查询被用于训练或改进模型的选项（Dastin and Tong 2023）；P14 和 P15 都表示曾使用这一功能来降低安全担忧。目前，Google Gemini 也允许用户在一定程度上控制 Google 如何使用其数据（Gemini Apps Privacy Hub 2024）；Copilot 则允许用户选择不将数据共享给模型训练（GitHub 2026）。</li>
+<li><strong>使用 LLM 输出数据的担忧：</strong> 八名参与者强调，开发者有责任确保代码正确，尤其要防止未经审查就复制和使用代码。两名参与者明确指出，出于安全考虑，不应直接复制未经审查的 LLM 代码。P11 说：“我觉得这很危险，对吧？比如在团队工作中，有人直接复制粘贴 ChatGPT 的[代码]，你知道，我可能会很不高兴。”P1 进一步担忧，恶意行为者可能注入投毒代码，而这些代码随后又用于进一步训练 ChatGPT，导致工具将来生成可被利用的代码。需要说明的是，这里以及上一项开发者所识别的挑战，都显然来自他们将对 LLM 工作机制的认识用于推断共享数据与在生产代码中使用 LLM 输出可能产生的风险。</li>
+</ul>
+<h4>4.4 RQ4：LLM 可能如何影响软件行业与教育？</h4>
+<p>关于 LLM 如何影响社会中的两个领域——软件行业与计算机科学教育——主要归纳出以下主题。</p>
+<p><a id="pdf-p33"></a></p>
+<h2>PDF 物理第 33 页（共 53 页）</h2>
+<h5>4.4.1 行业</h5>
+<ul>
+<li><strong>将 LLM 与现有实体或角色类比：</strong> 我们发现，九次访谈将 LLM 描述为承担原本常由其他人或工具担任的角色，包括结对程序员、助理或秘书、初级开发者、橡皮鸭（用于向其讲述问题的调试对象），或仅仅一种工具。例如，同事全被裁员的 P10 说：“过去几个月我一直独自工作。[ChatGPT] 就是我的初级同事，正试着帮我。”P5 也说：“[ChatGPT] 就像我们以前用的橡皮鸭，只不过它现在会给出答案、会跟我说话，还会提供我需要的各种建议。”这些结果表明，开发者仍在探索自己的职业未来，以及 LLM 最终将扮演什么角色。</li>
+<li><strong>对就业市场影响很小：</strong> 九名参与者认为软件开发领域的岗位总体上不会受到太大影响。他们指出，软件开发不只是编写代码，而且 LLM 不具备完全取代人类开发者的能力。P3 说：“我并不真的认为它会替代人，因为我觉得，如果至少以它当前这个版本来看，它已经能完成你的工作，那你一开始可能就不算是一个多好的程序员。”</li>
+<li><strong>同行广泛使用：</strong> 四名参与者观察到 ChatGPT 在同行中被广泛使用，说明 LLM 在专业环境中，特别是在科技公司，正越来越被接受和采用。</li>
+<li><strong>降低入门门槛：</strong> 三名参与者提到，LLM 通过提供帮助和资源，能够降低初级岗位的入门门槛。P6 希望 LLM 能回答编程新手的问题：“[ChatGPT] 确实降低了进入编程领域的门槛。所以你真的可以去问问题，而且根据你的专业水平或提问水平，它会给出相应层次的答案。”</li>
+</ul>
+<p><strong>挑战</strong></p>
+<ul>
+<li><strong>改变整体就业市场：</strong> 九名参与者认为 LLM 将改变和重新定位一般工作岗位。虽然他们承认 LLM 可能减少某些岗位，但也指出它有潜力创造新的就业机会。例如，P10 说：“[ChatGPT] 是一个非常强大的工具，它肯定会消灭不少白领岗位，但会创造更多工作。问题[在于]新岗位出现的速度有多快，以及失去工作的人能否得到培训。”</li>
+<li><strong>缺乏使用准则及其必要性：</strong> 八名参与者强调建立 LLM 使用准则的重要性，特别是对大型公司或处理安全敏感信息的组织而言。例如，P9 说：“我认为百分之百[公司应该制定准则]，尤其当你处理敏感信息时，比如金融机构或医疗[数据]。而且我确实认为，他们不应该试图使用像 OpenAI 这样的第三方 LLM，而应开始构建自己的模型，并将其部署在自己的 VPC 云环境里，达到自身安全标准。”这八名参与者中有五人指出，公司尚无专门的 LLM 使用准则，尽管不分享敏感信息的既有规定仍然适用。</li>
+</ul>
+<p><a id="pdf-p34"></a></p>
+<h2>PDF 物理第 34 页（共 53 页）</h2>
+<ul>
+<li><strong>减少对某些角色的需求：</strong> 五名参与者强调，LLM 可能减少完成某些任务和担任某些角色所需的开发者人数，例如用户界面专业人员或数据科学家。虽然这些参与者仍认为一定程度的人类参与不可或缺，但他们经常提到 LLM 替代或辅助劳动力的可能性。P2 分享道：“软件开发不只是写代码。我们仍然需要人。但我想，可能[LLM]能替代一名软件开发者，使一个人交付两个人的产出。我不确定会不会裁员，但规则肯定会变。”P12 等人更坚定地认为，大规模引入 LLM 将增加裁员：“某种程度上，我觉得公司总是在寻找把劳动力自动化掉的办法，这很糟糕。我认为像 Bard 和 ChatGPT 这样的 LLM，可能会产生相当显著的影响，足以让许多人丢掉工作。遗憾的是，我觉得从某种程度上看这不可避免。我认为，它会接手现有计算机相关工作中的一小部分工程任务；公司也可能发现，完成某些工作所需的工程师减少了，因此会雇用更少的工程师，然后自己拿走更多收益。这就像麦当劳的自助点餐机：你仍然需要麦当劳的员工维持门店运转，但有些容易的工作可以通过这种方式替代一定比例的员工，麦当劳就会从中赚到更多钱。”</li>
+<li><strong>削弱初级岗位：</strong> LLM 可能削弱对初级岗位的需求这一主题，在研究中出现了三次。例如，P6 提到：“我确实发现，生成代码的水平有时几乎和初级软件开发者一样好。所以我觉得，这确实提高了招聘初级软件开发者的门槛。”P15 也指出，新开发者应拓宽技能组合，以保持对技术进步的适应能力。</li>
+<li><strong>在求职面试中利用 LLM：</strong> 两名参与者担忧候选人在没有真实知识或技能的情况下使用 LLM 通过面试，认为可能需要改变公式化的面试技术。</li>
+</ul>
+<h5>4.4.2 教育</h5>
+<ul>
+<li><strong>鼓励作为学习工具使用：</strong> 10 名参与者认为，计算机科学课程应把 LLM 纳入教育，而不是彻底禁止。P5 说：“如果大学想让学生为行业工作做好准备，我认为，让学生接触如何正确使用 ChatGPT 来创作有影响力的代码和程序，肯定有利于他们适应专业企业环境。但是，你仍然必须具备数据结构、算法、如何设计代码数据库、SDLC 等方面的基础知识。所有这些不同的核心主题，仍应包含在课程中。”参与者强调，LLM 可以帮助学生解决问题、生成个性化题集，以及提高提示词工程技能。</li>
+<li><strong>教授提示词工程：</strong> 四名参与者强调，向学生教授提示词工程非常重要。例如，P13 说：“我觉得应该让学生认识这些工具，以及如何更好地提示。比如，我上大学时，一年级第一学期有一位老师，讲的第一件事就是如何使用 Google。我觉得如何写提示词将是类似的事情。”</li>
+</ul>
+<p><a id="pdf-p35"></a></p>
+<h2>PDF 物理第 35 页（共 53 页）</h2>
+<ul>
+<li><strong>禁止使用不切实际：</strong> 三名参与者从另一个角度看待问题，即禁止使用 LLM 并不切实际。例如，P2 说：“你无法回避它，因为每个人都能接触到……学生无论如何都会使用它。”参与者强调，LLM 可以辅助学习，特别有利于可能无法获得传统辅导或学习资源的弱势学生。</li>
+</ul>
+<p><strong>挑战</strong></p>
+<ul>
+<li><strong>强调基础概念：</strong> 六名参与者强调，与 ChatGPT 的整合相比，应优先考虑基础知识、理论理解和基本概念。他们认为，软件架构、算法设计和解决问题的技能等主题应具有更高优先级。例如，P1 说：“我觉得[大学]应该更多地做他们原本就应该做的事，不一定把重点放在特定实现或者某些特定的最优算法上，而是关注那些更宏观、更难理解的思想，比如如何构建软件架构，以及如何思考从商业想法走到实际产品需要什么。”还出现了 LLM 可能只是最新一种工具或技术、将来可能过时的担忧。例如，P6 说：“[计算机科学教育中]有一点始终不变：你正在学习、理解并掌握的编程语言和技术，等你进入就业市场时可能已经过时……我认为总的来说，课程应该更注重基础，因为这些基础在很大程度上保持不变。”</li>
+<li><strong>需要调整：</strong> 六名参与者承认，既然禁止 LLM 并不切实际，计算机教育项目就必须探索如何适应这一现实。四名参与者表示，LLM 使抄袭变得容易，鼓励学生使用现成答案，因此有必要改变教学方式。两名参与者建议教师重新设计作业，确保学生必须通过批判性思维和问题解决技能，真正理解概念，从而缓解作弊担忧。P2 说：“你可以这样设计作业：即使[学生]使用了[ChatGPT]，他们也必须理解概念。”另有两名参与者指出，应使学生具备在没有 LLM 帮助时编写代码的能力。</li>
+</ul>
+<h3>5 讨论</h3>
+<h4>5.1 LLM 驱动的软件开发社会技术转型</h4>
+<p>我们的研究表明，LLM 融入软件开发是一场根本性的社会技术转型。在人员、过程、产品和社会四个研究维度中，当开发者具备特定能力、在支持性的组织环境中工作，并持续开展批判性评价时，LLM 才能带来显著收益。</p>
+<p><a id="pdf-p36"></a></p>
+<h2>PDF 物理第 36 页（共 53 页）</h2>
+<p>这项技术本身并非天然有益或有害；它的影响取决于所处的社会技术系统。这与既有社会技术系统设计理论相一致：系统绩效取决于技术与社会子系统的联合优化，包括人员、机器和工作背景（Baxter and Sommerville 2011）。</p>
+<p>这四个维度之间存在深层联系。开发者信心与生产力的提高（RQ1）能够改善从构思到调试的软件开发过程（RQ2），但前提是与严格的验证实践相结合，以维持产品质量（RQ3）。开发者的工作重心从生成转向评价，本质上要求具备批判性验证和完善 LLM 输出的技能，并由此对开发者专业知识、组织工作流程及软件教育产生影响（RQ4）。</p>
+<p>这些相互作用揭示出三个贯穿各维度的主题。第一，有效使用 LLM 需要不同于传统编程技能的新能力：提示词工程、批判性评价和注重安全的集成（第 4.2.3 节）。第二，LLM 的效用高度依赖开发阶段：在实现阶段几乎被普遍采用，但对需求获取影响极小（第 4.2.1 节）。第三，人类判断、协作和领域专业知识始终重要。</p>
+<h5>5.1.1 生产力—质量悖论</h5>
+<p>如第 4.1 节所述，开发者报告的时间节省，与经常丢弃生成代码的做法交织在一起，形成一种可称为“生产力—质量悖论”（productivity-quality paradox）的现象。从生产力角度看，LLM 带来四方面帮助：（1）快速制作原型与迭代，即帮助开发者从初步想法迈向可用的起点；（2）通过示例学习，即将生成代码作为学习材料；（3）克服认知上的卡顿，即通过提出方法或提供样板代码，帮助开发者摆脱“不知道下一步怎么做”的困境；（4）减少搜索阻力，即直接提供综合性答案，不必让开发者逐一审查多个搜索结果。</p>
+<p>不过，生产力的提高也引入了新的实践与风险。许多参与者在集成前修改生成代码，或者把复制粘贴来的代码当作进一步适配的起点，而非最终实现。此外，轻易生成看起来合理的代码，可能减少深度学习和质量保证所需的认知投入。参与者表示，他们在代码审查中变得更加怀疑。因此，生产力—质量悖论同时揭示了机遇和责任：一方面，战略性地使用 LLM 能够加快开发；另一方面，开发者必须培养更强的评价技能，以确保生产力收益不会损害代码质量、安全性或学习。</p>
+<h4>5.2 研究发现的定位：早期采用模式与后续验证</h4>
+<p>我们于 2023 年年中收集的早期采用者数据，记录了随后大规模研究也报告的新兴模式。</p>
+<p><a id="pdf-p37"></a></p>
+<h2>PDF 物理第 37 页（共 53 页）</h2>
+<p>2024 至 2025 年开展的大规模行业研究，已经印证了若干重要发现。我们的受访者报告了显著的生产力收益，这与 GitHub 和 Accenture 在 2024 年的研究一致：该研究发现，70% 的开发者在重复性任务上投入的脑力减少，团队成功构建的次数增加了 84%（Gao and GitHub Customer Research 2024）。Hou 等人（2024）开展的系统性文献综述也提供了进一步佐证。</p>
+<p>我们记录的安全担忧与 Stack Overflow 2025 年开发者调查结果一致：81% 的开发者表示担忧 AI 智能体带来的隐私和安全影响。这是受访者在 2023 年使用的 LLM 向新阶段演进后出现的情况（Stack Overflow Developer Survey 2025）。我们发现 LLM 有助于学习，这也与近期教育研究相呼应：它们证明了 LLM 作为个性化学习工具的有效性，同时对可能阻碍学习的问题提出担忧（Shi et al. 2026；Tabarsi et al. 2025）。我们记录的提示词工程策略，如今也已被系统化地纳入关于有效提示模式的培训材料和研究中。</p>
+<p>然而，仅仅指出这些发现的一致性，会低估本研究的贡献。我们的定性方法与覆盖完整 SDLC 的关注范围，揭示了在基于调查或特定工具的研究中不那么明显的见解，形成了三项独特贡献。第一，研究揭示 LLM 采用具有明显的阶段依赖性：尽管在实现阶段几乎普遍使用，但对需求获取影响极小。这提供了细粒度的见解，说明 LLM 在开发生命周期的不同环节何处有用、为何有用。现有大多数研究狭窄地聚焦于单项软件工程任务或应用（Tang et al. 2024；Fatima et al. 2024），而我们对整个 SDLC 的映射表明，LLM 的效用高度依赖具体情境，从而对“LLM 正在改变软件开发”之类过度简化的叙事提出挑战。</p>
+<p>第二，我们根据观察到的实际实践，而非预先规定的技术，形成了包含五种提示词工程策略和五种验证方法的分类，为理解开发者实际如何使用 LLM 提供实证基础。我们的早期记录捕捉到这些实践在正式化之前的涌现性和试验性，不仅揭示了什么有效，还展示了开发者如何通过试错发现有效做法。</p>
+<p>第三，我们发现较高的代码丢弃比例与生产力收益并存，这对行业报告中流行的简化“生产力提升”指标提出挑战。这种生产力—质量悖论表明，LLM 的价值更在于认知支持（构思、探索和学习），而不只是直接复用代码。这一通过定性研究才能揭示的细微之处，从根本上重塑了我们应如何衡量和理解 LLM“生产力”的问题。调查研究若只是询问“你觉得 LLM 能提高生产力吗？”，就能捕捉感知价值，却忽视了大量拒绝生成代码与生产力收益并存的复杂现实。</p>
+<p>本研究的独特价值来自三项方法选择的交集：（1）<strong>时间</strong>，在实践标准化之前捕捉早期采用；（2）<strong>方法</strong>，通过定性研究的深度揭示调查中看不见的细节；（3）<strong>范围</strong>，全面覆盖 SDLC，而不是狭窄地聚焦单项任务。通过记录 LLM 集成实践形成阶段的早期采用者经历，本研究不仅捕捉结果，也捕捉过程，即有效实践出现时所经历的推理、试验和意义建构。这种发展性视角有助于后续采用者，因为他们不仅需要知道应该做什么，也需要了解某些方法为何有效，以及如何根据特定情境进行调整。</p>
+<p><a id="pdf-p38"></a></p>
+<h2>PDF 物理第 38 页（共 53 页）</h2>
+<h5>5.2.1 跨越能力变化来解读研究发现</h5>
+<p>我们刚才所描述的 2023 年访谈叙述与如今较丰富的文献之间的一致性，在模式上存在，但方向上并不均衡。有些发现得到大规模研究再次确认，有些在形式上发生变化，至少还有一项发现，在我们的受访者当初遭遇问题的尺度上已经消失。我们认为，这种不均衡本身就具有启示性，而前文采用的“人员—过程—产品—社会”框架为解读它提供了视角。社会技术系统理论认为，任何组织系统的绩效都取决于社会与技术子系统的共同运作；这种共同运作带来的影响，与单靠技术子系统产生的影响，在性质上有所不同（Baxter and Sommerville 2011；Trist 1981）。借鉴创新扩散理论（diffusion-of-innovations theory），我们认为围绕新技术形成的实践通常会从非正式试验，经过共享资源中的正式化，逐渐发展到融入基础设施（Rogers et al. 2014）。</p>
+<p>结合这两个框架，早期采用时期的一项发现可能处在三种位置之一。第一，它可能位于社会与技术共同作用的系统中，此时 STS 预示，即使技术子系统发生变化，该发现也会持续存在。第二，它可能描述采用轨迹本身，此时 Rogers 的理论预示，实践形式会不断成熟，而底层扩散曲线仍然可见。第三，它可能仅位于技术子系统，此时 STS 预示，当技术子系统变化时，相关现象将消失、减弱，或改变其发生的尺度。2023 至 2026 年这一时期跨越了模型能力的重要跃迁和智能体工具的兴起，正好构成一个能够在分析上区分这三种情况的时间窗口。</p>
+<p>我们的多数发现位于社会技术系统的共同作用层面。研究结果中识别的生产力—质量悖论、LLM 在 SDLC 中使用的阶段依赖性、安全和数据共享担忧的持续存在（Stack Overflow 2023 Developer Survey 2023）、组织指导和政策的缺口（Klemmer et al. 2024；Mendes et al. 2024）、新手与资深开发者研究结果之间的差异（France 2024；Kazemitabaar et al. 2024）、与 GenAI 相关的工作要求和开发者倦怠的广泛担忧（Feng et al. 2025）、教育领域围绕整合与禁止的争论（Ferino et al. 2025），以及用团队成员的比喻描述 LLM 使用的方式，都在这一时间窗口持续存在或进一步强化。模型变得更强大时，这些模式并未消失。按照我们的 STS 解释，这说明它们产生于社会与技术子系统的共同运作，而非任何一个子系统独立作用。因此，即便模型能力继续变化，这些模式也很可能继续出现，并在未来针对其他 LLM 工具的定性研究中再次浮现。</p>
+<p>我们的两项发现，在实质内容上得以保留，但形式上沿 Rogers 所描述的轨迹发生演进。我们 2023 年收集的显著生产力收益报告，也见于后续大规模研究和系统性综述（Gao and GitHub Customer Research 2024；Hou et al. 2024；Cui et al. 2025）；与此同时，方法论文献在区分自我报告的收益与对照条件下测得的真实加速效果方面已更为成熟（Becker et al. 2025）。早期信号是正确的，但文献对于这些收益在什么条件下出现，已经更加谨慎。受访者 2023 年非正式发展出的提示词工程实践，后来被纳入课程和供应商指南（Fulford and Ng 2024；OpenAI: Prompt Engineering n.d.），如今又逐渐融入协调模型交互、规划和工具使用的结构化智能体工作流程（Hassan et al. 2025）。</p>
+<p><a id="pdf-p39"></a></p>
+<h2>PDF 物理第 39 页（共 53 页）</h2>
+<p>在这两种情况下，实质性发现都仍然成立，但实践的重心已从个人开发者转移到共享基础设施，这正是扩散曲线按照理论预测运作的体现。</p>
+<p>我们有一项不能泛化的发现，它帮助我们理解这种研究方法能够做什么、又不能做什么。五名参与者指出，上下文窗口限制是实现阶段反复出现的阻力；其中一人明确指出，模型甚至会用完编写实际代码的空间。在受访者所处理的函数和代码片段尺度上，到 2025—2026 年，这个问题基本已经消失：更大的上下文窗口足以容纳大部分函数级工作，而关于 LLM 局限的实证文献，已转向代码仓库尺度的任务。ML-Bench 和 SWE-bench Live 等基准测试继续记录这一尺度上的重大困难（Tang et al. 2024；Zhang et al. 2025b）。受访者报告的函数级问题是真实的，但它属于 2023 年模型能力状态的性质，而非人与工具关系的性质。这正是 STS 所预示的模式：当技术子系统发生变化时，仅位于技术子系统的影响就会消失。这一案例具有启示性，而不是否定研究。早期采用者实践的某一个时间截面，本身无法区分一种社会技术模式与一种受模型版本限制的模式；两者在当时都会显得迫切，都会造成真实阻力，也都会影响参与者的叙述。正是数据收集与分析之间的时间间隔，结合 STS 的解释，使得从实证上区分它们成为可能。</p>
+<p>这一分类也澄清了早期采用者数据所不能观察到的内容。智能体式及代码仓库尺度的软件工程（Jin et al. 2024；Hassan et al. 2025）已成为活跃的研究前沿，但在我们的受访者叙述中没有相应情况，因为访谈进行时，这些实践和工具尚未出现。我们的研究发现覆盖了 LLM 辅助软件工程图景中一个有明确边界的部分；数据中缺少智能体实践，与早期采用者研究方法所能捕捉的内容是一致的。因此，2023 年叙述的价值并非预测未来，而在于从数据收集到分析之间的间隔，使我们能够按因果作用的位置来区分研究发现。以下针对个人开发者、组织和教育者提出的启示，重点关注社会技术层面的发现和采用曲线层面的发现，即开发者需要培养的新能力、组织需要建立的治理框架，以及教育者需要考虑的课程调整。</p>
+<h5>5.2.2 面向个人开发者：新能力与实践</h5>
+<p>有效融入 LLM 要求开发者在传统编程技能之外培养补充性能力。研究揭示出三项：（1）提示词工程与问题表述，（2）批判性评价与验证，（3）注重安全的集成。要获得这些能力，开发者仍然需要扎实的数据结构、算法和软件架构基础。正如 P5 所强调的，LLM 的使用需要“扎实的基础，才能提出正确的查询”。</p>
+<p>研究发现，不同经验水平的开发者在 LLM 应用方式及感知风险方面存在差异。尤其是初级开发者，从中获得了显著的教育价值。相比之下，资深开发者主要利用 LLM 简化软件开发工作流程，从而保留认知资源来应对复杂的架构挑战。此外，主要是资深开发者明确表达了这种担忧：过度依赖 LLM 可能导致经验较少的同事的基础技能退化。除经验外，开发者是在团队中工作还是独立工作，也会影响其使用 LLM 的方式。</p>
+<p><a id="pdf-p40"></a></p>
+<h2>PDF 物理第 40 页（共 53 页）</h2>
+<p>对于独立工作的开发者而言，LLM 可以成为工具箱中非常有价值的补充，支持需求细化、研究和代码审查。P10 说：“过去几个月我一直独自工作。[ChatGPT] 就是我的初级同事，正试着帮我。”因此，虽然 LLM 不能替代人与人之间的协作，但如果使用得当，能够提高独立开发者的自给自足能力。</p>
+<p><strong>提示词工程与问题表述。</strong> 参与者认为提示词工程是一项需要持续培养的基本技能。我们的研究归纳出开发者使用的五种策略：</p>
+<ol>
+<li><strong>自适应具体程度（Adaptive specificity）。</strong> 许多参与者根据期望输出调整提示词的具体程度：宽泛提示有利于激发创造性的解决方案，而具体提示更容易得到有针对性的答案。</li>
+<li><strong>迭代细化（Iterative refinement）。</strong> 参与者通过后续查询澄清意图，并改进不完整或不准确的初始回答。</li>
+<li><strong>注重安全的泛化（Security-conscious generalization）。</strong> 向 LLM 提供提示之前，先抽象化处理机密信息。</li>
+<li><strong>上下文示例（Contextual examples）。</strong> 通过少样本示例引导模型输出。</li>
+<li><strong>对话管理（Conversation management）。</strong> 当上下文退化或受到干扰时，开始新的对话。</li>
+</ol>
+<p>与此密切相关的是问题分解。参与者指出，LLM 最适合处理小型、定义明确的任务，因此需要更加有意识地分解问题。有趣的是，有些人将这种要求视为一种促使实践改进的“推动机制”。P4 说：“[ChatGPT] 可能会迫使我把[问题]拆开……如果我无法向 ChatGPT 解释清楚，也许说明我自己还没有理解这个问题。”</p>
+<p>开发者可以通过 OpenAI 的全面指南（OpenAI: Prompt Engineering n.d.）和 DeepLearning.AI 的课程（Fulford and Ng 2024）等正式资源提升提示词工程能力，不过，经验式学习——即有意识地练习并反思任务——对于培养这项技能同样有价值。</p>
+<p><strong>批判性评价与验证。</strong> 参与者采用五种验证方法保障代码质量：（1）阅读生成的代码；（2）将输出与预期进行比较；（3）使用开发者工具或 REPL 环境开展手工测试；（4）使用外部测试框架；（5）查阅文档等外部来源。</p>
+<p>部分参与者报告称，自己的代码审查变得更加谨慎。他们强调，生成代码应接受独立核查，不能只看表面就直接接受。这种立场是合理的，因为 LLM 生成代码可能在语法上看似正确，却包含逻辑错误、过时的 API 或函数，或安全漏洞。一些参与者明确表示，不应未经审查就直接复制 LLM 代码。P11 指出：“我觉得这很危险，对吧？比如在团队工作中，有人直接复制粘贴 ChatGPT 的[代码]，你知道，我可能会很不高兴。”</p>
+<p><a id="pdf-p41"></a></p>
+<h2>PDF 物理第 41 页（共 53 页）</h2>
+<p>批判性评价也是学习机会。参与者通过针对代码提出具体问题来加深理解，并推动复杂任务的进展。</p>
+<p><strong>注重安全的集成。</strong> 参与者展现了双向安全意识，即一方面在提示时保护专有数据，另一方面检查生成代码是否存在漏洞。他们通过抽象化客户特定细节，并提交类似的使用场景而非专有数据，来保护机密信息。</p>
+<p>这种数据保护做法反映了适当的谨慎态度，因为输入 LLM 工具的代码和提示词可能被收集并用于改进服务。开发者必须确保符合合同要求，并考虑许可风险。部分参与者采取了保护措施，例如 P14 使用 VPN，P4 和 P15 依赖代码审查，但这些个人措施不能替代明确的组织政策。</p>
+<p>在输出端，参与者担忧未经审查使用 LLM 生成的代码。由于 LLM 往往不提供生成代码的来源，其出处与安全性仍不明确。P1 担忧恶意行为者可能注入投毒代码，再通过训练传播。</p>
+<p>许多参与者认为 LLM 生成的代码对自身用途而言足够安全，但这种信心似乎取决于具体情境，因为他们主要将 LLM 用于学习、原型设计或非生产环境开发。P2 也指出：“我从来不需要用它处理任何涉及安全的方面。”</p>
+<p>关键缓解策略包括：（1）对生成代码进行安全处理；（2）通过确保专有代码和敏感数据的保密性，维护数据完整性；（3）遵守安全标准。</p>
+<p><strong>培养批判性的 LLM 素养。</strong> 这些能力的基础是批判性 LLM 素养，即辨别何时信任、如何信任，以及在多大程度上信任 LLM 输出。开发者必须认识到其固有局限，包括幻觉、知识缺口、处理新颖问题的困难，以及无法提供引文出处。研究发现，LLM 擅长生成样板代码、解释代码和提供调试指引，但在需求获取、新颖问题与复杂推理方面存在困难。</p>
+<h5>5.2.3 面向组织：治理、使用准则与文化适应</h5>
+<p>个人开发者的能力固然必要，但组织支持对有效融入 LLM 同样关键。我们的研究从实证上确认，法律与合规方面的不确定性，是早期采用者直接面对的现实挑战。如前所述，参与者采用了自下而上的缓解措施（例如泛化信息、选择不将数据用于训练）；这些措施与他们对缺少正式准则以及更广泛安全问题的担忧相结合，揭示了明显的治理缺口。</p>
+<p><a id="pdf-p42"></a></p>
+<h2>PDF 物理第 42 页（共 53 页）</h2>
+<p><strong>建立明确的使用准则与政策。</strong> 组织应制定清晰的 LLM 使用政策，覆盖四个关键方面。首先，数据共享政策必须明确哪些信息可以向外部 LLM 提供商共享。正如 P9 所强调的，处理敏感数据的组织需要更严格的标准：“我认为百分之百[公司应该制定准则]，特别是处理敏感信息时，比如金融机构或医疗[数据]。”</p>
+<p>其次，代码审查要求必须规定审查的严格程度，并可根据关键性设置不同审查级别。第三，应在参考开发者意见的基础上，明确列出允许和禁止的使用场景。第四，文档和归属说明要求应明确，当 LLM 为代码库作出贡献时，组织期望如何记录并标注。</p>
+<p><strong>提供技术基础设施。</strong> 除政策外，组织还可以提供技术基础设施，在保障安全与控制的同时支持有效使用 LLM。具有特殊需求的组织可以投资于定制化 LLM 解决方案，在提供与情境相关的辅助能力的同时，解决专有信息方面的顾虑。一种方法是检索增强生成（Retrieval-Augmented Generation，RAG）（Lewis et al. 2020），它使 LLM 能够在推理时结合项目文档和代码仓库。其他方法包括在内部语料库上微调模型，以及在私有基础设施中部署模型；这些方法在定制程度与成本之间各有权衡。</p>
+<p><strong>促进文化和工作流程适应。</strong> LLM 集成不仅需要政策和基础设施，也需要文化适应。若干参与者将 LLM 比作团队成员（结对程序员、初级开发者或助理）。P15 指出，LLM 使人能够专注于那些“需要更多理解基础设施的高层次工作”，这表明团队必须重新思考工作流程和协作模式。其中有两个组织层面的方面尤为突出。首先，招聘标准可能逐渐更重视问题解决和批判性思维，而不是单纯的编码能力。其次，组织应围绕 LLM 使用培育实践共同体。例如，许多参与者认为提示词工程必不可少，却也报告称，他们是在缺少机构支持或共享学习机制的情况下独立发展这些技能的。</p>
+<h5>5.2.4 面向教育者：课程与教学法</h5>
+<p>计算机教育正面临一项根本性两难：LLM 能使学生在不理解代码的情况下生成代码，但这些工具又已无处不在，学生在未来的职业工作中必然接触，并且无论学校政策如何，学生现在就已经在使用。受访者主张将 LLM 融入教育，而非禁止，同时强调基础概念必须仍然是课程的核心。</p>
+<p><strong>禁止使用的不切实际与不公平。</strong> 一些参与者明确指出，禁止使用 LLM 不切实际。P2 说：“你无法回避它，因为每个人都能接触到……学生无论如何都会使用它。”禁止会造成多方面问题。第一，禁令无法有效执行，因为学生很容易通过个人设备访问 LLM。第二，遵守禁令的学生会处于不利地位：他们缺乏在 LLM 使用已成为常态的专业实践中所需的准备，而违反禁令的同伴反而获得不公平优势和宝贵经验。</p>
+<p><a id="pdf-p43"></a></p>
+<h2>PDF 物理第 43 页（共 53 页）</h2>
+<p>第三，禁止使用会错失教育机会；LLM 能使教育支持更加普及，惠及无力获得辅导资源的学生。教育者不应与不可避免的技术采用相对抗，而应积极引导。挑战在于如何设计课程，使其既利用 LLM 的收益，又保证真正的学习；同时要承认，当 LLM 可以瞬间完成某些传统练习时，这些练习的教学价值就会降低。</p>
+<p><strong>课程内容。</strong> 有效的课程必须平衡基础知识与 LLM 素养。若干参与者强调，数据结构、算法、软件架构和问题解决等基础概念仍然关键。教授基础知识最有力的理由是：缺乏基础知识的学生，无法判断 LLM 生成的代码是否正确、高效或合适。与此同时，课程应明确教授 LLM 素养，包括理解 LLM 的工作原理、其在不同任务中的能力与局限、提示词工程技术和批判性评价实践。</p>
+<p>LLM 素养课程可以包括以下模块：（1）LLM 的工作原理，包括训练过程、概率性输出以及由此产生的预期校准问题；（2）在 SDLC 不同阶段的优势与局限，说明 LLM 擅长的领域（实现、调试）及薄弱领域（需求获取、新颖问题）；（3）有效提示；（4）反复强调的验证实践；（5）安全、法律与伦理考量，涵盖数据隐私、代码来源和负责任地使用。LLM 素养不应只作为单独一门课程教授，而应贯穿整个课程体系，让学生在多样化情境中接触并学习其适当用途。</p>
+<p><strong>重新设计作业与真实性评价。</strong> 教学法必须与课程同步演进。可采用若干策略实现这一目标。第一，强调解释与论证，而不只是提交代码。作业可以要求学生实现解决方案，再解释设计决策、分析权衡并为其选择提供理由。LLM 可以生成实现，但要解释“为什么”，就必须真正理解。第二，采用面向过程的评价。要求学生记录开发过程，包括最初对问题的理解、遇到的挑战、如何利用 LLM，以及学到了什么。这将评价重心由产品转向过程，使 LLM 的使用更加透明且可评价。</p>
+<p>第三，应采用口头考试或现场编程，直接评价理解程度。学生如果无法在被追问时解释自己的代码，或无法在没有帮助的情况下解决类似问题，就暴露了学习上的缺口。第四，作业应设计得不易被 LLM 走捷径，例如提出 LLM 不擅长领域中的新颖问题。</p>
+<p><a id="pdf-p44"></a></p>
+<h2>PDF 物理第 44 页（共 53 页）</h2>
+<h4>5.3 不断演进的 LLM 图景：进步与持续存在的挑战</h4>
+<p>由于访谈开展于 2023 年春夏，LLM 领域此后发生了显著变化。理解这些变化，对于评价研究发现是否仍然适用，以及辨别哪些局限已经得到解决、哪些仍然存在，至关重要。尽管 OpenAI、Google 和 Anthropic 等主要 AI 公司的商用大语言模型取得了令人瞩目的进展，包括上下文窗口规模、推理能力、知识时效性和性能的大幅提升，但近期综述与研究表明，一些类别的局限仍然存在。技术局限包括：（1）在训练数据稀缺的真正新颖或高度专业化问题上存在困难；（2）难以在极长、复杂的互动中保持完全一致；（3）难以提供引文或说明信息来源（11 名参与者希望获得参考来源；由于 LLM 仍主要依赖参数化知识，这一问题持续存在）；（4）难以避免那些语法上看似正确、却存在细微语义错误的输出，因此仍需要人类持续警惕（Ferino et al. 2025；Zhang et al. 2025b；Hou et al. 2024；Tang et al. 2024）。</p>
+<p>此外，虽然旗舰模型已解决许多局限，但一些组织出于隐私或成本效率考虑而偏好的较小型或可本地部署模型，仍存在更加明显的能力约束。由于数据主权方面的担忧而无法使用云端 LLM 的组织，面临不同的权衡，因此我们的验证实践与注重安全的集成方面的发现，对这些组织尤其相关。</p>
+<p>对于优先考虑大语言模型所能带来规模与效率的组织而言，文献揭示了一个重大约束：LLM 处理大型代码仓库级上下文的能力仍然有限，而新一代基准测试已系统地量化这一点（Zhang et al. 2025b；Tang et al. 2024）。ML-BENCH 的结果尤其具有启发性：它表明，即便是领先的模型与智能体，在代码仓库尺度任务上仍有很大改进空间，而这些任务恰恰是现代企业环境中的常态。在此背景下，“智能体式软件工程”（Agentic Software Engineering）这一新范式正在兴起，它超越简单的代码生成，转向实现复杂、目标导向的软件工程目标（Hassan et al. 2025）。</p>
+<p>更根本地说，我们记录的许多局限属于社会技术问题，而不只是纯技术问题，因此单靠模型改进难以克服。LLM 可能妨碍学习，源于人们如何使用它，而非技术能力本身；即便代码生成完美无缺，如果学生不参与问题解决过程，也可能损害学习。同样，LLM 无法替代人类协作、利益相关方沟通和领域专业知识，反映出这些活动内在的人类属性。只要 LLM 会在用户输入上训练，或托管于外部环境，数据共享中的安全与隐私担忧就仍然突出。新手与专家之间的能力差距也将持续存在：受访者通过密集试验发展了复杂策略，而后来的采用者仍面临较大的学习曲线。</p>
+<p><a id="pdf-p45"></a></p>
+<h2>PDF 物理第 45 页（共 53 页）</h2>
+<p>我们的发现之所以超越受访者当时所使用的特定模型而依然相关，有两个原因。首先，我们记录的模式反映的是软件工作和 LLM 介入开发的基本特征，而非模型一时的弱点。阶段依赖的采用模式（在实现与调试中效用较高、对需求获取影响极小）之所以持续存在，是因为它反映了活动本身的性质差异（技术性的与协作性的、定义明确的与模糊的），而非模型局限。生产力—质量悖论，即节约时间与高代码丢弃率并存，揭示的是 LLM 如何转移认知工作而非消除认知工作；只要人工监督仍然必要，这一模式就依然相关。</p>
+<p>我们识别的能力（提示词工程、批判性评价、注重安全的集成）在不同模型世代中仍然必不可少。具体策略可能演变，但为 LLM 有效表述问题的底层技能将持续存在。只要 LLM 仍可能生成看似合理却不正确的代码，参与者采用的验证方法就仍然必要。</p>
+<p>其次，早期采用者形成的实践，会随着技术成熟而制度化。受访者通过试验发展出的提示词工程策略，如今已出现在正式培训材料中。他们的验证工作流程为组织政策提供依据。他们的安全担忧影响了监管讨论和厂商功能。通过记录这些新兴实践，本研究既捕捉有效使用 LLM 的结果，也捕捉其背后的推理过程，提供了随工具演进仍然相关的见解。</p>
+<p>未来，集成新 LLM 能力的开发者或采用 LLM 技术的组织，仍将面对类似挑战：通过试验了解什么有效、发展验证策略、平衡生产力与质量，以及建立适当治理。受访者的经历为应对这些挑战提供了有价值的模板，使研究发现不只是 2023 年工具能力的时间截面，更成为 LLM 集成的路线图。正如 P6 所预见的：“基础始终不变。”即使 LLM 能力不断提升，人类在问题表述、批判性评价、协作沟通和负责任集成中的工作仍会持续存在。</p>
+<h3>6 可信性</h3>
+<p>第 3.1 节所述的建构主义／解释主义认识论立场，直接影响我们如何评价本研究的严谨性。传统的效度和信度标准植根于实证主义认识论，后者假定客观现实独立于研究者而存在（Lincoln and Guba 1985），这与我们的解释主义立场不相容。因此，我们采用 Lincoln 和 Guba 关于自然主义探究可信性评价的框架（Lincoln and Guba 1985），将其作为评价研究严谨性的适当基础。我们考察适用于解释主义定性研究的四项标准：可信度（credibility）、可迁移性（transferability）、可靠性（dependability）和可证实性（confirmability）。</p>
+<p><a id="pdf-p46"></a></p>
+<h2>PDF 物理第 46 页（共 53 页）</h2>
+<h4>6.1 可信度</h4>
+<p>可信度指研究发现能够在多大程度上准确反映参与者的经历和观点。本研究开展期间，LLM 工具快速变化（例如早期 GPT-3.5 和 Google Bard 版本），这可能以我们无法完全控制的方式影响参与者的经历。由于访谈持续数月，不同参与者使用的模型版本或配置可能略有差异。与其将其作为需要控制的混杂因素，我们更愿意将其视为早期采用者在技术快速变化时期的真实生活经历，这与解释主义立场一致。因此，应将研究发现解释为对早期 LLM 辅助开发的一般性刻画，而不是对任何特定模型行为的描述。</p>
+<p>我们的“生产力”“学习”和“过程影响”等构念，依据的是参与者在访谈中的自我报告，而非直接观察工作实践或客观测量。这符合解释主义研究的要求：它将参与者自身的解释视为有意义的数据，而非需要消除的噪声（Lincoln and Guba 1985）。我们通过要求参与者提供具体实例、对多个参与者的解释进行三角互证、以直接引文支撑论断，并让多名研究者参与编码，来缓解可信度威胁。</p>
+<h4>6.2 可迁移性</h4>
+<p>可迁移性指研究发现能够在多大程度上适用于其他情境（Lincoln and Guba 1985）。我们不声称其具有统计意义上的普遍适用性，而是提供样本与研究背景的描述，使读者能够评价这些发现与自身环境的相关程度。</p>
+<p>参与者的地域局限——多数位于美国——限制了研究发现对其他地区或文化环境的适用性。本地化编程实践、语言偏好、能否使用特定 LLM 功能等因素，都可能影响这些工具在非美国环境中的表现。此外，样本缺乏多样性，主要由拥有三年以上经验的白人或亚裔男性组成。代表性不足群体的经历和挑战，例如女性、非二元性别者、残障开发者，以及不同种族、族裔和经验背景的开发者，可能与当前样本存在显著差异。虽然我们在 LinkedIn 上公开发布了研究招募信息，但我们认识到，未来研究需要采取更多策略，保证参与者群体更加多样、具有更广泛的代表性。需要指出，目的性抽样策略旨在最大化样本与研究问题的相关性，而非人口统计代表性，这与定性调查研究的目标相符（Ralph et al. 2021）。</p>
+<p>此外，我们采用便利抽样，且参与者自行选择是否积极讨论 LLM 使用情况，因此研究发现可能偏向投入程度更高、经验更丰富的早期采用者。将结果推广到对 LLM 热情较低或经验较少的开发者时，应保持谨慎。这与本研究刻画早期采用者经历、而非对整体开发者群体作出断言的目标一致。</p>
+<p><a id="pdf-p47"></a></p>
+<h2>PDF 物理第 47 页（共 53 页）</h2>
+<p>数据收集以来 LLM 工具的快速演进，也进一步影响研究发现的可迁移性。参与者于 2023 年初至年中使用的工具，包括早期 ChatGPT、Google Bard 和 GitHub Copilot，均已发生很大变化，之后还出现了新工具。因此，读者应将我们的发现视为对 LLM 辅助软件实践发展过程中某一特定时期的刻画，而非当前工具能力或开发者经历的静态描述。第 5.2 节讨论了数据收集以来各主题的发展情况。</p>
+<h4>6.3 可靠性</h4>
+<p>可靠性指分析过程随时间推移的稳定性与一致性（Lincoln and Guba 1985）。我们在整个分析过程中详细保留编码决策与主题发展的审计轨迹，并记录在 Airtable 编码数据库中。主题分析采取迭代方式，三名研究者进行了多轮讨论与完善，进一步增强了研究发现的可靠性。只有少数参与者使用 Google Bard 或 GitHub Copilot Chat 等工具，因此，针对特定工具的观察，特别是使用较少的系统，应视为暂时性结论。我们主要关注跨工具的实践与认知，而不是比较评价各个产品。</p>
+<h4>6.4 可证实性</h4>
+<p>可证实性指研究发现反映参与者经历、而不是研究者偏差的程度（Lincoln and Guba 1985）。我们采取多项策略增强可证实性，包括由三名研究者独立编码、迭代完善编码本、基于共识协调分歧，以及让一名未主持访谈的编码者参与分析。我们还在分析过程中持续进行反思，仔细区分参与者观点与自身解释，详见第 3.5.2 节。</p>
+<p>本研究没有计算评分者间信度（Inter-Rater Reliability，IRR），因为 Cohen’s Kappa 等 IRR 指标假设编码属于客观分类，与我们的解释主义立场不相容（Braun and Clarke 2006）。主题分析将编码视为解释性活动，因此通过研究者讨论开展协商一致性验证，是恰当的机制（Braun and Clarke 2006）。</p>
+<p>研究有 16 名参与者、约 16 小时访谈数据，其设计目的是开展深入主题分析，而非统计泛化。第 3.5.1 节以实证数据报告了编码饱和的证据。主题计数（例如多少名参与者提到某一实践）应被理解为本样本内部的描述性下界，而非对这些实践在整个行业中有多普遍的精确估计。我们通过多名研究者独立编码、迭代修订编码本、讨论达成共识等标准定性方法，缓解结论效度面临的威胁。</p>
+<p><a id="pdf-p48"></a></p>
+<h2>PDF 物理第 48 页（共 53 页）</h2>
+<h3>7 结论</h3>
+<p>自 LLM 诞生以来，人们就已明确，它们将以不同方式影响软件开发。本研究旨在考察 LLM 对软件开发者、开发过程、产品以及更广泛社会的影响。通过对 16 名早期采用者开发者的访谈，我们探究了他们自我报告的日常活动、认知和 LLM 使用经历。对回答进行定性分析后，我们发现：</p>
+<ul>
+<li><strong>RQ1：人员。</strong> LLM 为开发者提供多种收益，包括提高生产力和效率、节约时间、简化搜索、提供模板，以及加快学习。不过，开发者也面临一些挑战，例如 LLM 的回答偶尔不可靠。</li>
+<li><strong>RQ2：过程。</strong> 在 SDLC 中，LLM 对需求获取和规划的影响极小，仅有少数参与者将其用于重构。LLM 对构思、测试生成、调试和文档编写的影响也大多是积极的。开发者在提示词工程与生成代码评价方面采取多种策略，例如调整提示词的具体程度，或在脑中进行检查。</li>
+<li><strong>RQ3：产品。</strong> LLM 能生成易读的代码，且适合简单任务，但针对不同问题的生成质量各不相同，并且在处理复杂任务时存在困难。</li>
+<li><strong>RQ4：社会。</strong> 有必要为软件开发者在工作场所使用 LLM 建立正式、主动的使用准则，尤其要促进生成式人工智能的合乎伦理和安全的使用。此外，人们预期 LLM 将导致初级岗位发生变化，且普遍认为 LLM 更可能改变或重新定位与开发相关的岗位，而不是将其彻底消除。最后，无论代码来自何处、采用什么过程生成，开发者都对其最终部署的代码负有责任。</li>
+</ul>
+<p>这 16 名受访开发者对 LLM 的工作机制和数据来源已有较深入的理解。这种理解影响了开发者决定何时、如何及为何使用 LLM。其见解有助于制定在计算机教育和工作环境中使用 LLM 的最佳实践。由于访谈开展于 2023 年，我们明确将其与较新的研究比较，发现早期关于生产力收益、安全和隐私担忧、LLM 在 SDLC 中的阶段依赖性使用，以及提示词工程实践的报告，大体上持续存在；但一些关于代码质量、测试自动化和初级岗位影响的最初预期已经有所弱化。总体而言，参与者认为 LLM 带来的机会多于挑战：尽管对代码质量和局限存在担忧，他们仍认为 LLM 对开发者而言足够有用。因此，我们的发现表明，LLM 可以成为专业开发者工具箱中的宝贵工具。正如一名参与者所说：“[ChatGPT] 就像计算器刚发明时一样。我们会禁止一阵子，告诉[学生]不行、不行、不行，你们不能用。可等他们一毕业，就会天天用它。”</p>
+<p><strong>作者贡献：</strong> Benyamin Tabarsi 和 Heidi Reichert 对本文贡献相同。材料准备和数据收集主要由 Benyamin Tabarsi 与 Heidi Reichert 负责。初始编码和分析由两人完成，Ally Limke 在数据标记过程中提供了额外支持，Sandeep Kuttal 协助了标签分组。</p>
+<p><a id="pdf-p49"></a></p>
+<h2>PDF 物理第 49 页（共 53 页）</h2>
+<p>论文初稿由 Benyamin Tabarsi 和 Heidi Reichert 撰写。Sam Gilson 对手稿多个部分的完善与更新作出了重要贡献，尤其是相关工作和讨论章节。Sandeep Kuttal 与 Tiffany Barnes 担任指导作者，对研究设计、分析和结果解释提供指导。所有作者（Benyamin Tabarsi、Heidi Reichert、Sam Gilson、Ally Limke、Sandeep Kuttal 和 Tiffany Barnes）均审阅、评论并批准了最终手稿。</p>
+<p><strong>资助：</strong> 本研究依据美国空军科学研究办公室（Air Force Office of Scientific Research，AFOSR）资助编号 FA9550-21-1-0108，以及美国国家科学基金会（National Science Foundation，NSF）资助编号 IIS-2313890、CCF-2006977 和 IIS-1917885 所支持的工作开展。本文表达的任何观点、发现、结论或建议均属于作者个人，不一定反映 AFOSR 或 NSF 的观点。</p>
+<p><strong>数据可用性：</strong> 支持本研究结论的访谈数据包含可能损害参与者隐私的信息，因此受到机构审查委员会（Institutional Review Board，IRB）限制（北卡罗来纳州立大学，方案编号 #25913）。为遵守这些伦理要求，完整录音与逐字转录稿不向公众开放。</p>
+<p><strong>声明</strong></p>
+<ul>
+<li><strong>利益冲突：</strong> 作者声明不存在需要披露的相关财务或非财务利益。</li>
+<li><strong>伦理批准：</strong> 本研究已经北卡罗来纳州立大学机构审查委员会审查和批准（方案编号 #25913）。</li>
+<li><strong>知情同意：</strong> 所有参与者在参与之前均提供了知情同意，包括同意发表匿名化引文。</li>
+<li><strong>临床试验编号：</strong> 不适用。</li>
+</ul>
+<p><strong>开放获取：</strong> 本文采用知识共享“署名 4.0 国际”（Creative Commons Attribution 4.0 International）许可证。只要适当注明原作者和来源、提供知识共享许可证链接并说明是否作过修改，就允许在任何媒体或形式中使用、分享、改编、传播和复制。除非图片或其他第三方材料的出处说明另有标注，本文中的此类材料也包含在上述知识共享许可证之内。如果某项材料未被纳入该许可证，而拟议用途又不属于法定许可范围或超出法定许可范围，则须直接向著作权人取得许可。许可证全文见：<a href="http://creativecommons.org/licenses/by/4.0/%E3%80%82">http://creativecommons.org/licenses/by/4.0/。</a></p>
+<h3>参考文献</h3>
+<ul>
+<li>Afroz, S., Feng, Z., Menezes, T., Kimura, K., Trinkenreich, B., Steinmacher, I., Sarma, A. (2025) The Fast and Spurious: Developer Productivity with GenAI.〔中文译名：迅速却未必真实：生成式 AI 时代的开发者生产力〕 arXiv:2510.24265, <a href="https://doi.org/10.48550/arXiv.2510.24265">https://doi.org/10.48550/arXiv.2510.24265</a></li>
+<li>AlOmar EA, Venkatakrishnan A, Mkaouer MW, Newman C, Ouni A (2024) How to refactor this code? An exploratory study on developer-ChatGPT refactoring conversations.〔中文译名：如何重构这段代码？对开发者与 ChatGPT 重构对话的探索性研究〕 In: Proceedings of the 21st international conference on mining software repositories, pp 202–206</li>
+<li>Alsheibani S, Cheung Y, Messom C (2018) Artificial intelligence adoption: AI-readiness at firm-level.〔中文译名：人工智能采用：企业层面的 AI 准备程度〕 In: Proceedings of the 22nd Pacific Asia Conference on Information Systems (PACIS 2018), p 37. <a href="https://aisel.aisnet.org/pacis2018/37">https://aisel.aisnet.org/pacis2018/37</a></li>
+<li>Amazon Web Services (n.d.) What is SDLC? - Software Development Lifecycle Explained - AWS.〔中文译名：什么是 SDLC？——AWS 软件开发生命周期解读〕 <a href="https://aws.amazon.com/what-is/sdlc/">https://aws.amazon.com/what-is/sdlc/</a></li>
+<li>Baxter G, Sommerville I (2011) Socio-technical systems: From design methods to systems engineering.〔中文译名：社会技术系统：从设计方法到系统工程〕 Interact Comput 23(1):4–17. <a href="https://doi.org/10.1016/j.intcom.2010.07.003">https://doi.org/10.1016/j.intcom.2010.07.003</a></li>
+<li>Becker J, Rush N, Barnes E, Rein D (2025) Measuring the impact of early-2025 AI on experienced open-source developer productivity.〔中文译名：衡量 2025 年初 AI 对经验丰富的开源开发者生产力的影响〕 arXiv:2507.09089, <a href="https://doi.org/10.48550/arXiv.2507.09089">https://doi.org/10.48550/arXiv.2507.09089</a></li>
+</ul>
+<p><a id="pdf-p50"></a></p>
+<h2>PDF 物理第 50 页（共 53 页）</h2>
+<ul>
+<li>Belzner L, Gabor T, Wirsing M (2023) Large language model assisted software engineering: prospects, challenges, and a case study.〔中文译名：大语言模型辅助软件工程：前景、挑战与案例研究〕 International Conference on Bridging the Gap Between AI and Reality. Springer, pp 355–374</li>
+<li>Braun V, Clarke V (2006) Using thematic analysis in psychology.〔中文译名：在心理学中运用主题分析〕 Qual Res Psychol 3(2):77–101</li>
+<li>Chattopadhyay S, Nelson N, Gonzalez YR, Leon AA, Pandita R, Sarma A (2019) Latent patterns in activities: A field study of how developers manage context.〔中文译名：活动中的潜在模式：开发者如何管理上下文的实地研究〕 In: 2019 IEEE/ACM 41st International Conference on Software Engineering (ICSE), pp 373–383. IEEE</li>
+<li>Chen M, Tworek J, Jun H, Yuan Q, Ponde de Oliveira Pinto H, Kaplan J, Edwards H, Burda Y, Joseph N, Brockman G et al (2021) Evaluating large language models trained on code.〔中文译名：评价在代码上训练的大语言模型〕 arXiv:2107.03374</li>
+<li>Chen P, Alias SB (2024) Opportunities and challenges in the cultivation of software development professionals in the context of large language models.〔中文译名：大语言模型背景下软件开发专业人才培养的机遇与挑战〕 In: Proceedings of the 2024 international symposium on artificial intelligence for education, pp 259–267</li>
+<li>Chen X, Gao C, Chen C, Zhang G, Liu Y (2024) An empirical study on challenges for LLM developers.〔中文译名：关于大语言模型开发者面临挑战的实证研究〕 <a href="https://arXiv:2408.05002">https://arXiv:2408.05002</a></li>
+<li>Chen, XA, Knearem T, Li Y (2025) The genui study: Exploring the design of generative UI tools to support UX practitioners and beyond.〔中文译名：GenUI 研究：探索支持用户体验从业者及更广泛群体的生成式界面工具设计〕 In: Proceedings of the 2025 ACM Designing Interactive Systems Conference. DIS ’25, pp 1179–1196. Association for Computing Machinery, New York, NY, USA. <a href="https://doi.org/10.1145/3715336.3735780">https://doi.org/10.1145/3715336.3735780</a></li>
+<li>Creswell JW, Creswell JD (2017) Research Design: Qualitative, Quantitative, and Mixed Methods Approaches.〔中文译名：研究设计：定性、定量与混合研究方法〕 Sage publications</li>
+<li>Cui ZK, Demirer M, Jaffe S, Musolff L, Peng S, Salz T (2025) The effects of generative AI on high-skilled work: Evidence from three field experiments with software developers.〔中文译名：生成式人工智能对高技能工作的影响：来自软件开发者三项实地实验的证据〕 Available at SSRN 4945566:</li>
+<li>Dastin J, Tong A (2023) OpenAI rolls out ’incognito mode’ on ChatGPT 〔中文译名： Reuters.|OpenAI 为 ChatGPT 推出“无痕模式”〕| Reuters. <a href="https://www.reuters.com/technology/openai-rolls-out-incognito-mode-chatgpt-2023-04-25/">https://www.reuters.com/technology/openai-rolls-out-incognito-mode-chatgpt-2023-04-25/</a></li>
+<li>Demir KA (2017) 3PR framework for software project management: People, process, product, and risk.〔中文译名：软件项目管理的 3PR 框架：人员、过程、产品与风险〕 In: Zaigham, M. (ed.) Software Project Management for Distributed Computing: Life-Cycle Methods for Developing Scalable and Reliable Tools, pp 153–186. Springer, Cham. <a href="https://doi.org/10.1007/978-3-3">https://doi.org/10.1007/978-3-3</a> 19-54325-3_7</li>
+<li>Essel HB, Vlachopoulos D, Essuman AB, Amankwa JO (2024) ChatGPT effects on cognitive skills of undergraduate students: Receiving instant responses from AI -based conversational large language models (LLMs ).〔中文译名：ChatGPT 对本科生认知技能的影响：从基于 AI 的对话式大语言模型获得即时回答〕 Comput Educ Artif Intell 6:100198</li>
+<li>Fatima S, Hemmati H, Briand L (2024) Flakyfix: Using large language models for predicting flaky test fix categories and test code repair.〔中文译名：FlakyFix：利用大语言模型预测不稳定测试的修复类别并修复测试代码〕 IEEE Transactions on Software Engineering (TSE)</li>
+<li>Feng, Z., Afroz, S., Sarma, A. (2025) From Gains to Strains: Modeling Developer Burnout with GenAI Adoption.〔中文译名：从收益到负担：对采用生成式 AI 与开发者职业倦怠之间关系的建模〕 arXiv:2510.07435</li>
+<li>Ferino S, Hoda R, Grundy J, Treude C (2025) Novice Developers’ Perspectives on Adopting LLMs for Software Development: A Systematic Literature Review.〔中文译名：新手开发者对采用大语言模型进行软件开发的看法：系统性文献综述〕 arXiv:2503.07556</li>
+<li>Forsgren N, Storey M-A, Maddila C, Zimmermann T, Houck B, Butler J (2021) The SPACE of developer productivity: There’s more to it than you think.〔中文译名：开发者生产力的 SPACE：内涵远比你想象的丰富〕 ACM Queue 19(1):20–48. <a href="https://doi.org/10.1145/345">https://doi.org/10.1145/345</a> 4122.3454124</li>
+<li>Fowler M, Highsmith J et al (2001) The agile manifesto〔中文译名：敏捷软件开发宣言〕 Software development 9(8):28–35</li>
+<li>France SL (2024) Navigating software development in the chatgpt and github copilot era.〔中文译名：在 ChatGPT 和 GitHub Copilot 时代开展软件开发〕 Bus Horiz 67(5):649–661. <a href="https://doi.org/10.1016/j.bushor.2024.05.009">https://doi.org/10.1016/j.bushor.2024.05.009</a>. SPECIAL ISSUE: WRITTEN BY CHATGPT</li>
+<li>Fulford I, Ng A (2024) ChatGPT Prompt Engineering for Developers.〔中文译名：面向开发者的 ChatGPT 提示词工程〕 DeepLearning.AI. <a href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/">https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/</a></li>
+<li>Gabison, GA, Xian RP (2025) Inherent and emergent liability issues in LLM -based agentic systems: a principal-agent perspective.〔中文译名：基于 LLM 的智能体系统中的固有与新兴责任问题：委托—代理视角〕 In: Proceedings of the 1st Workshop for Research on Agent Language Models (REALM 2025), pp 109–130. Association for Computational Linguistics. <a href="https://doi.org/10.18653/v1/2025.realm-1.9">https://doi.org/10.18653/v1/2025.realm-1.9</a></li>
+<li>Gao, Y., GitHub Customer Research (2024) Research: Quantifying GitHub Copilot's impact in the enterprise with Accenture.〔中文译名：研究：与埃森哲合作量化 GitHub Copilot 对企业的影响〕 GitHub Blog. <a href="https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/">https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/</a></li>
+<li>Gemini Apps Privacy Hub〔中文译名：Gemini 应用隐私中心〕 (2024) Google. <a href="https://support.google.com/gemini/answer/13594961?hl=en">https://support.google.com/gemini/answer/13594961?hl=en</a></li>
+<li>GitHub (2026) Managing GitHub Copilot policies as an individual subscriber.〔中文译名：作为个人订阅者管理 GitHub Copilot 政策〕 GitHub Docs. <a href="https://docs.github.com/en/copilot/how-tos/manage-your-account/manage-policies">https://docs.github.com/en/copilot/how-tos/manage-your-account/manage-policies</a></li>
+<li>Google Threat Intelligence Group (2025) GTIG AI Threat Tracker: Advances in Threat Actor Usage of AI Tools.〔中文译名：GTIG AI 威胁追踪：威胁行为者使用 AI 工具的最新进展〕 Google Cloud. <a href="https://cloud.google.com/blog/topics/threat-intelligence/threat-actor-usage-of-ai-tools">https://cloud.google.com/blog/topics/threat-intelligence/threat-actor-usage-of-ai-tools</a></li>
+<li>Guest G, Bunce A, Johnson L (2006) How many interviews are enough? an experiment with data saturation and variability.〔中文译名：多少次访谈才足够？关于数据饱和与变异性的实验〕 Field Methods 18(1):59–82</li>
+</ul>
+<p><a id="pdf-p51"></a></p>
+<h2>PDF 物理第 51 页（共 53 页）</h2>
+<ul>
+<li>Guo Q, Cao J, Xie X, Liu S, Li X, Chen B, Peng X (2024) Exploring the potential of ChatGPT in automated code refinement: An empirical study.〔中文译名：探索 ChatGPT 在自动化代码改进中的潜力：实证研究〕 In: 2024 IEEE/ACM 46th International Conference on Software Engineering (ICSE), pp 1–13 . IEEE</li>
+<li>Hassan AE, Li H, Lin D, Adams B, Chen T-H, Kashiwa Y, Qiu D (2025) Agentic Software Engineering: Foundational Pillars and a Research Roadmap.〔中文译名：智能体式软件工程：基础支柱与研究路线图〕 arXiv:2509.06216</li>
+<li>Hemmat A, Sharbaf M, Kolahdouz-Rahimi S, Lano K, Tehrani SY (2025) Research directions for using LLM in software requirement engineering: A systematic review.〔中文译名：使用 LLM 开展软件需求工程的研究方向：系统性综述〕 Front Comput Sci 7:1519437</li>
+<li>Hoff M, Mok A, Zinkula J (2023) 4 white-collar jobs most at risk of getting replaced by AI like chatgpt.〔中文译名：最容易被 ChatGPT 等 AI 替代的四类白领工作〕 Business Insider. <a href="https://www.businessinsider.com/chatgpt-white-collar-jobs-at-risk-artificial-intelligence-ai-2023-2">https://www.businessinsider.com/chatgpt-white-collar-jobs-at-risk-artificial-intelligence-ai-2023-2</a></li>
+<li>Hörnemalm A (2023) ChatGPT as a Software Development Tool.〔中文译名：作为软件开发工具的 ChatGPT〕 (Master's thesis)</li>
+<li>Hou X, Zhao Y, Liu Y, Yang Z, Wang K, Li L, Luo X, Lo D, Grundy J, Wang H (2024) Large Language Models for Software Engineering: A Systematic Literature Review.〔中文译名：软件工程中的大语言模型：系统性文献综述〕 ACM Trans Softw Eng Methodol. <a href="https://doi.org/10.1145/3695988">https://doi.org/10.1145/3695988</a>. Accessed Nov 22 2024</li>
+<li>Islam NT, Khoury J, Seong A, Karkevandi MB, Parra GDLT, Bou-Harb E, Najafirad P (2024) LLM-Powered Code Vulnerability Repair with Reinforcement Learning and Semantic Reward.〔中文译名：结合强化学习与语义奖励的 LLM 驱动代码漏洞修复〕 arXiv:2401.03374</li>
+<li>Jeuring J, Groot R, Keuning H (2023) What skills do you need when developing software using chatgpt?〔中文译名：使用 ChatGPT 开发软件需要哪些技能？〕 (discussion paper). In: Proceedings of the 23rd Koli calling international conference on computing education research, pp 1–6</li>
+<li>Jin H, Huang L, Cai H, Yan J, Li B, Chen H (2024) From LLMs to LLM -based agents for software engineering: A survey of current, challenges and future.〔中文译名：从大语言模型到基于大语言模型的软件工程智能体：现状、挑战与未来综述〕 <a href="https://arXiv:2408.02479">https://arXiv:2408.02479</a></li>
+<li>Kazemitabaar M, Huang O, Suh S, Henley AZ, Grossman T (2024) Exploring the Design Space of Cognitive Engagement Techniques with AI-Generated Code for Enhanced Learning.〔中文译名：探索通过 AI 生成代码增强学习的认知参与技术设计空间〕 arXiv:2410.08922</li>
+<li>Kim G, Debois P, Willis J, Humble J (2016) The DevOps Handbook: How to Create World-Class Agility, Reliability, and Security in Technology Organizations.〔中文译名：DevOps 手册：如何在技术组织中打造世界级的敏捷性、可靠性和安全性〕 IT Revolution Press, Portland, OR</li>
+<li>Klemmer JH, Horstmann SA, Patnaik N, Ludden C, Burton Jr C, Powers C, Massacci F, Rahman A, Votipka D, Lipford HR et al (2024) Using AI assistants in software development: A qualitative study on security practices and concerns.〔中文译名：在软件开发中使用 AI 助手：关于安全实践与担忧的定性研究〕 <a href="https://arXiv:2405.06371">https://arXiv:2405.06371</a></li>
+<li>Leavitt HJ (1965) Applied organizational change in industry: Structural, technological and humanistic approaches.〔中文译名：行业中的应用型组织变革：结构、技术与人本主义方法〕 In: March JG (ed) Handbook of Organizations. Rand McNally, Chicago, pp 1144–1170</li>
+<li>Leffingwell D, Widrig D (2000) Managing Software Requirements: a Unified Approach.〔中文译名：软件需求管理：统一方法〕 Addison-Wesley Professional,</li>
+<li>Lewis P, Perez E, Piktus A, Petroni F, Karpukhin V, Goyal N, Küttler H, Lewis M, Yih W-T, Rocktäschel T et al (2020) Retrieval-augmented generation for knowledge-intensive NLP tasks.〔中文译名：面向知识密集型自然语言处理任务的检索增强生成〕 Adv Neural Inf Process Syst 33:9459–9474</li>
+<li>Li X, Ding J, Peng C, Zhao B, Gao X, Gao H, Gu X (2025) SafeGenBench: A Benchmark Framework for Security Vulnerability Detection in LLM-Generated Code.〔中文译名：SafeGenBench：用于检测 LLM 生成代码安全漏洞的基准框架〕 arXiv:2506.05692</li>
+<li>Lincoln YS, Guba EG (1985) Naturalistic Inquiry.〔中文译名：自然主义探究〕 SAGE Publications, Newbury Park, CA</li>
+<li>Mendes W, Souza S, De Souza C (2024) &quot;Y ou’re on a bicycle with a little motor&quot;: Benefits and challenges of using ai code assistants.〔中文译名：“你就像骑着一辆装有小马达的自行车”：使用 AI 编码助手的收益与挑战〕 In: Proceedings of the 2024 IEEE/ACM 17th international conference on cooperative and human aspects of software engineering, pp 144–152</li>
+<li>Microsoft Threat Intelligence (2025) SesameOp: Novel backdoor uses OpenAI Assistants API for command and control.〔中文译名：SesameOp：利用 OpenAI Assistants API 进行命令与控制的新型后门程序〕 Microsoft Security Blog. <a href="https://www.microsoft.com/en-us/security/blog/2025/11/03/sesa">https://www.microsoft.com/en-us/security/blog/2025/11/03/sesa</a> meop-novel-backdoor-uses-openai-assistants-api-for-command-and-control</li>
+<li>Miles J, Gilbert P (2005) A Handbook of Research Methods for Clinical and Health Psychology.〔中文译名：临床与健康心理学研究方法手册〕 Google-Books-ID: kmZ3Yt5pY0YC. Oxford University Press. Google-Books-ID: kmZ3Yt5pY0YC</li>
+<li>Miller C, Choudhuri R, Ulloa M, Haniyur S, DeLine R, Storey M-AD, Murphy-Hill ER, Bird C, Butler JL (2025) “M aybe we need some more examples:” individual and team drivers of developer GenAI tool use.〔中文译名：“也许我们还需要更多示例”：影响开发者使用生成式 AI 工具的个人与团队因素〕 , <a href="https://doi.org/10.48550/arXiv.2507.21280">https://doi.org/10.48550/arXiv.2507.21280</a></li>
+<li>Mok A, Zinkula J (2023) ChatGPT may be coming for our jobs. Here are the 10 roles that AI is most likely to replace.〔中文译名：ChatGPT 可能会取代我们的工作：以下十类岗位最可能被 AI 替代〕 Business Insider. <a href="https://www.businessinsider.com/chatgpt-jobs-at-risk-replacement-artifici">https://www.businessinsider.com/chatgpt-jobs-at-risk-replacement-artifici</a> al-intelligence-ai-labor-trends-2023-02</li>
+<li>Nahar N, Zhou S, Lewis G, Kästner C (2022) Collaboration challenges in building ML-enabled systems: Communication, documentation, engineering, and process.〔中文译名：构建支持机器学习的系统所面临的协作挑战：沟通、文档、工程与过程〕 In: Proceedings of the 44th International Conference on Software Engineering (ICSE ’22), pp 413–425. ACM. <a href="https://doi.org/10.1145/3510003.3510209">https://doi.org/10.1145/3510003.3510209</a></li>
+<li>OpenAI (n.d.) Prompt engineering.〔中文译名：提示词工程〕 <a href="https://platform.openai.com/docs/guides/prompt-engineering">https://platform.openai.com/docs/guides/prompt-engineering</a></li>
+<li>OpenAI Codex〔中文译名：OpenAI Codex 代码模型〕 (2021) OpenAI. <a href="https://openai.com/index/openai-codex/">https://openai.com/index/openai-codex/</a></li>
+<li>OpenAI et al (2024) GPT-4 technical report.〔中文译名：GPT-4 技术报告〕 arXiv:2303.08774. <a href="https://doi.org/10.48550/arXiv.2303.08774">https://doi.org/10.48550/arXiv.2303.08774</a></li>
+<li>Ozkaya I (2023) Application of large language models to software engineering tasks: Opportunities, risks, and implications.〔中文译名：大语言模型在软件工程任务中的应用：机遇、风险与影响〕 IEEE Softw 40(3):4–8</li>
+</ul>
+<p><a id="pdf-p52"></a></p>
+<h2>PDF 物理第 52 页（共 53 页）</h2>
+<ul>
+<li>Patton MQ (2014) Qualitative Research &amp; Evaluation Methods: Integrating Theory and Practice.〔中文译名：定性研究与评价方法：整合理论与实践〕 Sage publications</li>
+<li>Pearce H, Ahmad B, Tan B, Dolan-Gavitt B, Karri R (2025) Asleep at the keyboard? assessing the security of github copilot’s code contributions.〔中文译名：键盘前睡着了吗？对 GitHub Copilot 代码贡献安全性的评价〕 Commun ACM 68(2):96–105</li>
+<li>Peng S, Kalliamvakou E, Cihon P, Demirer M (2023) The Impact of AI on Developer Productivity: Evidence from GitHub Copilot〔中文译名：人工智能对开发者生产力的影响：来自 GitHub Copilot 的证据〕</li>
+<li>Pinto G, De Souza C, Rocha T, Steinmacher I, Souza A, Monteiro E (2024) Developer experiences with a contextualized AI coding assistant: Usability, expectations, and outcomes.〔中文译名：开发者使用情境化 AI 编码助手的体验：可用性、期望与结果〕 In: Proceedings of the IEEE/ ACM 3rd international conference on ai engineering-software engineering for AI, pp 81–91</li>
+<li>Pressman RS, Maxim BR (2014) Software Engineering: A Practitioner’s Approach〔中文译名：软件工程：实践者的方法〕, 8th edn. McGraw-Hill Education, New York</li>
+<li>Rabani ZS, Khorashadizadeh H, Abdollahzade S, Groppe S, Ghofrani J (2023) Developers’ perspective on trustworthiness of code generated by ChatGPT : Insights from interviews.〔中文译名：开发者对 ChatGPT 生成代码可信性的看法：访谈洞见〕 In: International conference on applied machine learning and data analytics, pp 215–229. Springer</li>
+<li>Ralph P et al (2021) Empirical Standards for Software Engineering Research.〔中文译名：软件工程研究的实证标准〕 <a href="https://github.com/acmsigsoft/EmpiricalStandards">https://github.com/acmsigsoft/EmpiricalStandards</a>. Accessed 6 April 2026</li>
+<li>Rane NL, Tawde A, Choudhary SP, Rane J (2023) Contribution and performance of chatgpt and other large language models (LLM) for scientific and research advancements: a double-edged sword.〔中文译名：ChatGPT 和其他大语言模型对科学与研究进展的贡献及表现：一把双刃剑〕 Int Res J Modern Eng Technol Sci 5(10):875–899</li>
+<li>Rogers EM, Singhal A, Quinlan MM (2014) Diffusion of innovations.〔中文译名：创新扩散〕 In: An Integrated Approach to Communication Theory and Research, pp 432–448. Routledge</li>
+<li>Rosson, MB, Carroll JM (1996) The reuse of uses in smalltalk programming.〔中文译名：Smalltalk 编程中使用方式的复用〕 ACM Trans Comput-Hum Interact 3(3):219–253. <a href="https://doi.org/10.1145/234526.234530">https://doi.org/10.1145/234526.234530</a></li>
+<li>Sadler GR, Lee H-C, Lim RS-H, Fullerton J (2010) Research Article: Recruitment of hard-to-reach population subgroups via adaptations of the snowball sampling strategy.〔中文译名：通过调整滚雪球抽样策略招募难以接触的群体亚组〕 Nursing &amp; Health Sciences 12(3):369–374. <a href="https://doi.org/10.1111/j.1442-2018.2010.00541.x">https://doi.org/10.1111/j.1442-2018.2010.00541.x</a>. Accessed 02 May 2023</li>
+<li>Sajadi A, Le B, Nguyen A, Damevski K, Chatterjee P (2025) Do LLM s consider security? an empirical study on responses to programming questions.〔中文译名：大语言模型会考虑安全吗？针对编程问题回答的实证研究〕 Empir Softw Eng 30(3):101</li>
+<li>Saldaña J (2021) The Coding Manual for Qualitative Researchers〔中文译名：定性研究者编码手册〕, 3rd edn. SAGE Publications, Thousand Oaks, CA</li>
+<li>Schneier, B. (2013) People, process, and technology.〔中文译名：人员、过程与技术〕 Schneier on Security. <a href="https://www.schneier.com/blog/archives/2013/01/people_process.html">https://www.schneier.com/blog/archives/2013/01/people_process.html</a></li>
+<li>Shi Y, Yu K, Dong Y, Chen F (2026) Large language models in education: a systematic review of empirical applications, benefits, and challenges.〔中文译名：教育中的大语言模型：实证应用、收益与挑战的系统性综述〕 Computers and Education: Artificial Intelligence 10:100529. <a href="https://doi.org/10.1016/j.caeai.2025.100529">https://doi.org/10.1016/j.caeai.2025.100529</a></li>
+<li>Siddiq ML, Roney L, Zhang J, Santos JCDS (2024) Quality assessment of ChatGPT generated code and their use by developers.〔中文译名：ChatGPT 生成代码的质量评价及其被开发者使用的情况〕 In: Proceedings of the 21st international conference on mining software repositories, pp 152–156</li>
+<li>Silva RML, Principe Cruz E, Rosner DK, Kelly D, Monroy-Hernández A, Liu F (2022) Understanding AR activism: An interview study with creators of augmented reality experiences for social change.〔中文译名：理解增强现实行动主义：对运用增强现实体验推动社会变革的创作者的访谈研究〕 In: Proceedings of the 2022 CHI Conference on Human Factors in Computing Systems. CHI ’22, pp 1–15. Association for Computing Machinery, New York, NY, USA. <a href="https://doi.org/10.1145/3491102.3517605">https://doi.org/10.1145/3491102.3517605</a>. Accessed 01 May 2023</li>
+<li>Sommerville I (2016) Software Engineering〔中文译名：软件工程〕, 10th edn. Pearson Education, Harlow, England</li>
+<li>Stack Overflow 2023 Developer Survey〔中文译名：Stack Overflow 2023 年开发者调查〕 (2023) Stack Overflow. <a href="https://survey.stackoverflow.co/2023/">https://survey.stackoverflow.co/2023/</a></li>
+<li>Stack Overflow 2024 Developer Survey〔中文译名：Stack Overflow 2024 年开发者调查〕 (2024) Stack Overflow. <a href="https://survey.stackoverflow.co/2024/">https://survey.stackoverflow.co/2024/</a></li>
+<li>Stack Overflow Developer Survey〔中文译名：Stack Overflow 开发者调查（2025 年）〕 (2025). <a href="https://survey.stackoverflow.co/2025/">https://survey.stackoverflow.co/2025/</a>. Accessed 10 April 2026</li>
+<li>Sun J, Yin Z, Zhang H, Chen X, Zheng W (2024) Adversarial generation method for smart contract fuzz testing seeds guided by chain-based LLM .〔中文译名：基于链式大语言模型引导的智能合约模糊测试种子对抗生成方法〕 Autom Softw Eng 32(1):12. <a href="https://doi.org/10.1007/s10515-024-00483-4">https://doi.org/10.1007/s10515-024-00483-4</a></li>
+<li>Tabarsi B, Yasir T, Reichert H, Tian X, Gadireddy S, DiMarco C, Briceno D, Barnes T (2025) Herald of advancement, disruption, or both: a systematic literature review on student-facing LLM tools in undergraduate computing education.〔中文译名：进步的先声、颠覆，还是两者兼有？关于本科计算机教育中面向学生的大语言模型工具的系统性文献综述〕 TechRxiv preprint. <a href="https://doi.org/10.36227/techrxiv.176463808.80840600/v1">https://doi.org/10.36227/techrxiv.176463808.80840600/v1</a></li>
+<li>Tanaka H, Tanaka H, Shimari K, Matsumoto K (2025) Understanding the Characteristics of LLM-Generated Property-Based Tests in Exploring Edge Cases.〔中文译名：理解 LLM 生成的基于性质的测试在探索边界情形时的特征〕 arXiv:2510.25297</li>
+<li>Tanay BA, Arinze L, Joshi SS, Davis KA, Davis JC (2024) An exploratory study on upper-level computing students’ use of large language models as tools in a semester-long project.〔中文译名：高年级计算机专业学生在学期项目中将大语言模型作为工具的探索性研究〕 arXiv:2403.18679</li>
+</ul>
+<p><a id="pdf-p53"></a></p>
+<h2>PDF 物理第 53 页（共 53 页）</h2>
+<ul>
+<li>Tang X, Liu Y, Cai Z, Shao Y, Lu J, Zhang Y, Deng Z, Hu H, An K, Huang R, Si S, Chen S, Zhao H, Chen L, Wang Y, Liu T, Jiang Z, Chang B, Fang Y, Qin Y, Zhou W, Zhao Y, Cohan A, Gerstein M (2024) ML-Bench: Evaluating Large Language Models and Agents for Machine Learning Tasks on Repository-Level Code.〔中文译名：ML-Bench：在代码仓库级代码上评价大语言模型与智能体完成机器学习任务的能力〕 arXiv:2311.09835</li>
+<li>Toner H (2023) What are generative AI, large language models, and foundation models?〔中文译名：什么是生成式人工智能、大语言模型和基础模型？〕. Center for Security and Emerging Technology. <a href="https://cset.georgetown.edu/article/what-are-generative-ai-large-language-">https://cset.georgetown.edu/article/what-are-generative-ai-large-language-</a> models-and-foundation-models/</li>
+<li>Trist E (1981) The evolution of socio-technical systems: A conceptual framework and an action research program.〔中文译名：社会技术系统的演进：概念框架与行动研究计划〕 In: Ven AH, Joyce WF (eds) Perspectives on Organization Design and Behavior. Wiley, New York, pp 19–75</li>
+<li>Trist EL, Bamforth KW (1951) Some social and psychological consequences of the longwall method of coal-getting.〔中文译名：长壁采煤法的若干社会与心理后果〕 Human Relations 4(1):3–38. <a href="https://doi.org/10.1177/001872675100400101">https://doi.org/10.1177/001872675100400101</a></li>
+<li>Verma P, De Vynck G (2023) ChatGPT took their jobs. Now they walk dogs and fix air conditioners.〔中文译名：ChatGPT 夺走了他们的工作：如今他们遛狗、修空调〕 The Washington Post. <a href="https://www.washingtonpost.com/technology/2023/06/02/ai-taking-jobs/">https://www.washingtonpost.com/technology/2023/06/02/ai-taking-jobs/</a></li>
+<li>Wadhwa N, Pradhan J, Sonwane A, Sahu SP, Natarajan N, Kanade A, Parthasarathy S, Rajamani S (2024) Core: Resolving code quality issues using LLM s.〔中文译名：CORE：利用大语言模型解决代码质量问题〕 In: Proceedings of the ACM on Software Engineering (PACMSE), FSE Track, vol 1. ACM, pp 1–13</li>
+<li>Xu W, Gao K, He H, Zhou M (2025) LiCoEval: Evaluating LLMs on License Compliance in Code Generation.〔中文译名：LiCoEval：评价大语言模型在代码生成中的许可证合规性〕 arXiv:2408.02487</li>
+<li>Yang L, Yang C, Gao S, Wang W, Wang B, Zhu Q, Chu X, Zhou J, Liang G, Wang Q et al (2024) On the evaluation of large language models in unit test generation.〔中文译名：关于大语言模型单元测试生成能力的评价〕 In: Proceedings of the 39th IEEE/ACM international conference on automated software engineering, pp 1607–1619</li>
+<li>Zhang L, He S, Zhang C, Kang Y, Li B, Xie C, Wang J, Wang M, Huang Y, Fu S, Nallipogu E, Lin Q, Dang Y, Rajmohan S, Zhang D (2025b) SWE-bench Goes Live!.〔中文译名：SWE-bench 走向实时评测！〕 arXiv:2505.23419</li>
+<li>Zhang Q, Fang C, Gu S, Shang Y, Chen Z, Xiao L (2025a) Large Language Models for Unit Testing: A Systematic Literature Review.〔中文译名：用于单元测试的大语言模型：系统性文献综述〕 arXiv:2506.15227</li>
+</ul>
+<p><strong>出版者声明：</strong> Springer Nature 对已出版地图中的司法管辖权主张及机构隶属关系保持中立。</p>
+<h3>作者与机构信息</h3>
+<p><strong>作者：</strong> Benyamin Tabarsi¹ · Heidi Reichert¹ · Sam Gilson¹ · Ally Limke¹ · Sandeep Kuttal¹ · Tiffany Barnes¹
+<strong>联系作者：</strong> Benyamin Tabarsi（btaghiz@ncsu.edu）
+<strong>¹ 机构：</strong> 美国北卡罗来纳州立大学（North Carolina State University），美国北卡罗来纳州罗利市。</p>
+</main></div><div class="footer">底本：用户提供的 Springer 正式版 PDF · 物理页 1—53 · 93 条原始参考文献 · 原文图及中文图内标签对照</div>
+<script>
+(()=>{let size=17;const root=document.documentElement;const up=document.getElementById('fontUp'),down=document.getElementById('fontDown');up.onclick=()=>{size=Math.min(22,size+1);root.style.setProperty('--fs',size+'px')};down.onclick=()=>{size=Math.max(14,size-1);root.style.setProperty('--fs',size+'px')};document.getElementById('nightMode').onclick=()=>{document.body.classList.toggle('dark')};document.getElementById('pageJump').onchange=e=>{document.getElementById(e.target.value)?.scrollIntoView({behavior:'smooth'})};const links=[...document.querySelectorAll('.toc a')];const anchors=[...document.querySelectorAll('#paper a[id^="pdf-p"]')];if('IntersectionObserver' in window){const observer=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){const page=+e.target.id.slice(5);document.getElementById('pageJump').value=e.target.id;links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}},{rootMargin:'-70px 0px -72% 0px'});anchors.forEach(a=>observer.observe(a))}})();
+</script></body></html>

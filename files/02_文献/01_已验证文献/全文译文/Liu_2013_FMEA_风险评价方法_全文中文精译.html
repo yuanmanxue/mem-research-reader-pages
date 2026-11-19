@@ -1,0 +1,999 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="color-scheme" content="light dark"><title>失效模式与影响分析中的风险评价方法｜全文中文精译 · Liu et al., 2013</title><meta name="description" content="以2013年正式期刊排版11页PDF为唯一底本的中文全文精译，含6张表、1幅图、82条参考文献和物理页码定位。"><style>
+:root{--text:#233146;--muted:#6d7b8c;--accent:#2c5b82;--line:#e3e9ef;--paper:#ffffff;--bg:#f5f7f9;--panel:#eff3f7;--link:#21598a;--note:#eff6fa}
+[data-theme="dark"]{--text:#dce4ef;--muted:#a3b2c2;--accent:#94badf;--line:#3a4654;--paper:#1d2630;--bg:#121a23;--panel:#283542;--link:#a7d0ff;--note:#253746}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family: -apple-system, BlinkMacSystemFont,'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',system-ui,sans-serif;font-size:17px;line-height:1.98}
+.progress{position:fixed;left:0;top:0;height:3px;background:var(--accent);width:0;z-index:20;transition:width .1s linear}
+.layout{max-width:1580px;margin:0 auto;display:grid;grid-template-columns:290px minmax(0,1fr);gap:30px;padding:22px 35px 75px}
+.sidebar{position:sticky;top:15px;align-self:start;height:calc(100vh - 30px);overflow:auto;padding:16px 17px 30px;border:1px solid var(--line);border-radius:12px;background:var(--paper);scrollbar-width:thin}
+.eyebrow{font-size:11px;letter-spacing:1.5px;font-weight:700;color:var(--accent)}.sidebar h3{font-size:16px;margin:5px 0 12px;line-height:1.6}
+.sidebar-label{font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:20px 0 6px;font-weight:700}.nav-link{display:block;color:var(--muted);font-size:12px;line-height:1.5;padding:6px 7px;border-radius:6px;text-decoration:none}
+.nav-link:hover,.nav-link.active{background:var(--panel);color:var(--accent)}.page-row{display:flex;gap:5px;flex-wrap:wrap}.page-chip{display:inline-flex;width:28px;height:28px;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:5px;text-decoration:none;font-size:11px;color:var(--muted)}.page-chip:hover{border-color:var(--accent);color:var(--accent)}
+.toolbar{position:fixed;right:23px;top:20px;display:flex;gap:8px;z-index:10}.tool-btn{background:var(--paper);color:var(--text);border:1px solid var(--line);padding:8px 11px;border-radius:7px;box-shadow:0 2px 14px #00000009;cursor:pointer}
+.paper{min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 45px #23364d07;padding:68px clamp(25px,5.8vw,104px) 100px}
+article{max-width:940px;margin:0 auto;font-size:1em;line-height:2.06}article h1{font-family:'Songti SC','STSong','Noto Serif CJK SC',serif;font-size:clamp(28px,3.1vw,40px);line-height:1.45;color:var(--text);letter-spacing:.01em;margin:0 0 32px}
+article h2:not(.page-heading){margin:45px 0 20px;padding-bottom:7px;border-bottom:1px solid var(--line);font-size:23px;line-height:1.55;color:var(--text)}article h3{margin:34px 0 12px;font-size:19px;color:var(--text)}article h4{font-size:16px;margin:28px 0 9px;color:var(--accent)}article .page-heading{font-size:13px;color:var(--muted);background:var(--panel);padding:8px 12px;margin-top:54px;margin-bottom:20px;border-radius:6px;font-weight:500}
+article p{margin:11px 0 19px;text-align:justify;overflow-wrap:anywhere}article strong{font-weight:680}article a{color:var(--link)}article blockquote{margin:16px 0 24px;padding:12px 20px;border-left:3px solid var(--accent);background:var(--note);font-size:.91em;color:var(--muted)}article blockquote p{margin:0}article li{margin:5px 0 9px}article ul{padding-left:23px}article code{background:var(--panel);padding:1px 4px}
+.table-wrap{width:100%;max-width:100%;overflow-x:auto;margin:20px 0 33px;border:1px solid var(--line);border-radius:9px;scrollbar-width:thin}
+table{border-collapse:collapse;width:100%;font-size:13px;line-height:1.66}thead{background:var(--panel)}th{font-weight:700;color:var(--text)}td,th{border-bottom:1px solid var(--line);padding:10px 13px;text-align:left;vertical-align:top}td:last-child{font-variant-numeric:tabular-nums}tbody tr:last-child td{border-bottom:0}tbody tr:hover{background:var(--note)}
+.equation{font-family:'Times New Roman',Georgia,serif;display:block;text-align:center;font-size:23px;padding:14px 9px;margin:17px 0 24px;background:var(--panel);border-radius:7px;position:relative}.eq-no{font-size:14px;position:absolute;right:17px;top:20px}
+.figure-duo{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 28px}.figure-piece{margin:0;padding:12px;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--paper)}.figure-piece svg,.figure-piece img{width:100%;height:auto;display:block}.figure-piece figcaption{margin-top:8px;text-align:center;color:var(--muted);font-size:12px}
+.references{padding-left:1em}ul.references li{font-size:13px;line-height:1.85;text-align:left;margin:0 0 12px;overflow-wrap:anywhere;list-style-type:none;text-indent:-1.1em;padding-left:1.1em}
+.anchor-target{position:relative;top:-12px}.muted-meta{color:var(--muted)}
+footer{max-width:940px;margin:60px auto 0;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:12px}.hide-on-print{display:initial}
+@media(max-width:1100px){.layout{grid-template-columns:235px minmax(0,1fr);padding:15px;gap:14px}.paper{padding:55px 36px 65px}.sidebar{padding:15px 9px}.figure-duo{grid-template-columns:1fr}}
+@media(max-width:780px){.layout{display:block;padding:0}.sidebar{position:relative;top:0;height:auto;max-height:270px;border-radius:0;border-left:0;border-right:0}.paper{border-radius:0;border:0;box-shadow:none;padding:33px 22px 65px}.toolbar{top:auto;bottom:16px;right:16px}.nav-link{display:inline-block;margin-right:5px}article{font-size:16px}}
+@media print{body{background:#fff;color:#111}.sidebar,.toolbar,.progress{display:none}.layout{display:block;margin:0;padding:0}.paper{border:0;box-shadow:none;padding:0}.table-wrap{overflow:visible}table{font-size:10px}article{max-width:none;font-size:11.5pt;line-height:1.6}.page-heading{page-break-before:always}.figure-duo{grid-template-columns:1fr 1fr}.references li{break-inside:avoid}}
+</style></head><body><div class="progress" id="scrollProgress" aria-hidden="true"></div><div class="toolbar hide-on-print"><button class="tool-btn" id="fontBtn" title="调整字号">A+/A−</button><button class="tool-btn" id="themeBtn" title="切换亮色与暗色">◐</button><button class="tool-btn" onclick="window.print()" title="打印或保存为 PDF">打印</button></div><div class="layout"><aside class="sidebar"><div class="eyebrow">FULL TEXT · CHINESE TRANSLATION</div><h3>FMEA 风险评价方法<br>2013 · Liu 等</h3><div class="sidebar-label">章节目录</div><nav><a href="#sec-abstract" class="nav-link">摘要</a>
+<a href="#sec-1" class="nav-link">1. 引言</a>
+<a href="#sec-2" class="nav-link">2. FMEA</a>
+<a href="#sec-2-1" class="nav-link">2.1 传统 FMEA</a>
+<a href="#sec-2-2" class="nav-link">2.2 FMEA 的缺陷</a>
+<a href="#sec-3" class="nav-link">3. 文献综述</a>
+<a href="#sec-3-1" class="nav-link">3.1 多准则决策</a>
+<a href="#sec-3-2" class="nav-link">3.2 数学规划</a>
+<a href="#sec-3-3" class="nav-link">3.3 人工智能</a>
+<a href="#sec-3-3-1" class="nav-link">3.3.1 规则系统</a>
+<a href="#sec-3-3-2" class="nav-link">3.3.2 模糊规则库</a>
+<a href="#sec-3-3-3" class="nav-link">3.3.3 模糊 ART</a>
+<a href="#sec-3-3-4" class="nav-link">3.3.4 模糊认知图</a>
+<a href="#sec-3-4" class="nav-link">3.4 集成方法</a>
+<a href="#sec-3-5" class="nav-link">3.5 其他方法</a>
+<a href="#sec-4" class="nav-link">4. 观察与发现</a>
+<a href="#sec-4-1" class="nav-link">4.1 最流行的方法</a>
+<a href="#sec-4-2" class="nav-link">4.2 方法局限性</a>
+<a href="#sec-4-3" class="nav-link">4.3 其他观察</a>
+<a href="#sec-4-3-1" class="nav-link">4.3.1 期刊论文分布</a>
+<a href="#sec-4-3-2" class="nav-link">4.3.2 赋权方法</a>
+<a href="#sec-5" class="nav-link">5. 结论与建议</a>
+<a href="#sec-app" class="nav-link">附录 A</a>
+<a href="#sec-ref" class="nav-link">参考文献</a></nav><div class="sidebar-label">PDF 物理页码</div><div class="page-row"><a href="#pdf-p1" class="page-chip">1</a>
+<a href="#pdf-p2" class="page-chip">2</a>
+<a href="#pdf-p3" class="page-chip">3</a>
+<a href="#pdf-p4" class="page-chip">4</a>
+<a href="#pdf-p5" class="page-chip">5</a>
+<a href="#pdf-p6" class="page-chip">6</a>
+<a href="#pdf-p7" class="page-chip">7</a>
+<a href="#pdf-p8" class="page-chip">8</a>
+<a href="#pdf-p9" class="page-chip">9</a>
+<a href="#pdf-p10" class="page-chip">10</a>
+<a href="#pdf-p11" class="page-chip">11</a></div><div class="sidebar-label">底本</div><p style="font-size:12px;color:var(--muted);line-height:1.75">Expert Systems with Applications<br>Vol. 40 · pp. 828–838<br>11 页期刊正式排版 PDF</p></aside><main class="paper"><article><h1>失效模式与影响分析中的风险评价方法：文献综述</h1>
+<p><strong>英文原题：</strong> Risk evaluation approaches in failure mode and effects analysis: A literature review<br/>
+<strong>作者：</strong> Hu-Chen Liu、Long Liu（通讯作者）、Nan Liu<br/>
+<strong>刊物：</strong> <em>Expert Systems with Applications</em>, 40 (2013), 828–838<br/>
+<strong>文献类型：</strong> 综述（Review）<br/>
+<strong>DOI：</strong> 10.1016/j.eswa.2012.08.010<br/>
+<strong>底本：</strong> 用户提供的正式期刊排版 PDF，11 个物理页面（期刊印刷页 828–838），仅据此版本翻译。</p>
+<p><strong>作者单位：</strong><br/>
+(a) 日本东京工业大学工业工程与管理系，东京 152-8552，日本；<br/>
+(b) 同济大学设计创意学院，上海 200092，中国；<br/>
+(c) 重庆交通大学管理学院，重庆 400074，中国。</p>
+<p><strong>通讯作者注：</strong> Long Liu，通讯地址：College of Design and Innovation, Tongji University, 1239 Siping Road, Shanghai 200092, PR China；电话／传真：+86 (0) 21 6598 3432。电子邮箱：huchenliu@foxmaill.com（H.-C. Liu）；liulong@tongji.edu.cn（L. Liu）；liunan@cqjtu.edu.cn（N. Liu）。</p>
+<p><strong>版权信息：</strong> © 2012 Elsevier Ltd. 版权所有。ISSN 0957-4174。</p>
+<blockquote>
+<p><strong>阅读定位：</strong> 下方的「PDF 第 n 页」均指本附件的<strong>物理页码</strong>（从 1 起），括号内为原刊印刷页码。原文采用作者—年份引文体例，正文引文照原样保留；原文参考文献<strong>未编顺序号</strong>，译文亦不自行编造编号。以下为全文翻译，不附研究评述。</p>
+</blockquote>
+<h2>阅读目录</h2>
+<ul>
+<li><a href="#sec-abstract">摘要</a></li>
+<li><a href="#sec-1">1. 引言</a></li>
+<li><a href="#sec-2">2. FMEA</a><ul>
+<li><a href="#sec-2-1">2.1 传统 FMEA</a></li>
+<li><a href="#sec-2-2">2.2 FMEA 的缺陷</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. 文献综述</a><ul>
+<li><a href="#sec-3-1">3.1 多准则决策</a></li>
+<li><a href="#sec-3-2">3.2 数学规划</a></li>
+<li><a href="#sec-3-3">3.3 人工智能</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-3-1">3.3.1 规则系统</a></li>
+<li><a href="#sec-3-3-2">3.3.2 模糊规则库</a></li>
+<li><a href="#sec-3-3-3">3.3.3 模糊 ART</a></li>
+<li><a href="#sec-3-3-4">3.3.4 模糊认知图</a><ul>
+<li><a href="#sec-3-4">3.4 集成方法</a></li>
+<li><a href="#sec-3-5">3.5 其他方法</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. 观察与发现</a><ul>
+<li><a href="#sec-4-1">4.1 最流行的方法</a></li>
+<li><a href="#sec-4-2">4.2 方法局限性</a></li>
+<li><a href="#sec-4-3">4.3 其他观察</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-3-1">4.3.1 期刊论文分布</a></li>
+<li><a href="#sec-4-3-2">4.3.2 赋权方法</a></li>
+<li><a href="#sec-5">5. 结论与建议</a></li>
+<li><a href="#sec-app">附录 A</a></li>
+<li><a href="#sec-ref">参考文献</a></li>
+</ul>
+<p><strong>PDF 物理页码导航：</strong> <a href="#pdf-p1">第 1 页</a> · <a href="#pdf-p2">第 2 页</a> · <a href="#pdf-p3">第 3 页</a> · <a href="#pdf-p4">第 4 页</a> · <a href="#pdf-p5">第 5 页</a> · <a href="#pdf-p6">第 6 页</a> · <a href="#pdf-p7">第 7 页</a> · <a href="#pdf-p8">第 8 页</a> · <a href="#pdf-p9">第 9 页</a> · <a href="#pdf-p10">第 10 页</a> · <a href="#pdf-p11">第 11 页</a></p>
+<p><a class="anchor-target" id="pdf-p1"></a></p>
+<h2 class="page-heading">PDF 第 1 页｜期刊第 828 页</h2>
+<p><a class="anchor-target" id="sec-abstract"></a></p>
+<h2>摘要</h2>
+<p>失效模式与影响分析（Failure Mode and Effects Analysis，<strong>FMEA</strong>）是一种风险评估工具，旨在减轻系统、过程、设计或服务中的潜在失效，已广泛应用于多个行业。传统的风险优先数（Risk Priority Number，<strong>RPN</strong>）方法因存在诸多缺陷而受到批评，文献中已提出多种风险优先级模型，以提高 FMEA 的应用效果。然而，此前尚无针对这一主题的文献综述。本研究回顾了 1992—2012 年间发表于国际期刊的 75 篇 FMEA 论文，并依据其克服传统 RPN 方法局限性的途径对这些论文进行分类。本综述旨在回答以下三个问题：（i）哪些缺陷最受关注？（ii）哪些方法最为流行？（iii）这些方法是否仍存在不足？这些问题的答案将有助于揭示当前研究趋势，并指出未来研究的最佳方向，以进一步解决传统 FMEA 已知的缺陷。</p>
+<p><strong>关键词：</strong> 可靠性管理；失效模式与影响分析；风险评价；风险优先数。</p>
+<p><a class="anchor-target" id="sec-1"></a></p>
+<h2>1. 引言</h2>
+<p>失效模式与影响分析（FMEA）最早由航空航天工业于 20 世纪 60 年代发展为一种正式的设计方法（Bowles &amp; Peláez, 1995），已被证明是评价潜在失效并预防其发生的一种有用且强有力的工具（Sankar &amp; Prabhu, 2001）。FMEA 是一种分析技术，用于在已知和／或潜在的失效、问题、错误等影响客户之前，在系统、设计、过程和／或服务中对其进行界定、识别和消除（Stamatis, 1995）。当用于危害度分析时，该方法也称为失效模式、影响及危害度分析（Failure Mode, Effects and Criticality Analysis，<strong>FMECA</strong>）。FMEA 的主要目标是识别潜在失效模式，评价不同部件失效模式的原因及影响，并确定有哪些措施能够消除失效发生的可能性或降低其发生概率。分析结果能够帮助分析人员识别并纠正对系统产生不利影响的失效模式，在设计与生产阶段改进系统性能。自 FMEA 作为设计人员的辅助工具问世以来，已广泛用于航空航天、汽车、核工业、电子、化工、机械以及医疗技术等行业（Chang &amp; Cheng, 2011; Chin, Wang, Poon, &amp; Yang, 2009b; Sharma, Kumar, &amp; Kumar, 2005）。</p>
+<p>传统上，FMEA 中的危害度评价或风险评估是通过计算风险优先数（RPN）来开展的。然而，当 FMEA 应用于现实案例时，采用精确数值的 RPN 方法暴露出若干重要缺陷。因此，文献中提出了许多替代方法，以弥补传统 RPN 方法的部分不足，并使 FMEA 更有效地应用于实际情境。据我们所知，此前尚无研究专门综述用于提高 FMEA 应用效果的各种方法。本文回顾了试图解决传统 RPN 方法问题的学术研究，并按照所采用的方法对现有文献加以分类。我们搜集并分析了 1992—2012 年间发表于国际期刊的相关文章。基于所收集的 75 篇期刊论文，本综述的具体目标是：</p>
+<ul>
+<li>考察传统方法的不足，识别 FMEA 文献中哪些问题获得了最多关注；</li>
+<li>介绍 FMEA 文献所采用的方法，明确哪些方法得到了广泛应用；</li>
+<li>评价 FMEA 文献中所采用的方法，检验这些方法是否仍有不足。</li>
+</ul>
+<p>本综述不仅为某些替代方法优于传统 RPN 方法提供了证据，也有助于研究人员和风险分析人员有效应用 FMEA。根据综述结果，文章还指出了部分近期趋势以及未来研究方向。</p>
+<p><a class="anchor-target" id="pdf-p2"></a></p>
+<h2 class="page-heading">PDF 第 2 页｜期刊第 829 页</h2>
+<p>本文其余部分安排如下：第 2 节介绍传统 FMEA 及其主要缺陷；第 3 节解释用于 FMEA 文献分类的框架，并报告文献综述结果；第 4 节分析应用最广泛的方法、找出这些方法的局限性，并讨论风险因素的赋权方法；最后，第 5 节给出结论和对未来研究的建议。</p>
+<p><a class="anchor-target" id="sec-2"></a></p>
+<h2>2. FMEA</h2>
+<p><a class="anchor-target" id="sec-2-1"></a></p>
+<h3>2.1. 传统 FMEA</h3>
+<p>FMEA 是一项重要技术，通过识别和消除已知或潜在的失效，提高复杂系统的可靠性与安全性，并为风险管理决策提供信息。为了分析某一特定产品或系统，首先应组建一个跨职能团队实施 FMEA。FMEA 的第一步是通过系统化的头脑风暴，识别产品或系统所有可能的潜在失效模式。随后，考虑以下风险因素，对这些失效模式进行危害度分析：发生度（Occurrence，<strong>O</strong>）、严重度（Severity，<strong>S</strong>）以及探测度（Detection，<strong>D</strong>）。FMEA 的目的在于对产品或系统的失效模式确定优先顺序，以便将有限资源优先分配给风险最严重的项目。</p>
+<p>通常，失效模式采取纠正措施的优先顺序由风险优先数（RPN）决定，RPN 通过某一失效模式的 O、S、D 三项因素相乘得到，即：</p>
+<div aria-label="RPN equals O times S times D" class="equation" role="math">RPN = O × S × D <span class="eq-no">(1)</span></div>
+<p>式中，O 表示失效发生的概率，S 表示失效的严重程度，D 表示未能探测到失效的概率。为了求得某一潜在失效模式的 RPN，按照表 1—3 所述的 10 级量表对这三项风险因素评分。某一失效模式的 RPN 越高，对产品／系统可靠性构成的风险就越大。根据 RPN 评分，可以对失效模式进行排序，进而优先针对高风险失效模式采取适当措施。实施纠正措施后，应重新计算 RPN，以检验风险是否降低，并核查针对每一种失效模式的纠正措施是否有效。</p>
+<p><strong>表 1　失效模式发生度的建议评级</strong>（Chang, 2009; Chang &amp; Cheng, 2010; Chang &amp; Sun, 2009; Chang &amp; Wen, 2010; Chang et al., 2010; Ford Motor Company, 1988; Liu et al., 2012; Sankar &amp; Prabhu, 2001; Seyed-Hosseini et al., 2006）。</p>
+<div aria-label="表格，可横向滚动" class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>失效发生概率描述</th>
+<th style="text-align:right">可能的失效率</th>
+<th style="text-align:right">等级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>极高：失效几乎不可避免</td>
+<td style="text-align:right">≥1/2</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td>非常高</td>
+<td style="text-align:right">1/3</td>
+<td style="text-align:right">9</td>
+</tr>
+<tr>
+<td>反复发生失效</td>
+<td style="text-align:right">1/8</td>
+<td style="text-align:right">8</td>
+</tr>
+<tr>
+<td>高</td>
+<td style="text-align:right">1/20</td>
+<td style="text-align:right">7</td>
+</tr>
+<tr>
+<td>中等偏高</td>
+<td style="text-align:right">1/80</td>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td>中等</td>
+<td style="text-align:right">1/400</td>
+<td style="text-align:right">5</td>
+</tr>
+<tr>
+<td>相对较低</td>
+<td style="text-align:right">1/2,000</td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td>低</td>
+<td style="text-align:right">1/15,000</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td>极少发生</td>
+<td style="text-align:right">1/150,000</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td>几乎不可能</td>
+<td style="text-align:right">≤1/1,500,000</td>
+<td style="text-align:right">1</td>
+</tr>
+</tbody>
+</table></div>
+<p><a class="anchor-target" id="sec-2-2"></a></p>
+<h3>2.2. FMEA 的缺陷</h3>
+<p>传统 FMEA 已被证明是系统、设计、过程或服务中最重要的早期预防措施之一，能够防止失效与错误的发生，避免它们影响客户。然而，传统 RPN 方法因各种原因在文献中受到广泛批评。FMEA 文献报告的全部缺陷归纳于附录 1，其中最重要的一些列于表 4。</p>
+<p><a class="anchor-target" id="sec-3"></a></p>
+<h2>3. 现有文献综述</h2>
+<p>本节介绍为确定失效模式优先顺序而针对 FMEA 风险评价开展的广泛文献检索结果。本研究以 1992—2012 年间发表的学术期刊论文为研究对象。我们未纳入非英语出版物，以及教科书、博士学位论文和会议论文集等未经同行评审的专业出版物。此外，仅纳入明确报告旨在克服传统 FMEA 某些缺点的方法或技术的论文。这意味着，只是描述 FMEA 过程或应用传统 FMEA 的文章未被纳入。同样，报告 FMEA 实施自动化方法的论文也被排除在外。（对这一主题感兴趣的读者，可参见附录 2 所列相关文章综述。）</p>
+<p>文献中提出了大量风险优先级模型，用以改进 FMEA 的危害度分析过程。因此，我们根据识别出的失效模式优先排序方法，提出了一套对所综述论文进行分类的框架。本综述将文献采用的方法划分为五大类：多准则决策（Multi-Criteria Decision Making，<strong>MCDM</strong>）、数学规划（Mathematical Programming，<strong>MP</strong>）、人工智能（Artificial Intelligence，<strong>AI</strong>）、集成方法及其他方法。表 5 列出了这五类方法及各类所涉及的具体方法和参考文献。需要指出的是，有些文献（如 Gargama and Chaturvedi, 2011；Pillay and Wang, 2003）使用了不止一种方法来解决传统 FMEA 的问题，因此可能同时归入表中的多个类别。正因为如此，五类方法的计数之和为 <strong>80 项</strong>，并不等于所综述的 <strong>75 篇</strong>论文。下文将更具体地介绍这些文献以及相关研究所做的工作。</p>
+<p><a class="anchor-target" id="sec-3-1"></a></p>
+<h3>3.1. 多准则决策（MCDM）方法</h3>
+<p>Franceschini and Galetto（2001）提出了一种多专家多准则决策（Multi-Expert MCDM，<strong>ME-MCDM</strong>）技术，用于计算 FMEA 中失效的风险优先级。该技术能够处理设计团队通常以定性量表表达的信息，而无须进行任意、牵强的数值转换。在其方法中，风险因素被解释为评价准则，而失效模式被解释为待选择的备选方案。该方法将每一决策准则视为定义在备选方案集合上的一个模糊子集。在汇总某个备选方案针对各项准则获得的评价后，利用最大风险优先代码（Risk Priority Code，<strong>RPC</strong>）确定失效模式；如果两个或多个失效模式具有相同的 RPC，则进一步进行更细致的选择，以区分它们的相对顺序。</p>
+<p>Chin et al.（2009b）提出了基于群体证据推理（Evidential Reasoning，<strong>ER</strong>）的 FMEA 方法，以反映 FMEA 团队成员意见的多样性，并在评价不完整、无知信息及区间等不同类型的不确定性下对失效模式进行排序。其风险优先级模型采用群体 ER 方法，包括：使用置信结构评价风险因素，将个人置信结构综合为群体置信结构，将群体置信结构聚合为整体置信结构，将整体置信结构转换为期望风险得分，以及使用最小最大后悔法（Minimax Regret Approach，<strong>MRA</strong>）对期望风险得分排序。</p>
+<p><a class="anchor-target" id="pdf-p3"></a></p>
+<h2 class="page-heading">PDF 第 3 页｜期刊第 830 页</h2>
+<p><strong>表 2　失效模式严重度的建议评级</strong>（Chang, 2009; Chang &amp; Cheng, 2010; Chang &amp; Sun, 2009; Chang &amp; Wen, 2010; Chang et al., 2010; Ford Motor Company, 1988; Liu et al., 2012; Sankar &amp; Prabhu, 2001; Seyed-Hosseini et al., 2006）。</p>
+<div aria-label="表格，可横向滚动" class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>影响程度</th>
+<th>影响严重度的判定标准</th>
+<th style="text-align:right">等级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>危险（Hazardous）</td>
+<td>失效具有危险性，且发生前没有警告；会使系统停止运行，和／或导致不符合政府法规的要求。</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td>严重（Serious）</td>
+<td>失效涉及危险后果，和／或不符合政府法规或标准。</td>
+<td style="text-align:right">9</td>
+</tr>
+<tr>
+<td>极严重（Extreme）</td>
+<td>产品因丧失主要功能而无法使用；系统无法运行。</td>
+<td style="text-align:right">8</td>
+</tr>
+<tr>
+<td>重大（Major）</td>
+<td>产品性能受到严重影响，但仍能发挥功能；系统可能无法运行。</td>
+<td style="text-align:right">7</td>
+</tr>
+<tr>
+<td>显著（Significant）</td>
+<td>产品性能下降；舒适性或便利性功能可能无法运行。</td>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td>中等（Moderate）</td>
+<td>对产品性能产生中等程度影响；产品需要修理。</td>
+<td style="text-align:right">5</td>
+</tr>
+<tr>
+<td>低（Low）</td>
+<td>对产品性能影响较小；产品不需要修理。</td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td>轻微（Minor）</td>
+<td>对产品或系统性能产生轻微影响。</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td>极轻微（Very minor）</td>
+<td>对产品或系统性能产生极轻微影响。</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td>无（None）</td>
+<td>无影响。</td>
+<td style="text-align:right">1</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>表 3　失效模式探测度的建议评级</strong>（Chang, 2009; Chang &amp; Cheng, 2010; Chang &amp; Sun, 2009; Chang &amp; Wen, 2010; Chang et al., 2010; Ford Motor Company, 1988; Liu et al., 2012; Sankar &amp; Prabhu, 2001; Seyed-Hosseini et al., 2006）。</p>
+<div aria-label="表格，可横向滚动" class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>探测可能性</th>
+<th>设计控制探测到失效的可能性判定标准</th>
+<th style="text-align:right">等级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完全不确定（Absolute uncertainty）</td>
+<td>设计控制不能探测潜在失效原因或随后的失效模式；或者不存在设计控制。</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td>极不可能（Very remote）</td>
+<td>设计控制探测潜在失效原因或随后的失效模式的可能性极低。</td>
+<td style="text-align:right">9</td>
+</tr>
+<tr>
+<td>很不可能（Remote）</td>
+<td>设计控制探测潜在失效原因或随后的失效模式的可能性很低。</td>
+<td style="text-align:right">8</td>
+</tr>
+<tr>
+<td>非常低（Very low）</td>
+<td>设计控制探测潜在失效原因或随后的失效模式的可能性非常低。</td>
+<td style="text-align:right">7</td>
+</tr>
+<tr>
+<td>低（Low）</td>
+<td>设计控制探测潜在失效原因或随后的失效模式的可能性低。</td>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td>中等（Moderate）</td>
+<td>设计控制探测潜在失效原因或随后的失效模式的可能性中等。</td>
+<td style="text-align:right">5</td>
+</tr>
+<tr>
+<td>中等偏高（Moderately high）</td>
+<td>设计控制探测潜在失效原因或随后的失效模式的可能性中等偏高。</td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td>高（High）</td>
+<td>设计控制探测潜在失效原因或随后的失效模式的可能性高。</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td>非常高（Very high）</td>
+<td>设计控制探测潜在失效原因或随后的失效模式的可能性非常高。</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td>几乎确定（Almost certain）</td>
+<td>设计控制几乎肯定能够探测潜在失效原因或随后的失效模式。</td>
+<td style="text-align:right">1</td>
+</tr>
+</tbody>
+</table></div>
+<p>Yang, Huang, He, Zhu, and Wen（2011）也采用证据理论，聚合多位专家的风险评价信息。然而，其提出的模型假定所有单项及区间评价等级均为精确值，且相互独立。模型未考虑 FMEA 中这样的情形：一个评价等级可能代表模糊的概念或标准，相邻两个等级的含义也可能没有明确的分界。</p>
+<p>Braglia（2000）提出了基于层次分析法（Analytic Hierarchy Process，<strong>AHP</strong>）的多属性失效模式分析（Multi-Attribute Failure Mode Analysis，<strong>MAFMA</strong>）方法，将风险因素（O、S、D 和预期成本）视为决策准则，将可能的失效原因视为决策备选方案，将失效原因的选择视为决策目标。目标、准则与备选方案构成三级层次结构，使用成对比较矩阵估计准则权重以及失效原因相对于预期成本属性的局部优先度。对 O、S、D 的传统评分分别进行归一化，作为失效原因相对于 O、S、D 的局部优先度，再使用 AHP 的权重合成技术，将局部优先度合成为全局优先度，据此对可能的失效原因排序。参照 Braglia（2000）的研究，Carmignani（2009）提出了优先级—成本 FMECA（Priority-Cost FMECA，<strong>PC-FMECA</strong>），该方法能够计算新的 RPN，并在考虑纠正措施成本的前提下引入盈利能力的概念。另一方面，Hu, Hsu, Kuo, and Wu（2009）提出绿色部件风险优先数（Green Component RPN，<strong>GC-RPN</strong>），用于分析绿色部件面对有害物质的风险。研究运用模糊 AHP 确定风险因素的相对权重，再计算各部件的 GC-RPN，以识别和管理由此产生的风险。</p>
+<p>Zammori and Gabbrielli（2011）提出了 FMECA 的一种改进版本，称为分析网络过程（Analytic Network Process，<strong>ANP</strong>）／RPN。该方法在危害度评估中考虑主要失效原因之间可能存在的相互作用，从而增强标准 FMECA 的能力。根据 ANP/RPN 模型，将 O、S、D 分解为若干子准则，并安排在混合型（层次／网络）决策结构中，该结构的最底层包含失效原因。从这一决策结构出发，通过成对比较计算 RPN。文章还提供了一种图形工具，以阐明并直观展示最终结果的依据。</p>
+<p>Braglia, Frosolini, and Montanari（2003b）提出了一种用于 FMECA 的替代性多属性决策方法，即模糊逼近理想解排序法（Fuzzy Technique for Order Preference by Similarity to Ideal Solution，<strong>Fuzzy TOPSIS</strong>）。它将失效原因视为需要排序的备选方案，将相关失效模式的风险因素 O、S、D 视为准则；依据备选方案与理想目标之间的欧氏距离确定失效优先次序。在其模糊 TOPSIS 方法中，三个风险因素及其对应的重要性权重均可以使用三角模糊数，而不是精确数值进行评价，由此得到易于理解的失效原因最终排序。</p>
+<p>Chang, Wei, and Lee（1999）将模糊方法与灰色理论用于 FMEA，以模糊语言变量评价 O、S、D，并通过灰色关联分析确定潜在失效原因的风险优先级。实施灰色关联分析时，先将模糊语言变量去模糊化为精确值，将三个风险因素的最低水平定义为标准序列，将每个潜在原因的三个风险因素评价信息视为比较序列，再根据灰色理论计算其与标准序列的灰色关联系数及关联度。关联度越高，潜在原因的影响越小。因此，按照关联度从小到大排列，就得到潜在问题的风险优先顺序。</p>
+<p><a class="anchor-target" id="pdf-p4"></a></p>
+<h2 class="page-heading">PDF 第 4 页｜期刊第 831 页</h2>
+<p><strong>表 4　FMEA 的主要缺陷。</strong>（“文献”列保留源文各项作者—年份引文及顺序；“数量”为涉及该缺陷的文献数。）</p>
+<div aria-label="表格，可横向滚动" class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>缺陷</th>
+<th>文献</th>
+<th style="text-align:right">数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>未考虑 O、S、D 之间的相对重要性</td>
+<td>Wang et al. (2009b), Chin et al. (2009a, 2009b), Liu et al. (2011, 2012), Gargama and Chaturvedi (2011), Kutlu and Ekmekçioğlu (2012), Zhang and Chu (2011), Yang et al. (2008), Braglia et al. (2003a, 2003b), Sharma et al. (2005, 2007a, 2007b, 2007c, 2007d, 2008a, 2008b, 2008c), Sharma and Sharma (2012, 2010), Chang and Cheng (2011, 2010), Chang and Wen (2010), Chang et al. (2010, 1999, 2001), Seyed-Hosseini et al. (2006), Tay and Lim (2010, 2006a), Keskin and Özkan (2009), Pillay and Wang (2003), Bowles and Peláez (1995), von Ahsen (2008), Carmignani (2009), Xiao et al. (2011), Franceschini and Galetto (2001), Nepal et al. (2008), Sankar and Prabhu (2001), Zammori and Gabbrielli (2011), Abdelgawad and Fayek (2010), Shahin (2004), Puente et al. (2002), Garcia et al. (2005), Chang and Sun (2009)</td>
+<td style="text-align:right">45</td>
+</tr>
+<tr>
+<td>不同的 O、S、D 组合可能得到完全相同的 RPN，但其隐含的风险意义可能截然不同</td>
+<td>Wang et al. (2009b), Chin et al. (2009a, 2009b), Liu et al. (2011, 2012), Gargama and Chaturvedi (2011), Kutlu and Ekmekçioğlu (2012), Zhang and Chu (2011), Yang et al. (2008), Braglia et al. (2003b), Sharma et al. (2005, 2007a, 2007b, 2007c, 2007d, 2008a, 2008b, 2008c), Sharma and Sharma (2012, 2010), Tay and Lim (2010, 2006a), Keskin and Özkan (2009), Pillay and Wang (2003), Chen (2007), von Ahsen (2008), Carmignani (2009), Franceschini and Galetto (2001), Chang et al. (1999, 2001), Shahin (2004), Puente et al. (2002), Chang and Sun (2009)</td>
+<td style="text-align:right">33</td>
+</tr>
+<tr>
+<td>三个风险因素难以精确评价</td>
+<td>Wang et al. (2009b), Chin et al. (2009a, 2009b), Liu et al. (2011, 2012), Gargama and Chaturvedi (2011), Kutlu and Ekmekçioğlu (2012), Yang et al. (2008), Braglia et al. (2003a, 2003b), Sharma et al. (2005), Chang et al. (2010), Xu et al. (2002), Braglia (2000), Yang et al. (2011), Chen and Ko (2009a, 2009b), Zammori and Gabbrielli (2011), Abdelgawad and Fayek (2010), Garcia et al. (2005)</td>
+<td style="text-align:right">21</td>
+</tr>
+<tr>
+<td>用于计算 RPN 的数学公式存在疑问与争议</td>
+<td>Chin et al. (2009a, 2009b), Liu et al. (2011, 2012), Gargama and Chaturvedi (2011), Kutlu and Ekmekçioğlu (2012), Braglia et al. (2003a, 2003b), Geum et al. (2011), Chang et al. (1999, 2001), Puente et al. (2002), Ben-Daya and Raouf (1996), Gilchrist (1993)</td>
+<td style="text-align:right">14</td>
+</tr>
+<tr>
+<td>三个风险因素的评分转换方式不同</td>
+<td>Chin et al. (2009b), Liu et al. (2011), Braglia et al. (2003a, 2003b), Chen (2007), von Ahsen (2008), Carmignani (2009), Chang et al. (1999, 2001), Sankar and Prabhu (2001), Puente et al. (2002), Ben-Daya and Raouf (1996), Gilchrist (1993)</td>
+<td style="text-align:right">13</td>
+</tr>
+<tr>
+<td>RPN 不能用于衡量纠正措施的有效性</td>
+<td>Yang et al. (2008), Braglia et al. (2003b, 2007), Pillay and Wang (2003), Chen (2007), Carmignani (2009), Chang et al. (1999, 2001), Shahin (2004), Puente et al. (2002), Ben-Daya and Raouf (1996), Gilchrist (1993)</td>
+<td style="text-align:right">12</td>
+</tr>
+<tr>
+<td>RPN 取值不连续，存在许多空缺</td>
+<td>Liu et al. (2012), Chang and Cheng (2011, 2010), Chang et al. (2010), Chang (2009), Keskin and Özkan (2009), Carmignani (2009), Franceschini and Galetto (2001), Garcia et al. (2005), Chang and Sun (2009)</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td>未考虑不同失效模式及其影响之间的相互依赖</td>
+<td>Xu et al. (2002), Chin et al. (2008), Braglia et al. (2007), von Ahsen (2008), Carmignani (2009), Nepal et al. (2008), Zammori and Gabbrielli (2011), Shahin (2004), Chang and Sun (2009), Gandhi and Agrawal (1992)</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td>RPN 的计算数学形式对风险因素评价值的变化高度敏感</td>
+<td>Chin et al. (2009b), Liu et al. (2011, 2012), Gargama and Chaturvedi (2011), Kutlu and Ekmekçioğlu (2012), Yang et al. (2008), Braglia et al. (2003a, 2003b), Chang (2009)</td>
+<td style="text-align:right">9</td>
+</tr>
+<tr>
+<td>RPN 的组成数值存在大量重复</td>
+<td>Gargama and Chaturvedi (2011), Chang and Cheng (2011, 2010), Chang et al. (2010), Chang (2009), Seyed-Hosseini et al. (2006), Sankar and Prabhu (2001), Garcia et al. (2005), Chang and Sun (2009)</td>
+<td style="text-align:right">9</td>
+</tr>
+<tr>
+<td>RPN 主要从安全角度只考虑三个风险因素</td>
+<td>Chin et al. (2009b), Liu et al. (2011), Yang et al. (2008), Braglia et al. (2003a, 2003b), Chang and Cheng (2010), Braglia (2000), Carmignani (2009), Zammori and Gabbrielli (2011)</td>
+<td style="text-align:right">9</td>
+</tr>
+</tbody>
+</table></div>
+<p>在 Chang, Liu, and Wei（2001）的研究中，作者也将灰色理论用于 FMEA，但计算关联度时采用了三个风险因素传统的 1—10 分评分，而不是模糊语言变量。Sharma, Kumar, and Kumar（2008b, 2007d）、Pillay and Wang（2003）以及 Sharma and Sharma（in press）也有使用模糊方法和灰色理论确定 FMEA 失效模式优先级的类似应用。</p>
+<p>Geum, Cho, and Park（2011）提出了一种结合服务专用 FMEA 与灰色关联分析、系统识别并评价潜在失效的方法。首先，建立服务专用 FMEA，以反映服务特有的属性，并采用 3 个维度及 19 个子维度表示服务特征。第二步，在服务专用 FMEA 的这一框架下，运用灰色关联分析计算每种失效模式的风险优先级。文中采用了两阶段的灰色关联分析结构：第一阶段计算各维度（O、S、D）的风险得分，第二阶段计算最终风险优先级。</p>
+<p>Seyed-Hosseini, Safaei, and Asgharpour（2006）提出使用决策试验与评价实验室法（Decision Making Trial and Evaluation Laboratory，<strong>DEMATEL</strong>），在系统 FMEA 中针对纠正措施重新确定失效模式的优先级。在其方法中，FMEA 的失效信息被表示为一个加权有向图：节点代表失效模式或失效原因，有向连接（边）表示失效模式之间的影响；连接权重则反映一个备选方案对另一方案影响的程度或严重性。间接关系被定义为两个备选方案之间只能通过间接路径产生的关系，意味着某个失效模式可能是其他失效模式的原因。对其他方案影响较大的备选方案被认为具有较高优先级，称为“影响输出方”（dispatcher）；受到其他方案较多影响的方案被认为优先级较低，称为“影响接收方”（receiver）。由此，可根据相互关系的类型及影响的严重程度，确定备选方案的优先顺序。</p>
+<p><a class="anchor-target" id="pdf-p5"></a></p>
+<h2 class="page-heading">PDF 第 5 页｜期刊第 832 页</h2>
+<p><strong>表 5　FMEA 风险评价方法的分类。</strong></p>
+<div aria-label="表格，可横向滚动" class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>方法</th>
+<th>文献</th>
+<th style="text-align:right">数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多准则决策（MCDM；22.50%）</td>
+<td>多专家 MCDM（ME-MCDM）</td>
+<td>Franceschini and Galetto (2001)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>多准则决策（MCDM；22.50%）</td>
+<td>证据理论</td>
+<td>Chin et al. (2009b), Yang et al. (2011)</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td>多准则决策（MCDM；22.50%）</td>
+<td>AHP／ANP</td>
+<td>Braglia (2000), Carmignani (2009), Hu et al. (2009), Zammori and Gabbrielli (2011)</td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td>多准则决策（MCDM；22.50%）</td>
+<td>模糊 TOPSIS</td>
+<td>Braglia et al. (2003b)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>多准则决策（MCDM；22.50%）</td>
+<td>灰色理论</td>
+<td>Chang et al. (1999, 2001), Sharma et al. (2008b, 2007d), Pillay and Wang (2003), Sharma and Sharma (in press), Geum et al. (2011)</td>
+<td style="text-align:right">7</td>
+</tr>
+<tr>
+<td>多准则决策（MCDM；22.50%）</td>
+<td>DEMATEL</td>
+<td>Seyed-Hosseini et al. (2006)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>多准则决策（MCDM；22.50%）</td>
+<td>直觉模糊集排序技术</td>
+<td>Chang et al. (2010)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>多准则决策（MCDM；22.50%）</td>
+<td>VIKOR</td>
+<td>Liu et al. (2012)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>数学规划（MP；8.75%）</td>
+<td>线性规划</td>
+<td>Wang et al. (2009b), Gargama and Chaturvedi (2011), Chen and Ko (2009a, 2009b)</td>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td>数学规划（MP；8.75%）</td>
+<td>数据包络分析（DEA）／模糊 DEA</td>
+<td>Garcia et al. (2005), Chang and Sun (2009), Chin et al. (2009a)</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td>人工智能（AI；40.00%）</td>
+<td>基于规则的系统</td>
+<td>Sankar and Prabhu (2001)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>人工智能（AI；40.00%）</td>
+<td>模糊规则库系统</td>
+<td>Bowles and Peláez (1995), Moss and Woodhouse (1999), Xu et al. (2002), Zafiropoulos and Dialynas (2005), Chin et al. (2008), Nepal et al. (2008), Puente et al. (2002), Pillay and Wang (2003), Yang et al. (2008), Gargama and Chaturvedi (2011), Braglia and Bevilacqua (2000), Braglia et al. (2003a), Tay and Lim (2006a, 2010), Sharma et al. (2005, 2007a, 2007b, 2007c, 2007d, 2008a, 2008b, 2008c), Sharma and Sharma (2010, 2012), Guimarães and Franklin Lapa (2004), Guimarães and Lapa (2004, 2006, 2007), Guimarães et al. (2011)</td>
+<td style="text-align:right">29</td>
+</tr>
+<tr>
+<td>人工智能（AI；40.00%）</td>
+<td>模糊 ART 算法</td>
+<td>Keskin and Özkan (2009)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>人工智能（AI；40.00%）</td>
+<td>模糊认知图</td>
+<td>Peláez and Bowles (1996)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>集成方法（11.25%）</td>
+<td>模糊 AHP—模糊规则库系统</td>
+<td>Abdelgawad and Fayek (2010)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>集成方法（11.25%）</td>
+<td>WLSM—MOI—部分排序法</td>
+<td>Zhang and Chu (2011)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>集成方法（11.25%）</td>
+<td>OWGA 算子—DEMATEL</td>
+<td>Chang (2009)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>集成方法（11.25%）</td>
+<td>IFS—DEMATEL</td>
+<td>Chang and Cheng (2010)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>集成方法（11.25%）</td>
+<td>模糊 OWA 算子—DEMATEL</td>
+<td>Chang and Cheng (2011)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>集成方法（11.25%）</td>
+<td>二元语义（2-tuple）—OWA 算子</td>
+<td>Chang and Wen (2010)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>集成方法（11.25%）</td>
+<td>FER—灰色理论</td>
+<td>Liu et al. (2011)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>集成方法（11.25%）</td>
+<td>模糊 AHP—模糊 TOPSIS</td>
+<td>Kutlu and Ekmekçioğlu (2012)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>集成方法（11.25%）</td>
+<td>ISM—ANP—UPN</td>
+<td>Chen (2007)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>其他方法（17.50%）</td>
+<td>基于成本的模型</td>
+<td>Gilchrist (1993), Ben-Daya and Raouf (1996), von Ahsen (2008), Kmenta and Ishii (2004), Dong (2007), Rhee and Ishii (2003)</td>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td>其他方法（17.50%）</td>
+<td>蒙特卡罗模拟</td>
+<td>Bevilacqua et al. (2000)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>其他方法（17.50%）</td>
+<td>最小割集（MCS）理论</td>
+<td>Xiao et al. (2011)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>其他方法（17.50%）</td>
+<td>布尔表示法（BRM）</td>
+<td>Wang et al. (1995)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>其他方法（17.50%）</td>
+<td>有向图与矩阵方法</td>
+<td>Gandhi and Agrawal (1992)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>其他方法（17.50%）</td>
+<td>Kano 模型</td>
+<td>Shahin (2004)</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>其他方法（17.50%）</td>
+<td>质量功能展开（QFD）</td>
+<td>Braglia et al. (2007), Tan (2003)</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td>其他方法（17.50%）</td>
+<td>概率理论</td>
+<td>Sant’Anna (2012)</td>
+<td style="text-align:right">1</td>
+</tr>
+</tbody>
+</table></div>
+<p>Chang, Cheng, and Chang（2010）提出了一种采用直觉模糊集排序技术的方法，用于重新确定系统 FMECA 中失效的优先次序。依据专家经验，为每个单元故障定义三角直觉模糊集。然后，根据 Chang, Chang, Liao, and Cheng（2006）提出的模糊故障树分析定义，计算各单元对系统的影响力以及整个系统可增加的可靠性。最后，按照各单元故障的影响程度对失效风险排序。</p>
+<p>较近的一项研究中，Liu, Liu, Liu, and Mao（2012）将 VIKOR 方法应用于 FMEA，依据风险因素寻找失效模式的折中优先排序。VIKOR 最初是为复杂系统多准则优化而开发的。在该方法中，使用以梯形或三角模糊数表达的语言变量评价 O、S、D 的评分及权重，再采用扩展 VIKOR 方法确定已识别失效模式的风险优先级。</p>
+<p><a class="anchor-target" id="sec-3-2"></a></p>
+<h3>3.2. 数学规划方法</h3>
+<p>Wang, Chin, Poon, and Yang（2009b）提出模糊风险优先数（Fuzzy Risk Priority Number，<strong>FRPN</strong>），用于确定失效模式的优先次序，以解决这样一个问题：在实际应用中，由于需要对每个失效模式的风险因素进行精确评价，依靠传统 RPN 确定风险优先级并不现实。文中将 FRPN 定义为 O、S、D 模糊评分的模糊加权几何平均数，可借助 α 水平集及线性规划模型计算。最后，通过重心去模糊化法将 FRPN 转换为精确值，以便排序。Gargama and Chaturvedi（2011）则使用基准调整搜索算法而非线性规划方法，计算 α 水平集的加权模糊几何平均数，进而得到 FRPN。在 Chen and Ko（2009a, 2009b）的研究中，FRPN 被定义为三个风险因素的模糊有序加权几何平均（Fuzzy Ordered Weighted Geometric Averaging，<strong>FOWGA</strong>）（Xu &amp; Da, 2003）。</p>
+<p><a class="anchor-target" id="pdf-p6"></a></p>
+<h2 class="page-heading">PDF 第 6 页｜期刊第 833 页</h2>
+<p>Garcia, Schirru, and Frutuoso Emelo（2005）提出了一种用于 FMEA 的模糊数据包络分析（Data Envelopment Analysis，<strong>DEA</strong>）方法，将典型风险因素 O、S、D 建模为模糊集，并使用 Lertworasirikul, Fang, Joines, and Lw Nuttle（2003）提出的模糊可能性 DEA 模型，确定失效模式之间的排序指数。Chang and Sun（2009）也应用 DEA 增强 FMEA 的评价能力；不过，在他们提出的模型中，FMEA 的输入（O、S、D）采用的是 1—10 的精确评分，而不是模糊集。</p>
+<p>Chin, Wang, Poon, and Yang（2009a）认为 Garcia et al.（2005）的方法计算非常复杂，而且不能对需要确定优先级的失效模式给出完整排序。基于这些理由，他们提出了一种基于 DEA 的 FMEA 方法：该方法考虑风险因素的相对重要性权重，但无须主观指定这些权重。权重由 DEA 模型确定，而且因失效模式而异。所提出的 FMEA 方法计算每种失效模式的最大风险和最小风险，随后对两种风险取几何平均，反映失效模式的总体风险，并据此确定优先次序。该 FMEA 方法还考虑了风险因素评价信息的不完整性和不精确性。</p>
+<p><a class="anchor-target" id="sec-3-3"></a></p>
+<h3>3.3. 人工智能方法</h3>
+<p><a class="anchor-target" id="sec-3-3-1"></a></p>
+<h4>3.3.1. 基于规则的系统</h4>
+<p>Sankar and Prabhu（2001）提出了一种对系统 FMEA 中失效进行优先排序的改进方法，使用称为风险优先等级（Risk Priority Rank，<strong>RPR</strong>）的 1—1000 级排序，表示严重度—发生度—探测度的 1000 种可能组合所对应的递增风险。这 1000 种可能组合由专家按照风险从低到高的顺序列成表格，并可以表示为“如果—那么”（if–then）规则。等级较高的失效被赋予比较低等级失效更高的优先级。</p>
+<p><a class="anchor-target" id="sec-3-3-2"></a></p>
+<h4>3.3.2. 模糊规则库系统</h4>
+<p>Bowles and Peláez（1995）介绍了一种基于模糊逻辑的方法，用于系统 FMECA 中的失效优先排序。该方法以语言变量描述 O、S、D 及失效风险程度，并利用根据专家知识与经验建立的模糊 if–then 规则库，刻画风险程度与 O、S、D 之间的关系。首先，将 O、S、D 的精确评分模糊化，以匹配各条可能的 if–then 规则的前件。随后，所有前件具有非零真值的规则都被激活，共同形成模糊结论集。最后，通过最大值加权平均法（Weighted Mean of Maximum，<strong>WMoM</strong>）将模糊结论去模糊化，得到风险优先级的排序值。Moss and Woodhouse（1999）也提出了类似的模糊逻辑危害度分析方法。在上述模糊逻辑方法基础上，Xu, Tang, Xie, Ho, and Zhu（2002）开发了用于柴油发动机废气涡轮增压器的模糊 FMEA 评价专家系统；Zafiropoulos and Dialynas（2005）提出用于开关模式电源（Switched Mode Power Supply，<strong>SMPS</strong>）等电力电子设备的模糊 FMECA 评价系统；Chin, Chan, and Yang（2008）开发了基于模糊 FMEA 的产品设计系统 EPDS-1；Nepal, Yadav, Monplaisir, and Murat（2008）则提出了一个通用 FMEA 框架，在产品架构（Product Architecture，<strong>PA</strong>）层面捕捉系统／部件相互作用引起的失效。</p>
+<p>Puente, Pino, Priore, and de la Fuente（2002）提出了一种基于定性规则的危害度评价方法，对潜在失效原因的风险进行排序。该方法依据与某一失效模式相关的三个风险因素（O、S、D）所获得的重要性，为 FMEA 中每个失效原因分配一个风险优先类别。定性规则采用 if–then 结构，FMEA 中全部 125 条规则均以三维图形表示。为了提高对不同失效原因进行风险区分的能力，作者还提出了一种集成模糊逻辑的改进版本。</p>
+<p>Pillay and Wang（2003）提出了一种模糊规则库方法，不需要通过效用函数来定义分析所考虑的 O、S、D。实现方式是从专家处收集信息并以正式形式加以整合，从而反映一种主观的风险排序方法。所提出的方法首先需要建立三个风险因素的隶属函数，然后给每一种失效模式分配表示三个风险因素的语言变量。通过生成的模糊规则库，将这三个变量整合为代表所有失效模式风险等级的语言变量。</p>
+<p>Yang, Bonsall, and Wang（2008）提出了基于模糊规则的贝叶斯推理（Fuzzy Rule-Based Bayesian Reasoning，<strong>FuRBaR</strong>）方法，用于 FMEA 中失效的优先排序。该技术专门用于解决在 FMEA 中应用传统模糊逻辑（即基于规则）方法的一些缺点。在其方法中，为规则后件赋予主观置信度，以对构建知识库时遇到的不完整性进行建模，随后使用贝叶斯推理机制聚合所有相关规则，以评价潜在失效模式并确定其优先次序。</p>
+<p>Gargama and Chaturvedi（2011）提出了一种基于匹配度及模糊规则库的模糊 FMEA 模型，用以克服传统 FMEA 的某些局限并对失效模式进行优先排序。该模型使用置信结构评价风险因素，随后将已评价信息中的随机性转换为凸的归一化模糊数。接着，使用匹配度（Degree of Match，<strong>DM</strong>）估计评价信息与风险因素模糊集之间的匹配情况。计算得到的 DM 再作为模糊规则系统的输入，对规则进行处理，最终获得带有确定性程度的失效分类结果。</p>
+<p>模糊 RPN 模型通常需要大量规则，而从领域专家处获取规则以建立模糊 if–then 规则库是一个耗时且繁琐的过程。因此，Braglia and Bevilacqua（2000）提出使用 AHP，为特定的模糊危害度评价模型获取所需规则。该模型的另一特点是使用三角形式的“精确”输入，在模糊模型中评价维护人员的不同意见。Braglia, Frosolini, and Montanari（2003a）提出一种风险函数，使模糊 if–then 规则能够自动生成。该风险函数将各风险因素隶属函数模态值的每一种组合所对应的归一化 RPN，与最终失效风险评价的相应语言变量集合连接起来，其中归一化 RPN 定义为 RPN/1000。Tay and Lim（2006a）认为，模糊 RPN 模型实际上并不需要全部规则，并提出引导式规则缩减系统（Guided Rules Reduction System，<strong>GRRS</strong>），为使用者提供指引，说明哪些规则是必需的，哪些可以删除。借助 GRRS，使用者在构建模糊 if–then 规则库时无须提供全部规则，只需要提供重要规则即可。在 Tay and Lim（2010）的研究中，作者还采用模糊规则插值与缩减技术设计加权模糊 RPN 模型，并证明该模型在缩减规则库后仍具有评价失效风险的能力。</p>
+<p>规则缩减方法也被许多其他研究者用于减小模糊 if–then 规则库的规模。Pillay and Wang（2003）将所提出的方法应用于远洋渔船时，共生成 125 条规则；这些规则经过合并后，模糊规则库中的规则总数减少到 35 条。Sharma et al.（2005）在造纸厂给料系统的模糊 FMEA 中使用了 27 条模糊 if–then 规则；随后在该造纸厂的制浆系统、成形与压榨系统、洗涤系统、造纸机和干燥系统等其他系统的应用中，将原有 125 条模糊 if–then 规则缩减到 30 条（Sharma, Kumar, &amp; Kumar, 2007a, 2007b, 2007c, 2007d, 2008a, 2008b, 2008c; Sharma &amp; Sharma, 2010, 2012）。</p>
+<p><a class="anchor-target" id="pdf-p7"></a></p>
+<h2 class="page-heading">PDF 第 7 页｜期刊第 834 页</h2>
+<p>Guimarães and Franklin Lapa（2004）、Guimarães and Lapa（2004, 2006, 2007）以及 Guimarães, Lapa, and Moreira（2011）也进行了类似的规则缩减。他们分别将模糊 FMEA 用于双回路压水堆（Pressurized Water Reactor，<strong>PWR</strong>）的辅助给水系统、PWR 化学和容积控制系统（Chemical and Volume Control System，<strong>CVCS</strong>）、独立回路沸水堆（Boiling Water Reactor，<strong>BWR</strong>）的轻水堆非能动系统、标准四回路 PWR 安全壳冷却系统（Containment Cooling System，<strong>CCS</strong>），以及双回路 PWR 的数字给水控制系统（Digital Feed-Water Control System，<strong>DFWCS</strong>）。</p>
+<p><a class="anchor-target" id="sec-3-3-3"></a></p>
+<h4>3.3.3. 模糊 ART 算法</h4>
+<p>Keskin and Özkan（2009）使用模糊自适应共振理论（Fuzzy Adaptive Resonance Theory，<strong>Fuzzy ART</strong>）神经网络评价 FMEA 中的 RPN。研究中，对构成 RPN 的发生度、严重度和探测度数值分别进行评价，将 RPN 的各组成输入作为 O、S、D 向系统提供。在每种情况下，采用将 FMEA 应用于测试问题所获得的有效参数结果，将包含三个数据值（O、S、D）的输入提交给系统，并按照这三个参数对相似输入进行聚类。最后，使用所得各失效类别内输入值的算术平均数确定优先次序。</p>
+<p><a class="anchor-target" id="sec-3-3-4"></a></p>
+<h4>3.3.4. 模糊认知图</h4>
+<p>Peláez and Bowles（1996）将模糊认知图（Fuzzy Cognitive Map，<strong>FCM</strong>）用于 FMEA 中的系统行为建模。FCM 是一种通过失效节点和因果关系路径表示失效因果关系的图。研究用“有时（some）”“总是（always）”“经常（often）”等语言变量描述路径，并为每个术语指定相对量表。随后采用最小—最大推理方法评价任一给定节点上的净因果效应，并使用最大值加权平均法作为去模糊化技术，提取语言变量对应的置信值。</p>
+<p><a class="anchor-target" id="sec-3-4"></a></p>
+<h3>3.4. 集成方法</h3>
+<p>Zhang and Chu（2011）介绍了一种适用于不确定环境下 FMEA 的模糊 RPN 方法，将加权最小二乘法（Weighted Least Square Method，<strong>WLSM</strong>）、不精确性方法（Method of Imprecision，<strong>MOI</strong>）和部分排序法结合起来。研究中，FMEA 团队的决策者使用不同粒度的语言术语集表达判断；通过模糊 WLSM 聚合这些判断，以形成一致的群体判断；将 MOI 与非线性规划模型结合，根据群体判断计算模糊 RPN；最后，依据模糊偏好关系的部分排序方法，按照模糊 RPN 得分对失效模式排序。</p>
+<p>Abdelgawad and Fayek（2010）通过结合模糊 FMEA 与模糊 AHP，将 FMEA 扩展应用于建筑行业的风险管理。研究将严重度（S）称为影响（Impact，<strong>I</strong>），并将其分为三个维度：成本影响（Cost Impact，<strong>CI</strong>）、时间影响（Time Impact，<strong>TI</strong>）及范围／质量影响（Scope/Quality Impact，<strong>SI</strong>）。采用模糊 AHP，将 CI、TI 和 SI 聚合为一个称作综合影响（Aggregated Impact，<strong>AI</strong>）的变量。随后，以指定的 O、D 值和计算得到的 AI 为基础，使用由模糊 if–then 规则支持的模糊 FMEA 专家系统，对不同风险事件进行分析并确定其优先顺序。此外，还开发了名为“风险危害度分析器”（Risk Criticality Analyzer，<strong>RCA</strong>）的软件系统，以实现所提出的框架。</p>
+<p>Liu et al.（2011）提出了一种使用模糊证据推理（Fuzzy Evidential Reasoning，<strong>FER</strong>）与灰色理论的 FMEA 风险优先级模型。FER 用于对 FMEA 团队成员评价信息的多样性和不确定性建模，灰色关联分析则用于确定失效模式的风险优先顺序。所提出 FMEA 的核心环节包括：用置信结构评价风险因素；将个人置信结构综合为群体置信结构；将去模糊化的群体置信结构聚合为整体置信结构；建立比较序列和标准序列；求取比较序列与标准序列之间的差异；计算灰色关联系数和关联度；依据关联度对失效模式排序。</p>
+<p>Chang and Cheng（2011, 2010）及 Chang（2009）指出，当每一失效原因只对应一种潜在失效模式时，使用 DEMATEL 方法（Seyed-Hosseini et al., 2006）得到的风险排序，与采用传统 RPN 方法得到的排序相对应。为解决这一问题，Chang（2009）提出了一种通用 RPN 方法，将有序加权几何平均（Ordered Weighted Geometric Averaging，<strong>OWGA</strong>）算子与 DEMATEL 相结合，对产品 FMEA 中的失效进行排序；Chang and Cheng（2010）提出了结合直觉模糊集（Intuitionistic Fuzzy Set，<strong>IFS</strong>）和 DEMATEL 的技术，用于评价失效风险；Chang and Cheng（2011）则提出了使用模糊有序加权平均（Ordered Weighted Averaging，<strong>OWA</strong>）算子与 DEMATEL 的算法，以评价失效问题的风险排序。</p>
+<p>Chang and Wen（2010）也提出了一项将二元语义（2-tuple）与 OWA 算子结合的技术，用于产品设计失效模式与影响分析（Design FMEA，<strong>DFMEA</strong>）中的失效优先排序。二元语义方法用于解决传统 RPN 方法会丢失专家提供的部分有价值信息的问题；OWA 算子用于克服传统 RPN 方法未考虑有序权重、从而可能得出有偏结论的问题。作者采用彩色超扭曲向列型（Color Super Twisted Nematic，<strong>CSTN</strong>）案例验证所提出的方法，并将其结果与传统 RPN 和语言有序加权平均（Linguistic OWA，<strong>LOWA</strong>）算子方法进行比较。</p>
+<p>Kutlu and Ekmekçioğlu（2012）提出了一种结合模糊 AHP 与模糊 TOPSIS 的 FMEA 模糊方法，使专家可以使用语言变量确定 O、S、D。首先，利用模糊 AHP 确定三个风险因素的权重向量；然后，利用每种失效模式风险因素的语言评分及风险因素权重向量，运用模糊 TOPSIS 得到潜在失效模式的得分，据此进行失效模式优先排序。</p>
+<p>Chen（2007）指出，实施 FMEA 时，除了测量风险，还应考虑潜在纠正措施的效用。因此，研究提出一种确定 FMEA 优先次序的新方法：首先使用解释结构模型（Interpretive Structural Model，<strong>ISM</strong>）评价纠正措施的层次结构及相互依赖关系；接着通过 ANP 计算纠正措施的权重；最后结合纠正措施的效用，以效用优先数（Utility Priority Number，<strong>UPN</strong>）决定 FMEA 的改进优先次序。</p>
+<p><a class="anchor-target" id="sec-3-5"></a></p>
+<h3>3.5. 其他方法</h3>
+<p>Gilchrist（1993）对传统 FMECA 的危害度评价进行修改，提出预期成本模型：</p>
+<div aria-label="EC equals C times n times P f times P d" class="equation" role="math">EC = C × n × P<sub>f</sub> × P<sub>d</sub></div>
+<p>其中，EC 是客户的预期成本，C 为失效成本，n 为年生产量，P_f 为失效发生的概率，P_d 为失效未被探测到的概率。Ben-Daya and Raouf（1996）指出，预期成本模型中的 P_f 与 P_d 并非总是相互独立，而且在产品设计阶段很难估计它们；同时，该模型完全忽略了严重度。因此，作者提出了一种改进的 FMECA 模型，以解决对 Gilchrist 方法的上述批评，并将其与预期成本模型结合，为产品或服务的生产阶段提供质量改进方案。</p>
+<p><a class="anchor-target" id="pdf-p8"></a></p>
+<h2 class="page-heading">PDF 第 8 页｜期刊第 835 页</h2>
+<p>von Ahsen（2008）指出，内部发现的故障也可能产生非常可观的失效成本，但传统 FMEA 及 Gilchrist 的方法均忽略了这一点。为解决这一问题，研究提出面向成本的 FMEA，在评价潜在失效时不仅考虑外部故障成本，还包括内部故障成本以及检验假阳性结果所造成的成本。此外，Kmenta and Ishii（2004）提出一种基于预期成本的情景 FMEA，其中概率和成本为风险分析与决策提供一致的基础，失效情景则为不同系统层级和生命周期阶段之间的分析提供连续性。</p>
+<p>Dong（2007）提供了一种基于模糊效用成本估计的 FMEA 分析工具，用于克服传统 FMEA 未定义失效成本的不足。该方法使用效用理论和模糊隶属函数评价 O、S、D。效用理论用于反映失效成本与序数排序之间的非线性关系；模糊隶属函数用于表示团队意见。研究开发了风险优先指数（Risk Priority Index，<strong>RPI</strong>），用于确定失效模式的优先顺序。</p>
+<p>Rhee and Ishii（2003）提出了一种以生命周期成本为基础的 FMEA，通过成本衡量风险。该方法用于比较并选择能够降低特定系统总生命周期成本的设计备选方案。研究将蒙特卡罗模拟应用于基于成本的 FMEA，以考虑探测时间、修复时间、发生情况、延迟时间、停机时间中的不确定性，并模拟复杂情景。</p>
+<p>Bevilacqua, Braglia, and Gabbrielli（2000）提出一种将改进 FMECA 与蒙特卡罗模拟相结合的方法，以检验 RPN 测量中所赋予的权重。改进后的 RPN 由六个参数（安全性、机器对过程的重要性、维护成本、失效频率、停机时长和运行条件）的加权和，再乘以第七个因素（机器接近难度）构成；其中六项属性的相对重要性通过成对比较进行估计。通过模拟权重，就无须对权重进行确定性赋值，因而可以获得随机性的最终优先级排序。</p>
+<p>Xiao, Huang, Li, He, and Jin（2011）开发了一种 FMEA 方法，在考虑失效重要性的同时，将多种失效模式合并为一种，并评价其对系统可靠性的影响。该方法以最小割集（Minimum Cut Set，<strong>MCS</strong>）理论为基础，将该理论纳入传统 FMEA，以评价存在多种失效模式时的系统可靠性。此外，研究通过在 RPN 上乘以一个表征系统内失效原因重要性的权重参数，扩展了 RPN 的定义。采用加权 RPN 后，纠正措施的效用得到改善，并在最短时间内取得有利的改进效果。</p>
+<p>Wang, Ruxton, and Labrie（1995）提出了一种自下而上的归纳式风险识别与估计方法，将 FMECA 与布尔表示法（Boolean Representation Method，<strong>BRM</strong>）结合起来。该方法可用于识别所有可能的系统失效事件及相关原因，并评价其发生概率，尤其适用于包含多个状态变量和反馈回路的情况。此外，归纳式 BRM 还用于处理 FMECA 产生的信息，从而形成风险识别与风险估计之间的闭环。</p>
+<p>Gandhi and Agrawal（1992）提出了一种基于有向图与矩阵的机械及液压系统 FMEA 方法。研究依据系统结构建立失效模式与影响有向图，以模拟系统失效模式的影响，并定义矩阵表示有向图，以便高效进行计算机处理。通过矩阵可获得描述系统失效模式及其影响特征的函数，有助于开展详细分析，从而识别失效模式及影响的各种结构组成部分。研究还获得了系统失效模式与影响的指数。</p>
+<p>Shahin（2004）提出通过整合 Kano 模型来增强 FMEA 能力的方法。该方法依据客户感知对严重度进行分类，并据此确定严重度和 RPN，从而支持失效频率与严重度之间的非线性关系。研究还提出一个名为“纠正比率”（Correction Ratio，<strong>Cr</strong>）的新指标，用于评价 FMEA 中的纠正措施。通过考虑尚未体验产品／服务的客户，该方法使管理者／设计者能够在早期设计阶段预防失效。</p>
+<p>Braglia, Fantoni, and Frosolini（2007）将质量功能展开／质量屋（Quality Function Deployment/House of Quality，<strong>QFD/HoQ</strong>）概念扩展至 FMEA，构建一种名为“可靠性屋”（House of Reliability，<strong>HoR</strong>）的新型操作工具。该工具能够以失效分析为基础，结构化地将客户的可靠性要求转化为产品的功能要求。通过引入失效模式之间最重要的相关关系，该方法增强了标准 FMEA 分析的能力。此外，利用 HoR 的结果，还可以开展成本—价值分析，以分析和评价失效的经济后果。Tan（2003）也研究了 QFD 和 FMEA 的集成应用。</p>
+<p>Sant’Anna（2012）提出了一种方法：基于 FMEA 中安全性、频率和可探测性准则的数值评价，推导潜在失效的概率优先度量。该方法将初始数值测量视为概率分布位置参数的估计，由此能够客观考虑这些测量固有的不确定性，并计算按照各项准则每种潜在失效成为最重要失效的概率。之后，将这些概率合成为一个总体质量度量，可将其解释为选择某一潜在失效的联合概率。</p>
+<p><a class="anchor-target" id="sec-4"></a></p>
+<h2>4. 观察与发现</h2>
+<p>本文收集了 1992—2012 年间发表的 75 篇期刊论文，这些论文运用替代方法解决传统 FMEA 的问题。已识别的方法包括多准则决策、数学规划、人工智能及其混合方法，已在表 5 中汇总，并在上一节作了介绍。基于这些期刊论文，以下小节报告一些观察结果。</p>
+<p><a class="anchor-target" id="sec-4-1"></a></p>
+<h3>4.1. 最流行的方法</h3>
+<p>根据前文分析，FMEA 中应用最频繁的方法类别是人工智能，占全部所综述论文的 <strong>40.0%</strong>；其次是多准则决策（MCDM）方法，共 <strong>18 篇</strong>，占 <strong>22.5%</strong>。</p>
+<p>根据表 5，最流行的具体方法是模糊规则库系统，其次依次为灰色理论、基于成本的模型、AHP／ANP 和线性规划。模糊规则库系统能够广泛应用，是因为模糊逻辑和基于知识的方法具有独特优势。与传统 FMEA 方法相比，模糊专家系统具有以下优点（Bowles &amp; Peláez, 1995; Braglia et al., 2003a; Sharma et al., 2005; Tay &amp; Lim, 2006a, 2006b, 2010; Xu et al., 2002）：</p>
+<p><a class="anchor-target" id="pdf-p9"></a></p>
+<h2 class="page-heading">PDF 第 9 页｜期刊第 836 页</h2>
+<p><strong>图 1　所综述论文的时间分布。</strong> 原图标题为“Distribution of journal articles”；纵轴为“论文数量（No. of articles）”；横轴为发表时间区间。</p>
+<div aria-label="表格，可横向滚动" class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>发表时间区间（图内标签）</th>
+<th style="text-align:right">论文数量（柱上标签）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1992–1996</td>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td>1997–2001</td>
+<td style="text-align:right">8</td>
+</tr>
+<tr>
+<td>2002–2006</td>
+<td style="text-align:right">17</td>
+</tr>
+<tr>
+<td>2007–2011</td>
+<td style="text-align:right">40</td>
+</tr>
+<tr>
+<td>2012–</td>
+<td style="text-align:right">4</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>原文图 1（PDF 第 9 页，随文件内嵌）：</strong></p><div class="figure-duo"><figure class="figure-piece"><svg aria-label="所综述期刊论文的时间分布：1992至1996年6篇，1997至2001年8篇，2002至2006年17篇，2007至2011年40篇，2012年4篇" role="img" viewbox="0 0 690 326" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#f7f9fd" height="326" rx="10" width="690" x="0" y="0"></rect>
+<text fill="#21334b" font-size="20" font-weight="700" text-anchor="middle" x="345" y="33">期刊论文的时间分布</text>
+<text fill="#344761" font-size="14" text-anchor="middle" transform="rotate(-90,23,158)" x="23" y="158">论文数量</text>
+<g stroke="#dbe3ed" stroke-width="1"><line x1="65" x2="654" y1="263.00" y2="263.00"></line><line x1="65" x2="654" y1="241.33" y2="241.33"></line><line x1="65" x2="654" y1="219.67" y2="219.67"></line><line x1="65" x2="654" y1="198.00" y2="198.00"></line><line x1="65" x2="654" y1="176.33" y2="176.33"></line><line x1="65" x2="654" y1="154.67" y2="154.67"></line><line x1="65" x2="654" y1="133.00" y2="133.00"></line><line x1="65" x2="654" y1="111.33" y2="111.33"></line><line x1="65" x2="654" y1="89.67" y2="89.67"></line><line x1="65" x2="654" y1="68.00" y2="68.00"></line></g><g fill="#667a90" font-size="12.5" text-anchor="end"><text x="57" y="267.00">0</text><text x="57" y="245.33">5</text><text x="57" y="223.67">10</text><text x="57" y="202.00">15</text><text x="57" y="180.33">20</text><text x="57" y="158.67">25</text><text x="57" y="137.00">30</text><text x="57" y="115.33">35</text><text x="57" y="93.67">40</text><text x="57" y="72.00">45</text></g><rect fill="#476eac" height="26.00" rx="3" width="63" x="88" y="237.00"></rect><text fill="#24364c" font-size="16" font-weight="700" text-anchor="middle" x="119.5" y="229.00">6</text><text fill="#344761" font-size="14" text-anchor="middle" x="119.5" y="289">1992–1996</text><rect fill="#476eac" height="34.67" rx="3" width="63" x="205" y="228.33"></rect><text fill="#24364c" font-size="16" font-weight="700" text-anchor="middle" x="236.5" y="220.33">8</text><text fill="#344761" font-size="14" text-anchor="middle" x="236.5" y="289">1997–2001</text><rect fill="#476eac" height="73.67" rx="3" width="63" x="322" y="189.33"></rect><text fill="#24364c" font-size="16" font-weight="700" text-anchor="middle" x="353.5" y="181.33">17</text><text fill="#344761" font-size="14" text-anchor="middle" x="353.5" y="289">2002–2006</text><rect fill="#476eac" height="173.33" rx="3" width="63" x="439" y="89.67"></rect><text fill="#24364c" font-size="16" font-weight="700" text-anchor="middle" x="470.5" y="81.67">40</text><text fill="#344761" font-size="14" text-anchor="middle" x="470.5" y="289">2007–2011</text><rect fill="#476eac" height="17.33" rx="3" width="63" x="556" y="245.67"></rect><text fill="#24364c" font-size="16" font-weight="700" text-anchor="middle" x="587.5" y="237.67">4</text><text fill="#344761" font-size="14" text-anchor="middle" x="587.5" y="289">2012–</text></svg><figcaption>图 1 · 中文标签重绘（数据与原图一致）</figcaption></figure><figure class="figure-piece"><img alt="论文原图：所综述论文的时间分布" loading="lazy" src="data:image/png;base64,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nIc6/NwvPT09Njb21atXrG4XpKam4uVJSUkRil35plZcd6zk3ZfTp09//PHHv/zyi7u7O1yWmjVr/fXXDhzw119/Va1a9ZtvBj558kQIDa9xIk9SUpKnp6efn98bgtAZiYmvly1bVqFCBaz5HUnh4eFwi/Go4yFEKadGjRoo97AHkvuZX+s/cQmvVx3xZ96GBTf1t3bmEmeBsNn9LO3cpXeelnZCyzx40lj9Z4mhK29DyZv74ODg9evXjxkzZtSoUfA8li5dev36dfU5XPMNRJANeBLLly/v0KHDlStX4D0YGBh89VXfgIBANpd4pUqV69dvePPmTeGU+Pj4O3fu3OY5derUpUuXcJY3QegGX987KNCUK1fu119/RRnl9m0fPHjYz566Xr16dezY8cSJE+yZxB621n88vbwX77g2wkZqZis1s5aa2rlpq5LKzE4Kb4ObFNZGevjCTXa5spU5+gNKxvfu3UOJXOuWvAB09ZU4gFcxd+7c+jDqeWB78ODB8AwK7k8irryC9oSFhU2bNs3e3h5Zg1exRYsWxsYmL168ZN5GlSpVDQya4WkT3BecAmXCwWlpadgfEBCQThA6Ay60tbU1vA2JRIJHLp2fepI9fnhcUdxZsGABioRsPspUntKO8juRmJQqtG1odS7xf9o24G143H3GLidkXakmuozBnihslHCbmQ6HMjx79uzHH3/8888/h4aGhvP8/fffXbt2tbKygktVQGdEQTYgABBShODo6IgMwimQnL59+9auXWf37r2sbaNWrdq//74wJSVVqDgW9AMbKOLdv3+fKk8J3ZGVxXnDkA2sxQ1sYN26dY0bN968eTM8ZnZw2eqAa388UGgSN7JxMdOSt2GS17YB2bgVGlPaCX0feE/aNiAMp06datas2YwZMyIiIljv9StXrnz22WcLFy58lw64IDAwcOTIkcOGDQsJCYHTgNfy9OnTcDuqV69hZWWNV3Ht2rUNGzbauvVPlVlmhZCpJxWha+Ty7BUrVkA2sGZ72OOHIs6IESP69Onz4MEDoSylLENN4pm5sqHdJnFeNlyFJnHPkKiykiF6S8lnoA4rqaAWMPpw0kePHj1u3Ljx48d/+eWX3bp1u3btmnh2v3zTjBcMp//yyy8NGzZs167dlClTzM3NO3XqdOzYMfguCA0v5P79+83MzLANUdGUcSQbhC4QvIqM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" style="max-width:100%;height:auto"/><figcaption>图 1 · 附件原图（保留英文标签）</figcaption></figure></div>
+
+<ul>
+<li>模糊、定性或不精确的信息以及定量数据，都能够用于危害度／风险评价，并以一致的方式进行处理。</li>
+<li>它允许以更灵活、更符合实际的方式综合失效模式的发生度、严重度和可探测度。</li>
+<li>它允许根据过程或产品的性质定制失效风险评价函数。</li>
+<li>模糊知识系统能够在 FMEA 分析中充分纳入工程师的知识与经验，因此可实现可观的成本节约。</li>
+</ul>
+<p><a class="anchor-target" id="sec-4-2"></a></p>
+<h3>4.2. 各种方法的局限性</h3>
+<p>本文的最后一个目标是批判性地分析已识别的各种方法，并尝试找出其缺点。本节不对每一种方法逐一分析，而是将主要关注点限定在最流行的模糊规则库系统。实质上，任何模糊专家系统均由三个过程组成：模糊化、模糊推理和去模糊化。在模糊 FMEA 中，使用适当的隶属函数对 O、S、D 等风险因素进行模糊化，以确定它们对各输入类别的隶属程度。生成的模糊输入由模糊推理引擎进行评价；该引擎利用由 if–then 规则及模糊逻辑运算构成的明确定义的规则库，确定失效风险水平。最后，对模糊结论进行去模糊化，得到风险优先数。</p>
+<p>尽管模糊推理技术已被广泛用于改进 FMEA 方法，但它仍存在若干局限（Abdelgawad &amp; Fayek, 2010; Braglia, 2000; Braglia et al., 2003a, 2003b; Tay &amp; Lim, 2006a, 2010; Yang et al., 2008; Zhang &amp; Chu, 2011）：</p>
+<ul>
+<li>难以为风险因素及风险优先级定义适当的隶属函数。此外，只要对语言术语作出任何修改，例如将用于定义 D 的五个语言术语改为七个，就需要重新征询并确定相应的隶属函数。</li>
+<li>存在组合式规则爆炸问题，导致模糊 RPN 模型经常包含大量规则。专家提供的规则越多，模糊 RPN 模型的预测准确度就越高。</li>
+<li>建立模糊 if–then 规则库并不容易，因为它要求专家作出大量判断，成本高且耗时。</li>
+<li>对于后件相同而前件不同的模糊 if–then 规则，无法相互区分。由此，这些规则所刻画的失效模式将无法确定优先次序或进行排序。</li>
+<li>在模糊推理过程中，既要避免丢失过多信息，又要通过复杂计算得到“精确”的风险结果，十分困难。</li>
+<li>难以设计适当的软件包，实现风险输入与输出以及失效优先排序之间的即时通信。</li>
+</ul>
+<p>为避免建立庞大的 if–then 规则库，一些模糊 FMEA 方法采用缩减后的 if–then 规则库。然而，这又带来一些新问题（Wang et al., 2009b）：</p>
+<ul>
+<li>如果两条前件不同的 if–then 规则能够合并或缩减，那么这两条规则的后件必须相同。这说明专家无法区分这两种不同的失效模式。</li>
+<li>不同专家可能具有不同的知识和判断。当他们的判断不一致时，几乎不可能合并或缩减规则。</li>
+<li>如果缩减规则不是从完整的 if–then 规则库中缩减而来，则缩减后的规则将是不完整的。基于不完整规则库进行的任何推理都会产生偏差，甚至错误，因为有些知识无法从这种不完整的规则库中学到。</li>
+<li>如果能够依靠专家知识建立完整的 if–then 规则库，那么应将失效模式划分为不同优先级类别，而不是给出完整的优先次序排序。</li>
+</ul>
+<p><a class="anchor-target" id="sec-4-3"></a></p>
+<h3>4.3. 其他观察</h3>
+<p><a class="anchor-target" id="sec-4-3-1"></a></p>
+<h4>4.3.1. 期刊论文的分布</h4>
+<p>图 1 展示了 1992—2012 年间（截至 <strong>2012 年 7 月 8 日</strong>）75 篇期刊论文的分布。可以看出，采用各种替代方法解决传统 FMEA 问题的研究数量，从最初五年（1992—1996 年）到最近五年（2007—2011 年）显著增长，分别为 <strong>6 篇</strong>和 <strong>40 篇</strong>。这种增长也可能标志着研究重心正在从传统 RPN 方法转向更多地使用 MCDM、MP、AI 及其组合。鉴于 FMEA 对提高系统可靠性的重要意义，以及研究人员与实践人员对 FMEA 兴趣的增加，预计未来几年相关论文数量还将继续增长。</p>
+<p><strong>表 6　所综述的风险因素赋权方法。</strong></p>
+<div aria-label="表格，可横向滚动" class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>赋权方法</th>
+<th>文献</th>
+<th style="text-align:right">数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>直接给定</td>
+<td>—</td>
+<td>Geum et al. (2011), Chang and Cheng (2010), Chin et al. (2009b), Chen and Ko (2009a, 2009b), Pillay and Wang (2003), Chang et al. (2001, 1999)</td>
+<td style="text-align:right">8</td>
+</tr>
+<tr>
+<td>主观赋权</td>
+<td>专家直接评价</td>
+<td>Liu et al. (2011, 2012), Wang et al. (2009b), Zhang and Chu (2011), Gargama and Chaturvedi (2011), Braglia et al. (2003b)</td>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td>主观赋权</td>
+<td>AHP／ANP</td>
+<td>Kutlu and Ekmekçioğlu (2012), Abdelgawad and Fayek (2010), Hu et al. (2009), Sharma and Sharma (in press), Zammori and Gabbrielli (2011), Carmignani (2009), Sharma et al. (2008b, 2007d), Braglia (2000), Bevilacqua et al. (2000)</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td>客观赋权</td>
+<td>有序权重</td>
+<td>Chang (2009), Chang and Cheng (2011), Chang and Wen (2010)</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td>客观赋权</td>
+<td>DEA</td>
+<td>Chin et al. (2009a), Chang and Sun (2009), Garcia et al. (2005)</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td>客观赋权</td>
+<td>最小割集</td>
+<td>Xiao et al. (2011)</td>
+<td style="text-align:right">1</td>
+</tr>
+</tbody>
+</table></div>
+<p><a class="anchor-target" id="pdf-p10"></a></p>
+<h2 class="page-heading">PDF 第 10 页｜期刊第 837 页</h2>
+<p><a class="anchor-target" id="sec-4-3-2"></a></p>
+<h4>4.3.2. 风险因素的赋权方法</h4>
+<p>所综述文献最常指出的传统 FMEA 缺陷，是未考虑 O、S、D 之间的相对重要性。共有 <strong>45 篇论文（60.0%）</strong> 通过主观方法或客观赋权方法处理这一问题。因此，有必要回顾这些论文采用的赋权方法。通常，赋权方法可分为三类：主观赋权、客观赋权以及组合赋权（Wang, Jing, Zhang, &amp; Zhao, 2009a）。在 FMEA 中应用过的方法列于表 6。</p>
+<p>由表 6 可见，所综述研究仅使用了主观赋权和客观赋权方法来确定 FMEA 风险因素的权重。在所综述论文中，组合赋权方法用于 FMEA 的文献较少，而组合赋权方法已经逐渐应用于其他评价体系，如社会、能源和生态系统。</p>
+<p><a class="anchor-target" id="sec-5"></a></p>
+<h2>5. 结论与未来研究建议</h2>
+<p>由于传统 FMEA 存在缺点，而且风险因素具有不确定性，研究者提出了许多风险优先级模型，对失效模式进行优先排序，以实现准确、稳健的风险评价。本文对 1992—2012 年间用于 FMEA 风险评价的替代性方法进行了文献综述。据我们所知，这是第一篇全面综述解决 FMEA 问题并提高其有效性的相关文献的研究论文。本文旨在提供一个 FMEA 文献框架，以帮助对这一领域的研究进行分类。</p>
+<p>首先，我们观察到，基于精确 RPN 的传统 FMEA 不足以为失效模式优先排序提供充分、稳健的支持。在所综述文献指出的缺陷中，受到广泛关注的主要是与风险因素和 RPN 相关的问题。例如：未考虑三个因素（O、S、D）之间的相对重要性；不同 O、S、D 组合可能产生完全相同的 RPN 值；以及难以精确估计这三个因素。</p>
+<p>其次，研究发现，为克服传统 FMEA 的缺陷，已经提出了大量替代方法。它们均能够解决传统 RPN 方法所涉及的部分问题。所综述文献表明，对失效模式进行优先排序最流行的方法是模糊规则库系统，其次依次为灰色理论、基于成本的模型、AHP／ANP 和线性规划。</p>
+<p>第三，FMEA 文献提出的基于模糊规则的方法，以牺牲传统方法的简易性与透明性为代价，提高了失效危害度分析的准确性。然而，这类方法是否真正适用于现实情境仍存在疑问，因为模糊模型设计会遇到困难，即难以定义该方法所需的（大量）规则和隶属函数。</p>
+<p>本文意在系统地分类已有文献中提高 FMEA 效能的不同方法，并为未来研究指出方向，以进一步解决传统 FMEA 已知的缺陷。未来工作的主要建议如下：</p>
+<ul>
+<li>需要将风险因素进一步细分，以降低其模糊性，并在确定失效模式的风险优先级时纳入其他风险因素。例如，Zammori and Gabbrielli（2011）将严重度分解为损害、生产成本及维护成本三个子风险因素；Braglia（2000）则在失效分析中考虑了预期成本。</li>
+<li>妥善评价风险因素的权重在危害度分析中具有重要作用，因为它可能影响失效模式的排序。然而，在各种赋权方法中，主观赋权仍最为流行；AHP 方法得到广泛采用，是因为它相对容易实施、灵活，且对认知能力的要求较低。风险因素的赋权应采用客观赋权与组合赋权方法，因为这些方法能够在不依赖决策者的情况下客观评价相对重要性。</li>
+<li>多准则决策分析（Multi-Criteria Decision Analysis，<strong>MCDA</strong>）是第二常用的失效模式多准则优先排序方法。目前存在采用不止一种 MCDM 模型来增强风险评价结果有效性和实证效度的趋势。近期文献也表明，研究正在转向采用集成方法（例如将 AHP 与其他模型结合），以最大程度发挥协同作用。</li>
+</ul>
+<p>只要风险因素的选择、赋权方法和风险优先排序方法能够恰当地适应具体风险评价问题，FMEA 就可以成为更有效、更有力的工具，用于多个行业中系统、过程、设计和服务的安全性与可靠性分析。</p>
+<p><a class="anchor-target" id="sec-app"></a></p>
+<h2>附录 A. 补充数据</h2>
+<p>与本文有关的补充数据可在论文网络版查阅，地址为：<a href="https://dx.doi.org/10.1016/j.eswa.2012.08.010">http://dx.doi.org/10.1016/j.eswa.2012.08.010</a>。</p>
+<blockquote>
+<p><strong>底本范围说明：</strong> 本附件正文提及“附录 1”和“附录 2”，并在此处指向在线补充数据，但这份 11 页 PDF <strong>未附录入那些补充资料的实际内容</strong>。此处忠实翻译附件中可见的附录提示，不另行引用或拼接网络补充文件。</p>
+</blockquote>
+<p><a class="anchor-target" id="sec-ref"></a></p>
+<h2>参考文献（References）</h2>
+<p><em>按原文作者字母顺序保留原始英文条目。每条英文文献题名后增补【中文题名】，不改变其作者、年份、刊物名称、卷期及页码。原文没有参考文献编号。以下条目从 PDF 物理第 10 页（期刊 837 页）开始，并延续至第 11 页（期刊 838 页）。</em></p>
+<ul class="references">
+<li><p>Abdelgawad, M., &amp; Fayek, A. R. (2010). Risk management in the construction industry using combined fuzzy FMEA and fuzzy AHP【中文题名：采用模糊 FMEA 与模糊 AHP 相结合方法的建筑行业风险管理】. Journal of Construction Engineering and Management, 136, 1028–1036.</p>
+</li>
+<li><p>Ben-Daya, M., &amp; Raouf, A. (1996). A revised failure mode and effects analysis model【中文题名：一种修订的失效模式与影响分析模型】. International Journal of Quality &amp; Reliability Management, 13, 43–47.</p>
+</li>
+<li><p>Bevilacqua, M., Braglia, M., &amp; Gabbrielli, R. (2000). Monte Carlo simulation approach for a modified FMECA in a power plant【中文题名：电厂改进 FMECA 的蒙特卡罗模拟方法】. Quality and Reliability Engineering International, 16, 313–324.</p>
+</li>
+<li><p>Bowles, J. B., &amp; Peláez, C. E. (1995). Fuzzy logic prioritization of failures in a system failure mode, effects and criticality analysis【中文题名：系统失效模式、影响及危害度分析中基于模糊逻辑的失效优先排序】. Reliability Engineering &amp; System Safety, 50, 203–213.</p>
+</li>
+<li><p>Braglia, M. (2000). MAFMA: multi-attribute failure mode analysis【中文题名：MAFMA：多属性失效模式分析】. International Journal of Quality &amp; Reliability Management, 17, 1017–1033.</p>
+</li>
+<li><p>Braglia, M., &amp; Bevilacqua, M. (2000). Fuzzy modelling and analytical hierarchy processing as a means of quantifying risk levels associated with failure modes in production systems【中文题名：利用模糊建模与层次分析法量化生产系统失效模式风险水平】. Technology, Law and Insurance, 5, 125–134.</p>
+</li>
+<li><p>Braglia, M., Fantoni, G., &amp; Frosolini, M. (2007). The house of reliability【中文题名：可靠性屋】. International Journal of Quality &amp; Reliability Management, 24, 420–440.</p>
+</li>
+<li><p>Braglia, M., Frosolini, M., &amp; Montanari, R. (2003a). Fuzzy criticality assessment model for failure modes and effects analysis【中文题名：失效模式与影响分析的模糊危害度评价模型】. International Journal of Quality &amp; Reliability Management, 20, 503–524.</p>
+</li>
+<li><p>Braglia, M., Frosolini, M., &amp; Montanari, R. (2003b). Fuzzy TOPSIS approach for failure mode, effects and criticality analysis【中文题名：用于失效模式、影响及危害度分析的模糊 TOPSIS 方法】. Quality and Reliability Engineering International, 19, 425–443.</p>
+</li>
+<li><p>Carmignani, G. (2009). An integrated structural framework to cost-based FMECA: The priority-cost FMECA【中文题名：基于成本的 FMECA 集成结构框架：优先级—成本 FMECA】. Reliability Engineering and Systems Safety, 94, 861–871.</p>
+</li>
+<li><p>Chang, C. L., Liu, P. H., &amp; Wei, C. C. (2001). Failure mode and effects analysis using grey theory【中文题名：基于灰色理论的失效模式与影响分析】. Integrated Manufacturing Systems, 12, 211–216.</p>
+</li>
+<li><p>Chang, C. L., Wei, C. C., &amp; Lee, Y. H. (1999). Failure mode and effects analysis using fuzzy method and grey theory【中文题名：采用模糊方法与灰色理论的失效模式与影响分析】. Kybernetes, 28, 1072–1080.</p>
+</li>
+<li><p>Chang, D. S., &amp; Sun, K. L. P. (2009). Applying DEA to enhance assessment capability of FMEA【中文题名：应用数据包络分析增强 FMEA 的评价能力】. International Journal of Quality &amp; Reliability Management, 26, 629–643.</p>
+</li>
+<li><p>Chang, J. R., Chang, K. H., Liao, S. H., &amp; Cheng, C. H. (2006). The reliability of general vague fault-tree analysis on weapon systems fault diagnosis【中文题名：通用模糊故障树分析用于武器系统故障诊断的可靠性】. Soft Computing, 10, 531–542.</p>
+</li>
+<li><p>Chang, K. H. (2009). Evaluate the orderings of risk for failure problems using a more general RPN methodology【中文题名：采用更一般化的 RPN 方法评价失效问题的风险排序】. Microelectronics Reliability, 49, 1586–1596.</p>
+</li>
+<li><p>Chang, K. H., &amp; Cheng, C. H. (2010). A risk assessment methodology using intuitionistic fuzzy set in FMEA【中文题名：FMEA 中采用直觉模糊集的风险评估方法】. International Journal of Systems Science, 41, 1457–1471.</p>
+</li>
+<li><p>Chang, K. H., &amp; Cheng, C. H. (2011). Evaluating the risk of failure using the fuzzy OWA and DEMATEL method【中文题名：运用模糊 OWA 与 DEMATEL 方法评价失效风险】. Journal of Intelligent Manufacturing, 22, 113–129.</p>
+</li>
+</ul>
+<p><a class="anchor-target" id="pdf-p11"></a></p>
+<h2 class="page-heading">PDF 第 11 页｜期刊第 838 页（参考文献续）</h2>
+<ul class="references">
+<li><p>Chang, K. H., &amp; Wen, T. C. (2010). A novel efficient approach for DFMEA combining 2-tuple and the OWA operator【中文题名：结合二元语义与 OWA 算子的 DFMEA 新型高效方法】. Expert Systems with Applications, 37, 2362–2370.</p>
+</li>
+<li><p>Chang, K. H., Cheng, C. H., &amp; Chang, Y. C. (2010). Reprioritization of failures in a silane supply system using an intuitionistic fuzzy set ranking technique【中文题名：采用直觉模糊集排序技术重新确定硅烷供应系统失效的优先级】. Soft Computing, 14, 285–298.</p>
+</li>
+<li><p>Chen, J. K. (2007). Utility priority number evaluation for FMEA【中文题名：用于 FMEA 的效用优先数评价】. Journal of Failure Analysis and Prevention, 7, 321–328.</p>
+</li>
+<li><p>Chen, L. H., &amp; Ko, W. C. (2009a). Fuzzy approaches to quality function deployment for new product design【中文题名：新产品设计中质量功能展开的模糊方法】. Fuzzy Sets and Systems, 160, 2620–2639.</p>
+</li>
+<li><p>Chen, L. H., &amp; Ko, W. C. (2009b). Fuzzy linear programming models for new product design using QFD with FMEA【中文题名：在新产品设计中结合 QFD 与 FMEA 的模糊线性规划模型】. Applied Mathematical Modelling, 33, 633–647.</p>
+</li>
+<li><p>Chin, K. S., Chan, A., &amp; Yang, J. B. (2008). Development of a fuzzy FMEA based product design system【中文题名：基于模糊 FMEA 的产品设计系统开发】. The International Journal of Advanced Manufacturing Technology, 36, 633–649.</p>
+</li>
+<li><p>Chin, K. S., Wang, Y. M., Poon, G. K. K., &amp; Yang, J. B. (2009a). Failure mode and effects analysis by data envelopment analysis【中文题名：基于数据包络分析的失效模式与影响分析】. Decision Support Systems, 48, 246–256.</p>
+</li>
+<li><p>Chin, K. S., Wang, Y. M., Poon, G. K. K., &amp; Yang, J. B. (2009b). Failure mode and effects analysis using a group-based evidential reasoning approach【中文题名：采用群体证据推理方法的失效模式与影响分析】. Computers &amp; Operations Research, 36, 1768–1779.</p>
+</li>
+<li><p>Dong, C. (2007). Failure mode and effects analysis based on fuzzy utility cost estimation【中文题名：基于模糊效用成本估计的失效模式与影响分析】. International Journal of Quality &amp; Reliability Management, 24, 958–971.</p>
+</li>
+<li><p>Ford Motor Company (1988). Potential failure mode and effects analysis (FMEA) reference manual【中文题名：潜在失效模式与影响分析（FMEA）参考手册】.</p>
+</li>
+<li><p>Franceschini, F., &amp; Galetto, M. (2001). A new approach for evaluation of risk priorities of failure modes in FMEA【中文题名：FMEA 中失效模式风险优先级评价的新方法】. International Journal of Production Research, 39, 2991–3002.</p>
+</li>
+<li><p>Gandhi, O. P., &amp; Agrawal, V. P. (1992). FMEA—A diagraph and matrix approach【中文题名：FMEA——一种有向图与矩阵方法】. Reliability Engineering &amp; System Safety, 35, 147–158.</p>
+</li>
+<li><p>Garcia, P. A. A., Schirru, R., &amp; Frutuoso Emelo, P. F. (2005). A fuzzy data envelopment analysis approach for FMEA【中文题名：用于 FMEA 的模糊数据包络分析方法】. Progress in Nuclear Energy, 46, 359–373.</p>
+</li>
+<li><p>Gargama, H., &amp; Chaturvedi, S. K. (2011). Criticality assessment models for failure mode effects and criticality analysis using fuzzy logic【中文题名：基于模糊逻辑的失效模式、影响及危害度分析评价模型】. IEEE Transactions on Reliability, 60, 102–110.</p>
+</li>
+<li><p>Geum, Y., Cho, Y., &amp; Park, Y. (2011). A systematic approach for diagnosing service failure: Service-specific FMEA and grey relational analysis approach【中文题名：服务失效诊断的系统化方法：服务专用 FMEA 与灰色关联分析】. Mathematical and Computer Modelling, 54, 3126–3142.</p>
+</li>
+<li><p>Gilchrist, W. (1993). Modelling failure modes and effects analysis【中文题名：失效模式与影响分析建模】. International Journal of Quality &amp; Reliability Management, 10, 16–23.</p>
+</li>
+<li><p>Guimarães, A. C. F., &amp; Franklin Lapa, C. M. (2004). Effects analysis fuzzy inference system in nuclear problems using approximate reasoning【中文题名：核领域问题中基于近似推理的影响分析模糊推理系统】. Annals of Nuclear Energy, 31, 107–115.</p>
+</li>
+<li><p>Guimarães, A. C. F., &amp; Lapa, C. M. F. (2004). Fuzzy FMEA applied to PWR chemical and volume control system【中文题名：模糊 FMEA 在压水堆化学和容积控制系统中的应用】. Progress in Nuclear Energy, 44, 191–213.</p>
+</li>
+<li><p>Guimarães, A. C. F., &amp; Lapa, C. M. F. (2006). Hazard and operability study using approximate reasoning in light-water reactors passive systems【中文题名：采用近似推理对轻水堆非能动系统开展危险与可操作性研究】. Nuclear Engineering and Design, 236, 1256–1263.</p>
+</li>
+<li><p>Guimarães, A. C. F., &amp; Lapa, C. M. F. (2007). Fuzzy inference to risk assessment on nuclear engineering systems【中文题名：模糊推理在核工程系统风险评估中的应用】. Applied Soft Computing, 7, 17–28.</p>
+</li>
+<li><p>Guimarães, A. C. F., Lapa, C. M. F., &amp; Moreira, M. d. L. (2011). Fuzzy methodology applied to probabilistic safety assessment for digital system in nuclear power plants【中文题名：模糊方法在核电厂数字系统概率安全评价中的应用】. Nuclear Engineering and Design, 241, 3967–3976.</p>
+</li>
+<li><p>Hu, A. H., Hsu, C. W., Kuo, T. C., &amp; Wu, W. C. (2009). Risk evaluation of green components to hazardous substance using FMEA and FAHP【中文题名：使用 FMEA 与模糊 AHP 评价绿色部件的有害物质风险】. Expert Systems with Applications, 36, 7142–7147.</p>
+</li>
+<li><p>Keskin, G. A., &amp; Özkan, C. (2009). An alternative evaluation of FMEA: Fuzzy ART algorithm【中文题名：FMEA 的另一种评价方法：模糊 ART 算法】. Quality and Reliability Engineering International, 25, 647–661.</p>
+</li>
+<li><p>Kmenta, S., &amp; Ishii, K. (2004). Scenario-based failure modes and effects analysis using expected cost【中文题名：基于预期成本的情景式失效模式与影响分析】. Journal of Mechanical Design, 126, 1027.</p>
+</li>
+<li><p>Kutlu, A. C., &amp; Ekmekçioğlu, M. (2012). Fuzzy failure modes and effects analysis by using fuzzy TOPSIS-based fuzzy AHP【中文题名：利用基于模糊 TOPSIS 的模糊 AHP 开展模糊失效模式与影响分析】. Expert Systems with Applications, 39, 61–67.</p>
+</li>
+<li><p>Lertworasirikul, S., Fang, S. C., Joines, A. J., &amp; Lw Nuttle, H. (2003). Fuzzy data envelopment analysis (DEA): A possibility approach【中文题名：模糊数据包络分析（DEA）：一种可能性方法】. Fuzzy Sets and Systems, 139, 379–394.</p>
+</li>
+<li><p>Liu, H. C., Liu, L., Bian, Q. H., Lin, Q. L., Dong, N., &amp; Xu, P. C. (2011). Failure mode and effects analysis using fuzzy evidential reasoning approach and grey theory【中文题名：结合模糊证据推理与灰色理论的失效模式与影响分析】. Expert Systems with Applications, 38, 4403–4415.</p>
+</li>
+<li><p>Liu, H. C., Liu, L., Liu, N., &amp; Mao, L. X. (2012). Risk evaluation in failure mode and effects analysis with extended VIKOR method under fuzzy environment【中文题名：模糊环境下采用扩展 VIKOR 方法的失效模式与影响分析风险评价】. Expert Systems with Applications, 39, 12926–12934.</p>
+</li>
+<li><p>Moss, T. R., &amp; Woodhouse, J. (1999). Criticality analysis revisited【中文题名：危害度分析再探讨】. Quality and Reliability Engineering International, 15, 117–121.</p>
+</li>
+<li><p>Nepal, B. P., Yadav, O. P., Monplaisir, L., &amp; Murat, A. (2008). A framework for capturing and analyzing the failures due to system/component interactions【中文题名：捕捉并分析系统／部件相互作用所致失效的框架】. Quality and Reliability Engineering International, 24, 265–289.</p>
+</li>
+<li><p>Peláez, C. E., &amp; Bowles, J. B. (1996). Using fuzzy cognitive maps as a system model for failure modes and effects analysis【中文题名：使用模糊认知图作为失效模式与影响分析的系统模型】. Information Sciences, 88, 177–199.</p>
+</li>
+<li><p>Pillay, A., &amp; Wang, J. (2003). Modified failure mode and effects analysis using approximate reasoning【中文题名：采用近似推理的改进失效模式与影响分析】. Reliability Engineering &amp; System Safety, 79, 69–85.</p>
+</li>
+<li><p>Puente, J., Pino, R., Priore, P., &amp; de la Fuente, D. (2002). A decision support system for applying failure mode and effects analysis【中文题名：用于实施失效模式与影响分析的决策支持系统】. International Journal of Quality &amp; Reliability Management, 19, 137–150.</p>
+</li>
+<li><p>Rhee, S. J., &amp; Ishii, K. (2003). Using cost based FMEA to enhance reliability and serviceability【中文题名：利用基于成本的 FMEA 提升可靠性与可维护性】. Advanced Engineering Informatics, 17, 179–188.</p>
+</li>
+<li><p>Sankar, N. R., &amp; Prabhu, B. S. (2001). Modified approach for prioritization of failures in a system failure mode and effects analysis【中文题名：系统失效模式与影响分析中失效优先排序的改进方法】. International Journal of Quality &amp; Reliability Management, 18, 324–336.</p>
+</li>
+<li><p>Sant’Anna, A. P. (2012). Probabilistic priority numbers for failure modes and effects analysis【中文题名：失效模式与影响分析的概率优先数】. International Journal of Quality &amp; Reliability Management, 29, 349–362.</p>
+</li>
+<li><p>Seyed-Hosseini, S. M., Safaei, N., &amp; Asgharpour, M. J. (2006). Reprioritization of failures in a system failure mode and effects analysis by decision making trial and evaluation laboratory technique【中文题名：运用 DEMATEL 技术重新确定系统失效模式与影响分析中的失效优先级】. Reliability Engineering &amp; System Safety, 91, 872–881.</p>
+</li>
+<li><p>Shahin, A. (2004). Integration of FMEA and the Kano model: An exploratory examination【中文题名：FMEA 与 Kano 模型的整合：一项探索性研究】. International Journal of Quality &amp; Reliability Management, 21, 731–746.</p>
+</li>
+<li><p>Sharma, R. K., &amp; Sharma, P. (2010). System failure behavior and maintenance decision making using, RCA, FMEA and FM【中文题名：采用 RCA、FMEA 与 FM 的系统失效行为及维护决策】. Journal of Quality in Maintenance Engineering, 16, 64–88.</p>
+</li>
+<li><p>Sharma, R., &amp; Sharma, P. (in press). Integrated framework to optimize RAM and cost decisions in a process plant【中文题名：优化过程工厂 RAM 与成本决策的集成框架】. Journal of Loss Prevention in the Process Industries.</p>
+</li>
+<li><p>Sharma, R. K., Kumar, D., &amp; Kumar, P. (2005). Systematic failure mode effect analysis (FMEA) using fuzzy linguistic modelling【中文题名：利用模糊语言建模开展系统化失效模式与影响分析（FMEA）】. International Journal of Quality &amp; Reliability Management, 22, 986–1004.</p>
+</li>
+<li><p>Sharma, R. K., Kumar, D., &amp; Kumar, P. (2007a). Behaviour analysis and resource optimisation for an industrial system【中文题名：工业系统的行为分析与资源优化】. International Journal of Industrial and Systems Engineering, 2, 413–443.</p>
+</li>
+<li><p>Sharma, R. K., Kumar, D., &amp; Kumar, P. (2007b). FM–A pragmatic tool to model, analyse and predict complex behaviour of industrial systems【中文题名：FM——建模、分析和预测工业系统复杂行为的实用工具】. Engineering Computations, 24, 319–346.</p>
+</li>
+<li><p>Sharma, R. K., Kumar, D., &amp; Kumar, P. (2007c). Modeling and analysing system failure behaviour using RCA, FMEA and NHPPP models【中文题名：利用 RCA、FMEA 与 NHPPP 模型对系统失效行为建模和分析】. International Journal of Quality &amp; Reliability Management, 24, 525–546.</p>
+</li>
+<li><p>Sharma, R. K., Kumar, D., &amp; Kumar, P. (2007d). Modeling system behavior for risk and reliability analysis using KBARM【中文题名：使用 KBARM 对风险及可靠性分析中的系统行为建模】. Quality and Reliability Engineering International, 23, 973–998.</p>
+</li>
+<li><p>Sharma, R. K., Kumar, D., &amp; Kumar, P. (2008a). Application of fuzzy methodology to build process reliability: A practical case【中文题名：应用模糊方法建立过程可靠性：一个实践案例】. International Journal of Product Development, 5, 125–152.</p>
+</li>
+<li><p>Sharma, R. K., Kumar, D., &amp; Kumar, P. (2008b). Fuzzy modeling of system behavior for risk and reliability analysis【中文题名：面向风险与可靠性分析的系统行为模糊建模】. International Journal of Systems Science, 39, 563–581.</p>
+</li>
+<li><p>Sharma, R. K., Kumar, D., &amp; Kumar, P. (2008c). Predicting uncertain behavior of industrial system using FM—A practical case【中文题名：利用 FM 预测工业系统的不确定行为：实践案例】. Applied Soft Computing, 8, 96–109.</p>
+</li>
+<li><p>Stamatis, D. H. (1995). Failure mode and effect analysis: FMEA from theory to execution【中文题名：失效模式与影响分析：从 FMEA 理论到实施】. New York: ASQC Press.</p>
+</li>
+<li><p>Tan, C. M. (2003). Customer-focused build-in reliability: A case study【中文题名：以客户为中心的内建可靠性：案例研究】. International Journal of Quality &amp; Reliability Management, 20, 378–397.</p>
+</li>
+<li><p>Tay, K. M., &amp; Lim, C. P. (2006a). Fuzzy FMEA with a guided rules reduction system for prioritization of failures【中文题名：结合引导式规则缩减系统的模糊 FMEA 失效优先排序】. International Journal of Quality &amp; Reliability Management, 23, 1047–1066.</p>
+</li>
+<li><p>Tay, K. M., &amp; Lim, C. P. (2006b). Application of fuzzy inference techniques to FMEA【中文题名：模糊推理技术在 FMEA 中的应用】. In A. Abraham, B. de Baets, M. Köppen, &amp; B. Nickolay (Eds.), Applied soft computing technologies: The challenge of complexity【中文题名：应用软计算技术：复杂性的挑战】. Berlin, Heidelberg: Springer.</p>
+</li>
+<li><p>Tay, K. M., &amp; Lim, C. P. (2010). Enhancing the failure mode and effect analysis methodology with fuzzy inference techniques【中文题名：利用模糊推理技术增强失效模式与影响分析方法】. Journal of Intelligent &amp; Fuzzy Systems, 21, 135–146.</p>
+</li>
+<li><p>von Ahsen, A. (2008). Cost-oriented failure mode and effects analysis【中文题名：面向成本的失效模式与影响分析】. International Journal of Quality &amp; Reliability Management, 25, 466–476.</p>
+</li>
+<li><p>Wang, J. J., Jing, Y. Y., Zhang, C. F., &amp; Zhao, J. H. (2009a). Review on multi-criteria decision analysis aid in sustainable energy decision-making【中文题名：多准则决策分析辅助可持续能源决策的综述】. Renewable &amp; Sustainable Energy Reviews, 13, 2263–2278.</p>
+</li>
+<li><p>Wang, Y. M., Chin, K. S., Poon, G. K. K., &amp; Yang, J. B. (2009b). Risk evaluation in failure mode and effects analysis using fuzzy weighted geometric mean【中文题名：使用模糊加权几何平均的失效模式与影响分析风险评价】. Expert Systems with Applications, 36, 1195–1207.</p>
+</li>
+<li><p>Wang, J., Ruxton, T., &amp; Labrie, C. R. (1995). Design for safety of engineering systems with multiple failure state variables【中文题名：具有多个失效状态变量的工程系统安全设计】. Reliability Engineering &amp; System Safety, 50, 271–284.</p>
+</li>
+<li><p>Xiao, N. C., Huang, H. Z., Li, Y. F., He, L. P., &amp; Jin, T. D. (2011). Multiple failure modes analysis and weighted risk priority number evaluation in FMEA【中文题名：FMEA 中多失效模式分析与加权风险优先数评价】. Engineering Failure Analysis, 18, 1162–1170.</p>
+</li>
+<li><p>Xu, K., Tang, L. C., Xie, M., Ho, S. L., &amp; Zhu, M. L. (2002). Fuzzy assessment of FMEA for engine systems【中文题名：发动机系统 FMEA 的模糊评价】. Reliability Engineering &amp; System Safety, 75, 17–29.</p>
+</li>
+<li><p>Xu, Z. S., &amp; Da, Q. L. (2003). An overview of operators for aggregating information【中文题名：信息聚合算子综述】. International Journal of Intelligent Systems, 18, 953–969.</p>
+</li>
+<li><p>Yang, J., Huang, H. Z., He, L. P., Zhu, S. P., &amp; Wen, D. (2011). Risk evaluation in failure mode and effects analysis of aircraft turbine rotor blades using Dempster– Shafer evidence theory under uncertainty【中文题名：不确定条件下采用 Dempster–Shafer 证据理论的航空发动机涡轮转子叶片失效模式与影响分析风险评价】. Engineering Failure Analysis, 18, 2084–2092.</p>
+</li>
+<li><p>Yang, Z., Bonsall, S., &amp; Wang, J. (2008). Fuzzy rule-based Bayesian reasoning approach for prioritization of failures in FMEA【中文题名：用于 FMEA 失效优先排序的模糊规则贝叶斯推理方法】. IEEE Transactions on Reliability, 57, 517–528.</p>
+</li>
+<li><p>Zafiropoulos, E. P., &amp; Dialynas, E. N. (2005). Reliability prediction and failure mode effects and criticality analysis (FMECA) of electronic devices using fuzzy logic【中文题名：利用模糊逻辑开展电子器件可靠性预测及失效模式、影响与危害度分析】. International Journal of Quality &amp; Reliability Management, 22, 183–200.</p>
+</li>
+<li><p>Zammori, F., &amp; Gabbrielli, R. (2011). ANP/RPN: A multi criteria evaluation of the risk priority number【中文题名：ANP/RPN：风险优先数的多准则评价】. Quality and Reliability Engineering International, 28, 85–104.</p>
+</li>
+<li><p>Zhang, Z. F., &amp; Chu, X. N. (2011). Risk prioritization in failure mode and effects analysis under uncertainty【中文题名：不确定条件下失效模式与影响分析中的风险优先排序】. Expert Systems with Applications, 38, 206–214.</p>
+</li>
+</ul>
+<p><strong>本附件末页附带的平台提示（非论文正文）：</strong>“正文中以蓝色下划线标出的引文均链接至 ResearchGate 上的出版物，可供直接访问和阅读。”</p>
+</article><footer>本译本以用户提供的 PDF 为唯一底本；原文未收录的外部补充附录与作者简介未擅自添加。阅读时可通过章节与物理页码导航对照原文。</footer></main></div><script>
+(()=>{const root=document.documentElement;const progress=document.getElementById('scrollProgress');function update(){const max=document.body.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:100)+'%'}window.addEventListener('scroll',update,{passive:true});update();document.getElementById('themeBtn').onclick=()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';};let font=17;document.getElementById('fontBtn').onclick=()=>{font=font>=20?15:font+1;document.body.style.fontSize=font+'px';};const sectionAnchors=[...document.querySelectorAll('.nav-link')];const observer=new IntersectionObserver(es=>{for(const e of es){if(!e.isIntersecting)continue;let a=sectionAnchors.find(x=>x.hash==='#'+e.target.id);if(a){sectionAnchors.forEach(x=>x.classList.remove('active'));a.classList.add('active');}}},{rootMargin:'-10% 0px -75% 0px'});document.querySelectorAll('.anchor-target[id^="sec-"]').forEach(e=>observer.observe(e));})();
+</script></body></html>

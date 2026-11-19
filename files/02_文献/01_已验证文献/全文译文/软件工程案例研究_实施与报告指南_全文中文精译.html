@@ -1,0 +1,1516 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>软件工程案例研究的实施与报告指南｜全文中文精译</title><style>
+:root{--paper:#fff;--body:#26312f;--muted:#76817d;--line:#dce5de;--accent:#345f50;--tint:#f3f7f4;--aside:#f9fbf9;--main-width:825px;--scale:1}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:27px}body{margin:0;background:var(--paper);color:var(--body);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Yahei","Noto Sans CJK SC",sans-serif;-webkit-font-smoothing:antialiased}
+.layout{display:grid;grid-template-columns:275px minmax(0,1fr);min-height:100vh}.sidebar{background:var(--aside);border-right:1px solid var(--line);position:sticky;top:0;height:100vh;overflow:auto;padding:26px 21px 35px}.sidebar .brand{font-size:16px;font-weight:750;letter-spacing:.02em;color:var(--accent);line-height:1.5}.sidebar .subbrand{font-size:11px;line-height:1.65;color:var(--muted);margin-top:7px}.side-heading{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin:26px 0 9px;color:var(--muted)}.toc-item{display:block;text-decoration:none;color:#58655e;padding:7px 10px;border-radius:7px;font-size:12.5px;line-height:1.45;margin:1px 0}.toc-item:hover,.toc-item.active{color:var(--accent);background:#e8f1eb}.toc-major{font-weight:700;margin-top:7px}.toc-sub{padding-left:20px}.toc-subsub{padding-left:31px;font-size:11.8px}.page-links{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}.page-links a{display:block;font-size:11px;text-align:center;text-decoration:none;color:#567065;background:#edf3ee;padding:5px 1px;border-radius:4px}.page-links a:hover{background:#d8e9dc}
+.main-wrap{min-width:0}.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);height:55px;padding:0 38px;display:flex;align-items:center;justify-content:space-between;gap:12px}.topbar-title{font-size:12px;font-weight:700;letter-spacing:.07em;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.topbar-tools{display:flex;gap:5px}.topbar button,.mobile-toggle{border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--body);padding:6px 9px;font-size:12px;cursor:pointer}.topbar button:hover{background:var(--tint)}.mobile-toggle{display:none}.article{max-width:var(--main-width);padding:52px 28px 110px;margin:auto;font-size:calc(17px * var(--scale));line-height:1.95;overflow-wrap:anywhere}.article h1{font-size:34px;line-height:1.38;letter-spacing:.02em;color:#1d3e33;font-weight:800;margin:9px 0 27px;padding-bottom:18px;border-bottom:3px solid var(--accent)}.article h2{font-size:24px;line-height:1.48;color:#244c3c;margin:52px 0 19px;letter-spacing:.005em;padding-top:6px}.article h3{font-size:20px;line-height:1.5;color:#284e3e;margin:34px 0 12px}.article h4{font-size:17px;color:#2c5948;margin:30px 0 10px}.article p{margin:13px 0 19px;text-align:justify}.article strong{font-weight:750}.article em{font-style:italic}.article ul,.article ol{padding-left:28px;margin:13px 0 22px}.article li{padding-left:4px;margin:6px 0}.article blockquote{margin:22px 0;padding:14px 21px;background:var(--tint);border-left:3px solid #7f9c8e;color:#38483f;border-radius:0 6px 6px 0}.article blockquote p{margin:4px 0 11px}.article blockquote p:last-child{margin-bottom:0}.article blockquote.case-study{background:#f5f8f6;border-left:3px solid #69957b}.article blockquote.page-label{background:none;border:0;border-top:1px solid #d9e4dc;padding:17px 0 0;margin:48px 0 7px;color:#789083;font-weight:700;font-size:12px;letter-spacing:.04em}.article .original-figure{max-width:100%;margin:20px auto 32px;padding:18px;background:#f9faf8;border:1px solid #e3e8e4;border-radius:7px;text-align:center}.article .original-figure img{max-width:100%;height:auto;display:block;margin:auto}.article .original-figure figcaption{font-size:12px;color:#6f7875;line-height:1.7;margin-top:11px;text-align:left}.article table{width:100%;border-collapse:collapse;margin:23px 0 31px;font-size:calc(13.6px * var(--scale));line-height:1.64;display:table}.article thead th{text-align:left;background:#ecf3ee;color:#284d3e;font-weight:750}.article th,.article td{padding:11px 10px;vertical-align:top;border:1px solid #d9e3db;overflow-wrap:break-word}.article tbody tr:nth-child(even){background:#fafcfb}.article a{color:#336c52;text-underline-offset:3px}.article hr{border:none;border-top:1px solid #e5e9e7}.heading-anchor,.page-anchor{position:relative;top:-70px}.article>h2:first-of-type{margin-top:24px}.article code{font-size:.9em}.article li:has(>strong:first-child){line-height:1.8}.footer{text-align:center;border-top:1px solid var(--line);padding:26px;color:var(--muted);font-size:12px}.mobile-overlay{display:none}
+@media(max-width:1100px){.layout{grid-template-columns:225px minmax(0,1fr)}.sidebar{padding:20px 14px}.topbar{padding:0 22px}.article{padding:35px 30px 80px}}
+@media(max-width:760px){.layout{display:block}.sidebar{position:fixed;left:0;top:0;z-index:30;width:min(320px,84vw);height:100dvh;box-shadow:7px 0 23px #173b3024;transform:translateX(-110%);transition:transform .2s}.sidebar.open{transform:translateX(0)}.mobile-overlay.visible{display:block;position:fixed;inset:0;background:#1b2c2480;z-index:29}.mobile-toggle{display:inline-block}.topbar{padding:0 12px;height:50px}.topbar-title{font-size:11px}.article{padding:28px 17px 70px;font-size:calc(15.8px * var(--scale));line-height:1.92}.article h1{font-size:26px}.article h2{font-size:21px}.article h3{font-size:18px}.article table{display:block;max-width:100%;overflow-x:auto;white-space:normal;font-size:calc(12px * var(--scale))}.article th,.article td{min-width:100px;padding:7px}.article blockquote{padding:12px}.article .original-figure{padding:8px}.article blockquote.page-label{margin-top:31px}}
+@media print{.sidebar,.topbar,.mobile-overlay{display:none!important}.layout{display:block}.article{max-width:100%;padding:12mm;font-size:10.8pt;line-height:1.64}.article h2,.article h3,.article h4{break-after:avoid}.article table,.article .original-figure{break-inside:avoid}.article .page-label{break-before:page}.article a{color:inherit!important}}
+</style></head>
+<body><div class="mobile-overlay" id="overlay"></div><div class="layout">
+<aside class="sidebar" id="sidebar"><div class="brand">软件工程案例研究<br>实施与报告指南</div><div class="subbrand">Runeson & Höst · 2009<br>正式期刊版 · PDF 34 页</div><div class="side-heading">章节目录</div><nav><a class="toc-item toc-major" href="#abstract">摘要</a><a class="toc-item toc-major" href="#chapter-1">1 引言</a><a class="toc-item toc-major" href="#chapter-2">2 背景与概念定义</a><a class="toc-item toc-sub" href="#chapter-2-4">2.1 研究方法论</a><a class="toc-item toc-sub" href="#chapter-2-5">2.2 研究方法论的特征</a><a class="toc-item toc-sub" href="#chapter-2-6">2.3 为什么要在软件工程中开展案例研究？</a><a class="toc-item toc-sub" href="#chapter-2-7">2.4 案例研究过程</a><a class="toc-item toc-sub" href="#chapter-2-8">2.5 定义</a><a class="toc-item toc-major" href="#chapter-3">3 案例研究设计与规划</a><a class="toc-item toc-sub" href="#chapter-3-10">3.1 定义案例</a><a class="toc-item toc-sub" href="#chapter-3-11">3.2 案例研究规程</a><a class="toc-item toc-sub" href="#chapter-3-12">3.3 伦理考量</a><a class="toc-item toc-sub" href="#chapter-3-13">3.4 检查清单</a><a class="toc-item toc-major" href="#chapter-4">4 数据收集</a><a class="toc-item toc-sub" href="#chapter-4-15">4.1 不同的数据来源</a><a class="toc-item toc-sub" href="#chapter-4-16">4.2 访谈</a><a class="toc-item toc-sub" href="#chapter-4-17">4.3 观察</a><a class="toc-item toc-sub" href="#chapter-4-18">4.4 档案数据</a><a class="toc-item toc-sub" href="#chapter-4-19">4.5 度量</a><a class="toc-item toc-sub" href="#chapter-4-20">4.6 检查清单</a><a class="toc-item toc-major" href="#chapter-5">5 数据分析</a><a class="toc-item toc-sub" href="#chapter-5-22">5.1 定量数据分析</a><a class="toc-item toc-sub" href="#chapter-5-23">5.2 定性数据分析</a><a class="toc-item toc-subsub" href="#chapter-5-24">5.2.1 一般分析技术</a><a class="toc-item toc-subsub" href="#chapter-5-25">5.2.2 形式化程度</a><a class="toc-item toc-subsub" href="#chapter-5-26">5.2.3 效度</a><a class="toc-item toc-sub" href="#chapter-5-27">5.3 检查清单</a><a class="toc-item toc-major" href="#chapter-6">6 研究报告</a><a class="toc-item toc-sub" href="#chapter-6-29">6.1 特征</a><a class="toc-item toc-sub" href="#chapter-6-30">6.2 结构</a><a class="toc-item toc-sub" href="#chapter-6-31">6.3 检查清单</a><a class="toc-item toc-major" href="#chapter-7">7 阅读与评审案例研究</a><a class="toc-item toc-sub" href="#chapter-7-33">7.1 读者的视角</a><a class="toc-item toc-major" href="#chapter-8">8 总结</a><a class="toc-item toc-major" href="#acknowledgements">致谢</a><a class="toc-item toc-major" href="#open-access">开放获取声明</a><a class="toc-item toc-major" href="#appendix-a">附录 A</a><a class="toc-item toc-major" href="#appendix-b">附录 B</a><a class="toc-item toc-major" href="#references">参考文献</a><a class="toc-item toc-major" href="#authors">作者简介</a></nav><div class="side-heading">PDF 物理页码</div><nav class="page-links"><a href="#pdf-01">1</a><a href="#pdf-02">2</a><a href="#pdf-03">3</a><a href="#pdf-04">4</a><a href="#pdf-05">5</a><a href="#pdf-06">6</a><a href="#pdf-07">7</a><a href="#pdf-08">8</a><a href="#pdf-09">9</a><a href="#pdf-10">10</a><a href="#pdf-11">11</a><a href="#pdf-12">12</a><a href="#pdf-13">13</a><a href="#pdf-14">14</a><a href="#pdf-15">15</a><a href="#pdf-16">16</a><a href="#pdf-17">17</a><a href="#pdf-18">18</a><a href="#pdf-19">19</a><a href="#pdf-20">20</a><a href="#pdf-21">21</a><a href="#pdf-22">22</a><a href="#pdf-23">23</a><a href="#pdf-24">24</a><a href="#pdf-25">25</a><a href="#pdf-26">26</a><a href="#pdf-27">27</a><a href="#pdf-28">28</a><a href="#pdf-29">29</a><a href="#pdf-30">30</a><a href="#pdf-31">31</a><a href="#pdf-32">32</a><a href="#pdf-33">33</a><a href="#pdf-34">34</a></nav></aside>
+<div class="main-wrap"><header class="topbar"><div style="display:flex;align-items:center;gap:9px;min-width:0"><button class="mobile-toggle" id="open-menu" aria-label="打开目录">☰</button><span class="topbar-title">RUNESON · HÖST / 全文译本</span></div><div class="topbar-tools"><button id="smaller" title="减小字体" aria-label="减小字体">A−</button><button id="larger" title="增大字体" aria-label="增大字体">A＋</button><button onclick="window.print()" title="打印或保存为 PDF">打印</button><button onclick="window.scrollTo({top:0,behavior:'smooth'})" title="返回顶部">↑</button></div></header>
+<main class="article" id="article"><h1>软件工程案例研究的实施与报告指南</h1>
+<p><strong>英文原题：</strong> Guidelines for Conducting and Reporting Case Study Research in Software Engineering<br/>
+<strong>作者：</strong> Per Runeson、Martin Höst<br/>
+<strong>刊载：</strong> <em>Empirical Software Engineering</em> (2009), 14:131–164<br/>
+<strong>DOI：</strong> 10.1007/s10664-008-9102-8<br/>
+<strong>在线发表：</strong> 2008 年 12 月 19 日<br/>
+<strong>版本与范围：</strong> 本译文仅对应所附正式期刊版 PDF，物理页码 1–34，期刊页码 131–164。</p>
+<h2>目录</h2>
+<ul>
+<li><a href="#abstract">摘要</a></li>
+<li><a href="#chapter-1">1 引言</a></li>
+<li><a href="#chapter-2">2 背景与概念定义</a></li>
+<li><a href="#chapter-3">3 案例研究设计与规划</a></li>
+<li><a href="#chapter-4">4 数据收集</a></li>
+<li><a href="#chapter-5">5 数据分析</a></li>
+<li><a href="#chapter-6">6 研究报告</a></li>
+<li><a href="#chapter-7">7 阅读与评审案例研究</a></li>
+<li><a href="#chapter-8">8 总结</a></li>
+<li><a href="#acknowledgements">致谢</a></li>
+<li><a href="#open-access">开放获取声明</a></li>
+<li><a href="#appendix-a">附录 A｜研究者检查清单</a></li>
+<li><a href="#appendix-b">附录 B｜读者检查清单</a></li>
+<li><a href="#references">参考文献</a></li>
+<li><a href="#authors">作者简介</a></li>
+</ul>
+<p><strong>PDF 页码索引：</strong> <a href="#pdf-01">1</a> · <a href="#pdf-02">2</a> · <a href="#pdf-03">3</a> · <a href="#pdf-04">4</a> · <a href="#pdf-05">5</a> · <a href="#pdf-06">6</a> · <a href="#pdf-07">7</a> · <a href="#pdf-08">8</a> · <a href="#pdf-09">9</a> · <a href="#pdf-10">10</a> · <a href="#pdf-11">11</a> · <a href="#pdf-12">12</a> · <a href="#pdf-13">13</a> · <a href="#pdf-14">14</a> · <a href="#pdf-15">15</a> · <a href="#pdf-16">16</a> · <a href="#pdf-17">17</a> · <a href="#pdf-18">18</a> · <a href="#pdf-19">19</a> · <a href="#pdf-20">20</a> · <a href="#pdf-21">21</a> · <a href="#pdf-22">22</a> · <a href="#pdf-23">23</a> · <a href="#pdf-24">24</a> · <a href="#pdf-25">25</a> · <a href="#pdf-26">26</a> · <a href="#pdf-27">27</a> · <a href="#pdf-28">28</a> · <a href="#pdf-29">29</a> · <a href="#pdf-30">30</a> · <a href="#pdf-31">31</a> · <a href="#pdf-32">32</a> · <a href="#pdf-33">33</a> · <a href="#pdf-34">34</a></p>
+<p><a class="page-anchor" id="pdf-01"></a></p>
+<!-- PDF_PAGE:1 JOURNAL_PAGE:131 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 1 页／共 34 页｜期刊第 131 页</strong></p>
+</blockquote>
+<p><strong>版权说明：</strong> © 作者，2008 年；本文以开放获取形式发表于 SpringerLink。</p>
+<p><em>责任编辑：Dag Sjøberg</em></p>
+<p><a aria-hidden="true" class="heading-anchor" id="abstract"></a></p>
+<h2>摘要</h2>
+<p>案例研究（case study）是在软件工程研究中一种适宜的研究方法，因为它是在自然情境下研究当代现象。然而，人们对于什么构成案例研究的理解并不一致，因而由此产生的研究质量也参差不齐。本文旨在介绍案例研究方法论，并为开展案例研究的研究者以及阅读此类研究报告的读者提供指南。本文内容建立在作者亲自开展和阅读案例研究的经验基础之上。所采用的术语和指南汇集自其他研究领域的多种方法论手册，尤其是社会科学与信息系统领域，并根据软件工程的需要进行了调整。我们既提出了软件工程案例研究的推荐实践，也提供了通过经验方法形成并得到评价的检查清单，供案例研究的研究者和读者使用。</p>
+<p><strong>关键词：</strong> 案例研究；研究方法论；检查清单；指南。</p>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-1"></a></p>
+<h2>1 引言</h2>
+<p>在软件工程领域，实证研究（empirical studies）及其对知识积累所作贡献正得到越来越广泛的认可。对于涉及人与技术相互作用的复杂现实问题，分析性研究范式并不足以进行研究。然而，实证研究在计算机科学研究中所占的总体比例仍然微乎其微：Sjøberg 等（2005）在 5,453 篇论文中找到了 103 项实验；Ramesh 等（2004）在 628 篇论文中发现，涉及人类受试者的实验不足 2%，现场研究仅占 0.16%。此外，现有软件工程实证研究方法论工作</p>
+<p><strong>作者单位与联系方式：</strong> 佩尔·鲁内松（Per Runeson，通讯作者）及马丁·赫斯特（Martin Höst），瑞典隆德大学计算机科学系，Box 118, SE-221 00 Lund, Sweden。电子邮件：per.runeson@cs.lth.se；martin.host@cs.lth.se。</p>
+<p><a class="page-anchor" id="pdf-02"></a></p>
+<!-- PDF_PAGE:2 JOURNAL_PAGE:132 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 2 页／共 34 页｜期刊第 132 页</strong></p>
+</blockquote>
+<p>强烈侧重实验研究：最早可追溯至 Moher 和 Schneider（1981）、Basili 等（1986），第一部方法论手册由 Wohlin 等（2000）编写，Tichy（1998）也积极推动了这一方向。这些工作都倾向于定量方法，尽管近年来也开始讨论定性方法，例如 Seaman（1999）的工作。关于实验的实施（Kitchenham et al. 2002；Wohlin et al. 2000）和报告（Jedlitschka and Pfahl 2005）、测量（Basili and Weiss 1984；Fenton and Pfleeger 1996；van Solingen and Berghout 1999）以及系统性综述（Kitchenham 2007），已有相应指南；而关于软件工程中的案例研究（Höst and Runeson 2007；Kitchenham et al. 1995；Wohlin et al. 2003）和定性方法（Dittrich 2007；Seaman 1999；Sim et al. 2001）的著述却很少。最近，Shull 等（2008）主编的一部著作对软件工程实证研究的问题进行了全面论述。</p>
+<p>“案例研究”一词不时出现在软件工程研究论文的标题中。然而，这些研究的范围差别很大：既有雄心勃勃、组织严密的现场研究，也有规模很小、却自称为案例研究的玩具示例。此外，用于研究分类的体系也各不相同。“案例研究”与“现场研究”（field study）、“观察性研究”（observational study）等术语并行使用，每个术语都着重强调研究方法论的某个特定方面。例如，Lethbridge 等使用“现场研究”作为最宽泛的术语（Lethbridge et al. 2005），而 Easterbrook 等（2008）则将案例研究称为五类“研究方法”之一。Zelkowitz 和 Wallace 提出了一套与其他领域稍有不同的术语，将项目监测、案例研究和现场研究都归入观察性方法（Zelkowitz and Wallace 1998）。如此繁多的术语，在尝试汇总多项实证研究时造成了混乱与困难。</p>
+<p>案例研究方法论非常适合软件工程中的许多研究，因为研究对象是难以脱离其环境而单独研究的当代现象。案例研究并不能像受控实验那样得出关于因果关系等问题的相同类型的结果，但它可以使研究者更深入地理解所研究的现象。由于案例研究不同于分析性研究及受控实证研究，它常遭到批评，被认为价值较低、无法推广、容易受到研究者偏见影响等。通过运用恰当的研究方法论实践，并重新认识知识的价值并不只有统计显著性一种体现，就可以回应这些批评（Flyvbjerg 2007；Lee 1989）。不过，研究共同体仍需进一步了解案例研究方法论，才能恰当地评审和判断案例研究。</p>
+<p>在社会科学等领域，案例研究方法论手册相当丰富（Robson 2002；Stake 1995；Yin 2003），这些文献也已为软件工程领域所采用。在信息系统（IS）研究领域，案例研究方法论也远比软件工程成熟。例如，Benbasat 等简要概述了信息系统案例研究（Benbasat et al. 1987）；Lee 从实证主义视角分析案例研究（Lee 1989）；Klein 和 Myers 则从解释主义视角进行了相应分析（Klein and Myers 1999）。</p>
+<p>一个值得提出的问题是：软件工程具有哪些独特之处，以至于需要专门的研究方法论？除研究案例本身的具体特点外，软件工程研究对象的特征也不同于社会科学，并在一定程度上不同于信息系统。研究对象通常是：（1）开发软件的私营企业或公共机构部门，而非使用软件系统的公共机构或私营企业；（2）以项目为导向，而非以直线部门或职能部门为导向；</p>
+<p><a class="page-anchor" id="pdf-03"></a></p>
+<!-- PDF_PAGE:3 JOURNAL_PAGE:133 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 3 页／共 34 页｜期刊第 133 页</strong></p>
+</blockquote>
+<p>（3）所研究的工作是由受过高等教育的人员开展的高级工程工作，而不是例行工作。此外，正如 Seaman（1999）所指出的，与哲学立场相比，软件工程研究共同体更重视研究方法论的实用性和结果导向。</p>
+<p>本文旨在为开展案例研究的研究者、案例研究论文的审稿人以及阅读此类论文的读者提供指导。本文综合了通用方法论手册（主要来自社会科学领域）以及信息系统领域的文献，并根据软件工程的需要加以调整。软件工程案例研究的现有文献自然也包含在内。基础分析的开展方式，是按照一个通用的案例研究过程（见第 2.4 节）对信息进行组织。在出现不同建议或术语时，作者根据亲自实施案例研究和阅读案例研究报告的经验，选取被认为最适合软件工程领域的做法。数据来源通过常规文献引用加以说明。特别是，研究者和读者的检查清单，是通过系统分析已有检查清单而形成的（Höst and Runeson 2007），随后由博士生及国际软件工程研究网络的成员进行评价，并据此作了更新。</p>
+<p>本文并不对什么才是软件工程中的“优良”案例研究作出绝对判断。相反，本文关注的是一组共同影响研究质量的问题。每个问题应满足的最低要求，必须结合其具体情境判断，并且很可能随时间推移而变化。这与 Klein 和 Myers 为信息系统案例研究提出的原则相似（Klein and Myers 1999）：“作者和审稿人有责任运用自己的判断力和酌处权，决定是否、如何以及应用哪些原则。”我们也不评价软件工程案例研究目前的总体状况。这本身值得作为一项独立研究来开展，类似于 Sjøberg 等（2005）对实验研究所作的系统性综述。此外，本文所采用的示例既用于说明良好实践，也用于说明实践中的不足。</p>
+<p>本文结构如下。首先，我们定义一组实证研究领域的术语，并在全文中使用（第 2.1 节）；将案例研究置于其他研究方法论的背景下（第 2.2 节）；讨论在软件工程中采用案例研究的理由（第 2.3 节）。接着定义案例研究过程（第 2.4 节）及其术语（第 2.5 节），供下文使用。第 3 节讨论案例研究设计和数据收集规划；第 4 节介绍数据收集过程；第 5 节处理数据分析相关问题；第 6 节讨论研究报告撰写；第 7 节讨论案例研究报告的阅读与评审；第 8 节总结全文。用于开展和阅读案例研究的检查清单分别与研究过程中的各个步骤相联系，并汇总于附录。</p>
+<blockquote class="case-study">
+<p><strong>贯穿全文的案例说明。</strong> 全文采用三个不同的案例研究示例来说明这些方法。示例选自作者已经发表的研究，代表案例研究中的多种不同路径。它们用于说明解决方案或指出案例研究中存在的问题，因此并不总是完全符合本文的指南。根据各自研究领域，它们以本框样式展示，分别记为 XP（敏捷方法——极限编程）、RE（需求工程）和 QA（质量保证）。更多详细信息参见原始论文：XP 研究（Karlström and Runeson 2005，2006），RE 研究（Regnell et al. 2001），QA 研究（Andersson and Runeson 2007a，b）。</p>
+</blockquote>
+<p><a class="page-anchor" id="pdf-04"></a></p>
+<!-- PDF_PAGE:4 JOURNAL_PAGE:134 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 4 页／共 34 页｜期刊第 134 页</strong></p>
+</blockquote>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-2"></a></p>
+<h2>2 背景与概念定义</h2>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-2-4"></a></p>
+<h3>2.1 研究方法论</h3>
+<p>为界定本文所讨论的实证研究类型的范围，我们将案例研究放在其他研究方法论的背景下加以考察，并分别引用 Robson（2002）、Yin（2003）以及 Benbasat 等（1987）对于“案例研究”的一般定义。</p>
+<p>三个定义都认为，案例研究是一种旨在考察当代现象及其所处情境的实证方法。Robson 将其称为一种“研究策略”，强调使用多种证据来源；Yin 称其为一种“探究”，指出现象与其情境之间的界限可能并不清晰；Benbasat 等的定义更为具体，提及从少量实体（人员、群体、组织）收集信息，以及缺乏实验控制。</p>
+<p>还有三种与案例研究相关的主要研究方法论：</p>
+<ul>
+<li><strong>调查研究（survey）：</strong> “从某个特定总体或其中某个样本中收集标准化信息，通常——但并非必须——通过问卷或访谈来完成”（Robson 2002）。</li>
+<li><strong>实验或受控实验（experiment / controlled experiment）：</strong> 其特征是“测量对某一变量进行操纵给另一变量造成的影响”（Robson 2002），并且“将受试者随机分配到各处理条件”（Wohlin et al. 2000）。准实验（quasi-experiment）与受控实验相似，区别在于受试者并非随机分配到各处理条件。在工业环境中开展的准实验，可能具有许多与案例研究相同的特征。</li>
+<li><strong>行动研究（action research）：</strong> 其目的是“影响或改变作为研究焦点之事物的某个方面”（Robson 2002），因而与案例研究密切相关。严格而言，案例研究纯粹属于观察性的研究，而行动研究则关注并参与变革过程。在软件过程改进（Dittrich et al. 2008；Iversen et al. 2004）和技术转移研究（Gorschek et al. 2006）中，研究方法应被归类为行动研究。不过，在研究某项变革的影响时，例如事件前后比较研究，我们将方法论归类为案例研究。在广泛采用行动研究的信息系统领域，关于如何平衡“行动”和“研究”存在讨论，参见 Avison 等（2001）、Baskerville 和 Wood-Harper（1996）。本文的指南同样适用于行动研究中的研究部分。</li>
+</ul>
+<p>Easterbrook 等（2008）还把民族志研究（ethnographic studies）列为主要研究方法论之一。我们更倾向于将民族志研究视为案例研究的一种特殊类型，它关注文化实践（Easterbrook et al. 2008），或者属于持续时间较长、包含大量参与式观察数据的研究（Klein and Myers 1999）。Zelkowitz 和 Wallace（1998）将软件工程的“观察性方法”划分为四类：项目监测、案例研究、断言以及现场研究。除我们不认为是适当研究方法的“断言”外，本文指南均适用于这些类型。一般来说，不同研究类型之间的界限并不总是清楚。我们更倾向于将项目监测视为案例研究的一部分，将现场研究视为多案例研究。Robson 的总结似乎也适用于软件工程：“许多采用灵活设计的研究，虽然没有明确这样命名，但完全可以将其作为案例研究来理解。”（Robson 2002，第 185 页。）</p>
+<p><a class="page-anchor" id="pdf-05"></a></p>
+<!-- PDF_PAGE:5 JOURNAL_PAGE:135 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 5 页／共 34 页｜期刊第 135 页</strong></p>
+</blockquote>
+<p>最后，案例研究还可能包含其他研究方法的元素，例如，可以在案例研究中开展调查研究；文献检索通常先于案例研究进行；档案分析也可能构成数据收集的一部分。诸如访谈和观察等民族志方法，则主要作为案例研究的数据收集方法使用。</p>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-2-5"></a></p>
+<h3>2.2 研究方法论的特征</h3>
+<p>不同的研究方法论服务于不同目的；没有哪一种研究方法论能够适用于所有目的。根据 Robson（2002）的分类，我们区分四种研究目的：</p>
+<ul>
+<li><strong>探索性（exploratory）：</strong> 了解正在发生什么、寻求新的认识，并为后续研究提出想法和假设。</li>
+<li><strong>描述性（descriptive）：</strong> 描绘一种情境或现象。</li>
+<li><strong>解释性（explanatory）：</strong> 寻找对某种情境或问题的解释，通常以因果关系形式呈现，但不必然如此。¹</li>
+<li><strong>改进性（improving）：</strong> 试图改进所研究现象的某个方面。²</li>
+</ul>
+<p>案例研究方法论最初主要用于探索性目的，有些研究者至今仍将案例研究限制在这一用途之内，Flyvbjerg（2007）对此进行了讨论。但当某种情境或现象的普遍性并非首要问题时，案例研究也可用于描述性目的。案例研究同样可以用于解释性目的，例如采用中断时间序列设计（事件前后比较研究），尽管在这类研究中隔离影响因素可能是一个问题。这也包括在验证性研究中检验既有理论。最后，如上所述，软件工程领域的案例研究常采取改进取向，与行动研究相似；例如前述 QA 研究（Andersson and Runeson 2007b）。</p>
+<p>Klein 和 Myers（1999）根据研究视角，将案例研究分为三类：实证主义、批判主义和解释主义。实证主义案例研究寻求支持正式命题的证据，测量变量、检验假设，并依据样本对明确界定的总体作出推断；也就是说，它接近自然科学研究模式（Lee 1989），并与 Robson 所说的解释性类别相关。批判主义案例研究旨在开展社会批判、发挥解放作用，即识别可能限制人类能力的各种社会、文化和政治支配形式。改进性案例研究可能具有批判性特征。解释主义案例研究则尝试通过参与者对其所处情境的解释来理解现象，与 Robson 的探索性和描述性类型相似。软件工程案例研究往往倾向于实证主义视角，在解释性研究中尤为如此。</p>
+<p>研究现实世界的问题，意味着必须在控制水平与真实程度之间权衡。现实情境通常复杂且具有非确定性，这会妨碍人们理解实际发生的事情，尤其是在以解释为目的的研究中。另一方面，提高控制水平又会降低真实程度，有时甚至会把真正起作用的因素排除在研究范围之外。</p>
+<p><strong>脚注 1：</strong> Easterbrook 等区分探索性和验证性案例研究。我们认为 Robson 的解释性类别与 Easterbrook 的验证性类别密切相关。</p>
+<p><strong>脚注 2：</strong> 在社会科学背景下，Robson 将这一类别称为“解放性”（emancipatory）；“改进性”则是我们为适应工程情境所作的调整。</p>
+<p><a class="page-anchor" id="pdf-06"></a></p>
+<!-- PDF_PAGE:6 JOURNAL_PAGE:136 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 6 页／共 34 页｜期刊第 136 页</strong></p>
+</blockquote>
+<p>按照定义，案例研究是在现实世界的环境中进行的，因此具有很高的真实程度，但通常要以牺牲一定控制水平为代价。</p>
+<p>实证研究所收集的数据可以是定量的，也可以是定性的。定量数据涉及数值和类别，而定性数据涉及词语、描述、图片、图表等。定量数据使用统计方法进行分析，定性数据则使用分类和整理的方法分析。案例研究大多以定性数据为基础，因为这类数据能够提供更丰富、更深入的描述。不过，定性与定量数据的结合往往有助于更好地理解研究现象（Seaman 1999），即有时所说的“混合方法”（mixed methods，Robson 2002）。</p>
+<p>按照 Anastas 和 MacDonald（1994）以及 Robson（2002）的观点，研究过程可分为固定设计（fixed design）和灵活设计（flexible design）。在固定设计过程中，所有参数均在研究启动时确定；在灵活设计过程中，研究的关键参数可以在实施过程中改变。案例研究通常采用灵活设计，实验和调查研究则通常采用固定设计。其他文献有时分别使用“定量设计”和“定性设计”来指称固定设计和灵活设计。我们更愿意沿用“固定／灵活”的术语，因为它可以降低混淆的风险：采用定性设计的研究实际上可能同时收集定性和定量数据。否则，“定性”一词究竟指数据还是研究设计，就可能含混不清。</p>
+<p><strong>三角互证（triangulation）</strong> 对提高实证研究的准确性非常重要。三角互证意味着从不同角度考察研究对象，以获得更全面的认识。当主要依赖定性数据时，采用三角互证的必要性很明显：这类数据覆盖面广、内容丰富，但不如定量数据精确。不过，三角互证同样适用于定量数据，例如可用来补偿测量误差或建模误差。可采用四种不同的三角互证方式（Stake 1995）：</p>
+<ul>
+<li><strong>数据（来源）三角互证：</strong> 使用不止一个数据来源，或在不同时间收集同一种数据。</li>
+<li><strong>观察者三角互证：</strong> 在研究中使用不止一名观察者。</li>
+<li><strong>方法三角互证：</strong> 组合不同类型的数据收集方法，例如定性与定量方法。</li>
+<li><strong>理论三角互证：</strong> 使用不同的理论或观点。</li>
+</ul>
+<p>表 1 概述了上述研究方法论的主要特征。</p>
+<p><strong>表 1　研究方法论特征概览</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法论</th>
+<th>主要目标</th>
+<th>主要数据</th>
+<th>研究设计</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>调查研究</td>
+<td>描述性</td>
+<td>定量</td>
+<td>固定</td>
+</tr>
+<tr>
+<td>案例研究</td>
+<td>探索性</td>
+<td>定性</td>
+<td>灵活</td>
+</tr>
+<tr>
+<td>实验</td>
+<td>解释性</td>
+<td>定量</td>
+<td>固定</td>
+</tr>
+<tr>
+<td>行动研究</td>
+<td>改进性</td>
+<td>定性</td>
+<td>灵活</td>
+</tr>
+</tbody>
+</table>
+<p>Yin 特别补充了案例研究的下列特征（Yin 2003）：</p>
+<ul>
+<li>“能够应对一种在技术上具有鲜明特征的情境：其中变量的数量远远多于数据点的数量；其结果之一是，</li>
+<li>依赖多种证据来源，要求数据以三角互证的方式相互汇合；另一个结果是，</li>
+<li>事先形成理论命题，有助于指导数据收集和分析。”</li>
+</ul>
+<p><a class="page-anchor" id="pdf-07"></a></p>
+<!-- PDF_PAGE:7 JOURNAL_PAGE:137 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 7 页／共 34 页｜期刊第 137 页</strong></p>
+</blockquote>
+<p>因此，案例研究绝不会提供具有统计显著性的结论。相反，它通过将多种不同的证据——数字、陈述、文档等——联系起来，支持有力且相关的结论。</p>
+<p>Perry 等（2005）也提出了相似的案例研究标准。他们期望案例研究：</p>
+<ul>
+<li>“在研究开始时就提出研究问题；</li>
+<li>以有计划且一致的方式收集数据；</li>
+<li>从数据中进行推断，以回答研究问题；</li>
+<li>探索某种现象，或者对其提出解释、描述或因果分析；</li>
+<li>以系统化的方式处理效度威胁。”</li>
+</ul>
+<p>总之，案例研究的主要特征包括：（1）采用灵活设计，以适应软件工程等现实世界现象复杂而动态的特征；（2）不论证据是定性还是定量的，研究结论都以清晰的证据链为基础，而证据是从多个来源有计划且一致地收集的；（3）通过依据已有理论（如果存在）或构建理论，为现有知识作出贡献。</p>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-2-6"></a></p>
+<h3>2.3 为什么要在软件工程中开展案例研究？</h3>
+<p>案例研究广泛用于心理学、社会学、政治学、社会工作、商业以及社区规划等领域（例如 Yin 2003）。在这些领域中，案例研究旨在增加人们对个人、群体、组织及社会、政治和相关现象的了解。因此，将软件工程与那些经常开展案例研究的领域进行比较，以及将软件工程的研究目标与其他领域案例研究的研究目标进行比较，是合理的。</p>
+<p>软件工程领域涉及软件及相关制品的开发、运行和维护（例如 Jedlitschka and Pfahl 2005）。软件工程研究在很大程度上旨在探究软件工程师及其他利益相关者如何在不同条件下开展这些开发、运行和维护活动。软件开发由个人、群体和组织完成，社会与政治问题对这种开发同样重要。也就是说，软件工程是一个多学科领域，涉及通常开展案例研究的诸多学科。因此，软件工程中的许多研究问题都适合通过案例研究来探讨。</p>
+<p>第 2.1 节对案例研究的定义强调，要在现象所处的情境中研究现象，尤其是在现象与情境之间界限不清楚的时候。软件工程尤其符合这一特点。软件工程实验已清楚表明，例如在尝试复现实验时，有许多因素会影响软件工程活动的结果（Shull et al. 2002）。案例研究提供了一种方法，不必在研究对象与其环境之间划出严格界限；理解现象的关键，或许恰恰存在于两者之间的相互作用之中。</p>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-2-7"></a></p>
+<h3>2.4 案例研究过程</h3>
+<p>开展案例研究时，需要经历五个主要过程步骤：</p>
+<ol>
+<li><strong>案例研究设计：</strong> 确定目标并规划案例研究。</li>
+<li><strong>数据收集准备：</strong> 确定数据收集的程序与规程。</li>
+</ol>
+<p><a class="page-anchor" id="pdf-08"></a></p>
+<!-- PDF_PAGE:8 JOURNAL_PAGE:138 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 8 页／共 34 页｜期刊第 138 页</strong></p>
+</blockquote>
+<ol start="3">
+<li><strong>收集证据：</strong> 在所研究案例中开展数据收集并执行研究。</li>
+<li><strong>分析收集到的数据。</strong></li>
+<li><strong>报告研究结果。</strong></li>
+</ol>
+<p>这一过程几乎与任何类型实证研究的过程相同，例如可与 Wohlin 等（2000）和 Kitchenham 等（2002）提出的过程进行比较。不过，由于案例研究方法论采用灵活设计策略，这些步骤之间存在大量迭代（Andersson and Runeson 2007b）。数据收集和分析可以增量式地开展。如果所收集的数据不足以支持分析，就可以计划进一步收集数据，等等。但是，灵活性也有其限度：案例研究应当在一开始就确定具体目标。如果目标发生改变，那么这应当被视为一项新的案例研究，而不是对原有研究的修改，尽管这一界定与其他分类问题一样，仍涉及判断。在 Eisenhardt（1989）提出的从案例研究构建理论的过程中，她在上述第 4 步与第 5 步之间增加了两个步骤：（a）形成假设；（b）整合文献。除此之外，除术语差异外，其余步骤与前述过程相同。</p>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-2-8"></a></p>
+<h3>2.5 定义</h3>
+<p>本文采用以下术语。<strong>总体目标（overall objective）</strong> 是对预期通过案例研究实现什么的陈述。其他研究者也可能将 goals、aims 或 purposes 作为 objective 的同义词或下位词。总体目标被细化为一组<strong>研究问题（research questions）</strong>，这些问题应当通过案例研究分析来回答。案例可能基于某种软件工程理论。详细讨论“理论”的含义超出了本文范围。不过，Sjøberg 等（2008）描述了一个理论框架，其中包括所关注的构念、构念之间的关系、对这些关系的解释以及理论的适用范围。按这种方式描述，软件工程理论至少包含一个来自软件工程领域的构念。研究问题可能与某个<strong>假设（hypothesis）</strong> 相关〔有时也称为“命题”（proposition，Yin 2003）〕，即针对所研究现象某一方面所提出的暂定解释。假设也可能由案例研究产生，留待进一步研究。<strong>案例（case）</strong> 指研究对象（例如一个项目），其中包含一个或多个<strong>分析单元（units of analysis）</strong>（例如子项目）。数据来自研究的<strong>信息提供者（subjects）</strong>，即提供信息的人。数据可以是定量的（数值、测量结果），也可以是定性的（文字、描述）。<strong>案例研究规程（case study protocol）</strong> 规定原始数据收集与分析的详细程序，有时也称为现场程序（field procedures）。</p>
+<p>以下关于如何开展案例研究的指南按上述过程组织。第 3 节讨论设定案例研究目标与准备数据收集；第 4 节讨论数据收集；第 5 节讨论数据分析；第 6 节提供研究报告撰写的若干指南。</p>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-3"></a></p>
+<h2>3 案例研究设计与规划</h2>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-3-10"></a></p>
+<h3>3.1 定义案例</h3>
+<p>前文已提及，案例研究具有灵活设计的性质。但这并不意味着无需规划。相反，良好的规划对案例研究的成功至关重要。需要规划的问题很多，例如采用哪些数据收集方法、</p>
+<p><a class="page-anchor" id="pdf-09"></a></p>
+<!-- PDF_PAGE:9 JOURNAL_PAGE:139 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 9 页／共 34 页｜期刊第 139 页</strong></p>
+</blockquote>
+<p>访问组织的哪些部门、阅读哪些文档、访谈哪些人员、多久进行一次访谈，等等。这些计划可以写入案例研究规程，参见第 3.2 节。</p>
+<p>案例研究计划至少应包含以下要素（Robson 2002）：</p>
+<ul>
+<li><strong>目标：</strong> 要实现什么？</li>
+<li><strong>案例：</strong> 研究什么？</li>
+<li><strong>理论：</strong> 参照框架是什么？</li>
+<li><strong>研究问题：</strong> 需要知道什么？</li>
+<li><strong>方法：</strong> 如何收集数据？</li>
+<li><strong>选择策略：</strong> 到哪里寻找数据？</li>
+</ul>
+<p>研究目标可以是探索性、描述性、解释性或改进性的。与固定研究设计相比，这种目标的表述自然更宽泛、精确程度也更低。最初的目标更像一个关注点，会随着研究的推进而发展。研究问题陈述了为实现研究目标而需要了解什么。与研究目标类似，研究问题也会在研究过程中演变，并在各轮研究迭代中逐步收窄为具体的研究问题（Andersson and Runeson 2007b）。</p>
+<p>一般而言，案例几乎可以是任何“处于真实生活情境中的当代现象”（Yin 2003）。在软件工程中，案例可以是一个软件开发项目，这是最直接的选择。案例也可以是一位个人、一群人、某个过程、某种产品、一项政策、组织中的一个角色、一个事件、一项技术等。项目、个人、群体等也可能构成某一案例内部的分析单元。在信息系统领域，案例可能是“个人、群体……或整个组织；或者，分析单元可能是某个特定项目或决策”（Benbasat et al. 1987）。对“玩具程序”或类似对象的研究由于缺少真实生活情境，自然不属于这里所说的案例研究。Yin（2003）区分了<strong>整体式案例研究（holistic case study）</strong> 和<strong>嵌入式案例研究（embedded case study）</strong>：前者将案例作为整体研究，后者则在一个案例中研究多个分析单元，见图 1。如何将一项包含两个案例的研究界定为整体式还是嵌入式，取决于研究者如何界定情境与研究目标。在我们的 XP 示例中，研究涉及两家不同公司的两个项目，分别处于不同应用领域，但都使用敏捷实践（Karlström and Runeson 2006）。如果将一般的软件公司视为研究情境，研究目标是探讨敏捷实践，那么这两个项目可以视为一项嵌入式案例研究中的两个分析单元。相反，如果情境被认定为特定公司或应用领域，则必须将其视为两个独立的整体式案例。Benbasat 等在评论某项具体案例研究时指出：“尽管该研究看上去是一项单案例的嵌入式分析单元研究，但由于研究地点的集中性，也可以将其视为多案例设计。”（Benbasat et al. 1987）</p>
+<p><strong>图 1　整体式案例研究（左）与嵌入式案例研究（右）。</strong> 原图英文标签：Context＝情境；Case＝案例；Unit of Analysis＝分析单元。</p>
+<figure class="original-figure"><img alt="期刊第 139 页图 1 原图：左侧整体式案例研究，右侧嵌入式案例研究。图中 Context＝情境；Case＝案例；Unit of Analysis＝分析单元。" loading="lazy" src="data:image/webp;base64,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"/><figcaption>期刊第 139 页图 1 原图：左侧整体式案例研究，右侧嵌入式案例研究。图中 Context＝情境；Case＝案例；Unit of Analysis＝分析单元。</figcaption></figure>
+<p><a class="page-anchor" id="pdf-10"></a></p>
+<!-- PDF_PAGE:10 JOURNAL_PAGE:140 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 10 页／共 34 页｜期刊第 140 页</strong></p>
+</blockquote>
+<p>在软件工程领域，运用理论来确定研究方向的做法尚未得到普遍确立，关于这一主题的系统性综述也得出了相同结论（Hannay et al. 2007；Shull and Feldman 2008）。不过，界定研究的参照框架能够明确案例研究的情境，既有助于研究者开展研究，也有助于评审者评价其结果。由于软件工程中的理论发展尚不充分，参照框架也可以通过研究所采取的视角以及研究者的背景来表达。基于扎根理论的案例研究自然没有预先确定的理论（Corbin and Strauss 2008）。</p>
+<p>案例研究设计阶段需要确定数据收集方法方面的主要决策，不过，数据收集程序的细节决策可以在随后作出。Lethbridge 等（2005）将方法分为三类：直接方法（如访谈）、间接方法（如工具插桩）以及独立方法（如文档分析）。第 4 节将进一步阐述。</p>
+<p>在案例研究中，应当有意选择案例及其分析单元。这与调查研究和实验不同；后两者从某个总体中抽取受试者，并打算将结果推广到该总体。选择案例的目的，可能是研究一个在某方面预期具有“典型性”“关键性”“揭示性”或“独特性”的案例（Benbasat et al. 1987），并据此进行选择。Flyvbjerg（2007）提出了四种信息导向的案例选择类型：“极端／偏离型”“最大差异型”“关键型”和“典范型”。在比较性案例研究中，选择分析单元时必须使其在研究拟比较的属性上存在差异。不过在实践中，许多案例是基于可获得性选取的（Benbasat et al. 1987），这在许多实验中也很常见（Sjøberg et al. 2005）。</p>
+<p>复制案例研究时，案例选择尤其重要。案例研究可以进行<strong>字面复制（literal replication）</strong>，即选择预期会产生类似结果的案例；也可以进行<strong>理论复制（theoretical replication）</strong>，即选择因可预见的原因而预期会产生不同结果的案例（Yin 2003）。</p>
+<blockquote class="case-study">
+<p><strong>案例 XP、RE 与 QA。</strong> 三项案例研究具有不同目标。XP 研究旨在探究敏捷过程如何与阶段关口式管理组织共存；RE 研究旨在评价一种需求优先级排序方法；QA 研究旨在寻找针对缺陷数据的定量预测模型和程序。</p>
+<p>XP 研究被视为包含两个分析单元的嵌入式案例研究，这两个单元来自两家不同公司；不过，如前所述，它也可以被看作两个整体式案例研究。RE 是只包含一个分析单元的整体式案例研究；QA 则是在同一家公司中以三个不同项目为分析单元的嵌入式案例研究。所有公司均根据既有的产学合作关系选择，分析单元则依照各项案例研究的具体目的确定。</p>
+<p>就参照框架而言，XP 和 RE 研究没有明确引用任何理论。不过，它们所研究的方法基于已有方法，而这些已有方法在一定程度上已经接受过研究。因此，早期研究影响了这两项研究的设计。QA 研究部分属于复制研究，这意味着原始研究形成了其参照框架；在定义假设时，研究者使用了关于帕累托原则和缺陷在不同测试阶段持续存在等问题的理论。</p>
+<p>XP 案例主要通过访谈收集数据。RE 案例的主要数据来源是调查问卷；QA 案例的主要数据来源则是一家公司的缺陷度量数据。</p>
+</blockquote>
+<p><a class="page-anchor" id="pdf-11"></a></p>
+<!-- PDF_PAGE:11 JOURNAL_PAGE:141 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 11 页／共 34 页｜期刊第 141 页</strong></p>
+</blockquote>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-3-11"></a></p>
+<h3>3.2 案例研究规程</h3>
+<p>案例研究规程（case study protocol）既是案例研究设计决策的载体，也是实施研究所需现场程序（field procedures）的载体。规程是一份持续修订的文档，会随着案例研究计划的改变而更新。</p>
+<p>保持一份及时更新的案例研究规程有若干原因。首先，在收集数据时，它能够提供指导，从而防止研究者遗漏原计划收集的数据。其次，在规划阶段编写规程的过程，可以使研究计划具体化，帮助研究者决定使用哪些数据来源、提出哪些问题。第三，其他研究者及相关人员可以审阅规程并就研究计划提出反馈。例如，其他研究者对规程的反馈可以降低遗漏相关数据来源、访谈问题或应纳入研究的角色的风险，也有助于确保研究问题与访谈问题之间的联系。最后，规程还可以作为日志或日记，记录已完成的所有数据收集和分析活动，以及根据研究灵活性作出的变更决策。日后撰写案例研究报告时，这可能成为重要的信息来源。为了跟踪研究项目中的变更，应当对规程实行某种形式的版本控制。</p>
+<p>Pervan 和 Maimbo 提出了一份案例研究规程提纲，表 2 对此进行了概括。从该建议可以看出，规程内容相当详尽，目的是支持结构良好的研究方法。</p>
+<blockquote>
+<p><strong>QA 案例：规程与迭代日志。</strong> 案例研究规程由于包含保密信息，不能全文公开。但可以公布规程的部分内容，例如访谈工具，XP 研究就是如此。在 QA 研究中，研究者维护了一份记录案例研究各轮迭代的日志。下表为该日志已发表版本的缩写形式（Andersson and Runeson 2007b），列出了七个案例研究循环，体现了案例研究不断演进的特征。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>轮次</th>
+<th>目标与范围</th>
+<th>数据收集与筛选</th>
+<th>分析与呈现</th>
+<th>解释与改进</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>仿真模型</td>
+<td>过程模型；工时报告；失效报告</td>
+<td>建立仿真模型</td>
+<td>方法过于复杂，未完成</td>
+</tr>
+<tr>
+<td>2</td>
+<td>探索性</td>
+<td>项目 1、2 的失效报告</td>
+<td>检测活动随时间变化的分布</td>
+<td>对各项目中特定事件的响应</td>
+</tr>
+<tr>
+<td>3</td>
+<td>探索性</td>
+<td>按特性组划分的失效报告</td>
+<td>各特性组的检测活动分布</td>
+<td>对分布情况的解释</td>
+</tr>
+<tr>
+<td>4</td>
+<td>验证性</td>
+<td>项目 3 的失效报告</td>
+<td>与循环 2、3 相同</td>
+<td>对实际使用具有足够的拟合程度</td>
+</tr>
+<tr>
+<td>5</td>
+<td>解释性</td>
+<td>关于特性组的定性数据</td>
+<td>特性组的特征</td>
+<td>对各组原因及建议进行根因分析；失效报告子集</td>
+</tr>
+<tr>
+<td>6</td>
+<td>解释性（预测）</td>
+<td>所有失效报告</td>
+<td>使用简单模型预测缺陷数量</td>
+<td>利用预测模型改进规划</td>
+</tr>
+<tr>
+<td>7</td>
+<td>解释性（预测）</td>
+<td>所有失效报告；时间数据</td>
+<td>软件可靠性增长模型</td>
+<td>使用预测模型</td>
+</tr>
+</tbody>
+</table>
+<p><a class="page-anchor" id="pdf-12"></a></p>
+<!-- PDF_PAGE:12 JOURNAL_PAGE:142 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 12 页／共 34 页｜期刊第 142 页</strong></p>
+</blockquote>
+<p><strong>表 2　Pervan 和 Maimbo（2005）提出的案例研究规程提纲</strong></p>
+<table>
+<thead>
+<tr>
+<th>部分</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前言（Preamble）</td>
+<td>包含有关规程目的、数据与文档存储及发表指南的信息。</td>
+</tr>
+<tr>
+<td>概述（General）</td>
+<td>简要介绍研究项目和案例研究方法。</td>
+</tr>
+<tr>
+<td>程序（Procedures）</td>
+<td>详细说明开展各案例研究的程序，包括联系人、时间安排等具体执行细节。</td>
+</tr>
+<tr>
+<td>研究工具（Research instruments）</td>
+<td>访谈提纲、问卷等，用于确保数据收集的一致性。</td>
+</tr>
+<tr>
+<td>数据分析指南（Data analysis guidelines）</td>
+<td>详细说明数据分析程序，包括数据模式、先验编码等。</td>
+</tr>
+<tr>
+<td>附录 A</td>
+<td>邀请参与者的信函模板。</td>
+</tr>
+</tbody>
+</table>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-3-12"></a></p>
+<h3>3.3 伦理考量</h3>
+<p>在设计案例研究时，必须考虑伦理问题（Singer and Vinson 2002）。尽管研究首先建立在研究者与案例研究对象之间的信任之上（Amschler Andrews and Pradhan 2001），仍需采取明确措施防止问题发生。在软件工程中，案例研究经常涉及组织的保密信息。如果没有从一开始就明确这类信息如何处理、由谁负责批准哪些信息可以发表，后续就可能出现问题。主要伦理因素包括：</p>
+<ul>
+<li>知情同意（informed consent）；</li>
+<li>伦理审查委员会批准（review board approval）；</li>
+<li>保密性（confidentiality）；</li>
+<li>敏感结果的处理；</li>
+<li>参与激励（inducements）；</li>
+<li>反馈。</li>
+</ul>
+<p>受试者和组织必须明确同意参与案例研究，即提供知情同意。在一些国家，这甚至是法律要求。研究者可能会倾向于通过间接或独立的数据收集方式收集数据，而不征求同意。然而，为维护软件工程研究中的长期信任，必须遵守伦理标准。</p>
+<p>不同国家和大洲的研究伦理立法并不相同。在许多国家，研究方案必须由大学伦理审查委员会或类似机构就伦理问题进行审查并获得批准（Seaman 1999）；其他国家则没有此类规定。即使没有这些规定，仍建议由同行审阅案例研究规程，以帮助避免潜在问题。</p>
+<p>知情同意协议最好通过研究者与每位参与者之间的表格或合同来处理，示例可参见 Robson（2002）。在本文作者开展的一项实证研究中，此类表格包含以下信息：</p>
+<ul>
+<li>研究者姓名及联系方式；</li>
+<li>实证研究目的；</li>
+<li>实证研究所采用的程序，即简要说明参与者在研究期间需要做什么、研究者在这些活动中将执行哪些步骤；</li>
+</ul>
+<p><a class="page-anchor" id="pdf-13"></a></p>
+<!-- PDF_PAGE:13 JOURNAL_PAGE:143 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 13 页／共 34 页｜期刊第 143 页</strong></p>
+</blockquote>
+<ul>
+<li>明确说明参与完全自愿、所收集的数据将作匿名处理的文字；</li>
+<li>已知风险的清单；</li>
+<li>参与者可获得的益处清单，例如在该研究中，包括使用新技术的经验以及关于其有效性的反馈；</li>
+<li>如何确保保密性的说明，其中包括如何对所收集材料进行编码和标识；</li>
+<li>伦理审查委员会批准情况的信息；</li>
+<li>参与者与研究者的日期及签名。</li>
+</ul>
+<p>如果研究者打算将数据用于其他尚未确定的目的，应当单独取得签署同意，以便参与者自行选择，其贡献仅供当前研究使用，还是也可以用于未来可能开展的研究。</p>
+<p>有关保密与发表的问题，也应通过研究者与被研究组织之间的合同作出约定。不过，信息的敏感性并不仅仅体现在向公司外部泄露时。来自员工个人的数据和个人观点，例如被提交给他们的经理时，也可能非常敏感（Singer and Vinson 2002）。在这类情况下，研究者必须有权维护自身的独立性，并遵守已经约定的程序。公司可能不了解学术发表与传播的惯例，因此必须明确向其介绍。从发表的角度看，需要公开的相关数据通常并非对公司敏感，因为数据可以匿名化。但是必须记住，去掉公司或个人名称并不一定足够：如果被研究对象是从人数或公司数量很小的集合中选出的，仍然可能通过其特征识别出其身份。</p>
+<p>研究结果可能对公司敏感，例如揭示其软件工程实践中的缺陷，或者某个产品在比较中排名最后（Amschler Andrews and Pradhan 2001）。必须事先讨论出现这种情况的可能性，并向案例研究参与者明确说明。如果在案例研究过程中发现违法行为，则必须报告，即使“举报者”很少获得回报。</p>
+<p>个人和组织参加案例研究的动机各不相同，但总会存在某种有形或无形的激励。最好明确说明参与激励，即具体说明参与者可以获得什么。这样，也可以分析激励因素在多大程度上威胁研究的效度。</p>
+<p>向研究参与者提供反馈，对于长期信任和研究效度都至关重要。首先，应将访谈和观察的转录稿返还参与者，以便纠正原始数据。其次，应向他们呈现分析结果，以保持他们对研究的信任。参与者不一定必须同意分析结论，但反馈分析结果可以提高研究效度。</p>
+<blockquote class="case-study">
+<p><strong>案例 XP、RE 与 QA。</strong> 三项示例研究都通过公司与大学之间的保密协议（NDA）和总体项目合作协议来处理保密问题，这些协议的有效期长于某一项案例研究。协议规定，大学研究者有义务在发表成果前获得公司代表批准，原始数据不得传播给合同签署者以外的任何人。除非发现违法行为，研究者没有义务向管理层报告事实信息的来源。</p>
+<p>为确保访谈对象的表述不被错误引用，XP 研究约定将访谈转录稿寄回受访者审阅。每次访谈开始时，研究者都会告知受访者在研究中的权利。在 QA 研究中，分析和解释的反馈会议被明确纳入研究方法（Andersson and Runeson 2007b，图 1）。在协商数据发表问题时，研究者被明确告知，不能发表缺陷的原始数量，但可以发表缺陷在不同阶段的百分比分布，这对研究目的而言可以接受。</p>
+</blockquote>
+<p><a class="page-anchor" id="pdf-14"></a></p>
+<!-- PDF_PAGE:14 JOURNAL_PAGE:144 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 14 页／共 34 页｜期刊第 144 页</strong></p>
+</blockquote>
+<blockquote>
+<p>三项研究均在瑞典开展，当地法律只有对医学研究作了明确规定；因此，这些研究在开始前都没有获得伦理审查委员会的批准。</p>
+</blockquote>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-3-13"></a></p>
+<h3>3.4 检查清单</h3>
+<p>案例研究设计的检查清单条目见表 3。</p>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-4"></a></p>
+<h2>4 数据收集</h2>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-4-15"></a></p>
+<h3>4.1 不同的数据来源</h3>
+<p>案例研究可利用许多不同的信息来源。使用多种数据来源很重要，因为这样可以限制对单一数据来源作出某一种解释所造成的影响。如果可以从多个信息来源得出相同结论，即实现三角互证（第 2.2 节），这一结论就比仅依据单一来源得出的结论更有力。案例研究还必须考虑不同角色的观点，调查不同项目与产品之间的差异。研究者通常通过分析数据来源之间的差异来得出结论。</p>
+<p>Lethbridge 等（2005）将数据收集技术划分为三个层级：</p>
+<ul>
+<li><strong>第一层级：直接方法。</strong> 研究者直接接触信息提供者，并实时收集数据，例如访谈、焦点小组、德尔菲调查（Dalkey and Helmer 1963），以及采用“有声思维规程”（think aloud protocols）的观察。</li>
+<li><strong>第二层级：间接方法。</strong> 研究者直接收集原始数据，但在数据收集过程中并不实际与信息提供者互动。例如，软件项目遥测（Software Project Telemetry，Johnson et al. 2005）会自动监测软件工程工具的使用情况；录像观察也属于这一类。</li>
+</ul>
+<p><strong>表 3　案例研究设计检查清单条目</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">编号</th>
+<th>检查条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td>案例是什么？它包含哪些分析单元？</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td>是否提前明确界定目标、初步研究问题以及假设（如有）？</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td>是否界定理论基础——与既有文献或其他案例的关系？</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td>是否明确说明作者的研究意图？</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td>是否充分界定案例（规模、领域、过程、信息提供者等）？</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td>是否研究因果关系？如果是，拟采用的研究设计能否将原因与其他因素区分开来？</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td>研究设计是否涉及多个来源的数据（数据三角互证），并使用多种方法（方法三角互证）？</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td>选择信息提供者、角色、制品、视角等是否有合理依据？</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td>所确定的案例能否有效地回答研究问题（构念效度）？</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td>是否考虑个人与组织的权益及其独立性？</td>
+</tr>
+</tbody>
+</table>
+<p><a class="page-anchor" id="pdf-15"></a></p>
+<!-- PDF_PAGE:15 JOURNAL_PAGE:145 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 15 页／共 34 页｜期刊第 145 页</strong></p>
+</blockquote>
+<ul>
+<li><strong>第三层级：对工作制品的独立分析。</strong> 使用既有数据，有时是已经整理汇总的数据。例如，分析组织中的需求规格说明书、失效报告等文档，或者分析组织数据库中的工时核算数据。</li>
+</ul>
+<p>第一层级方法的实施成本通常高于第二、第三层级，因为它需要研究者和信息提供者双方付出大量精力。第一和第二层级方法的优点是，研究者在很大程度上可以准确控制收集哪些数据、如何收集、以什么形式收集、数据所处的情境是什么，等等。第三层级方法通常成本较低，但无法向研究者提供同样程度的控制，因此无论是原始数据本身的质量，还是它们用于案例研究目的时的质量，都不在研究者控制之下。很多情况下，研究者必须在一定程度上根据可获得的数据来确定数据收集的细节。使用第三层级方法时，还应注意，这些数据原本是出于研究以外的其他目的而收集和记录的，与通用度量指南的建议相反（van Solingen and Berghout 1999）。最初收集数据时对其效度和完整性的要求，未必与当前研究中的要求相同。</p>
+<p>第 4.2–4.5 节将讨论具体的数据收集方法。根据我们的经验，访谈、观察、档案数据和度量均适用于软件工程案例研究（Benbasat et al. 1987；Yin 2003）。</p>
+<blockquote class="case-study">
+<p><strong>案例 XP、RE 与 QA。</strong> XP 研究主要通过访谈收集数据，即第一层级方法。RE 研究对所提出方法的评价涉及填写需求优先级排序表；这些表格是重要的数据来源，属于第二层级方法。QA 研究以存储的缺陷报告度量数据作为主要数据来源，属于第三层级方法。三项研究都包含一个或多个反馈步骤，让组织对结果提出反馈，即使用了第一层级数据收集方法。上述数据还辅以第二或第三层级的数据，例如 XP 和 QA 研究使用了过程模型。</p>
+</blockquote>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-4-16"></a></p>
+<h3>4.2 访谈</h3>
+<p>通过访谈收集数据在案例研究中很重要。在以访谈为基础的数据收集中，研究者就案例研究所关注的领域，向一组信息提供者提出一系列问题。多数情况下，每名受访者单独接受一次访谈，但也可以开展小组访谈。研究者与一名或多名受访者之间的对话，由一组访谈问题加以引导。</p>
+<p>访谈问题建立在案例研究感兴趣的主题之上。也就是说，访谈问题来源于已经提出的研究问题（当然，表述方式不会完全相同）。问题可以是开放式的，允许并鼓励受访者提供广泛的回答和相关议题；也可以是封闭式的，只提供有限的备选答案。</p>
+<p>例如，访谈可以划分为非结构化、半结构化与完全结构化三种形式（Robson 2002）。在非结构化访谈中，访谈问题以研究者的一般关注点和兴趣来表述，访谈对话随后根据受访者和研究者的兴趣而发展。在完全结构化访谈中，所有问题都事先计划好，并严格按照计划中的相同顺序提问。从许多方面看，完全结构化访谈与问卷调查相似。在半结构化访谈中，问题事先已有计划，但不一定按照所列顺序提问。访谈对话的进展可以决定各个问题的处理顺序，研究者则利用问题清单确保所有问题都得到讨论。</p>
+<p><a class="page-anchor" id="pdf-16"></a></p>
+<!-- PDF_PAGE:16 JOURNAL_PAGE:146 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 16 页／共 34 页｜期刊第 146 页</strong></p>
+</blockquote>
+<p>此外，半结构化访谈允许研究者即兴追问和探索研究对象。半结构化访谈在案例研究中很常见。不同访谈类型汇总于表 4。</p>
+<p>一次访谈可以划分为若干阶段。首先，研究者介绍访谈和案例研究的目标，并说明如何使用访谈数据。随后提出一组关于受访者背景等方面的导入问题，这些问题相对容易回答。导入阶段之后是主要访谈问题，占据访谈的大部分时间。如果访谈涉及个人问题，甚至可能涉及敏感问题，例如经济状况、对同事的看法、事情出错的原因，或者受访者自身能力相关的问题（Hove and Anda 2005），就必须格外谨慎。在这种情形下，确保受访者相信信息会被保密、并且信任访谈者，非常重要。在信任氛围尚未建立之前，不建议以这些问题开场，也不建议过早引入。建议研究者在访谈结束前总结主要发现，以获得反馈并避免误解。</p>
+<p>访谈可以根据三个一般原则组织，如图 2 所示（Caroline Seaman，个人交流）。<strong>漏斗模型（funnel）</strong> 从开放式问题开始，逐步转向更具体的问题；<strong>金字塔模型（pyramid）</strong> 从具体问题开始，在访谈过程中逐步开放问题；<strong>沙漏模型（time-glass）</strong> 则从开放式问题开始，在中间收紧结构，到结束时再次转为开放式。</p>
+<p>访谈过程中，建议以适当的音频或视频格式记录讨论。即使做了笔记，很多情况下仍然难以记录所有细节，而且访谈进行时也不可能知道究竟哪些内容值得记录。专门接受训练的记录员或许能够实时记录足够的细节，但至少应保留录音或录像作为备份（Hove and Anda 2005）。录制后的访谈需要在分析前转录为文字。转录很耗时，但在这一过程中经常会产生新的认识，因此不建议将此项任务交给研究者以外的人完成。有些情况下，让受访者审阅转录稿会更有利。这样可以澄清实际上说过什么，也让受访者有机会指出自己是否不同意某些表述的解释，或者其看法是否已经改变、希望重新表述部分回答。</p>
+<p>在访谈研究的规划阶段，需要决定访谈哪些人。鉴于案例研究的定性性质，建议在选择信息提供者时关注差异，</p>
+<p><strong>表 4　访谈类型概览</strong></p>
+<table>
+<thead>
+<tr>
+<th>比较方面</th>
+<th>非结构化</th>
+<th>半结构化</th>
+<th>完全结构化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>典型关注点</td>
+<td>个人如何从定性角度体验某一现象</td>
+<td>个人如何从定性和定量角度体验某一现象</td>
+<td>研究者试图发现构念之间的关系</td>
+</tr>
+<tr>
+<td>访谈问题</td>
+<td>提供关注领域的访谈指南</td>
+<td>开放式与封闭式问题混合</td>
+<td>封闭式问题</td>
+</tr>
+<tr>
+<td>目标</td>
+<td>探索性</td>
+<td>描述性和解释性</td>
+<td>描述性和解释性</td>
+</tr>
+</tbody>
+</table>
+<p><a class="page-anchor" id="pdf-17"></a></p>
+<!-- PDF_PAGE:17 JOURNAL_PAGE:147 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 17 页／共 34 页｜期刊第 147 页</strong></p>
+</blockquote>
+<p><strong>图 2　访谈过程组织的一般原则：a）漏斗模型；b）金字塔模型；c）沙漏模型。</strong> 图中英文标签 Interview session＝访谈过程。</p>
+<figure class="original-figure"><img alt="期刊第 147 页图 2 原图：a 漏斗、b 金字塔、c 沙漏；Interview session＝访谈过程。" loading="lazy" src="data:image/webp;base64,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"/><figcaption>期刊第 147 页图 2 原图：a 漏斗、b 金字塔、c 沙漏；Interview session＝访谈过程。</figcaption></figure>
+<p>而不是试图重复获得相似的结果，详见第 3.1 节。这意味着，访谈中最好尽量包含不同的角色、不同性格特征的人等。需要在研究过程中决定访谈人数。判断访谈是否已经足够的一项标准是**“饱和”（saturation）**，即进一步增加受访者已不再带来新的信息或视角（Corbin and Strauss 2008）。</p>
+<blockquote>
+<p><strong>XP 案例：半结构化访谈。</strong> XP 研究开展了访谈。研究者起初对敏捷方法与传统阶段关口模型结合时可能发生的问题抱有一个假设，但尚不了解其中的细节，因而假设并未细化到这种程度。所以研究者选择了半结构化方法，以支持探索性和解释性案例研究的结合。研究者结合对敏捷模型、阶段关口模型的了解及该研究的假设，制定了访谈提纲。访谈采用半结构化形式，以需要覆盖的主题及每个主题的大致时间预算确定其结构，见 Karlström 和 Runeson（2006）的“附录 A”。</p>
+<p>与相关组织合作确定应访谈的人员。研究者向所有受访者承诺，无论是在组织外部还是内部，都只呈现匿名化的数据。大多数访谈由两名研究者共同开展，进行录音并在随后转录。访谈者还就他们当时自发认为相关的内容做了笔记。</p>
+</blockquote>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-4-17"></a></p>
+<h3>4.3 观察</h3>
+<p>可以通过观察来研究软件工程师如何执行某项任务。按照第 4.1 节的分类，这属于第一或第二层级方法。观察有许多不同的实施方式。一种方法是用摄像机记录一组软件工程师的活动，再分析录像，例如采用规程分析（protocol analysis；Owen et al. 2006；von Mayrhauser and Vans 1996）。另一种选择是使用“有声思维”规程：研究者反复询问“你的策略是什么？”“你正在想什么？”等问题，提醒信息提供者将思考过程说出来。正如 Wallace 等（2002）所建议的，这可以与音频和按键记录结合使用。在会议中进行观察是另一种类型；会议参与者相互互动，从而产生关于研究对象的信息。Karahasanović 等（2005）介绍了另一种方法，即利用抽样工具获取参与者的数据和反馈。</p>
+<p>观察方法可按照研究者互动程度的高低，以及被观察者对正在接受观察的知觉程度的高低来划分，见表 5。</p>
+<p><strong>表 5　不同的观察方式</strong></p>
+<table>
+<thead>
+<tr>
+<th>研究者的互动程度</th>
+<th>被观察者知觉程度高</th>
+<th>被观察者知觉程度低</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>互动程度高</td>
+<td>情形 1</td>
+<td>情形 2</td>
+</tr>
+<tr>
+<td>互动程度低</td>
+<td>情形 3</td>
+<td>情形 4</td>
+</tr>
+</tbody>
+</table>
+<p><a class="page-anchor" id="pdf-18"></a></p>
+<!-- PDF_PAGE:18 JOURNAL_PAGE:148 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 18 页／共 34 页｜期刊第 148 页</strong></p>
+</blockquote>
+<p>情形 1 或情形 2 的观察通常出现在行动研究或经典民族志研究中，此时研究者是团队的一员，其他成员并不只把研究者视为研究人员。两者的区别在于：情形 1 中，其他参与者将研究者看作“进行观察的参与者”；而在情形 2 中，研究者更多被视为“普通参与者”。在情形 3 中，研究者只被看作研究者。这类观察方式通常涉及第一层级的数据收集技术，例如前述“有声思维”规程。情形 4 中，信息提供者通常通过录像等第二层级技术接受观察，这种方法有时称为视频民族志（video ethnography）。</p>
+<p>观察的优点是可以深入理解所研究的现象。此外，当人们怀疑事情的“官方”表述与“实际”情况之间存在偏差时，观察尤其有用（Robinson et al. 2007）。但应注意，观察会产生大量数据，使分析耗费较多时间。</p>
+<blockquote>
+<p><strong>案例中的观察。</strong> 三项示例研究都未进行大规模的观察，例如没有广泛采用录像或有声思维程序。在一项与 XP 研究有关的研究中，Sharp 和 Robinson（2004）使用了观察。观察者与一个 XP 团队共同工作一周，参加日常活动，包括结对编程，即采用与上述情形 1 类似的方法。所收集的数据包括现场笔记、会议和讨论的录音、照片以及制品的副本。</p>
+</blockquote>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-4-18"></a></p>
+<h3>4.4 档案数据</h3>
+<p>档案数据（archival data）例如包括会议纪要、不同开发阶段的文档、组织结构图、财务记录，以及组织以前收集的测量结果。Benbasat 等（1987）和 Yin（2003）区分文档和档案记录，而我们将两者合并处理，并认为更重要的界限在于定性数据（纪要、文档、图表）与定量数据（记录、度量）之间；后者将在第 4.5 节讨论。</p>
+<p>档案数据属于可在案例研究中收集的第三层级数据。对于这类数据，配置管理工具是一个重要来源，因为它可以获取多个不同文档及其不同版本。与其他第三层级数据来源一样，需要记住，相关文档最初并非为了向案例研究提供数据而编制。例如，某份文档可能包含组织模板强制要求、但对项目而言兴趣较低的部分，这可能影响该部分的质量。还需要注意，研究者所需的某些信息可能缺失，这意味着，档案数据分析必须与其他数据收集技术（例如调查研究）相结合，以获得缺少的历史事实数据（Flynn et al. 1990）。研究者自然很难评估数据质量，不过可以通过调查最初收集数据的目的、访谈组织内相关人员，获得一些信息。</p>
+<blockquote class="case-study">
+<p><strong>案例 XP 与 QA。</strong> 在 QA 研究中，档案数据是主要的信息来源。研究者考察了同一组织中的三个不同项目。其中一个项目在研究开始前就已完成，因此该项目的数据采用回顾性方式分析。研究者研究了过程模型，以及项目规格说明和报告。在 XP 研究中，作为补充信息来源使用的档案数据为过程模型。</p>
+</blockquote>
+<p><a class="page-anchor" id="pdf-19"></a></p>
+<!-- PDF_PAGE:19 JOURNAL_PAGE:149 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 19 页／共 34 页｜期刊第 149 页</strong></p>
+</blockquote>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-4-19"></a></p>
+<h3>4.5 度量</h3>
+<p>上述数据收集技术主要关注定性数据。不过，定量数据在案例研究中同样重要。<strong>软件度量（software measurement）</strong> 是用定量数值表示软件实体——例如过程、产品和资源——的过程（Fenton and Pfleeger 1996）。</p>
+<p>所收集的数据可以专门为案例研究目的而定义和收集，也可以使用已经存在的数据。第一种方式自然具有最大的灵活性，所产生的数据也最适合正在研究的研究问题。</p>
+<p>关于收集哪些数据的定义，应以面向目标的测量技术为基础，例如<strong>目标—问题—度量法（Goal Question Metric，GQM）</strong>（Basili and Weiss 1984；van Solingen and Berghout 1999）。在 GQM 中，先制定目标，再依据目标细化问题，随后根据问题推导出度量指标。这意味着，度量指标源自为测量活动确定的目标，因此能够收集到相关指标。这还意味着，研究者可以控制所收集数据的质量，并避免收集不必要的数据。</p>
+<p>已有数据的例子包括过去项目中的工作量数据、产品销售数据、以失效情况等表示的产品质量度量等。此类数据可能保存在组织的度量数据库中。使用这些数据时应当注意，原本可通过面向目标的测量方法解决的所有问题都会重新出现。由于这些数据最初是为其他目的而收集的，研究者既不能控制，也无法充分评估其质量；与其他档案分析形式相同，还存在遗漏重要数据的风险。</p>
+<blockquote>
+<p><strong>QA 与 XP 案例：度量数据。</strong> QA 研究中的档案数据主要是从缺陷报告系统和配置管理系统收集的度量数据，也包括项目规格说明。收集到的度量示例有模块中的故障数量、模块规模以及不同测试阶段的持续时间。在 XP 研究中，缺陷度量被作为补充数据，用于三角互证。</p>
+</blockquote>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-4-20"></a></p>
+<h3>4.6 检查清单</h3>
+<p>数据收集准备与实施阶段的检查清单条目分别见表 6 和表 7。</p>
+<p><strong>表 6　数据收集准备检查清单条目</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">编号</th>
+<th>检查条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">11</td>
+<td>是否制定了数据收集与分析的案例研究规程（做什么、为什么、如何做、何时做）？是否规定了更新规程的程序？</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td>是否规划了多个数据来源和多种收集方法（三角互证）？</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td>测量工具及程序是否得到了充分定义（测量定义、访谈问题）？</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td>计划采用的方法和度量是否足以实现研究目标？</td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td>研究设计是否获得伦理审查委员会批准，是否取得个人与组织的知情同意？</td>
+</tr>
+</tbody>
+</table>
+<p><a class="page-anchor" id="pdf-20"></a></p>
+<!-- PDF_PAGE:20 JOURNAL_PAGE:150 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 20 页／共 34 页｜期刊第 150 页</strong></p>
+</blockquote>
+<p><strong>表 7　证据收集检查清单条目</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">编号</th>
+<th>检查条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">16</td>
+<td>数据是否按照案例研究规程收集？</td>
+</tr>
+<tr>
+<td style="text-align:center">17</td>
+<td>所观察的现象是否得到了正确实施（例如，研究中的某种设计方法实际上在多大程度上得到了使用）？</td>
+</tr>
+<tr>
+<td style="text-align:center">18</td>
+<td>是否记录了数据，以便开展进一步分析？</td>
+</tr>
+<tr>
+<td style="text-align:center">19</td>
+<td>是否识别了敏感结果（对个人、组织或项目而言）？</td>
+</tr>
+<tr>
+<td style="text-align:center">20</td>
+<td>数据收集程序是否具有良好的可追溯性？</td>
+</tr>
+<tr>
+<td style="text-align:center">21</td>
+<td>所收集的数据是否能够用于回答研究问题？</td>
+</tr>
+</tbody>
+</table>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-5"></a></p>
+<h2>5 数据分析</h2>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-5-22"></a></p>
+<h3>5.1 定量数据分析</h3>
+<p>定量数据与定性数据的分析方式不同。对于定量数据，分析通常包括描述性统计分析、相关分析、预测模型的建立以及假设检验。所有这些活动都与案例研究有关。</p>
+<p>平均值、标准差、直方图和散点图等描述性统计，用于理解所收集的数据。开展相关分析和建立预测模型，是为了描述后续过程活动中的测量结果与前期过程测量之间的关系。假设检验则用于确定一个或多个变量（自变量）是否对另外一个或多个变量（因变量）具有显著影响。</p>
+<p>需要注意的是，定量分析方法预设研究采用固定设计。例如，如果在一系列访谈进行到一半时，更改了一个需要定量回答的问题，那么回答的平均值就无法得到合理解释。此外，由于受访者或测量点数量有限，单案例中的定量数据集通常很小，这在分析时会引起特殊问题。</p>
+<p>本文不再进一步讨论定量分析，因为其他著作对此已有广泛论述。本章其余部分讨论定性分析。关于定量分析的更多信息，可参见 Wohlin 等（2000）、Wohlin 和 Höst（2001）以及 Kitchenham 等（2002）。</p>
+<blockquote class="case-study">
+<p><strong>案例 RE、QC 与 XP。</strong> RE 和 QC 研究的主要分析使用了定量方法，主要包括相关分析和散点图等描述性统计。在 QC 案例中，定量数据成为深入理解问题的切入点。数据中出现的模式以及未出现的预期模式，引发了反馈会议中的问题。得到的回答促使研究者修改数据分析，例如剔除某些数据来源，并识别数据中真正存在的模式。</p>
+<p>XP 研究的主要分析采用定性方法，但也结合了有限的定量分析，即分析某一家组织在不同年份发现的缺陷数量。不过，很可能还存在开展更多补充分析的机会，以佐证或发展定性分析的结果。</p>
+</blockquote>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-5-23"></a></p>
+<h3>5.2 定性数据分析</h3>
+<p>由于案例研究是一种灵活的研究方法，因而经常使用定性数据分析方法（Seaman 1999）。分析的基本目标是从数据中得出结论，同时保持清晰的<strong>证据链（chain of evidence）</strong>。所谓证据链，意味着</p>
+<p><a class="page-anchor" id="pdf-21"></a></p>
+<!-- PDF_PAGE:21 JOURNAL_PAGE:151 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 21 页／共 34 页｜期刊第 151 页</strong></p>
+</blockquote>
+<p>读者应能够从收集到的数据出发，追踪研究结果和结论的推导过程（Yin 2003）。这意味着，必须充分提供研究各步骤的信息，以及研究者作出的每一项决策。</p>
+<p>除了始终重视保持清晰的证据链，定性研究的分析还有两个特征：分析与数据收集同步开展，以及需要使用系统化的分析技术。由于研究方法灵活，且分析过程中会出现新的认识，分析必须与数据收集并行开展。为了研究这些新认识，往往需要收集新数据，并更新访谈问卷等研究工具。之所以需要系统化，直接原因在于：数据收集技术可能不断更新，而研究又必须同时维持可追溯的证据链。</p>
+<p>为了降低研究者个人造成的偏差，采用多名研究者开展分析会更有利。首先由每位研究者分别形成初步结果，再在第二步中将这些结果整合为共同的分析结果。记录并报告研究者之间如何合作，有助于提高研究效度。</p>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-5-24"></a></p>
+<h4>5.2.1 一般分析技术</h4>
+<p>定性数据分析可分为两个不同部分：<strong>假设生成技术（hypothesis generating techniques）</strong> 和<strong>假设验证技术（hypothesis confirmation techniques）</strong>（Seaman 1999）；它们分别适用于探索性和解释性案例研究。</p>
+<p>假设生成的目的是从数据中发现假设。使用这类技术时，不应在分析前定义过多假设。研究者应尽量避免偏见，保持开放态度，接受数据中可能出现的各种假设。这些技术产生的结果就是假设本身。假设生成技术包括“持续比较”（constant comparisons）和“跨案例分析”（cross-case analysis）（Seaman 1999）。假设验证技术指可用于确认某个假设是否确实成立的技术，例如通过分析更多数据来验证。三角互证和复制是用于假设验证的两种方法（Seaman 1999）。<strong>反例分析（negative case analysis）</strong> 则尝试寻找能够否定假设的替代解释。这些基本技术需要迭代和组合使用：首先生成假设，然后对其加以验证。假设生成可以发生在案例研究的某一次循环内，或基于某个分析单元的数据；假设验证则可以使用另一次循环或另一个分析单元的数据开展（Andersson and Runeson 2007b）。</p>
+<p>这意味着，定性数据分析通过一系列步骤展开（依据 Robson 2002，第 459 页）。首先，对数据进行<strong>编码（coding）</strong>，即为文本的某些部分赋予代表特定主题、领域、构念等的代码。同一个代码通常可赋予许多不同的文本片段，而同一个片段也可能被赋予多个代码。代码可以形成包含主代码和子代码的层级结构。编码后的材料可以与研究者的评论及反思结合起来，即形成**“备忘录”（memos）**。完成这些工作后，研究者可以通读材料，识别第一组假设。例如，材料不同部分出现的相似表述、数据中的模式、信息提供者不同子群体之间的差异等，都可能成为假设。之后，识别出的假设可用于指导进一步的现场数据收集，从而形成前述数据收集与分析并行的迭代方法。迭代过程中，可以逐步形成少量一般性概括，最终形成一个形式化的知识体系，作为研究工作的最终结果。当然，这不是简单的线性步骤序列；相反，各步骤是迭代执行并相互影响的。</p>
+<p><a class="page-anchor" id="pdf-22"></a></p>
+<!-- PDF_PAGE:22 JOURNAL_PAGE:152 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 22 页／共 34 页｜期刊第 152 页</strong></p>
+</blockquote>
+<p>识别假设这一活动还需要进一步说明。它绝不是一项能够按照详尽、机械的程序轻松完成的简单步骤。相反，研究者需要具备概括能力、创新思维等。可以将其与定量分析比较：在定量分析中，研究者大部分创新性和分析性的工作发生在规划阶段，即决定研究设计、统计检验等。当然，定量数据的分析阶段同样需要创新性工作，但不像规划阶段那么突出。对于定性分析，在规划与分析两个阶段都高度需要创新性和分析性工作。</p>
+<p>一种有用的分析技术是<strong>表格化（tabulation）</strong>，即将编码后的数据整理成表格，以便获得对数据的整体认识。例如，可以把感兴趣的代码作为行，把受访者作为列来组织数据。不过，具体如何安排，必须针对每项案例研究作出决定。</p>
+<p>目前已有专门支持定性数据分析的软件工具，例如 NVivo 和 Atlas。但在某些情况下，处理文字数据时使用文字处理软件和电子表格等通用工具也很有用。</p>
+<blockquote>
+<p><strong>XP 案例：定性编码与证据链。</strong> 在 XP 研究中，其中一名研究者首先分析访谈转录稿。研究者从非正式笔记中归纳出一组初步代码，并将它们应用于转录稿。这组初步代码包括：项目模型、沟通、规划、跟踪、质量、技术问题和态度。转录稿中的每项陈述都被赋予唯一标识，并由两名研究者进行分类。随后，研究者将转录数据填入表格，从而可以按受访者角色或公司等维度对发现的问题进行排序，分析数据中的模式。证据链由下图说明（引自 Karlström and Runeson 2006）。</p>
+</blockquote>
+<p><strong>XP 案例中的证据链示意图。</strong> 自下而上的原图标签译为：案例情境中实际发生的事件（Actual events within case context）→ 研究对象基于观察与经历形成的认知（Subjects’ perceptions based on their observations and experiences）→ 访谈录音（Sound recording of interview）→ 录音转录稿（Transcription of recording）→ 分组后的引文（Grouped quotes）→ 结论（Conclusions）。图中 EMW 和 ABB 为原图标记，保留不译。</p>
+<figure class="original-figure"><img alt="期刊第 152 页 XP 案例证据链原图，图中文字已在上文逐项翻译。" loading="lazy" src="data:image/webp;base64,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"/><figcaption>期刊第 152 页 XP 案例证据链原图，图中文字已在上文逐项翻译。</figcaption></figure>
+<blockquote>
+<p><strong>RE 与 QA 案例：定性分析的局限。</strong> RE 和 QA 研究的主要分析是定量的，但对反馈会议中收集的信息也开展了一些定性分析。不过，如果采用更有结构的方法，例如先对反馈数据录音、转录并编码，再进行分析，可能会使分析受益。</p>
+</blockquote>
+<p><a class="page-anchor" id="pdf-23"></a></p>
+<!-- PDF_PAGE:23 JOURNAL_PAGE:153 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 23 页／共 34 页｜期刊第 153 页</strong></p>
+</blockquote>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-5-25"></a></p>
+<h4>5.2.2 形式化程度</h4>
+<p>如上所述，在定性分析中，采用结构化方法十分重要。例如，无论何种情况，都必须使用事先规划的分析方法；研究者作出的所有决策都必须记录；研究工具的所有版本都必须保存；数据、代码与备忘录之间的联系必须明确记录在文档中；等等。不过，分析可以在不同的形式化程度上开展。Robson（2002）提及以下几种方法：</p>
+<ul>
+<li><strong>沉浸式方法（immersion approaches）：</strong> 结构化程度最低，非常依赖研究者的直觉与解释能力。这类方法可能难以满足保留和传达证据链的要求。</li>
+<li><strong>编辑式方法（editing approaches）：</strong> 这类方法只有少量先验代码，即代码主要依据研究者在分析过程中得到的发现而定义。</li>
+<li><strong>模板式方法（template approaches）：</strong> 这类方法更加形式化，包含更多基于研究问题预先定义的代码。</li>
+<li><strong>准统计方法（quasi-statistical approaches）：</strong> 这类方法具有较高的形式化程度，例如包含对词语和短语出现频次的计算。</li>
+</ul>
+<p>根据我们的经验，编辑式和模板式方法最适合软件工程案例研究。在非正式的沉浸式方法中，很难呈现和获得清晰的证据链。此外，文档与访谈中词语出现频次等结果，也很难得到解释。</p>
+<blockquote>
+<p><strong>XP 案例：编辑式编码。</strong> XP 研究采用编辑式方法。分析从一组代码开始（参见第 5.2.1 节），并在分析过程中扩展和修改这些代码。例如，“沟通”代码被拆分为四个代码：“横向沟通”“纵向沟通”“内部沟通”和“外部沟通”。</p>
+</blockquote>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-5-26"></a></p>
+<h4>5.2.3 效度</h4>
+<p>研究的<strong>效度（validity）</strong> 表示研究结果的可信程度，即结果在多大程度上真实可信，而不受研究者主观观点的偏见影响。当然，到了分析阶段才开始考虑效度已经太迟。效度问题必须在案例研究此前的所有阶段得到处理。不过，由于只有在分析阶段才能对效度进行最终评价，本文在这一节讨论效度。</p>
+<p>文献中对效度及效度威胁的不同方面存在多种分类方式。这里我们采用一套与 Yin（2003）相同、且与软件工程受控实验通常使用的分类（Wohlin et al. 2000）相似的体系。有些研究者主张为灵活设计研究采用另一套分类体系——可信性、可迁移性、可靠依赖性和可证实性；但我们更愿意将现有体系操作化，使其适用于灵活设计，而不是改变术语（Robson 2002）。这套体系区分四个效度方面，概括如下：</p>
+<ul>
+<li><strong>构念效度（construct validity）：</strong> 指研究中采用的操作性测量在多大程度上真正代表研究者心中所想、以及研究问题实际要考察的内容。例如，如果研究者和受访者对访谈问题中所谈及的构念理解不同，就会威胁构念效度。</li>
+</ul>
+<p><a class="page-anchor" id="pdf-24"></a></p>
+<!-- PDF_PAGE:24 JOURNAL_PAGE:154 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 24 页／共 34 页｜期刊第 154 页</strong></p>
+</blockquote>
+<ul>
+<li><strong>内部效度（internal validity）：</strong> 当考察因果关系时，这一效度方面尤其重要。当研究者调查某个因素是否影响被研究因素时，存在被研究因素还受到第三个因素影响的风险。如果研究者没有意识到这个第三因素，或者不知道它对被研究因素影响到什么程度，就会威胁内部效度。</li>
+<li><strong>外部效度（external validity）：</strong> 涉及研究发现能在多大程度上得到推广，以及这些发现对被研究案例以外的其他人具有多大意义。在分析外部效度时，研究者尝试判断这些发现对其他案例的相关程度。案例研究并没有从某个总体中抽取具有统计代表性的样本。不过，案例研究旨在实现<strong>分析性概括（analytical generalization）</strong>：将研究结果扩展到具有共同特征、因而适用这些发现的其他案例，即形成理论。</li>
+<li><strong>可靠性（reliability）：</strong> 涉及数据和分析在多大程度上依赖具体研究者。假设另一名研究者后来开展同样的研究，结果应当相同。对可靠性的威胁例如包括：收集到的数据如何编码并不明确，或者问卷与访谈问题不清楚。</li>
+</ul>
+<p>如前所述，从案例研究一开始就考虑效度十分重要。提高效度的方法包括：三角互证；制定并维护详细的案例研究规程；让同行研究者审阅研究设计、规程等；让案例研究参与者审阅所收集的数据及得到的结果；在案例现场投入足够时间；充分重视对“反例”的分析，即寻找与自己的发现相矛盾的理论。</p>
+<blockquote>
+<p><strong>XP 与 QA 案例：效度威胁。</strong> XP 研究依据 Robson（2002）的检查清单分析效度威胁。也可以按照构念效度、内部效度、外部效度和可靠性来分析威胁。随后研究者采取了应对效度威胁的措施。例如，以不同方式实现三角互证，让案例代表审阅研究结果，并由两名研究者并行处理同一材料，以识别潜在反例。研究者还认为，在组织中花费足够时间以理解组织很重要。尽管案例研究本身持续时间有限，但由于开展研究前研究者已经与该组织长期合作，这一威胁有所降低。</p>
+<p>在 QA 研究中，例如使用了数据三角互证来检查缺陷报告源自哪个阶段。研究者核对了故障报告所记录阶段与有关人员在项目组织中所承担任务之间的一致性。</p>
+</blockquote>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-5-27"></a></p>
+<h3>5.3 检查清单</h3>
+<p>对收集数据进行分析的检查清单条目见表 8。</p>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-6"></a></p>
+<h2>6 研究报告</h2>
+<p>实证研究无法与其报告相分离。报告不仅传达研究发现，也是判断研究质量的主要信息来源。报告可能面向不同受众，包括同行研究者、政策制定者、研究资助者和产业界从业人员（Yin 2003）。因此，可能需要为不同受众撰写不同报告。本文主要关注面向同行研究者的报告，即期刊或会议论文，以及可能附随的</p>
+<p><a class="page-anchor" id="pdf-25"></a></p>
+<!-- PDF_PAGE:25 JOURNAL_PAGE:155 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 25 页／共 34 页｜期刊第 155 页</strong></p>
+</blockquote>
+<p><strong>表 8　所收集数据分析的检查清单条目</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">编号</th>
+<th>检查条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">22</td>
+<td>是否定义了分析方法，包括角色和审查程序？</td>
+</tr>
+<tr>
+<td style="text-align:center">23</td>
+<td>是否展示了证据链，使从数据到研究问题及已有理论的推断可以追溯？</td>
+</tr>
+<tr>
+<td style="text-align:center">24</td>
+<td>分析中是否采用了不同视角和替代解释？</td>
+</tr>
+<tr>
+<td style="text-align:center">25</td>
+<td>是否研究因果关系？如果是，分析中能否将原因与其他因素区分开来？</td>
+</tr>
+<tr>
+<td style="text-align:center">26</td>
+<td>分析是否得出了明确结论，包括对实践或后续研究的建议？</td>
+</tr>
+<tr>
+<td style="text-align:center">27</td>
+<td>是否系统地分析效度威胁并采取对策？（构念效度、内部效度、外部效度、可靠性。）</td>
+</tr>
+</tbody>
+</table>
+<p>技术报告。Benbasat 等指出，由于案例研究产生大量数据，“书籍或专题著作可能是发表案例研究的更好载体”（Benbasat et al. 1987）。</p>
+<p>Jedlitschka 和 Pfahl（2005）提出了实验报告指南，Kitchenham 等（2008）对其进行了评价。这项工作旨在定义实验报告的标准化方式，使研究可以通过系统性综述等方式进行跨研究比较。案例研究可以采用相同的高层次结构，但由于它们更加灵活，并且主要基于定性数据，较低层次的细节就更难标准化，更依赖具体案例。下面首先讨论案例研究报告的特征，再讨论建议采用的结构。</p>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-6-29"></a></p>
+<h3>6.1 特征</h3>
+<p>Robson（2002）定义了案例研究报告应具备的一组特征。概括而言，报告应该：</p>
+<ul>
+<li>说明研究是关于什么的；</li>
+<li>清晰传达所研究案例的情况；</li>
+<li>提供一份“研究过程记录”（history of the inquiry），使读者能够了解做了什么、由谁完成以及如何完成；</li>
+<li>以聚焦的形式提供基本数据，使读者能够判断结论是否合理；</li>
+<li>明确阐述研究者的结论，并将其置于这些结论所影响的情境之中。</li>
+</ul>
+<p>此外，所有这些都必须在研究者发表结果的责任与目标，以及公司和个人的权益之间取得平衡（Amschler Andrews and Pradhan 2001）。</p>
+<p>报告案例研究目标和研究问题相对直接。如果这些内容在研究过程中发生了实质性改变，就应当予以报告，以帮助读者理解案例。</p>
+<p>描述案例可能更为敏感，因为这可能使案例本身或信息提供者被识别出来。例如，“瑞典一家大型电信公司”很可能就是爱立信公司（Ericsson Corporation）的一家分支机构。不过，刻画案例时，与应用领域和国家相比，采用其他方式可能更有意义。被研究单元的规模、人员平均年龄等内部特征，可能比领域和营业额等外部特征更值得关注。要么案例只是大型企业的一个小型子单元，因此很难在众多子单元中被辨认出来；要么它是一家小公司，因而也难以从众多候选公司中识别出来。尽管如此，仍必须谨慎处理这一平衡。</p>
+<p><a class="page-anchor" id="pdf-26"></a></p>
+<!-- PDF_PAGE:26 JOURNAL_PAGE:156 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 26 页／共 34 页｜期刊第 156 页</strong></p>
+</blockquote>
+<p>提供“研究过程记录”，其详细程度必须明显超过单纯陈述所用方法，例如“我们使用半结构化访谈开展了一项案例研究”。因为研究效度与由谁在何时以何种方式实施了什么活动密切相关，报告必须说明研究过程中采取的行动顺序及其执行角色。另一方面，报告也没有足够空间容纳案例研究执行的每一个细节，因此必须取得平衡。</p>
+<p>定性研究会收集大量数据，而分析的主要任务是精简和组织这些数据，建立能够支持结论的证据链。然而，要建立读者对研究的信任，就需要提供能够支持结论的相关数据片段。这些片段可以是引文（典型或特殊的陈述）、图片，或以匿名化研究对象为基础的叙述。此外，对数据进行分类、进而形成某些结论时所使用的类别，也可以帮助读者追踪证据链。</p>
+<p>最后，必须报告结论，并将结论放在它们所产生影响的情境中，例如通过形成理论来完成这一工作。案例研究无法按照代表某个总体的意义进行统计推广，但这不是获取和传播知识的唯一途径。即使没有统计数据也能够得出结论，而这些结论可以加以解释并与其他案例联系起来。在软件工程领域，以理论形式交流研究结果仍是一种发展不足的实践（Hannay et al. 2007）。</p>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-6-30"></a></p>
+<h3>6.2 结构</h3>
+<p>Yin（2003）为一般案例研究报告提出了几种不同的结构：</p>
+<ul>
+<li><strong>线性分析式（linear-analytic）：</strong> 标准研究报告结构（问题、相关工作、方法、分析、结论）。</li>
+<li><strong>比较式（comparative）：</strong> 对同一个案例重复呈现两次或更多次，以比较不同的描述、解释或观点。</li>
+<li><strong>时间顺序式（chronological）：</strong> 最适合纵向研究的结构。</li>
+<li><strong>理论构建式（theory-building）：</strong> 按照某种理论构建逻辑呈现案例，为理论建立证据链。</li>
+<li><strong>悬念式（suspense）：</strong> 将线性分析式结构颠倒，先报告结论，再以证据加以支持。</li>
+<li><strong>非序列式（unsequenced）：</strong> 不采用上述任何一种结构，例如报告一组案例的总体特征。</li>
+</ul>
+<p>对于本文关注的案例研究学术报告，线性分析式是最普遍被接受的结构。因此，Jedlitschka 和 Pfahl（2005）提出的软件工程实验报告高层次结构也适合案例研究报告。不过，考虑到案例研究的特征，以及 Kitchenham 等（2008）评价工作所指出的其他问题，还需作出一些调整。调整后的结构见表 9。下面说明差异及我们的考虑。</p>
+<p>在案例研究中，理论可能构成分析框架；因此，相关工作分为两类：（a）关于该主题的早期研究；（b）当前研究所依据的理论。</p>
+<p>设计部分对应案例研究规程，即报告案例研究的规划，包括为确保研究效度而采取的措施。</p>
+<p><a class="page-anchor" id="pdf-27"></a></p>
+<!-- PDF_PAGE:27 JOURNAL_PAGE:157 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 27 页／共 34 页｜期刊第 157 页</strong></p>
+</blockquote>
+<p><strong>表 9　Jedlitschka 和 Pfahl（2005）提出的报告结构、Kitchenham 等（2008）提出的修改，以及受 Robson（2002）影响而对案例研究报告所作的调整</strong></p>
+<table>
+<thead>
+<tr>
+<th>实验报告：章节标题</th>
+<th>实验报告：子章节</th>
+<th>案例研究：章节标题</th>
+<th>案例研究：子章节</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标题</td>
+<td>—</td>
+<td>标题</td>
+<td>—</td>
+</tr>
+<tr>
+<td>作者信息</td>
+<td>—</td>
+<td>作者信息</td>
+<td>—</td>
+</tr>
+<tr>
+<td>结构化摘要</td>
+<td>—</td>
+<td>（结构化）摘要</td>
+<td>—</td>
+</tr>
+<tr>
+<td>研究动机</td>
+<td>问题陈述；研究目标；情境</td>
+<td>引言</td>
+<td>问题陈述；研究目标；情境</td>
+</tr>
+<tr>
+<td>相关工作</td>
+<td>—</td>
+<td>相关工作</td>
+<td>早期研究；理论</td>
+</tr>
+<tr>
+<td>实验设计</td>
+<td>目标、假设和变量；设计；受试者；研究对象；研究工具；数据收集程序；分析程序；效度评价</td>
+<td>案例研究设计</td>
+<td>研究问题；案例和信息提供者的选择；数据收集程序；分析程序；效度保证程序</td>
+</tr>
+<tr>
+<td>执行</td>
+<td>样本；准备；实际进行的数据收集；效度保证程序</td>
+<td>结果</td>
+<td>案例和信息提供者的描述，涉及执行、分析及解释问题。子章节可例如按照编码方案组织，每一部分都将观察与结论联系起来；效度评价</td>
+</tr>
+<tr>
+<td>分析</td>
+<td>描述性统计；数据集精简；假设检验</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>解释</td>
+<td>结果及其影响的评价</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>结论与未来工作</td>
+<td>与现有证据的关系；影响；局限性；未来工作</td>
+<td>结论与未来工作</td>
+<td>结论概述；与现有证据的关系；影响／启示；局限性；未来工作</td>
+</tr>
+<tr>
+<td>致谢</td>
+<td>—</td>
+<td>致谢</td>
+<td>—</td>
+</tr>
+<tr>
+<td>参考文献</td>
+<td>—</td>
+<td>参考文献</td>
+<td>—</td>
+</tr>
+<tr>
+<td>附录</td>
+<td>—</td>
+<td>附录</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><a class="page-anchor" id="pdf-28"></a></p>
+<!-- PDF_PAGE:28 JOURNAL_PAGE:158 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 28 页／共 34 页｜期刊第 158 页</strong></p>
+</blockquote>
+<p>由于案例研究采用灵活设计，数据收集与分析更加交织在一起，因此可以将这两部分合并成一部分。相应地，较低层次的内容也必须调整，如表 9 所示。具体而言，对于合并后的数据部分，编码方案通常自然构成子章节的组织结构。另一种选择是：对于比较性案例研究，可以按比较的案例组织数据部分；对于纵向研究，可以按时间轴组织数据部分。这种合并后的结果部分也包括对最终结果效度的评价。</p>
+<blockquote>
+<p><strong>案例的不同报告形式。</strong> 这些案例研究以不同形式呈现。例如，XP 研究以研讨会形式向参与公司报告，以期刊论文形式向研究共同体报告（Karlström and Runeson 2006），以杂志文章形式向实践人员报告（Karlström and Runeson 2005），还以博士学位论文形式发表（Karlström 2004）。期刊论文的结构与上述建议模型相似，尽管其层级安排略有不同。</p>
+</blockquote>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-6-31"></a></p>
+<h3>6.3 检查清单</h3>
+<p>报告阶段的检查清单条目见表 10。</p>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-7"></a></p>
+<h2>7 阅读与评审案例研究</h2>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-7-33"></a></p>
+<h3>7.1 读者的视角</h3>
+<p>无论案例研究报告的读者是打算使用研究发现，还是要评审论文以决定是否将其收入期刊，都必须根据书面材料判断研究的质量。案例研究报告通常比较长。首先，案例研究常以定性数据为基础，因此无法像定量数据那样，通过表格、图示和统计结果高度压缩地呈现。其次，定性分析的结论并不依赖可据以解释错误结论概率的统计显著性，而是依赖推理以及把观察与结论联系起来的论证。</p>
+<p>一般而言，对实证研究进行评审需要格外谨慎（Tichy 2000）。阅读案例研究报告时，需要评价报告的质量，但又缺乏那些在更大程度上支配实验研究的严格标准，例如统计</p>
+<p><strong>表 10　研究报告检查清单条目</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">编号</th>
+<th>检查条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">28</td>
+<td>案例及其分析单元是否得到充分呈现？</td>
+</tr>
+<tr>
+<td style="text-align:center">29</td>
+<td>是否报告研究目标、研究问题以及相应答案？</td>
+</tr>
+<tr>
+<td style="text-align:center">30</td>
+<td>是否清楚报告相关理论和假设？</td>
+</tr>
+<tr>
+<td style="text-align:center">31</td>
+<td>是否介绍数据收集程序，并说明相关理由？</td>
+</tr>
+<tr>
+<td style="text-align:center">32</td>
+<td>是否呈现足够的原始数据（例如真实情境中的示例、引文）？</td>
+</tr>
+<tr>
+<td style="text-align:center">33</td>
+<td>是否清楚报告分析程序？</td>
+</tr>
+<tr>
+<td style="text-align:center">34</td>
+<td>是否报告效度威胁分析及为减轻威胁而采取的对策？</td>
+</tr>
+<tr>
+<td style="text-align:center">35</td>
+<td>是否公开说明伦理问题（个人意图、权益问题、保密性）？</td>
+</tr>
+<tr>
+<td style="text-align:center">36</td>
+<td>报告是否包含结论、实践启示与未来研究方向？</td>
+</tr>
+<tr>
+<td style="text-align:center">37</td>
+<td>报告是否给人以真实、可信的印象？</td>
+</tr>
+<tr>
+<td style="text-align:center">38</td>
+<td>报告是否适合其受众，易于阅读且结构良好？</td>
+</tr>
+</tbody>
+</table>
+<p><a class="page-anchor" id="pdf-29"></a></p>
+<!-- PDF_PAGE:29 JOURNAL_PAGE:159 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 29 页／共 34 页｜期刊第 159 页</strong></p>
+</blockquote>
+<p>置信水平。但这并不意味着任何报告都能被视为合格的案例研究报告。读者必须有合理的机会找到相关信息，以便既能判断案例研究的质量，也能了解研究发现，并将其用于实践或在其基础上开展进一步研究。</p>
+<p>上文关于实施和报告案例研究的标准与指南，对读者同样适用。不过，在我们推导案例研究检查清单的工作中（Höst and Runeson 2007），评价反馈指出，读者和审稿人还需要一份更加精简的检查清单。表 11 给出了这一清单，并在各条目后标出其他检查清单中的相应编号，供读者查阅更详细的标准。</p>
+<p><a aria-hidden="true" class="heading-anchor" id="chapter-8"></a></p>
+<h2>8 总结</h2>
+<p>案例研究旨在研究自然情境中的当代现象。也就是说，研究者不设立一个能够控制相关因素的实验室环境，而是在现象通常发生的情境中研究它们，从而理解现象如何与情境相互作用。信息提供者和研究对象的选择并非基于具有统计代表性的样本。相反，研究发现通过对典型案例或特殊案例的深入分析而获得。</p>
+<p>案例研究通过一系列阶段的迭代来实施。在设计阶段确定目标和定义案例。首先规划数据收集，确定收集技术和数据来源，然后在实践中实施。数据收集方法例如包括访谈、观察和使用档案数据。在分析阶段，通过对数据编码、寻找模式等方式产生并分析新的认识。分析过程中，必须保持从研究发现到原始数据的证据链。报告应包含足够的数据和示例，使读者能够理解证据链。</p>
+<p><strong>表 11　读者检查清单条目</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">编号</th>
+<th>检查问题</th>
+<th>对应条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">39</td>
+<td>研究目标、研究问题及假设（如适用）是否明确且具有相关性？（对应条目：1、2、5、29、30）</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">40</td>
+<td>案例及其分析单元是否得到良好界定？</td>
+<td>1、5、28</td>
+</tr>
+<tr>
+<td style="text-align:center">41</td>
+<td>是否清楚说明所选案例为什么适合回答研究问题？</td>
+<td>8、9、14</td>
+</tr>
+<tr>
+<td style="text-align:center">42</td>
+<td>案例研究是否以理论为基础，或与已有文献建立联系？</td>
+<td>3</td>
+</tr>
+<tr>
+<td style="text-align:center">43</td>
+<td>数据收集程序是否足以实现案例研究目的（数据来源、收集、验证）？</td>
+<td>11、13、16、18、21、31</td>
+</tr>
+<tr>
+<td style="text-align:center">44</td>
+<td>是否呈现足够的原始数据，以帮助理解案例与分析？</td>
+<td>32</td>
+</tr>
+<tr>
+<td style="text-align:center">45</td>
+<td>分析程序是否足以实现案例研究目的（可重复、透明）？</td>
+<td>22、33</td>
+</tr>
+<tr>
+<td style="text-align:center">46</td>
+<td>是否建立了从观察到结论的清晰证据链？</td>
+<td>6、17、20、23、25</td>
+</tr>
+<tr>
+<td style="text-align:center">47</td>
+<td>是否系统分析效度威胁并采取了减少威胁的对策？</td>
+<td>27、34、37</td>
+</tr>
+<tr>
+<td style="text-align:center">48</td>
+<td>是否运用三角互证（多种数据收集和分析方法、多位作者、多种理论）？</td>
+<td>7、12、22、24</td>
+</tr>
+<tr>
+<td style="text-align:center">49</td>
+<td>是否恰当处理伦理问题（个人意图、权益、保密、同意、伦理审查委员会批准）？</td>
+<td>4、10、15、19、35</td>
+</tr>
+<tr>
+<td style="text-align:center">50</td>
+<td>是否以适合目标受众的方式报告结论、实践启示与未来研究？</td>
+<td>26、29、36、37、38</td>
+</tr>
+</tbody>
+</table>
+<p><em>表注：各条目后的数字指向案例研究各过程步骤检查清单中的相应条目。</em></p>
+<p><a class="page-anchor" id="pdf-30"></a></p>
+<!-- PDF_PAGE:30 JOURNAL_PAGE:160 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 30 页／共 34 页｜期刊第 160 页</strong></p>
+</blockquote>
+<p>本文旨在通过分析现有案例研究文献，并结合作者自身开展案例研究的经验，为软件工程案例研究的研究者提供一个参照框架。与其他指南一样，这些指南也需要通过实践应用加以评价。</p>
+<p><a aria-hidden="true" class="heading-anchor" id="acknowledgements"></a></p>
+<h2>致谢</h2>
+<p>作者感谢国际软件工程研究网络（ISERN）的成员及 2007 年 9 月 IASESE 活动的参加者，对检查清单提出的反馈。特别感谢 Claes Wohlin 教授、Kim Weyns 先生和 Andreas Jedlitschka 先生审阅本文早期稿件。还感谢匿名审稿人提出了有助于重大改进的建议。本项工作部分获得瑞典研究理事会资助，资助编号为 622-2004-552，用于支持软件工程领域一个高级研究人员职位。</p>
+<p><a aria-hidden="true" class="heading-anchor" id="open-access"></a></p>
+<h2>开放获取声明</h2>
+<p>本文依据知识共享署名—非商业性使用许可协议（Creative Commons Attribution Noncommercial License）发布。只要注明原作者和来源，即允许以任何媒介进行非商业性使用、分发和复制。</p>
+<p><a aria-hidden="true" class="heading-anchor" id="appendix-a"></a></p>
+<h2>附录 A</h2>
+<p><strong>表 12　研究者检查清单（Researcher’s checklist）</strong></p>
+<p><strong>案例研究设计</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">编号</th>
+<th>检查条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td>案例及其分析单元是什么？</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td>是否提前明确界定目标、初步研究问题以及假设（如有）？</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td>是否界定理论基础——与已有文献或其他案例的关系？</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td>是否明确说明作者开展这项研究的意图？</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td>是否充分界定案例（规模、领域、过程、信息提供者等）？</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td>是否研究因果关系？如果是，拟采用的研究设计能否将原因与其他因素区分开来？</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td>研究设计是否使用来自多个来源的数据（数据三角互证），并使用多种方法（方法三角互证）？</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td>选择信息提供者、角色、制品和视角等是否有合理依据？</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td>所确定的案例能否有效地回答研究问题（构念效度）？</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td>是否考虑了个人与组织的权益及其独立性？</td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据收集准备</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">编号</th>
+<th>检查条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">11</td>
+<td>是否制定了数据收集与分析的案例研究规程（做什么、为什么、如何做、何时做）？是否规定更新程序？</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td>是否规划了多个数据来源和数据收集方法（三角互证）？</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td>测量工具和程序是否得到充分定义（测量定义、访谈问题）？</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td>拟采用的方法与度量是否足以实现研究目标？</td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td>研究设计是否获得伦理审查委员会批准，是否取得个人与组织的知情同意？</td>
+</tr>
+</tbody>
+</table>
+<p><strong>收集证据</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">编号</th>
+<th>检查条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">16</td>
+<td>数据是否根据案例研究规程收集？</td>
+</tr>
+<tr>
+<td style="text-align:center">17</td>
+<td>所观察现象是否得到正确实施（例如，研究中的设计方法实际上使用到什么程度）？</td>
+</tr>
+<tr>
+<td style="text-align:center">18</td>
+<td>是否记录了数据，以便进一步分析？</td>
+</tr>
+<tr>
+<td style="text-align:center">19</td>
+<td>是否识别了对个人、组织或项目而言敏感的结果？</td>
+</tr>
+<tr>
+<td style="text-align:center">20</td>
+<td>数据收集程序是否具有良好的可追溯性？</td>
+</tr>
+<tr>
+<td style="text-align:center">21</td>
+<td>所收集的数据是否能够用于回答研究问题？</td>
+</tr>
+</tbody>
+</table>
+<p><strong>分析收集到的数据</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">编号</th>
+<th>检查条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">22</td>
+<td>是否定义了分析方法，包括角色与审阅程序？</td>
+</tr>
+<tr>
+<td style="text-align:center">23</td>
+<td>是否展示了一条证据链，使从数据到研究问题及现有理论的推断可追溯？</td>
+</tr>
+</tbody>
+</table>
+<p><a class="page-anchor" id="pdf-31"></a></p>
+<!-- PDF_PAGE:31 JOURNAL_PAGE:161 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 31 页／共 34 页｜期刊第 161 页</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">编号</th>
+<th>检查条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">24</td>
+<td>分析中是否使用了不同视角和替代解释？</td>
+</tr>
+<tr>
+<td style="text-align:center">25</td>
+<td>是否研究因果关系？如果是，分析能否将原因与其他因素区分开来？</td>
+</tr>
+<tr>
+<td style="text-align:center">26</td>
+<td>分析是否得出了清晰的结论，包括对实践或进一步研究的建议？</td>
+</tr>
+<tr>
+<td style="text-align:center">27</td>
+<td>是否系统地分析效度威胁并采取了对策？（构念效度、内部效度、外部效度、可靠性。）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>报告</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">编号</th>
+<th>检查条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">28</td>
+<td>案例及其分析单元是否充分呈现？</td>
+</tr>
+<tr>
+<td style="text-align:center">29</td>
+<td>是否报告目标、研究问题和相应答案？</td>
+</tr>
+<tr>
+<td style="text-align:center">30</td>
+<td>是否明确报告相关理论和假设？</td>
+</tr>
+<tr>
+<td style="text-align:center">31</td>
+<td>是否介绍数据收集程序，并给出相关理由？</td>
+</tr>
+<tr>
+<td style="text-align:center">32</td>
+<td>是否呈现足够的原始数据（例如真实情境中的示例、引文）？</td>
+</tr>
+<tr>
+<td style="text-align:center">33</td>
+<td>是否明确报告分析程序？</td>
+</tr>
+<tr>
+<td style="text-align:center">34</td>
+<td>是否报告效度威胁分析及采取的减轻威胁的对策？</td>
+</tr>
+<tr>
+<td style="text-align:center">35</td>
+<td>是否公开报告伦理问题（个人意图、权益问题、保密性）？</td>
+</tr>
+<tr>
+<td style="text-align:center">36</td>
+<td>报告是否包括结论、实践启示和未来研究？</td>
+</tr>
+<tr>
+<td style="text-align:center">37</td>
+<td>报告是否给人以真实可信的印象？</td>
+</tr>
+<tr>
+<td style="text-align:center">38</td>
+<td>报告是否适合其受众，易于阅读且结构良好？</td>
+</tr>
+</tbody>
+</table>
+<p><a aria-hidden="true" class="heading-anchor" id="appendix-b"></a></p>
+<h2>附录 B</h2>
+<p><strong>表 13　读者检查清单（Reader’s checklist）</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">编号</th>
+<th>检查问题</th>
+<th>对应条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">39</td>
+<td>研究目标、研究问题和假设（如适用）是否清楚且具有相关性？（对应条目：1、2、5、29、30）</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">40</td>
+<td>案例及其分析单元是否得到良好界定？</td>
+<td>1、5、28</td>
+</tr>
+<tr>
+<td style="text-align:center">41</td>
+<td>是否明确说明案例为何适合回答研究问题？</td>
+<td>8、9、14</td>
+</tr>
+<tr>
+<td style="text-align:center">42</td>
+<td>案例研究是否以理论为基础，或与已有文献建立联系？</td>
+<td>3</td>
+</tr>
+<tr>
+<td style="text-align:center">43</td>
+<td>数据收集程序是否足以实现案例研究目的（数据来源、收集、验证）？</td>
+<td>11、13、16、18、21、31</td>
+</tr>
+<tr>
+<td style="text-align:center">44</td>
+<td>是否呈现足够的原始数据，使读者理解案例和分析？</td>
+<td>32</td>
+</tr>
+<tr>
+<td style="text-align:center">45</td>
+<td>分析程序是否足以实现案例研究目的（可重复、透明）？</td>
+<td>22、33</td>
+</tr>
+<tr>
+<td style="text-align:center">46</td>
+<td>是否建立从观察到结论的清晰证据链？</td>
+<td>6、17、20、23、25</td>
+</tr>
+<tr>
+<td style="text-align:center">47</td>
+<td>是否系统分析了效度威胁，并采取降低威胁的对策？</td>
+<td>27、34、37</td>
+</tr>
+<tr>
+<td style="text-align:center">48</td>
+<td>是否使用了三角互证（多种收集和分析方法、多位作者、多种理论）？</td>
+<td>7、12、22、24</td>
+</tr>
+<tr>
+<td style="text-align:center">49</td>
+<td>是否妥善处理伦理问题（个人意图、权益、保密、知情同意、伦理审查委员会批准）？</td>
+<td>4、10、15、19、35</td>
+</tr>
+<tr>
+<td style="text-align:center">50</td>
+<td>是否面向相应受众适当地报告了结论、实践启示及未来研究方向？</td>
+<td>26、29、36、37、38</td>
+</tr>
+</tbody>
+</table>
+<p><em>表注：各条目后的数字指向研究者检查清单中的相应条目。</em></p>
+<p><a aria-hidden="true" class="heading-anchor" id="references"></a></p>
+<h2>参考文献</h2>
+<p><em>以下保持附件的原始文献顺序与英文书目信息，在英文题名之后添加中文译名；原文参考文献表没有逐条编号，因此不另加编号。</em></p>
+<ul>
+<li>Amschler Andrews A, Pradhan AS (2001) <strong>Ethical issues in empirical software engineering: the limits of policy.</strong> 【实证软件工程中的伦理问题：政策的局限】 Empir Softw Eng 6(2):105–110 doi:10.1023/A:1011442319273</li>
+<li>Anastas JW, MacDonald ML (1994) <strong>Research design for the social work and the human services.</strong> 【社会工作与人类服务研究设计】 New York, Lexington</li>
+<li>Andersson C, Runeson P (2007a) <strong>A replicated quantitative analysis of fault distribution in complex software systems.</strong> 【复杂软件系统故障分布的重复性定量分析】 IEEE Trans Softw Eng 33(5):273–286 doi:10.1109/TSE.2007.1005</li>
+</ul>
+<p><a class="page-anchor" id="pdf-32"></a></p>
+<!-- PDF_PAGE:32 JOURNAL_PAGE:162 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 32 页／共 34 页｜期刊第 162 页</strong></p>
+</blockquote>
+<ul>
+<li>Andersson C, Runeson P (2007b) <strong>A spiral process model for case studies on software quality monitoring—method and metrics.</strong> 【软件质量监测案例研究的螺旋过程模型——方法与度量】 Softw Process Improv Pract 12(2):125–140 doi:10.1002/spip.311</li>
+<li>Avison D, Baskerville R, Myers M (2001) <strong>Controlling action research projects.</strong> 【行动研究项目的控制】 Inf Technol People 14(1):28–45 doi:10.1108/09593840110384762</li>
+<li>Basili VR, Weiss DM (1984) <strong>A methodology for collecting valid software engineering data.</strong> 【收集有效软件工程数据的方法论】 IEEE Trans Softw Eng SE10(6):728–739</li>
+<li>Basili VR, Selby RW, Hutchens DH (1986) <strong>Experimentation in Software Engineering.</strong> 【软件工程中的实验研究】 IEEE Trans Softw Eng SE12(7):733–744</li>
+<li>Baskerville RL, Wood-Harper AT (1996) <strong>A critical perspective on action research as method for information systems research.</strong> 【关于行动研究作为信息系统研究方法的批判性视角】 J Inf Technol 11:235–246 doi:10.1080/026839696345289</li>
+<li>Benbasat I, Goldstein DK, Mead M (1987) <strong>The case research strategy in studies of information systems.</strong> 【信息系统研究中的案例研究策略】 MIS Q 11(3):369–386 doi:10.2307/248684</li>
+<li>Corbin J, Strauss C (2008) <strong>Basics of qualitative research, 3rd edn.</strong> 【定性研究基础，第 3 版】 Sage</li>
+<li>Dalkey N, Helmer O (1963) <strong>An experimental application of the delphi method to the use of experts.</strong> 【德尔菲法在专家意见运用中的一次实验性应用】 Manage Sci 9(3):458–467</li>
+<li>Dittrich Y (ed) (2007) <strong>Special issue on qualitative software engineering research.</strong> 【软件工程定性研究专刊】 Inf Softw Technol 49(6):531–694. doi:10.1016/j.infsof.2007.02.009</li>
+<li>Dittrich Y, Rönkkö K, Eriksson J, Hansson C, Lindeberg O (2008) <strong>Cooperative method development. combining qualitative empirical research with method, technique and process improvement.</strong> 【协作式方法开发：将定性实证研究与方法、技术和过程改进相结合】 Empir Softw Eng 13(3):231–260 doi:10.1007/s10664-007-9057-1</li>
+<li>Eisenhardt KM (1989) <strong>Building theories form case study research.</strong> 【从案例研究中构建理论】 Acad Manage Rev 14(4):532–550 doi:10.2307/258557</li>
+<li>Easterbrook S, Singer J, Storey M-A, Damian D (2008) <strong>Selecting empirical methods for software engineering research,</strong> 【为软件工程研究选择实证方法】 Chapter 11 in Shull et al. (2008)</li>
+<li>Fenton N, Pfleeger SG (1996) <strong>Software Metrics—A Rigorous and Practical Approach,</strong> 【软件度量——一种严谨而实用的方法】 Thomson Computer</li>
+<li>Flynn BB, Sakakibara S, Schroeder RG, Bates K, Flynn EJ (1990) <strong>Empirical research methods in operations management.</strong> 【运营管理中的实证研究方法】 Oper Manage 9(2):250–284 doi:10.1016/0272-6963(90)90098-X</li>
+<li>Flyvbjerg B (2007) <strong>Five misunderstandings about case-study research.</strong> 【关于案例研究的五种误解】 In <em>Qualitative Research Practice: Concise Paperback Edition</em>【定性研究实践：平装简明版】. Sage, pp 390–404</li>
+<li>Gorschek T, Garre P, Larsson S, Wohlin C (2006) <strong>A model for technology transfer in practice.</strong> 【实践中的技术转移模型】 IEEE Softw 23(6):88–95 doi:10.1109/MS.2006.147</li>
+<li>Hannay JE, Sjøberg DIK, Dybå TA (2007) <strong>Systematic review of theory use in software engineering experiments.</strong> 【软件工程实验中理论运用的系统性综述】 IEEE Trans Softw Eng 33(2):87–107 doi:10.1109/TSE.2007.12</li>
+<li>Hove SE, Anda BCD (2005) <strong>Experiences from conducting semi-structured interviews in empirical software engineering research.</strong> 【实证软件工程研究中开展半结构化访谈的经验】 Proceedings 11th IEEE International Software Metrics Symposium (Metrics 2005) 23:1–10</li>
+<li>Höst M, Runeson P (2007) <strong>Checklists for Software Engineering Case Study Research,</strong> 【软件工程案例研究检查清单】 In Proceedings First International Symposium on Empirical Software Engineering and Measurement, pp 479–481</li>
+<li>Iversen JH, Mathiassen L, Nielsen PA (2004) <strong>Managing risk in software process improvement: an action research approach.</strong> 【软件过程改进中的风险管理：行动研究方法】 MIS Q 28(3):395–433</li>
+<li>Jedlitschka A, Pfahl D (2005) <strong>Reporting guidelines for controlled experiments in software engineering,</strong> 【软件工程受控实验报告指南】 In Proceedings of ACM/IEEE International Symposium on Empirical Software Engineering, pp 95–104, see also Chapter 8 in Shull et al. (2008)</li>
+<li>Johnson P, Kou H, Paulding M, Zhang Q, Kagawa A, Yamashita T (2005) <strong>Improving software development management through software project telemetry.</strong> 【通过软件项目遥测改进软件开发管理】 IEEE Softw 22(4):76–85 doi:10.1109/MS.2005.95</li>
+<li>Karahasanović A, Anda B, Arisholm E, Hove SE, Jørgensen M, Sjøberg DIK, Welland R (2005) <strong>Collecting feedback during software engineering experiments.</strong> 【在软件工程实验中收集反馈】 Empir Softw Eng 10:113–147 doi:10.1007/s10664-004-6189-4</li>
+<li>Karlström D (2004) <strong>Integrating Management and Engineering Processes in Software Product Development,</strong> 【软件产品开发中管理过程与工程过程的整合】 PhD Thesis ISRN LUTEDX/TETS—1069-SE+230p, Lund University.</li>
+<li>Karlström D, Runeson P (2005) <strong>Combining agile methods with stage-gate project management.</strong> 【敏捷方法与阶段关口项目管理的结合】 IEEE Softw 22(3):43–49 doi:10.1109/MS.2005.59</li>
+<li>Karlström D, Runeson P (2006) <strong>Integrating agile software development into stage-gate product development.</strong> 【将敏捷软件开发融入阶段关口产品开发】 Empir Softw Eng 11:203–225 doi:10.1007/s10664-006-6402-8</li>
+<li>Klein HK, Myers MD (1999) <strong>A set of principles for conducting and evaluating interpretative field studies in information systems.</strong> 【开展和评价信息系统解释性现场研究的一组原则】 MIS Q 23(1):67–88 doi:10.2307/249410</li>
+<li>Kitchenham B, Pickard L, Pfleeger SL (1995) <strong>Case studies for method and tool evaluation.</strong> 【用于方法和工具评价的案例研究】 IEEE Softw 4(12):52–62 doi:10.1109/52.391832</li>
+<li>Kitchenham B, Pfleeger SM, Pickard LM, Jones PW, Hoaglin DC, El Eman K, Rosenberg J (2002) <strong>Preliminary guidelines for empirical research in software engineering.</strong> 【软件工程实证研究初步指南】 IEEE Trans Softw Eng 28(8):721–734 doi:10.1109/TSE.2002.1027796</li>
+</ul>
+<p><a class="page-anchor" id="pdf-33"></a></p>
+<!-- PDF_PAGE:33 JOURNAL_PAGE:163 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 33 页／共 34 页｜期刊第 163 页</strong></p>
+</blockquote>
+<ul>
+<li>Kitchenham B (2007) <strong>Guidelines for performing Systematic Literature Reviews in Software Engineering,</strong> 【开展软件工程系统性文献综述的指南】 Version 2.3, EBSE Technical Report EBSE-2007-01, Keele University and University of Durham</li>
+<li>Kitchenham B, Al-Khilidar H, Ali Babar M, Berry M, Cox K, Keung J, Kurniawati F, Staples M, Zhang H, Zhu L (2008) <strong>Evaluating guidelines for reporting empirical software engineering studies.</strong> 【软件工程实证研究报告指南的评价】 Empir Softw Eng 13(1):97–121 doi:10.1007/s10664-007-9053-5</li>
+<li>Lee AS (1989) <strong>A scientific methodology for MIS case studies.</strong> 【管理信息系统案例研究的科学方法论】 MIS Q 13(1):33–54 doi:10.2307/248698</li>
+<li>Lethbridge TC, Sim SE, Singer J (2005) <strong>Studying software engineers: data collection techniques for software field studies.</strong> 【研究软件工程师：软件现场研究的数据收集技术】 Empir Softw Eng 10(3):311–341 see also Chapter 1 in Shull et al. (2008)</li>
+<li>Moher T, Schneider GM (1981) <strong>Methods for improving controlled experimentation in software engineering,</strong> 【改进软件工程受控实验的方法】 Proceedings of the 5th International Conference on Software Engineering pp 224–233</li>
+<li>Owen S, Budgen D, Brereton P (2006) <strong>Protocol analysis: a neglected practice.</strong> 【规程分析：一种被忽视的实践】 Commun ACM 49(2):117–122 doi:10.1145/1113034.1113039</li>
+<li>Perry DE, Sim SE, Easterbrook S (2005) <strong>Case studies for software engineers,</strong> 【面向软件工程师的案例研究】 29th Annual IEEE/NASA Software Engineering Workshop—Tutorial Notes pp 96–159</li>
+<li>Pervan G, Maimbo H (2005) <strong>Designing a case study protocol for application in IS research,</strong> 【为信息系统研究应用设计案例研究规程】 The Ninth Pacific Conference on Information Systems pp 1281–1292</li>
+<li>Ramesh V, Glass RL, Vessey I (2004) <strong>Research in computer science: an empirical study.</strong> 【计算机科学中的研究：一项实证研究】 J Syst Softw 70(1–2):165–176 doi:10.1016/S0164-1212(03)00015-3</li>
+<li>Regnell B, Höst M, Natt och Dag J, Beremark P, Hjelm T (2001) <strong>An industrial case study on distributed prioritisation in market-driven requirements engineering for packaged software.</strong> 【面向软件包的市场驱动型需求工程中分布式优先级排序的工业案例研究】 Requirements Eng 6:51–62 doi:10.1007/s007660170015</li>
+<li>Robinson H, Segal J, Sharp H (2007) <strong>Ethnographically-informed empirical studies of software practice.</strong> 【以民族志洞察为基础的软件实践实证研究】 Inf Softw Technol 49:540–551 doi:10.1016/j.infsof.2007.02.007</li>
+<li>Robson C (2002) <strong>Real World Research.</strong> 【现实世界研究】 Blackwell, (2nd edition)</li>
+<li>Seaman C (1999) <strong>Qualitative methods in empirical studies of software engineering.</strong> 【软件工程实证研究中的定性方法】 IEEE Trans Softw Eng 25(4):557–572 see also Chapter 2 in Shull et al. (2008)</li>
+<li>Sharp H, Robinson H (2004) <strong>An ethnographic study of XP practice.</strong> 【极限编程实践的一项民族志研究】 Empir Softw Eng 9(4):353–375 doi:10.1023/B:EMSE.0000039884.79385.54</li>
+<li>Shull F, Feldman RL (2008) <strong>Building theories from multiple evidence sources.</strong> 【从多种证据来源构建理论】 In: Shull F et al (ed) <em>Guide to advanced empirical software engineering</em>【高级实证软件工程指南】. Springer-Verlag, London</li>
+<li>Shull F, Basili V, Carver J, Maldonado JC, Travassos GH, Mendonca M, Fabbri S (2002) <strong>Replicating software engineering experiments: addressing the tacit knowledge problem,</strong> 【复制软件工程实验：解决隐性知识问题】 Proceedings on International Symposium Empirical Software Engineering pp 7–16</li>
+<li>Shull F, Singer J, Sjøberg D (eds) (2008) <strong>Guide to Advanced Empirical Software Engineering.</strong> 【高级实证软件工程指南】 Springer-Verlag: London</li>
+<li>Sim SE, Singer J, Storey M-A (2001) <strong>Beg, borrow, or steal: using multidisciplinary approaches in empirical software engineering research, an ICSE 2000 workshop report.</strong> 【乞求、借用还是挪用：在软件工程实证研究中使用多学科方法——ICSE 2000 研讨会报告】 Empir Softw Eng 6(1):85–93 doi:10.1023/A:1009809824225</li>
+<li>Singer J, Vinson NG (2002) <strong>Ethical issues in empirical studies of software engineering.</strong> 【软件工程实证研究中的伦理问题】 IEEE Trans Softw Eng 28(12):1171–1180 doi:10.1109/TSE.2002.1158289</li>
+<li>Sjøberg DIK, Dybå T, Anda BCD, Hannay J (2008) <strong>Building theories in software engineering.</strong> 【软件工程中的理论构建】 In: Shull F et al (ed) <em>Guide to advanced empirical software engineering</em>【高级实证软件工程指南】. Springer-Verlag, London</li>
+<li>Sjøberg DIK, Hannay JE, Hansen O, Kampenes VB (2005) <strong>A survey of controlled experiments in software engineering.</strong> 【软件工程受控实验的综述】 IEEE Trans Softw Eng 31(9):733–753 doi:10.1109/TSE.2005.97</li>
+<li>Stake RE (1995) <strong>The art of case study research.</strong> 【案例研究的艺术】 Sage</li>
+<li>Tichy WF (1998) <strong>Should computer scientists experiment more?</strong> 【计算机科学家是否应该开展更多实验？】 Computer 31(5):32–40 doi:10.1109/2.675631</li>
+<li>Tichy WF (2000) <strong>Hints for reviewing empirical work in software engineering.</strong> 【评审软件工程实证研究的提示】 Empir Softw Eng 5(4):309–312 doi:10.1023/A:1009844119158</li>
+<li>van Solingen R, Berghout E (1999) <strong>The goal/question/metric method. A practical guide for quality improvement of software development.</strong> 【目标／问题／度量法：软件开发质量改进实践指南】 McGraw-Hill</li>
+<li>von Mayrhauser A, Vans AM (1996) <strong>Identification of dynamic comprehension processes during large scale maintenance.</strong> 【大规模维护过程中动态理解活动的识别】 IEEE Trans Softw Eng 22(6):424–438 doi:10.1109/32.508315</li>
+<li>Wallace C, Cook C, Summet J, Burnett M (2002) <strong>Human centric computing languages and environments.</strong> 【以人为中心的计算语言与环境】 Proceeding Symposia on Human Centric Computing Languages and Environments pp 63–65</li>
+<li>Wohlin C, Höst M (2001) <strong>Special section: controlled experiments in software engineering, guest editorial.</strong> 【专题栏目：软件工程中的受控实验——特邀编者按】 Inf Softw Technol 43(15):921–924 doi:10.1016/S0950-5849(01)00200-2</li>
+<li>Wohlin C, Höst M, Ohlsson MC, Regnell B, Runeson P, Wesslén A (2000) <strong>Experimentation in software engineering—an introduction.</strong> 【软件工程实验研究导论】 Kluwer</li>
+</ul>
+<p><a class="page-anchor" id="pdf-34"></a></p>
+<!-- PDF_PAGE:34 JOURNAL_PAGE:164 -->
+<blockquote class="page-label">
+<p><strong>PDF 物理第 34 页／共 34 页｜期刊第 164 页</strong></p>
+</blockquote>
+<ul>
+<li>Wohlin C, Höst M, Henningsson K (2003) <strong>Empirical research methods in software engineering.</strong> 【软件工程中的实证研究方法】 In: Conradi R, Wang AI (eds) <em>Empirical Methods and Studies in Software Engineering—Experiences from ESERNET</em>【软件工程中的实证方法与研究——ESERNET 的经验】, Springer</li>
+<li>Yin RK (2003) <strong>Case study research. Design and methods, 3rd edn.</strong> 【案例研究：设计与方法，第 3 版】 London, Sage</li>
+<li>Zelkowitz MV, Wallace RW (1998) <strong>Experimental models for validating technology.</strong> 【用于验证技术的实验模型】 IEEE Comput 31(5):23–31</li>
+</ul>
+<p><a aria-hidden="true" class="heading-anchor" id="authors"></a></p>
+<h2>作者简介</h2>
+<figure class="original-figure"><img alt="原文第 164 页 Per Runeson 作者照片" loading="lazy" src="data:image/webp;base64,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"/><figcaption>原文第 164 页 Per Runeson 作者照片</figcaption></figure>
+<p><strong>Per Runeson</strong> 是瑞典隆德大学软件工程教授，也是软件工程研究组的学术负责人。他于 1998 年获得隆德大学博士学位，并拥有五年作为软件工程咨询专家的工业界工作经验。他的研究兴趣包括促进、测量和管理软件质量各个方面的方法，尤其关注测试与检查方法以及敏捷方法。他的研究具有鲜明的实证取向，包括与大型公司的合作，并已在国际期刊和会议论文集中发表 90 余篇论文。他是 <em>Journal of Empirical Software Engineering</em> 期刊编委会及多个程序委员会的成员。</p>
+<figure class="original-figure"><img alt="原文第 164 页 Martin Höst 作者照片" loading="lazy" src="data:image/webp;base64,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"/><figcaption>原文第 164 页 Martin Höst 作者照片</figcaption></figure>
+<p><strong>Martin Höst</strong> 是瑞典隆德大学计算机科学系软件工程研究组的软件工程副教授。他于 1992 年获得隆德大学理学硕士学位，并于 1999 年在同一所大学获得软件工程博士学位。他的主要研究兴趣包括软件过程改进、软件质量、实证软件工程，以及软件开发过程的计算机仿真。这些研究主要通过案例研究、受控实验和调查研究等实证方法开展。他已在国际期刊和会议论文集中发表 40 余篇论文。</p>
+</main><footer class="footer">本中文译本仅依据上传的《Guidelines for Conducting and Reporting Case Study Research in Software Engineering》正式期刊版 PDF（34 页）制作。原文 © 作者 2008。</footer></div></div>
+<script>
+(function(){const root=document.documentElement;let scale=1;document.getElementById('larger').addEventListener('click',()=>{scale=Math.min(1.25,scale+0.07);root.style.setProperty('--scale',scale)});document.getElementById('smaller').addEventListener('click',()=>{scale=Math.max(.85,scale-.07);root.style.setProperty('--scale',scale)});const sb=document.getElementById('sidebar'),ov=document.getElementById('overlay');function close(){sb.classList.remove('open');ov.classList.remove('visible')}document.getElementById('open-menu').onclick=()=>{sb.classList.add('open');ov.classList.add('visible')};ov.onclick=close;sb.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));const links=[...sb.querySelectorAll('.toc-item')];if('IntersectionObserver' in window){let ob=new IntersectionObserver(es=>{for(let e of es){if(e.isIntersecting){let a=links.find(l=>l.getAttribute('href')==='#'+e.target.id);if(a){links.forEach(x=>x.classList.remove('active'));a.classList.add('active')}}}},{rootMargin:'-8% 0px -78% 0px'});for(let a of links){let t=document.getElementById(a.getAttribute('href').slice(1));if(t)ob.observe(t)}}})();
+</script></body></html>

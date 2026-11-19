@@ -1,0 +1,25 @@
+/* Applied only to the preview DOM. Research HTML files are never rewritten. */
+html{height:auto!important;min-height:0!important;overflow:hidden!important;scroll-behavior:auto!important;scroll-padding-top:0!important}
+body{margin:0!important;padding:0!important;height:auto!important;min-height:0!important;overflow:visible!important;background:white!important;color:#292c27!important;font:var(--reader-size,18px)/1.95 var(--reader-font,"Songti SC","STSong","SimSun",serif)!important}
+body.reader-static>.progress,body.reader-static>header,body.reader-static .layout>.sidebar,body.reader-static .mobile-toc,body.reader-static .report>.eyebrow,body.reader-static .source-tools,body.reader-static nav.next{display:none!important}
+body.reader-static .layout,body.reader-static main.report{display:block!important;width:auto!important;max-width:none!important;margin:0!important;padding:0!important;min-height:0!important;height:auto!important;border:0!important}
+.reader-hidden-heading{display:none!important}
+body.reader-static main.report p,body.reader-static main.report li,body.reader-static main.report blockquote{font-size:var(--reader-size,18px)!important;line-height:1.95!important;font-family:var(--reader-font,"Songti SC","STSong","SimSun",serif)!important}
+body.reader-static main.report p{text-align:justify}
+body.reader-static main.report h2{font:600 1.25em/1.7 var(--reader-font)!important;margin:2em 0 .8em!important;padding-top:.5em!important}
+body.reader-static main.report h3{font:600 1.08em/1.8 var(--reader-font)!important;margin:1.7em 0 .65em!important}
+body.reader-static main.report blockquote{margin:1.2em 0!important;padding:10px 19px!important;background:#f5f7f0!important;border:0!important;color:#516147!important}
+body.reader-static main.report table{font:14px/1.85 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif!important}
+body.reader-static main.report img{max-width:100%;height:auto}
+body.reader-generic{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif!important}
+body.reader-generic>.shell,body.reader-generic>.layout{height:auto!important;min-height:0!important;max-width:none!important;margin:0!important}
+body.reader-generic header{position:static!important}
+body.reader-generic main{min-width:0!important;min-height:0!important}
+.reader-original-tools{font:13px/1.8 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;margin:0 0 20px;color:#52654a}
+.reader-original-tools>summary{cursor:pointer;padding:8px 0}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+body.reader-generic main{height:auto!important;max-height:none!important;overflow:visible!important}
+body.reader-generic,body.reader-generic>.shell,body.reader-generic>.layout{display:block!important}
+body.reader-generic>main,body.reader-generic>.shell>main,body.reader-generic>.layout>main{margin:0!important;padding:0!important;max-width:none!important}
+.reader-original-navigation{position:static!important;inset:auto!important;width:auto!important;max-height:none!important;min-height:0!important;height:auto!important;overflow:visible!important;margin:0!important}
+body.reader-static .muted{color:#596852!important}
